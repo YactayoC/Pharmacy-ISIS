@@ -1,0 +1,120 @@
+.product__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.product__btn:hover {
+  color: var(--color-primary);
+}
+.product__icon {
+  font-size: var(--subtitle);
+  cursor: pointer;
+}
+.product__add {
+  color: var(--color-alert);
+}
+/* ========== tables products ========== */
+.product__header, .product__items {
+  grid-template-columns: repeat(6, 1fr);
+  font-size: var(--small-text);
+  padding: 0.5rem;
+  align-items: center;
+  justify-items: center;
+  font-size: var(--normal-size);
+}
+.product__name-text {
+  grid-column: 1 / span 2;
+}
+.product__presentation, 
+.product__category, 
+.product__laboratory {
+  display: none;
+}
+.product__item {
+  transition: transform 0.4s ease-in-out;
+}
+.product__edit {
+  color: var(--color-primary);
+}
+.product__remove {
+  color: var(--color-alert);
+}
+.product__remove:hover,
+.product__edit:hover {
+  transform: translateY(-.5rem)
+}
+/* custom modal */
+.modal__header {
+ justify-content: center;
+ color: var(--dark);
+}
+.modal__title {
+  font-weight: 700;
+}
+.modal__content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+/* form modal */
+.product__form-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__container {
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: repeat(5, 42px);
+}
+.form__field {
+  grid-column: span 2;
+}
+.product__stock,
+.form__field.product__price {
+  grid-column: span 1 ;
+}
+.form__field.product__precaution {
+  grid-column: span 4;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-our-spin-button {
+  -webkit-appearance: none;
+}
+.product_stock,.product_price {
+  padding: 0 0 0 1rem;
+}
+input[type=number] {
+  font-size: var(--small-text);
+  font-weight: 700;
+}
+/* ========== Media queries ========== */
+/* tablets ipads */
+@media screen and (min-width: 768px) {
+  .product__category, 
+  .product__laboratory {
+    display: initial;
+  }
+  .product__header, .product__items {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1rem;
+  }
+}
+/* desktop */
+@media screen and (min-width: 1024px) {
+  .product__presentation {
+    display: initial;
+  }
+  .product__header, .product__items {
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1rem;
+  }
+}
+/* medium desktop */
+@media screen and (min-width: 1200px) {
+ .products {
+   width: 70vw;
+ }
+}

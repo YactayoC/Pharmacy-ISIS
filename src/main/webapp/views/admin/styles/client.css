@@ -1,0 +1,57 @@
+/* ========== table ========== */
+.client__header, .client__items {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  font-size: var(--small-text);
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+.client__header {
+  padding: 0 1rem;
+}
+.client__items {
+  transition: background .3s ease-in-out;
+  border-radius: .5rem;
+}
+.client__items:hover {
+  background: var(--color-gray-0-2);
+}
+.client__item {
+  justify-content: center;
+}
+.client__item:hover {
+  background: transparent;
+}
+.client__name-text {
+  grid-column: 1 / span 2;
+}
+
+/* ========== media queries ========== */
+/* tablet */
+@media screen and (min-width: 768px) {
+
+  .client__header, .client__items {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .client__item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+  }
+  .client__icon {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+  }
+}
+/* desktop */
+@media screen and (min-width: 1024px) {
+  .client__header, .client__items {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .tablet__hidden {
+    font-size: var(--small-text);
+  }
+}

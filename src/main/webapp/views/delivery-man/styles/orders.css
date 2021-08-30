@@ -1,0 +1,50 @@
+.cards {
+  grid-template-columns: repeat(auto-fit, minmax(150px,256px));
+  gap: 1rem;
+  justify-content: space-around;
+}
+.card__delivery {
+  background: var(--color-white);
+  border-radius: .5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+.card__row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.card__icon--earring, .card__icon--delivered {
+  font-size: var(--big-title);
+}
+.card__icon--earring {
+  color: var(--color-alert);
+}
+.card__icon--delivered {
+  color: var(--color-success);
+} 
+.card__small-data {
+  font-size: var(--small-text);
+  color: var(--color-gray);
+}
+.card__normal-data {
+  font-size: var(--normal-size);
+  color: var(--color-dark);
+  font-weight: 500;
+}
+.card__icon {
+  padding: .75rem;
+}
+.card__icon .isax {
+  font-size: var(--small-title);
+}
+.card__button {
+  padding: 1rem;
+}

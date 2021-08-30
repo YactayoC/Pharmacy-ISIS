@@ -1,0 +1,111 @@
+.support__body {
+  gap: 1rem;
+}
+.section__header {margin-bottom: 1rem;}
+/* ========== support data options ========== */
+.client__time {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+/* ========== messages ========== */
+/* .support__message {
+  position: relative;
+} */
+/* ========== chat ========== */
+.chat__body {
+  margin-bottom: 2rem;
+}
+.chat__messages{
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  margin: 0;
+  overflow-y: auto;
+}
+.chat__box {
+  width: 100%;
+  margin: .75rem 0;
+  display: flex;
+}
+.chat__message {
+  padding: .65rem 1rem;
+  border: 1px solid var(--color-primary);
+  font-size: var(--chat-text);
+  border-radius: 1.5rem;
+  align-self: flex-start;
+}
+.chat__message--response {
+  justify-content: start;
+}
+.chat__message--request {
+  justify-content: flex-end;
+}
+.chat__footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem;
+  gap: .5rem;
+}
+.chat__writer, .chat__send {
+  height: 40px;
+  border-radius: 8px;
+}
+.chat__writer {
+  background: var(--color-primary-0-5);
+  border-radius: 4px;
+  padding-left: .5rem;
+  color: var(--color-primary);
+  width: 100%;
+}
+.chat__send {
+  cursor: pointer;
+  transition: background .6s ease-in-out;
+}
+.chat__send:hover {
+  background: var(--color-secondary);
+}
+/* chat box */
+.chat__box {
+  gap: .5rem;
+}
+/* img + date */
+.client__info {
+  gap: .5rem;
+}
+.client__time {
+  align-self: center;
+}
+
+/* ========== Media queries ========== */
+/* tablets */
+@media screen and (min-width: 768px) {
+  .support {
+    width: 70vw;
+  }
+  .support__body {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+/* small pc */
+@media screen and (min-width: 1024px) {
+  .support {
+    width: 75vw;
+  }
+  .support__body {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
+  .support__message {
+    grid-column: span 2;
+    position: relative;
+  }
+  .chat__footer { 
+    position: absolute;
+    bottom: 0;
+  }
+}

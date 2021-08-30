@@ -1,0 +1,86 @@
+/* ========== page layout ========== */
+.content {
+  margin-top: 1rem; 
+  grid-template-columns: repeat(auto-fit, minmax(236px, 290px));
+  gap: 2rem;
+} 
+/* ========== Card summary ========== */
+.card__content {
+  border-radius: 16px;
+  color: var(--color-light);
+  min-height: 155px;
+  padding:0 0 1.5rem 1rem;
+  overflow: hidden;
+  transition: box-shadow .6s ease-in-out;
+}
+.card__content:hover {
+  box-shadow: none;
+}
+.card__clients{
+  background: var(--gradient-card-purple);
+  box-shadow: 0 3rem 2rem -1.5rem rgba(110, 89, 248, 0.4);
+}
+.card__income{
+  background: var(--gradient-card-pink);
+  box-shadow: 0 3rem 2rem -1.5rem rgba(233, 111, 139, 0.4);
+}
+.card__sales{
+  background: var(--gradient-card-orange);
+  box-shadow: 0 3rem 2rem -1.5rem rgba(242, 109, 107, 0.4);
+}
+.card__picture {
+  width: 70%;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0px 16px 0px 75px;
+  position: relative;
+  left: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out, left 0.5s ease-in-out;
+}
+.card__content:hover .card__picture {
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.card__icon {
+  font-size: 6rem;
+}
+.card__quantity {
+  font-size: var(--big-title);
+}
+/* ========== Sales ========== */
+.sales {
+  overflow: hidden;
+}
+.sales__chart {
+  overflow: auto;
+}
+
+/* ========== Media queries ========== */
+/* tables and ipads */
+@media screen and (min-width: 768px) {
+  .content {
+    grid-template-columns: repeat(3, minmax(236px, 290px));
+    grid-template-rows: repeat(3, minmax(155px, 190px));
+    gap: 1rem;
+  }
+  .sales {
+    grid-column: span 2;
+  }
+  .sales, .client {
+    grid-row: span 2;
+  }
+}
+/* for mediun desktop */
+@media screen and (min-width: 1200px) {
+  .content {
+    grid-template-columns: repeat(4, minmax(236px, 290px));
+    grid-template-rows: repeat(3, minmax(155px, 180px));
+  }
+  .sales {
+    grid-column: span 3;
+  }
+}

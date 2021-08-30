@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: sebas
+Build-Jdk: Amazon Corretto version 15.0.2
+
