@@ -107,7 +107,7 @@
                 </div>
                 <div class="category__picture">
                     <img
-                            src="${pageContext.request.contextPath}/views/user/assets/img/img-category.webp"
+                            src="${pageContext.request.contextPath}/views/admin/assets/img/${products.getCategory().getUrlCateg()}"
                             alt="categoría covid-19"
                             class="category__img"
                     />
