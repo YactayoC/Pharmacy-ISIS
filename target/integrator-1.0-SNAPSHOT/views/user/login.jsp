@@ -30,7 +30,7 @@
                 <h2 class="form__logo logo logo--gradient">Icis</h2>
                 <p class="form__phrase">Entra con tu cuenta </p>
                 <!-- here init form :d -->
-                <form action="${pageContext.request.contextPath}/SLogin?action=login" class="form__container form__container--register grid" id="form" method="POST">
+                <form action="${pageContext.request.contextPath}/SGLogin?action=login" class="form__container form__container--register grid" id="form" method="POST">
                     <!--  Email -->
                     <div class="form__field form__field--login">
                         <i class="isax isax-sms-edit form__icon"></i>

@@ -58,7 +58,7 @@
             </li>
             <!-- Clients -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SClients?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAClients?action=list" class="nav__link">
                     <i class="isax isax-people nav__icon"></i>
                     <span class="nav__link-text">
               Clientes
@@ -68,7 +68,7 @@
             <!-- Employees -->
             <c:if test="${role == 1}">
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/SEmployees?action=list" class="nav__link">
+                    <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
                         <i class="isax isax-user-tag nav__icon"></i>
                         <span class="nav__link-text">
               Empleados
@@ -78,7 +78,7 @@
             </c:if>
             <!-- Products -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SProducts?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAProducts?action=list" class="nav__link">
                     <i class="isax isax-element-4 nav__icon"></i>
                     <span class="nav__link-text">
               Productos
@@ -87,7 +87,7 @@
             </li>
             <!-- Setting -->
             <li class="nav__item nav__item--active">
-                <a href="setting.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/setting.jsp" class="nav__link">
                     <i class="isax isax-setting-2 nav__icon"></i>
                     <span class="nav__link-text">
               Perfil
@@ -96,7 +96,7 @@
             </li>
             <!-- logout -->
             <li class="nav__item">
-                <a href="../../SLogin?action=exit" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SGLogin?action=exit" class="nav__link">
                     <i class="isax isax-logout nav__icon"></i>
                     <span class="nav__link-text">
               Salir

@@ -60,7 +60,7 @@
             </li>
             <!-- Clients -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SClients?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAClients?action=list" class="nav__link">
                     <i class="isax isax-people nav__icon"></i>
                     <span class="nav__link-text">
               Clientes
@@ -69,7 +69,7 @@
             </li>
             <!-- Employees -->
             <li class="nav__item nav__item--active">
-                <a href="${pageContext.request.contextPath}/SEmployees?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
                     <i class="isax isax-user-tag nav__icon"></i>
                     <span class="nav__link-text">
               Empleados
@@ -78,7 +78,7 @@
             </li>
             <!-- Products -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SProducts?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAProducts?action=list" class="nav__link">
                     <i class="isax isax-element-4 nav__icon"></i>
                     <span class="nav__link-text">
               Productos
@@ -96,7 +96,7 @@
             </li>
             <!-- logout -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SLogin?action=exit" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SGLogin?action=exit" class="nav__link">
                     <i class="isax isax-logout nav__icon"></i>
                     <span class="nav__link-text">
               Salir
@@ -236,7 +236,7 @@
         <div class="modal__body">
             <section class="product__form-content">
                 <!-- init form employee -->
-                <form action="${pageContext.request.contextPath}/SEmployees?action=add" class="form__container grid" method="post">
+                <form action="${pageContext.request.contextPath}/SAEmployees?action=add" class="form__container grid" method="post">
                     <!-- name-employee -->
                     <div class="form__field">
                         <i class="isax isax-user form__icon"></i>
@@ -362,7 +362,7 @@
         <!-- footer btn -->
         <div class="modal__footer">
             <button class="btn btn-success cancel-modal">Cancelar</button>
-            <a href="${pageContext.request.contextPath}/SEmployees?action=delete&idEmployee="
+            <a href="${pageContext.request.contextPath}/SAEmployees?action=delete&idEmployee="
                class="btn btn-alert" id="btn-delete">Eliminar</a>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<%@ page import="com.proyect.integrator.modelDTO.Product" %>
+<%@ page import="com.proyect.modeslDTO.OProduct.Product" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -61,7 +61,7 @@
             </li>
             <!-- Clients -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SClients?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAClients?action=list" class="nav__link">
                     <i class="isax isax-people nav__icon"></i>
                     <span class="nav__link-text">
               Clientes
@@ -71,7 +71,7 @@
             <!-- Employees -->
             <c:if test="${role == 1}">
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/SEmployees?action=list" class="nav__link">
+                    <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
                         <i class="isax isax-user-tag nav__icon"></i>
                         <span class="nav__link-text">
               Empleados
@@ -81,7 +81,7 @@
             </c:if>
             <!-- Products -->
             <li class="nav__item nav__item--active">
-                <a href="${pageContext.request.contextPath}/SProducts?action=list" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SAProducts?action=list" class="nav__link">
                     <i class="isax isax-element-4 nav__icon"></i>
                     <span class="nav__link-text">
               Productos
@@ -100,7 +100,7 @@
 
             <!-- logout -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SLogin?action=exit" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SGLogin?action=exit" class="nav__link">
                     <i class="isax isax-logout nav__icon"></i>
                     <span class="nav__link-text">
               Salir
@@ -272,7 +272,7 @@
         <div class="modal__body">
             <section class="product__form-content">
                 <!-- init form product -->
-                <form action="${pageContext.request.contextPath}/SProducts?action=add" class="form__container grid"
+                <form action="${pageContext.request.contextPath}/SAProducts?action=add" class="form__container grid"
                       method="post"
                       enctype="multipart/form-data">
                     <!-- name-prodcut -->
@@ -420,7 +420,7 @@
         <!-- footer btn -->
         <div class="modal__footer">
             <button class="btn btn-success cancel-modal">Cancelar</button>
-            <a href="${pageContext.request.contextPath}/SProducts?action=delete&idProduct=" class="btn btn-alert"
+            <a href="${pageContext.request.contextPath}/SAProducts?action=delete&idProduct=" class="btn btn-alert"
                id="btn-delete">Eliminar</a>
         </div>
     </div>

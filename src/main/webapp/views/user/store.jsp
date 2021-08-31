@@ -19,12 +19,12 @@
 <!-- ========== navbar ========== -->
 <header class="header">
     <nav class="nav container">
-        <a href="home.jsp" class="nav__logo logo logo--white">Icis</a>
+        <a href="${pageContext.request.contextPath}/SCHome?action=list" class="nav__logo logo logo--white">Icis</a>
         <div class="nav__menu" id="nav__menu">
             <ul class="nav__list grid">
                 <!-- items nav -->
                 <li class="nav__item">
-                    <a href="home.jsp" class="nav__link"
+                    <a href="${pageContext.request.contextPath}/SCHome?action=list" class="nav__link"
                     ><i class="isax isax-home nav__icon"></i>Principal</a
                     >
                 </li>
@@ -34,7 +34,7 @@
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -61,10 +61,12 @@
                 <c:set var="validats" value="${validats}"/>
                 <c:if test="${!validats}">
                     <li class="nav__item">
-                        <a href="register.jsp" class="nav__link btn btn-white">Registro</a>
+                        <a href="${pageContext.request.contextPath}/views/user/register.jsp"
+                           class="nav__link btn btn-white">Registro</a>
                     </li>
                     <li class="nav__item">
-                        <a href="login.jsp" class="nav__link btn btn-white-outline">Iniciar</a>
+                        <a href="${pageContext.request.contextPath}/views/user/login.jsp"
+                           class="nav__link btn btn-white-outline">Iniciar</a>
                     </li>
                 </c:if>
                 <!-- ======== this view,when the user starts a session ======== -->
@@ -72,7 +74,7 @@
                     <li class="nav__item">
                         <a href="#" class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
-                            ${username}
+                                ${username}
                         </a>
                     </li>
                 </c:if>
@@ -91,29 +93,32 @@
     <h2 class="subtitle">Nuestras categorías</h2>
     <div class="swiper-wrapper">
         <!-- init products -->
-        <div class="category__container swiper-slide">
-            <div class="category__data">
-                <h3 class="category__title">Medic</h3>
-                <p class="category__description">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <a href="#" class="category__link">
-                    <i class="isax isax-shopping-cart"></i>
-                    25 productos
-                </a>
+        <c:forEach items="${products}" var="products">
+            <div class="category__container swiper-slide">
+                <div class="category__data">
+                    <h3 class="category__title">${products.getCategory().getNameC()}</h3>
+                    <p class="category__description">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                    <a href="#" class="category__link">
+                        <i class="isax isax-shopping-cart"></i>
+                            ${products.getStock()}
+                    </a>
+                </div>
+                <div class="category__picture">
+                    <img
+                            src="${pageContext.request.contextPath}/views/user/assets/img/img-category.webp"
+                            alt="categoría covid-19"
+                            class="category__img"
+                    />
+                    <a href="${pageContext.request.contextPath}/SCProducts?action=listProduct&idCategory=${products.getCategory().getIdCategory()}"
+                       class="category__btn btn btn-primary">
+                        Ver productos <i class="isax isax-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="category__picture">
-                <img
-                        src="assets/img/img-category.webp"
-                        alt="categoría covid-19"
-                        class="category__img"
-                />
-                <a href="#" class="category__btn btn btn-primary">
-                    Ver productos <i class="isax isax-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-        <!-- category 2 -->
+        </c:forEach>
+        <!-- category 2
         <div class="category__container swiper-slide">
             <div class="category__data">
                 <h3 class="category__title">Covid - 19</h3>
@@ -135,8 +140,8 @@
                     Ver productos <i class="isax isax-arrow-right"></i>
                 </a>
             </div>
-        </div>
-        <!-- category 3 -->
+        </div>-->
+        <!-- category 3
         <div class="category__container swiper-slide">
             <div class="category__data">
                 <h3 class="category__title">Covid</h3>
@@ -158,8 +163,8 @@
                     Ver productos <i class="isax isax-arrow-right"></i>
                 </a>
             </div>
-        </div>
-        <!-- category 4 -->
+        </div>-->
+        <!-- category 4
         <div class="category__container swiper-slide">
             <div class="category__data">
                 <h3 class="category__title">Covid--</h3>
@@ -181,8 +186,8 @@
                     Ver productos <i class="isax isax-arrow-right"></i>
                 </a>
             </div>
-        </div>
-        <!-- category 5 -->
+        </div>-->
+        <!-- category 5
         <div class="category__container swiper-slide">
             <div class="category__data">
                 <h3 class="category__title">Covid15</h3>
@@ -204,7 +209,7 @@
                     Ver productos <i class="isax isax-arrow-right"></i>
                 </a>
             </div>
-        </div>
+        </div>-->
     </div>
     <!-- navigation of swiper -->
     <div class="swiper-pagination"></div>
@@ -212,14 +217,48 @@
 
 <!-- ========== products or category ========== -->
 <section class="product section">
-    <h2 class="subtitle">Covid - 19</h2>
+    <h2 class="subtitle">Productos</h2>
     <div class="product__content grid">
         <!-- init card -->
+        <c:forEach var="p" items="${productsC}">
+            <div class="product__card">
+                <div class="product__stock">${p.getStock()} Units</div>
+                <div class="product__box">
+                    <img
+                            src="${pageContext.request.contextPath}/views/admin/assets/img/${p.getUrlPhoto()}"
+                            alt="Pastillas de paracetamol"
+                            class="product__img"
+                    />
+                    <div class="product__actions">
+                        <a href="#" class="product__action">
+                            <span class="product__action-text">A la bolsa</span>
+                            <i class="isax isax-bag btn-icon"></i>
+                        </a>
+                        <a href="shopp-cart.jsp" class="product__action">
+                            <span class="product__action-text">Comprar</span>
+                            <i class="isax isax-wallet btn-icon"></i>
+                        </a>
+                        <a href="detail-product.jsp" class="product__action">
+                            <span class="product__action-text">Ver detalle</span>
+                            <i class="isax isax-gallery-favorite btn-icon"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="product__data">
+                    <div class="product__info">
+                        <span class="product__name">${p.getNameP()}</span>
+                        <span class="product__price">$${p.getPrice()}0</span>
+                    </div>
+                    <p class="product__presentation">15 Pills</p>
+                </div>
+            </div>
+        </c:forEach>
+        <!-- init card
         <div class="product__card">
             <div class="product__stock">10 Units</div>
             <div class="product__box">
                 <img
-                        src="assets/img/cup-pills.webp"
+                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
                         alt="Pastillas de paracetamol"
                         class="product__img"
                 />
@@ -245,13 +284,13 @@
                 </div>
                 <p class="product__presentation">15 Pills</p>
             </div>
-        </div>
-        <!-- init card -->
+        </div>-->
+        <!-- init card
         <div class="product__card">
             <div class="product__stock">10 Units</div>
             <div class="product__box">
                 <img
-                        src="assets/img/cup-pills.webp"
+                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
                         alt="Pastillas de paracetamol"
                         class="product__img"
                 />
@@ -277,13 +316,13 @@
                 </div>
                 <p class="product__presentation">15 Pills</p>
             </div>
-        </div>
-        <!-- init card -->
+        </div>-->
+        <!-- init card
         <div class="product__card">
             <div class="product__stock">10 Units</div>
             <div class="product__box">
                 <img
-                        src="assets/img/cup-pills.webp"
+                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
                         alt="Pastillas de paracetamol"
                         class="product__img"
                 />
@@ -309,13 +348,13 @@
                 </div>
                 <p class="product__presentation">15 Pills</p>
             </div>
-        </div>
-        <!-- init card -->
+        </div>-->
+        <!-- init card
         <div class="product__card">
             <div class="product__stock">10 Units</div>
             <div class="product__box">
                 <img
-                        src="assets/img/cup-pills.webp"
+                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
                         alt="Pastillas de paracetamol"
                         class="product__img"
                 />
@@ -341,39 +380,7 @@
                 </div>
                 <p class="product__presentation">15 Pills</p>
             </div>
-        </div>
-        <!-- init card -->
-        <div class="product__card">
-            <div class="product__stock">10 Units</div>
-            <div class="product__box">
-                <img
-                        src="assets/img/cup-pills.webp"
-                        alt="Pastillas de paracetamol"
-                        class="product__img"
-                />
-                <div class="product__actions">
-                    <a href="#" class="product__action">
-                        <span class="product__action-text">A la bolsa</span>
-                        <i class="isax isax-bag btn-icon"></i>
-                    </a>
-                    <a href="shopp-cart.jsp" class="product__action">
-                        <span class="product__action-text">Comprar</span>
-                        <i class="isax isax-wallet btn-icon"></i>
-                    </a>
-                    <a href="detail-product.jsp" class="product__action">
-                        <span class="product__action-text">Ver detalle</span>
-                        <i class="isax isax-gallery-favorite btn-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="product__data">
-                <div class="product__info">
-                    <span class="product__name">Paracetamol</span>
-                    <span class="product__price">$25.00</span>
-                </div>
-                <p class="product__presentation">15 Pills</p>
-            </div>
-        </div>
+        </div>-->
     </div>
 </section>
 

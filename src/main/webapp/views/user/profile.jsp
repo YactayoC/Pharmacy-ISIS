@@ -21,22 +21,22 @@
 <!-- ========== navbar ========== -->
 <header class="header">
     <nav class="nav container">
-        <a href="home.jsp" class="nav__logo logo logo--white">Icis</a>
+        <a href="${pageContext.request.contextPath}/SCHome?action=list" class="nav__logo logo logo--white">Icis</a>
         <div class="nav__menu" id="nav__menu">
             <ul class="nav__list grid">
                 <!-- items nav -->
                 <li class="nav__item">
-                    <a href="home.jsp" class="nav__link"
+                    <a href="${pageContext.request.contextPath}/SCHome?action=list" class="nav__link"
                     ><i class="isax isax-home nav__icon"></i>Principal</a
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">
+                    <a href="${pageContext.request.contextPath}/SCProducts?action=list" class="nav__link">
                         <i class="isax isax-shop nav__icon"></i>Productos</a
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -289,7 +289,7 @@
             </div>
             <!-- button save data  and logout-->
             <!-- Logout -->
-            <a href="../../SLogin?action=exit" class="profile__logout">
+            <a href="${pageContext.request.contextPath}/SGLogin?action=exit" class="profile__logout">
                 <i class="isax isax-logout btn-icon"></i>
                 <span>Logout</span>
             </a>

@@ -31,7 +31,7 @@
         <h2 class="form__logo logo logo--gradient">Icis</h2>
         <p class="form__phrase">Crea una Cuenta</p>
         <!-- here init form :d -->
-        <form action="${pageContext.request.contextPath}/SRegister?action=register" class="form__container grid"
+        <form action="${pageContext.request.contextPath}/SCRegister?action=register" class="form__container grid"
               method="post">
             <!-- name -->
             <div class="form__field">
