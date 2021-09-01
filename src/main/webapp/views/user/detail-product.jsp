@@ -164,6 +164,6 @@
         <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
         <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
         <!-- ========== JS only for this file ========== -->
-        <script src="${pageContext.request.contextPath}/views/user/js/detail.js"></script>
+        <script src="${pageContext.request.contextPath}/views/user/js/details.js"></script>
     </body>
 </html>

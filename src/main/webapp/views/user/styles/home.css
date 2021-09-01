@@ -23,7 +23,7 @@
   padding: 1rem 1.5rem;
   box-shadow: 0 1rem 2.5rem -1.1rem var(--color-dark);
 }
-.hero__btn:hover { 
+.hero__btn:hover {
   box-shadow: none;
 }
 /* ========== Offers of products ========== */
@@ -34,12 +34,14 @@
 }
 .offer__content {
   display: flex;
+  gap: 1rem;
 }
 .offer__data {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: .6rem;
+  justify-content: center;
 }
 .offer__description,
 .offer__product {
@@ -72,11 +74,13 @@
  .offer__img {
    position: relative;
    width: 100%;
+   max-width: 180px;
  }
  .offer__img img {
    width: 100%;
    height: 100%;
    background: center/cover;
+   object-fit: cover;
  }
 .offer__tag {
   top: .5rem;
@@ -133,7 +137,7 @@
   transition: .4s ease-in-out;
 }
 .register-btn .btn {
- padding: 1.5rem 3rem; 
+ padding: 1.5rem 3rem;
  margin-bottom: 60px;
  box-shadow: var(--shadow-bottom-orange);
 }
@@ -157,7 +161,7 @@
     line-height: 1.5rem;
     margin: 2rem 0;
   }
-  .hero__img { 
+  .hero__img {
     position: relative;
   }
   .hero__img img:nth-child(1) {

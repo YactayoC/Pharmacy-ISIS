@@ -149,7 +149,7 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="detail-product.jsp" class="product__action">
+                            <a href="${pageContext.request.contextPath}/views/user/detail-product.jsp" class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>
@@ -185,7 +185,7 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="detail-product.jsp" class="product__action">
+                            <a href="${pageContext.request.contextPath}/views/user/detail-product.jsp" class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>
@@ -201,134 +201,6 @@
                 </div>
             </c:forEach>
         </c:if>
-        <!-- init card
-        <div class="product__card">
-            <div class="product__stock">10 Units</div>
-            <div class="product__box">
-                <img
-                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
-                        alt="Pastillas de paracetamol"
-                        class="product__img"
-                />
-                <div class="product__actions">
-                    <a href="#" class="product__action">
-                        <span class="product__action-text">A la bolsa</span>
-                        <i class="isax isax-bag btn-icon"></i>
-                    </a>
-                    <a href="shopp-cart.jsp" class="product__action">
-                        <span class="product__action-text">Comprar</span>
-                        <i class="isax isax-wallet btn-icon"></i>
-                    </a>
-                    <a href="detail-product.jsp" class="product__action">
-                        <span class="product__action-text">Ver detalle</span>
-                        <i class="isax isax-gallery-favorite btn-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="product__data">
-                <div class="product__info">
-                    <span class="product__name">Paracetamol</span>
-                    <span class="product__price">$25.00</span>
-                </div>
-                <p class="product__presentation">15 Pills</p>
-            </div>
-        </div>-->
-        <!-- init card
-        <div class="product__card">
-            <div class="product__stock">10 Units</div>
-            <div class="product__box">
-                <img
-                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
-                        alt="Pastillas de paracetamol"
-                        class="product__img"
-                />
-                <div class="product__actions">
-                    <a href="#" class="product__action">
-                        <span class="product__action-text">A la bolsa</span>
-                        <i class="isax isax-bag btn-icon"></i>
-                    </a>
-                    <a href="shopp-cart.jsp" class="product__action">
-                        <span class="product__action-text">Comprar</span>
-                        <i class="isax isax-wallet btn-icon"></i>
-                    </a>
-                    <a href="detail-product.jsp" class="product__action">
-                        <span class="product__action-text">Ver detalle</span>
-                        <i class="isax isax-gallery-favorite btn-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="product__data">
-                <div class="product__info">
-                    <span class="product__name">Paracetamol</span>
-                    <span class="product__price">$25.00</span>
-                </div>
-                <p class="product__presentation">15 Pills</p>
-            </div>
-        </div>-->
-        <!-- init card
-        <div class="product__card">
-            <div class="product__stock">10 Units</div>
-            <div class="product__box">
-                <img
-                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
-                        alt="Pastillas de paracetamol"
-                        class="product__img"
-                />
-                <div class="product__actions">
-                    <a href="#" class="product__action">
-                        <span class="product__action-text">A la bolsa</span>
-                        <i class="isax isax-bag btn-icon"></i>
-                    </a>
-                    <a href="shopp-cart.jsp" class="product__action">
-                        <span class="product__action-text">Comprar</span>
-                        <i class="isax isax-wallet btn-icon"></i>
-                    </a>
-                    <a href="detail-product.jsp" class="product__action">
-                        <span class="product__action-text">Ver detalle</span>
-                        <i class="isax isax-gallery-favorite btn-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="product__data">
-                <div class="product__info">
-                    <span class="product__name">Paracetamol</span>
-                    <span class="product__price">$25.00</span>
-                </div>
-                <p class="product__presentation">15 Pills</p>
-            </div>
-        </div>-->
-        <!-- init card
-        <div class="product__card">
-            <div class="product__stock">10 Units</div>
-            <div class="product__box">
-                <img
-                        src="${pageContext.request.contextPath}/views/user/assets/img/cup-pills.webp"
-                        alt="Pastillas de paracetamol"
-                        class="product__img"
-                />
-                <div class="product__actions">
-                    <a href="#" class="product__action">
-                        <span class="product__action-text">A la bolsa</span>
-                        <i class="isax isax-bag btn-icon"></i>
-                    </a>
-                    <a href="shopp-cart.jsp" class="product__action">
-                        <span class="product__action-text">Comprar</span>
-                        <i class="isax isax-wallet btn-icon"></i>
-                    </a>
-                    <a href="detail-product.jsp" class="product__action">
-                        <span class="product__action-text">Ver detalle</span>
-                        <i class="isax isax-gallery-favorite btn-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="product__data">
-                <div class="product__info">
-                    <span class="product__name">Paracetamol</span>
-                    <span class="product__price">$25.00</span>
-                </div>
-                <p class="product__presentation">15 Pills</p>
-            </div>
-        </div>-->
     </div>
 </section>
 
@@ -368,5 +240,6 @@
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/details.js"></script>
 </body>
 </html>

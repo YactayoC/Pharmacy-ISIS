@@ -32,6 +32,8 @@
 }
 .category__picture {
   position: relative;
+  width: 150px;
+  height: 224px;
 }
 .category__btn {
   position: absolute;
@@ -44,6 +46,11 @@
 .isax {  transition: transform .3s ease-in-out;}
 .category__btn:hover .isax {
   transform: translateX(.25rem);
+}
+.category__img {
+  width: 150px;
+  object-fit: cover;
+  height: 100%;
 }
 /* ========== Swiper ========== */
 .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
@@ -92,6 +99,12 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+.product__img {
+  width: 256px;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
 }
 .product__actions {
   position: absolute;
