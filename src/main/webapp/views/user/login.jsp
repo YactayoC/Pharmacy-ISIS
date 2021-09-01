@@ -15,7 +15,7 @@
         <title>Register Icis</title>
     </head>
     <body>
-        <a href="${pageContext.request.contextPath}/views/user/home.jsp" class="isax isax-logout btn-icon form__btn-back"></a>
+        <a href="${pageContext.request.contextPath}/SCHome?action=list" class="isax isax-logout btn-icon form__btn-back"></a>
         <!-- Content register -->
         <section class="section form">
             <div class="form__img">

@@ -17,7 +17,7 @@ public class SCProducts extends HttpServlet {
 
     List<Product> products = new ArrayList<>();
     List<Product> productsCategories = new ArrayList<>();
-    CategoryDAO cdao = new CategoryDAO();
+    List<Product> categories = new ArrayList<>();
     ProductDAO pdao = new ProductDAO();
 
     @Override
@@ -28,8 +28,17 @@ public class SCProducts extends HttpServlet {
             case "listProduct":
                 int idCategory = Integer.parseInt(request.getParameter("idCategory"));
                 productsCategories = pdao.listCategory(idCategory);
+                request.setAttribute("idCategory", idCategory);
                 request.setAttribute("productsC", productsCategories);
                 this.list(request, response);
+                break;
+            case "search":
+                categories = pdao.list();
+                String text = request.getParameter("search");
+                products = pdao.search(text);
+                request.setAttribute("categories", categories);
+                request.setAttribute("products", products);
+                request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);
                 break;
             default:
                 this.list(request, response);
@@ -47,6 +56,8 @@ public class SCProducts extends HttpServlet {
     private void list(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         products = pdao.list();
+        categories = pdao.list();
+        request.setAttribute("categories", categories);
         request.setAttribute("products", products);
         request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);
     }

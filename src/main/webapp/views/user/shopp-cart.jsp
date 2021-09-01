@@ -46,7 +46,7 @@
                 </li>
                 <!-- searching -->
                 <li class="nav__item nav__search">
-                    <div class="search">
+                    <form class="search">
                         <!-- <label class="search__label" for="search">Buscar</label> -->
                         <input
                                 type="text"
@@ -55,8 +55,10 @@
                                 class="search__input"
                                 placeholder="Buscar"
                         />
-                        <i class="isax isax-search-favorite search__icon"></i>
-                    </div>
+                        <button type="submit" class="search__button" name="action" value="search">
+                            <i class="isax isax-search-favorite search__icon"></i>
+                        </button>
+                    </form>
                 </li>
                 <!-- ======== first view of users buttons of login ======== -->
                 <c:set var="validats" value="${validats}"/>

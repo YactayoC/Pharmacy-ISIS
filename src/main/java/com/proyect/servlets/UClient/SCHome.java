@@ -14,6 +14,7 @@ import java.util.List;
 public class SCHome extends HttpServlet {
 
     List<Product> products = new ArrayList<>();
+    List<Product> categories = new ArrayList<>();
     ProductDAO pdao = new ProductDAO();
 
     @Override
@@ -24,6 +25,13 @@ public class SCHome extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("products", products);
             request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
+        } else if (action.equals("search")){
+            categories = pdao.list();
+            String text = request.getParameter("search");
+            products = pdao.search(text);
+            request.setAttribute("categories", categories);
+            request.setAttribute("products", products);
+            request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);
         }
 
     }

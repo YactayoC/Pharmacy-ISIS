@@ -34,7 +34,7 @@ public class SGLogin extends HttpServlet {
             idUser = null;
             user.setIdUser(idUser);
             request.getSession().setAttribute("validats", validats);
-            request.getRequestDispatcher("/SCHome?action=list").forward(request, response);
+            request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
         }
     }
 

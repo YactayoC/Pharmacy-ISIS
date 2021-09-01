@@ -29,7 +29,7 @@
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link">
+                    <a href="${pageContext.request.contextPath}/SCProducts?action=list" class="nav__link">
                         <i class="isax isax-shop nav__icon"></i>Productos</a
                     >
                 </li>
@@ -45,7 +45,7 @@
                 </li>
                 <!-- searching -->
                 <li class="nav__item nav__search">
-                    <div class="search">
+                    <form class="search">
                         <!-- <label class="search__label" for="search">Buscar</label> -->
                         <input
                                 type="text"
@@ -54,8 +54,10 @@
                                 class="search__input"
                                 placeholder="Buscar"
                         />
-                        <i class="isax isax-search-favorite search__icon"></i>
-                    </div>
+                        <button type="submit" class="search__button" name="action" value="search">
+                            <i class="isax isax-search-favorite search__icon"></i>
+                        </button>
+                    </form>
                 </li>
                 <!-- ======== first view of users buttons of login ======== -->
                 <c:set var="validats" value="${validats}"/>
@@ -93,7 +95,7 @@
     <h2 class="subtitle">Nuestras categorías</h2>
     <div class="swiper-wrapper">
         <!-- init products -->
-        <c:forEach items="${products}" var="products">
+        <c:forEach items="${categories}" var="products">
             <div class="category__container swiper-slide">
                 <div class="category__data">
                     <h3 class="category__title">${products.getCategory().getNameC()}</h3>
@@ -118,98 +120,6 @@
                 </div>
             </div>
         </c:forEach>
-        <!-- category 2
-        <div class="category__container swiper-slide">
-            <div class="category__data">
-                <h3 class="category__title">Covid - 19</h3>
-                <p class="category__description">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <a href="#" class="category__link">
-                    <i class="isax isax-shopping-cart"></i>
-                    25 productos
-                </a>
-            </div>
-            <div class="category__picture">
-                <img
-                        src="assets/img/img-category.webp"
-                        alt="categoría covid-19"
-                        class="category__img"
-                />
-                <a href="#" class="category__btn btn btn-primary">
-                    Ver productos <i class="isax isax-arrow-right"></i>
-                </a>
-            </div>
-        </div>-->
-        <!-- category 3
-        <div class="category__container swiper-slide">
-            <div class="category__data">
-                <h3 class="category__title">Covid</h3>
-                <p class="category__description">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <a href="#" class="category__link">
-                    <i class="isax isax-shopping-cart"></i>
-                    25 productos
-                </a>
-            </div>
-            <div class="category__picture">
-                <img
-                        src="assets/img/img-category.webp"
-                        alt="categoría covid-19"
-                        class="category__img"
-                />
-                <a href="#" class="category__btn btn btn-primary">
-                    Ver productos <i class="isax isax-arrow-right"></i>
-                </a>
-            </div>
-        </div>-->
-        <!-- category 4
-        <div class="category__container swiper-slide">
-            <div class="category__data">
-                <h3 class="category__title">Covid--</h3>
-                <p class="category__description">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <a href="#" class="category__link">
-                    <i class="isax isax-shopping-cart"></i>
-                    25 productos
-                </a>
-            </div>
-            <div class="category__picture">
-                <img
-                        src="assets/img/img-category.webp"
-                        alt="categoría covid-19"
-                        class="category__img"
-                />
-                <a href="#" class="category__btn btn btn-primary">
-                    Ver productos <i class="isax isax-arrow-right"></i>
-                </a>
-            </div>
-        </div>-->
-        <!-- category 5
-        <div class="category__container swiper-slide">
-            <div class="category__data">
-                <h3 class="category__title">Covid15</h3>
-                <p class="category__description">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <a href="#" class="category__link">
-                    <i class="isax isax-shopping-cart"></i>
-                    25 productos
-                </a>
-            </div>
-            <div class="category__picture">
-                <img
-                        src="assets/img/img-category.webp"
-                        alt="categoría covid-19"
-                        class="category__img"
-                />
-                <a href="#" class="category__btn btn btn-primary">
-                    Ver productos <i class="isax isax-arrow-right"></i>
-                </a>
-            </div>
-        </div>-->
     </div>
     <!-- navigation of swiper -->
     <div class="swiper-pagination"></div>
@@ -220,39 +130,77 @@
     <h2 class="subtitle">Productos</h2>
     <div class="product__content grid">
         <!-- init card -->
-        <c:forEach var="p" items="${productsC}">
-            <div class="product__card">
-                <div class="product__stock">${p.getStock()} Units</div>
-                <div class="product__box">
-                    <img
-                            src="${pageContext.request.contextPath}/views/admin/assets/img/${p.getUrlPhoto()}"
-                            alt="Pastillas de paracetamol"
-                            class="product__img"
-                    />
-                    <div class="product__actions">
-                        <a href="#" class="product__action">
-                            <span class="product__action-text">A la bolsa</span>
-                            <i class="isax isax-bag btn-icon"></i>
-                        </a>
-                        <a href="shopp-cart.jsp" class="product__action">
-                            <span class="product__action-text">Comprar</span>
-                            <i class="isax isax-wallet btn-icon"></i>
-                        </a>
-                        <a href="detail-product.jsp" class="product__action">
-                            <span class="product__action-text">Ver detalle</span>
-                            <i class="isax isax-gallery-favorite btn-icon"></i>
-                        </a>
+        <c:if test="${idCategory != null}">
+            <c:forEach var="p" items="${productsC}">
+                <div class="product__card">
+                    <div class="product__stock">${p.getStock()} Units</div>
+                    <div class="product__box">
+                        <img
+                                src="${pageContext.request.contextPath}/views/admin/assets/img/${p.getUrlPhoto()}"
+                                alt="Pastillas de paracetamol"
+                                class="product__img"
+                        />
+                        <div class="product__actions">
+                            <a href="#" class="product__action">
+                                <span class="product__action-text">A la bolsa</span>
+                                <i class="isax isax-bag btn-icon"></i>
+                            </a>
+                            <a href="shopp-cart.jsp" class="product__action">
+                                <span class="product__action-text">Comprar</span>
+                                <i class="isax isax-wallet btn-icon"></i>
+                            </a>
+                            <a href="detail-product.jsp" class="product__action">
+                                <span class="product__action-text">Ver detalle</span>
+                                <i class="isax isax-gallery-favorite btn-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product__data">
+                        <div class="product__info">
+                            <span class="product__name">${p.getNameP()}</span>
+                            <span class="product__price">$${p.getPrice()}0</span>
+                        </div>
+                        <p class="product__presentation">15 Pills</p>
                     </div>
                 </div>
-                <div class="product__data">
-                    <div class="product__info">
-                        <span class="product__name">${p.getNameP()}</span>
-                        <span class="product__price">$${p.getPrice()}0</span>
+            </c:forEach>
+        </c:if>
+        <!-- init card -->
+        <c:if test="${idCategory == null}">
+            <c:forEach var="p" items="${products}">
+                <div class="product__card">
+                    <div class="product__stock">${p.getStock()} Units</div>
+                    <div class="product__box">
+                        <img
+                                src="${pageContext.request.contextPath}/views/admin/assets/img/${p.getUrlPhoto()}"
+                                alt="Pastillas de paracetamol"
+                                class="product__img"
+                        />
+                        <div class="product__actions">
+                            <a href="#" class="product__action">
+                                <span class="product__action-text">A la bolsa</span>
+                                <i class="isax isax-bag btn-icon"></i>
+                            </a>
+                            <a href="shopp-cart.jsp" class="product__action">
+                                <span class="product__action-text">Comprar</span>
+                                <i class="isax isax-wallet btn-icon"></i>
+                            </a>
+                            <a href="detail-product.jsp" class="product__action">
+                                <span class="product__action-text">Ver detalle</span>
+                                <i class="isax isax-gallery-favorite btn-icon"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="product__presentation">15 Pills</p>
+                    <div class="product__data">
+                        <div class="product__info">
+                            <span class="product__name">${p.getNameP()}</span>
+                            <span class="product__price">$${p.getPrice()}0</span>
+                        </div>
+                        <p class="product__presentation">15 Pills</p>
+                    </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </c:if>
         <!-- init card
         <div class="product__card">
             <div class="product__stock">10 Units</div>

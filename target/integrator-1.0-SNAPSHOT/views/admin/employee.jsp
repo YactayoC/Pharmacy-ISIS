@@ -236,7 +236,8 @@
         <div class="modal__body">
             <section class="product__form-content">
                 <!-- init form employee -->
-                <form action="${pageContext.request.contextPath}/SAEmployees?action=add" class="form__container grid" method="post">
+                <form action="${pageContext.request.contextPath}/SAEmployees?action=add"
+                      class="form__container grid" method="post">
                     <!-- name-employee -->
                     <div class="form__field">
                         <i class="isax isax-user form__icon"></i>
@@ -375,8 +376,8 @@
 <script>
     const btnRemove = document.querySelectorAll(".remove-entity"),
         modalbtn = document.querySelector("#btn-delete"),
-        modalImage = document.querySelector("#modalImage");
-    modalName = document.querySelector("#modalName");
+        modalImage = document.querySelector("#modalImage"),
+        modalName = document.querySelector("#modalName");
     btnRemove.forEach(i => {
         const idDelete = i.getAttribute("data-remove"),
             urlmodal = modalbtn.getAttribute("href"),
