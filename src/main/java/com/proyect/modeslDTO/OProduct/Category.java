@@ -4,6 +4,7 @@ public class Category {
     private int idCategory;
     private String nameC;
     private String urlCateg;
+    private String description;
 
     public Category() {
     }
@@ -32,12 +33,21 @@ public class Category {
         this.urlCateg = urlCateg;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "idCategory=" + idCategory +
                 ", nameC='" + nameC + '\'' +
                 ", urlCateg='" + urlCateg + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

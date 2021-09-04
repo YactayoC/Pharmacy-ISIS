@@ -100,7 +100,7 @@
                 <div class="category__data">
                     <h3 class="category__title">${products.getCategory().getNameC()}</h3>
                     <p class="category__description">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        ${products.getCategory().getDescription()}
                     </p>
                     <a href="#" class="category__link">
                         <i class="isax isax-shopping-cart"></i>

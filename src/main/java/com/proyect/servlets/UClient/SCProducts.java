@@ -15,9 +15,9 @@ import java.util.List;
 @WebServlet(name = "SCProducts", value = "/SCProducts")
 public class SCProducts extends HttpServlet {
 
-    List<Product> products = new ArrayList<>();
-    List<Product> productsCategories = new ArrayList<>();
-    List<Product> categories = new ArrayList<>();
+    List<Product> products = new ArrayList<>(); // Listar productos del inicio (todos)
+    List<Product> productsCategories = new ArrayList<>(); // Para listar productos segun categorias
+    List<Product> categories = new ArrayList<>(); //Para listar categorias
     Product product = new Product();
     Category category = new Category();
     ProductDAO pdao = new ProductDAO();

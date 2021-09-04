@@ -161,6 +161,7 @@ public class ProductDAO implements Repository<Product>, Search<Product> {
         c.setIdCategory(rs.getInt("idCategory"));
         c.setNameC(rs.getString("nameC"));
         c.setUrlCateg(rs.getString("urlCateg"));
+        c.setDescription(rs.getString("description"));
 
         Presentation pr = new Presentation();
         pr.setIdPresentation(rs.getInt("idPresentation"));

@@ -54,6 +54,7 @@ public class CategoryDAO implements Repository<Category> {
         c.setIdCategory(rs.getInt("idCategory"));
         c.setNameC(rs.getString("nameC"));
         c.setUrlCateg(rs.getString("urlCateg"));
+        c.setDescription(rs.getString("description"));
 
         return c;
     }

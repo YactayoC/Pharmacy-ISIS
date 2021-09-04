@@ -99,7 +99,7 @@ body {
   .detail__img {
     object-fit: cover;
     transition: transform .4s ease-in-out;
-    width: 5  0%;
+    width: 50%;
   }
   .detail__data {
     max-width: 50%;
