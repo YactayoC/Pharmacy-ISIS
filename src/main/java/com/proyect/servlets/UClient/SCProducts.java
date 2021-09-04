@@ -18,6 +18,8 @@ public class SCProducts extends HttpServlet {
     List<Product> products = new ArrayList<>();
     List<Product> productsCategories = new ArrayList<>();
     List<Product> categories = new ArrayList<>();
+    Product product = new Product();
+    Category category = new Category();
     ProductDAO pdao = new ProductDAO();
 
     @Override
@@ -39,6 +41,16 @@ public class SCProducts extends HttpServlet {
                 request.setAttribute("categories", categories);
                 request.setAttribute("products", products);
                 request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);
+                break;
+            case "detail":
+                int idProduct = Integer.parseInt(request.getParameter("idProduct"));
+                product = pdao.byId(idProduct);
+                category = product.getCategory();
+                idCategory = category.getIdCategory();
+                productsCategories = pdao.listCategory(idCategory);
+                request.setAttribute("productsC",productsCategories);
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("/views/user/detail-product.jsp").forward(request, response);
                 break;
             default:
                 this.list(request, response);

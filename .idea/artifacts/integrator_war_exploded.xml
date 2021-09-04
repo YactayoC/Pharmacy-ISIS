@@ -23,6 +23,7 @@
           <element id="library" level="project" name="Maven: jakarta.el:jakarta.el-api:4.0.0" />
           <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:3.0.0" />
           <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:2.0.0" />
+          <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:3.12.10" />
         </element>
       </element>
       <element id="directory" name="META-INF">

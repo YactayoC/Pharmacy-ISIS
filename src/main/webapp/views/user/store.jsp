@@ -74,7 +74,7 @@
                 <!-- ======== this view,when the user starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
-                        <a href="#" class="nav__link btn btn-white">
+                        <a href="${pageContext.request.contextPath}/views/user/profile.jsp" class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
                                 ${username}
                         </a>
@@ -149,7 +149,7 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/views/user/detail-product.jsp" class="product__action">
+                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}" class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>
@@ -185,7 +185,7 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/views/user/detail-product.jsp" class="product__action">
+                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}" class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>

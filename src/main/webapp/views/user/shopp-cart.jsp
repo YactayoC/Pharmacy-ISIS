@@ -77,7 +77,7 @@
                 <!-- ======== this view,when the user starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
-                        <a href="#" class="nav__link btn btn-white">
+                        <a href="${pageContext.request.contextPath}/views/user/profile.jsp" class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
                                 ${username}
                         </a>
