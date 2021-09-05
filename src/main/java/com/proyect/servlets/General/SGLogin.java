@@ -3,9 +3,9 @@ package com.proyect.servlets.General;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UEmployee.EmployeeDAO;
 import com.proyect.modelsDAO.General.UserDAO;
-import com.proyect.modeslDTO.UClient.Client;
-import com.proyect.modeslDTO.UEemployee.Employee;
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.UClient.Client;
+import com.proyect.modelsDTO.UEemployee.Employee;
+import com.proyect.modelsDTO.General.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -58,18 +58,10 @@ public class SGLogin extends HttpServlet {
 
                 idUser = user.getIdUser();
                 client = cdao.getIdUser(idUser);
+                int idClient = client.getIdClient();
                 String username = client.getUsername();
-                String name = client.getName();
-                String surname = client.getSurname();
-                String docIdentity = client.getDocIdentity();
-                String phone = client.getPhone();
-
-                //Puede volar para el SProfile con byId
+                request.getSession().setAttribute("idClientHome", idClient);
                 request.getSession().setAttribute("username", username);
-                request.getSession().setAttribute("name", name);
-                request.getSession().setAttribute("surname", surname);
-                request.getSession().setAttribute("docIdentity", docIdentity);
-                request.getSession().setAttribute("phone", phone);
 
                 int flag = user.getFlag();
                 if (flag == 1) {
@@ -81,19 +73,15 @@ public class SGLogin extends HttpServlet {
                     String phoneE = employee.getPhone();
                     String docIdentityE = employee.getDocIdentity();
                     int role = employee.getRole().getIdRole();
-                    request.getSession().setAttribute("nameE", nameE);
+                    //request.getSession().setAttribute("nameE", nameE);
                     request.getSession().setAttribute("surnameE", surnameE);
-                    request.getSession().setAttribute("phoneE", phoneE);
-                    request.getSession().setAttribute("docIdentityE", docIdentityE);
                     request.getSession().setAttribute("avatarE", avatarE);
-                    request.getSession().setAttribute("role", role);
                     request.getRequestDispatcher("/views/admin/summary.jsp").forward(request, response);
                 } else {
-                    System.out.println("Inicio sesion");
                     response.sendRedirect("SCHome?action=list");
                 }
             } else {
-                request.setAttribute("error2", "Datos Incorrectos");
+                request.setAttribute("errorLogin", "Datos Incorrectos"); //jsp login
                 request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
             }
         }

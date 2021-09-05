@@ -1,6 +1,6 @@
 package com.proyect.interfaces;
 
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.General.User;
 
 public interface Validate {
 

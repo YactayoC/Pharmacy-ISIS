@@ -1,7 +1,7 @@
 package com.proyect.servlets.UEmployee;
 
 import com.proyect.modelsDAO.UClient.ClientDAO;
-import com.proyect.modeslDTO.UClient.Client;
+import com.proyect.modelsDTO.UClient.Client;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

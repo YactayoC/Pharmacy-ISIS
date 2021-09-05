@@ -1,9 +1,8 @@
 package com.proyect.servlets.UClient;
 
-import com.proyect.modelsDAO.OProduct.CategoryDAO;
 import com.proyect.modelsDAO.OProduct.ProductDAO;
-import com.proyect.modeslDTO.OProduct.Category;
-import com.proyect.modeslDTO.OProduct.Product;
+import com.proyect.modelsDTO.OProduct.Category;
+import com.proyect.modelsDTO.OProduct.Product;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

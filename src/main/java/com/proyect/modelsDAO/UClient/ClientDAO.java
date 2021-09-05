@@ -1,9 +1,9 @@
 package com.proyect.modelsDAO.UClient;
 
 import com.proyect.connDB.ConnectionDB;
-import com.proyect.modeslDTO.UClient.Client;
-import com.proyect.modeslDTO.UClient.District;
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.UClient.Client;
+import com.proyect.modelsDTO.UClient.District;
+import com.proyect.modelsDTO.General.User;
 import com.proyect.interfaces.Repository;
 import com.proyect.interfaces.Search;
 
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO implements Repository<Client>, Search<Client> {
+
 
     private Connection getConnection() throws SQLException {
         return ConnectionDB.getConnection();
@@ -76,13 +77,13 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
                 stmt.setString(5, client.getPhone());
                 stmt.setInt(6, client.getDistrict().getIdDistrict());
                 stmt.setInt(7, client.getIdClient());
+            } else {
+                stmt.setString(4, client.getDocIdentity());
+                stmt.setString(5, client.getAddress());
+                stmt.setString(6, client.getPhone());
+                stmt.setInt(7, client.getUser().getIdUser());
+                stmt.setInt(8, client.getDistrict().getIdDistrict());
             }
-            stmt.setString(4, client.getDocIdentity());
-            stmt.setString(5, client.getAddress());
-            stmt.setString(6, client.getPhone());
-            stmt.setInt(7, client.getUser().getIdUser());
-            stmt.setInt(8, client.getDistrict().getIdDistrict());
-
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,11 +97,16 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
 
     public Client getIdUser(int idUser) {
         Client client = new Client();
+        District district = new District();
+        User user = new User();
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM client AS c " +
-                     "INNER JOIN user AS u ON (c.idUser = u.idUser ) WHERE c.idUser = " + idUser)) {
+                     "INNER JOIN user AS u ON (c.idUser = u.idUser ) " +
+                     "INNER JOIN district AS d ON (c.idDistrict = d.idDistrict) " +
+                     "WHERE c.idUser = " + idUser)) {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
+                    client.setIdClient(rs.getInt("idClient"));
                     client.setUsername(rs.getString("username"));
                     client.setName(rs.getString("name"));
                     client.setSurname(rs.getString("surname"));
@@ -148,6 +154,7 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         u.setIdUser(rs.getInt("idUser"));
         u.setAvatar(rs.getString("avatar"));
         u.setEmail(rs.getString("email"));
+        u.setPassword(rs.getString("password"));
 
         District d = new District();
         d.setIdDistrict(rs.getInt("idDistrict"));

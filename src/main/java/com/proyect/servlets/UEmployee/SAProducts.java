@@ -1,10 +1,10 @@
 package com.proyect.servlets.UEmployee;
 
-import com.proyect.modeslDTO.OProduct.Category;
-import com.proyect.modeslDTO.General.saveImage;
-import com.proyect.modeslDTO.OProduct.Laboratory;
-import com.proyect.modeslDTO.OProduct.Presentation;
-import com.proyect.modeslDTO.OProduct.Product;
+import com.proyect.modelsDTO.OProduct.Category;
+import com.proyect.modelsDTO.General.saveImage;
+import com.proyect.modelsDTO.OProduct.Laboratory;
+import com.proyect.modelsDTO.OProduct.Presentation;
+import com.proyect.modelsDTO.OProduct.Product;
 import com.proyect.modelsDAO.OProduct.CategoryDAO;
 import com.proyect.modelsDAO.OProduct.LaboratoryDAO;
 import com.proyect.modelsDAO.OProduct.PresentationDAO;

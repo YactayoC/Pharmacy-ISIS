@@ -1,10 +1,10 @@
 package com.proyect.modelsDAO.OProduct;
 
 import com.proyect.connDB.ConnectionDB;
-import com.proyect.modeslDTO.OProduct.Category;
-import com.proyect.modeslDTO.OProduct.Laboratory;
-import com.proyect.modeslDTO.OProduct.Presentation;
-import com.proyect.modeslDTO.OProduct.Product;
+import com.proyect.modelsDTO.OProduct.Category;
+import com.proyect.modelsDTO.OProduct.Laboratory;
+import com.proyect.modelsDTO.OProduct.Presentation;
+import com.proyect.modelsDTO.OProduct.Product;
 import com.proyect.interfaces.Repository;
 import com.proyect.interfaces.Search;
 

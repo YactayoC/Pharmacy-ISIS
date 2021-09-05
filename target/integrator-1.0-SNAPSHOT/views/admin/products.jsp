@@ -1,4 +1,4 @@
-<%@ page import="com.proyect.modeslDTO.OProduct.Product" %>
+<%@ page import="com.proyect.modelsDTO.OProduct.Product" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

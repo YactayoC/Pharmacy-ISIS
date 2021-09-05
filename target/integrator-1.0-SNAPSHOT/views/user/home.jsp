@@ -67,7 +67,7 @@
                 <!-- ======== this view,when the user starts a session ========-->
                 <c:if test="${validats}">
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/views/user/profile.jsp"
+                        <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
                            class="nav__link btn btn-white"> <!--serlvet -->
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
                                 ${username}

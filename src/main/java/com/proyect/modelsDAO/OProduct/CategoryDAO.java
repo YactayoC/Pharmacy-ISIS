@@ -1,7 +1,7 @@
 package com.proyect.modelsDAO.OProduct;
 
 import com.proyect.connDB.ConnectionDB;
-import com.proyect.modeslDTO.OProduct.Category;
+import com.proyect.modelsDTO.OProduct.Category;
 import com.proyect.interfaces.Repository;
 
 import java.sql.Connection;

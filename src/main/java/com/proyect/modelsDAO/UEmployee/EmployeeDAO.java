@@ -1,9 +1,9 @@
 package com.proyect.modelsDAO.UEmployee;
 
 import com.proyect.connDB.ConnectionDB;
-import com.proyect.modeslDTO.UEemployee.Employee;
-import com.proyect.modeslDTO.UEemployee.Role;
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.UEemployee.Employee;
+import com.proyect.modelsDTO.UEemployee.Role;
+import com.proyect.modelsDTO.General.User;
 import com.proyect.interfaces.Repository;
 import com.proyect.interfaces.Search;
 

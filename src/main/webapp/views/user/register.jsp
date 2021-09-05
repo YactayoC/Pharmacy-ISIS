@@ -97,7 +97,7 @@
                 <input
                         type="text"
                         name="docIdentity"
-                        id="dni"
+                        id="docIdentity"
                         class="form__input"
                         placeholder=" "
                         maxlength="15"
@@ -118,6 +118,7 @@
                         required
                 />
                 <label for="email" class="form__label">Email</label>
+                <!-- error register-->
             </div>
             <!-- password -->
             <div class="form__field">

@@ -1,7 +1,7 @@
 package com.proyect.modelsDAO.General;
 
 import com.proyect.connDB.ConnectionDB;
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.General.User;
 import com.proyect.interfaces.Repository;
 import com.proyect.interfaces.Validate;
 
@@ -66,12 +66,12 @@ public class UserDAO implements Repository<User>, Validate {
                 stmt.setString(1, user.getPassword());
                 stmt.setString(2, user.getAvatar());
                 stmt.setInt(3, user.getIdUser());
+            } else {
+                stmt.setString(1, user.getEmail());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getAvatar());
+                stmt.setInt(4, user.getFlag());
             }
-            stmt.setString(1, user.getEmail());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getAvatar());
-            stmt.setInt(4, user.getFlag());
-
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

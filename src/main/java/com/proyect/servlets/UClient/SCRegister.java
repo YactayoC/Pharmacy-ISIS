@@ -2,9 +2,9 @@ package com.proyect.servlets.UClient;
 
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.General.UserDAO;
-import com.proyect.modeslDTO.UClient.Client;
-import com.proyect.modeslDTO.UClient.District;
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.UClient.Client;
+import com.proyect.modelsDTO.UClient.District;
+import com.proyect.modelsDTO.General.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -66,7 +66,7 @@ public class SCRegister extends HttpServlet {
             }
 
             if (countTrue > 0) {
-                request.setAttribute("error", "El email ya ha sido usado");
+                request.setAttribute("errorRegister", "El email ya ha sido usado");//jsp register
                 request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
             } else if (countTrue == 0) {
                 Integer idUser = null;

@@ -69,6 +69,7 @@
                 <a href="${pageContext.request.contextPath}/views/user/register.jsp" class="form__login-link">
                     ¿Aun no tienes una cuenta?
                     <span class="form__link-span">Inicia aquí</span>
+                    <!-- error acc -->
                 </a>
             </div>
         </section>

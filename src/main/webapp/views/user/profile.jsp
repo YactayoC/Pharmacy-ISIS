@@ -110,12 +110,12 @@
                 </div>
             </form>
             <div class="profile__data">
-                <div class="profile__name">${name}</div>
-                <div class="profile__username">${surname}</div>
+                <div class="profile__name">${client.getName()}</div>
+                <div class="profile__username">${client.getSurname()}</div>
             </div>
         </div>
         <!-- here init form :d -->
-        <form action="" class="form__container grid" method="post">
+        <form action="${pageContext.request.contextPath}/SCHome?action=editProfile&idClient=${client.getIdClient()}" class="form__container grid" method="post">
             <!-- name -->
             <div class="form__field">
                 <i class="isax isax-user form__icon"></i>
@@ -123,7 +123,7 @@
                         type="text"
                         name="name"
                         id="name"
-                        value="${name}"
+                        value="${client.getName()}"
                         class="form__input"
                         placeholder=" "
                         maxlength="45"
@@ -140,7 +140,7 @@
                         type="text"
                         name="surname"
                         id="surname"
-                        value="${surname}"
+                        value="${client.getSurname()}"
                         class="form__input"
                         placeholder=" "
                         maxlength="45"
@@ -155,7 +155,7 @@
                         type="text"
                         name="username"
                         id="username"
-                        value="${username}"
+                        value="${client.getUsername()}"
                         class="form__input"
                         placeholder=" "
                         maxlength="20"
@@ -170,7 +170,7 @@
                         type="tel"
                         name="phone"
                         id="phone"
-                        value="${phone}"
+                        value="${client.getPhone()}"
                         class="form__input"
                         placeholder=" "
                         maxlength="20"
@@ -183,16 +183,16 @@
                 <i class="isax isax-document form__icon"></i>
                 <input
                         type="text"
-                        name="dni"
-                        id="dni"
-                        value="${docIdentity}"
+                        name="docIdentity"
+                        id="docIdentity"
+                        value="${client.getDocIdentity()}"
                         class="form__input"
                         placeholder=" "
                         maxlength="15"
                         minlength="8"
                         required
                 />
-                <label for="dni" class="form__label">DNI</label>
+                <label for="docIdentity" class="form__label">DNI</label>
             </div>
             <!--  Email -->
             <div class="form__field">
@@ -201,7 +201,7 @@
                         type="email"
                         name="email"
                         id="email"
-                        value="${email}"
+                        value="${client.getUser().getEmail()}"
                         class="form__input"
                         placeholder=" "
                         required
@@ -215,7 +215,7 @@
                         type="password"
                         name="password"
                         id="password"
-                        value="${password}"
+                        value="${client.getUser().getPassword()}"
                         class="form__input"
                         placeholder=" "
                         minlength="8"
@@ -279,11 +279,9 @@
                         required
                 >
                     <option value="default">Selecciona una opción</option>
-                    <option value="sjm">San juan de Miraflores</option>
-                    <option value="vs">Villa el Salvador</option>
-                    <option value="chr">Chorrillos</option>
-                    <option value="vma">Villa Maria</option>
-                    <option value="lrn">Lurín</option>
+                    <c:forEach var="district" items="${districts}">
+                    <option value=${district.getIdDistrict()}>${district.getNameD()}</option>
+                    </c:forEach>
                 </select>
                 <label for="district" class="form__label">Distríto</label>
             </div>

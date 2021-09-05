@@ -2,9 +2,9 @@ package com.proyect.servlets.UEmployee;
 
 import com.proyect.modelsDAO.UEmployee.EmployeeDAO;
 import com.proyect.modelsDAO.General.UserDAO;
-import com.proyect.modeslDTO.UEemployee.Employee;
-import com.proyect.modeslDTO.UEemployee.Role;
-import com.proyect.modeslDTO.General.User;
+import com.proyect.modelsDTO.UEemployee.Employee;
+import com.proyect.modelsDTO.UEemployee.Role;
+import com.proyect.modelsDTO.General.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
