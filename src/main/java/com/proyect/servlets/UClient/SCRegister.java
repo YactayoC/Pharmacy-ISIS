@@ -42,7 +42,6 @@ public class SCRegister extends HttpServlet {
     public void saveAccount(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Integer idDistrict = 1;
         int countTrue = 0;
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
@@ -82,7 +81,7 @@ public class SCRegister extends HttpServlet {
 
                 idUser = udao.getLastIdUser();
                 user.setIdUser(idUser);
-                district.setIdDistrict(idDistrict);
+                district.setIdDistrict(1);
 
                 client.setUsername(username);
                 client.setName(name);

@@ -76,9 +76,10 @@
                 <!-- ======== this view,when the user starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}" class="nav__link btn btn-white">
+                        <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
+                           class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
-                            ${username}
+                                ${username}
                         </a>
                     </li>
                 </c:if>
@@ -115,7 +116,8 @@
             </div>
         </div>
         <!-- here init form :d -->
-        <form action="${pageContext.request.contextPath}/SCHome?action=editProfile&idClient=${client.getIdClient()}" class="form__container grid" method="post">
+        <form action="${pageContext.request.contextPath}/SCHome?action=editProfile&idClient=${client.getIdClient()}"
+              class="form__container grid" method="post">
             <!-- name -->
             <div class="form__field">
                 <i class="isax isax-user form__icon"></i>
@@ -280,7 +282,7 @@
                 >
                     <option value="default">Selecciona una opción</option>
                     <c:forEach var="district" items="${districts}">
-                    <option value=${district.getIdDistrict()}>${district.getNameD()}</option>
+                        <option value=${district.getIdDistrict()} ${district.getIdDistrict() == districtHome ? 'selected="selected"' : ''} >${district.getNameD()}</option>
                     </c:forEach>
                 </select>
                 <label for="district" class="form__label">Distríto</label>

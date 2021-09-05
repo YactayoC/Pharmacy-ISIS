@@ -58,8 +58,10 @@ public class SGLogin extends HttpServlet {
                 int flag = user.getFlag();
                 if (flag == 1) {
                     employee = edao.getIdUser(idUser);
+                    int role = employee.getRole().getIdRole();
                     String avatarE = user.getAvatar();
                     String surnameE = employee.getSurname();
+                    request.getSession().setAttribute("role", role);
                     request.getSession().setAttribute("surnameE", surnameE);
                     request.getSession().setAttribute("avatarE", avatarE);
                     request.getRequestDispatcher("/views/admin/summary.jsp").forward(request, response);

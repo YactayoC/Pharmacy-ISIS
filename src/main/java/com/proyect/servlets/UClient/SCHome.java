@@ -52,6 +52,7 @@ public class SCHome extends HttpServlet {
                 int idClient = Integer.parseInt(request.getParameter("idClient"));
                 client = cdao.byId(idClient);
                 districts = ddao.list();
+                request.setAttribute("districtHome", client.getDistrict().getIdDistrict());
                 request.setAttribute("districts", districts);
                 request.setAttribute("client", client);
                 request.getRequestDispatcher("/views/user/profile.jsp").forward(request, response);

@@ -29,7 +29,7 @@
         <div class="nav__profile">
             <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin"
                  class="nav__img nav__zipped-img" id="user-image">
-            <p class="nav__user nav__zipped-user" id="user-name">${nameE}</p>
+            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
