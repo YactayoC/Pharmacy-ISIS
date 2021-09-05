@@ -129,42 +129,6 @@
                     </div>
                 </div>
             </c:forEach>
-            <!-- card  2
-            <div class="offer__content swiper-slide">-->
-                <!-- data x
-                <div class="offer__data">
-                    <h2 class="offer__product">Name 3</h2>
-                    <p class="offer__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam,
-                        qui.</p>
-                    <span class="offer__quantity">25 units</span>
-                    <span class="offer__price">$250.00</span>
-                    <a href="#" class="offer__btn btn btn-primary">Agregar a carro<i
-                            class="isax isax-arrow-right offer__icon"></i></a>
-                </div>-->
-                <!-- image
-                <div class="offer__img">
-                    <img src="${pageContext.request.contextPath}/views/user/assets/img/offer-img.webp" alt="img">
-                    <span class="offer__tag btn-white">new</span>
-                </div>
-            </div>-->
-            <!-- card  3
-            <div class="offer__content swiper-slide">-->
-                <!-- data
-                <div class="offer__data">
-                    <h2 class="offer__product">Name 2</h2>
-                    <p class="offer__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam,
-                        qui.</p>
-                    <span class="offer__quantity">25 units</span>
-                    <span class="offer__price">$250.00</span>
-                    <a href="#" class="offer__btn btn btn-primary">Agregar a carro<i
-                            class="isax isax-arrow-right offer__icon"></i></a>
-                </div>-->
-                <!-- image
-                <div class="offer__img">
-                    <img src="${pageContext.request.contextPath}/views/user/assets/img/offer-img.webp" alt="img">
-                    <span class="offer__tag btn-white">new</span>
-                </div>
-            </div>-->
         </div>
         <!-- navigation of swiper  -->
         <div class="swiper-pagination offer__pagination"></div>
@@ -333,6 +297,8 @@
         <a class="btn btn-gradient">Empezar gratis</a>
     </div>
 </main>
+
+
 <!-- ========== Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
     <i class="isax isax-message btn-icon "></i>

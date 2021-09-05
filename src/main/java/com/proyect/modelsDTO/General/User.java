@@ -6,6 +6,7 @@ public class User {
     private String password;
     private String avatar;
     private int flag;
+    private String idMongo;
 
     public User() {
     }
@@ -48,6 +49,14 @@ public class User {
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public String getIdMongo() {
+        return idMongo;
+    }
+
+    public void setIdMongo(String idMongo) {
+        this.idMongo = idMongo;
     }
 
     @Override
