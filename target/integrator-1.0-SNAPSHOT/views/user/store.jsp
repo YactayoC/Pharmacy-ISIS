@@ -74,7 +74,8 @@
                 <!-- ======== this view,when the user starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}" class="nav__link btn btn-white">
+                        <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
+                           class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
                                 ${username}
                         </a>
@@ -100,11 +101,10 @@
                 <div class="category__data">
                     <h3 class="category__title">${categories.getNameC()}</h3>
                     <p class="category__description">
-                        ${categories.getDescription()}
+                            ${categories.getDescription()}
                     </p>
-
-                   <a href="#" class="category__link">
-                       <!--  <i class="isax isax-shopping-cart"></i>-->
+                    <a href="#" class="category__link">
+                        <!--  <i class="isax isax-shopping-cart"></i>-->
                     </a>
                 </div>
                 <div class="category__picture">
@@ -149,7 +149,8 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}" class="product__action">
+                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}"
+                               class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>
@@ -185,7 +186,8 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}" class="product__action">
+                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}"
+                               class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>

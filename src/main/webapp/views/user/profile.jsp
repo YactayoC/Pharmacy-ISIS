@@ -190,7 +190,7 @@
                         placeholder=" "
                         maxlength="15"
                         minlength="8"
-                        required
+                        required readonly
                 />
                 <label for="docIdentity" class="form__label">DNI</label>
             </div>
@@ -204,7 +204,7 @@
                         value="${client.getUser().getEmail()}"
                         class="form__input"
                         placeholder=" "
-                        required
+                        required readonly
                 />
                 <label for="email" class="form__label">Email</label>
             </div>

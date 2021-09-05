@@ -57,7 +57,6 @@ public class SGLogin extends HttpServlet {
                 idUser = user.getIdUser();
                 int flag = user.getFlag();
                 if (flag == 1) {
-                    System.out.println("Entrando empleado");
                     employee = edao.getIdUser(idUser);
                     String avatarE = user.getAvatar();
                     String surnameE = employee.getSurname();

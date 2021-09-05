@@ -70,8 +70,6 @@ public class SCHome extends HttpServlet {
             String surname = request.getParameter("surname");
             String username = request.getParameter("username");
             String phone = request.getParameter("phone");
-            //String docIdentity = request.getParameter("docIdentity");
-            //String email = request.getParameter("email");
             String password = request.getParameter("password");
             String address = request.getParameter("address");
             int districtt = Integer.parseInt(request.getParameter("district"));
