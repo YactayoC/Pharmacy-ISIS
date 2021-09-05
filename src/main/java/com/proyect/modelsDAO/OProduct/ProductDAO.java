@@ -144,6 +144,25 @@ public class ProductDAO implements Repository<Product>, Search<Product> {
         return products;
     }
 
+    public List<Product> listLast() {
+        List<Product> products = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT p.*,l.*,c.*,pr.* FROM product AS p "
+                     + "INNER JOIN laboratory AS l ON (p.idLaboratory = l.idLaboratory)"
+                     + "INNER JOIN category AS c ON (p.idCategory = c.idCategory)"
+                     + "INNER JOIN presentation AS pr ON (p.idPresentation = pr.idPresentation) ORDER BY p.idProduct DESC LIMIT 5" )) {
+            while (rs.next()) {
+                Product p = createProduct(rs);
+                products.add(p);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
+
     private Product createProduct(ResultSet rs) throws SQLException {
         Product p = new Product();
         p.setIdProduct(rs.getInt("idProduct"));

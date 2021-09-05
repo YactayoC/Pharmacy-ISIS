@@ -128,12 +128,13 @@
                     </div>
                 </form>
                 <div class="profile__data">
-                    <div class="profile__name">${nameE}</div>
+                    <div class="profile__name">${surnameE}</div>
                     <div class="profile__username">${email}</div>
                 </div>
             </div>
             <!-- here init form :d -->
-            <form action="" class="form__container grid">
+            <form action="${pageContext.request.contextPath}/SASetting?action=editSetting&idEmployee=${employeeS.getIdEmployee()}" class="form__container grid"
+            method="post">
                 <!-- name -->
                 <div class="form__field">
                     <i class="isax isax-user form__icon"></i>
@@ -141,7 +142,7 @@
                             type="text"
                             name="name"
                             id="name"
-                            value="${nameE}"
+                            value="${employeeS.getName()}"
                             class="form__input"
                             placeholder=" "
                             maxlength="45"
@@ -158,7 +159,7 @@
                             type="text"
                             name="surname"
                             id="surname"
-                            value="${surnameE}"
+                            value="${employeeS.getSurname()}"
                             class="form__input"
                             placeholder=" "
                             maxlength="45"
@@ -173,7 +174,7 @@
                             type="tel"
                             name="phone"
                             id="phone"
-                            value="${phoneE}"
+                            value="${employeeS.getPhone()}"
                             class="form__input"
                             placeholder=" "
                             maxlength="20"
@@ -186,16 +187,16 @@
                     <i class="isax isax-document form__icon"></i>
                     <input
                             type="text"
-                            name="dni"
-                            id="dni"
-                            value="${docIdentityE}"
+                            name="docIdentity"
+                            id="docIdentity"
+                            value="${employeeS.getDocIdentity()}"
                             class="form__input"
                             placeholder=" "
                             maxlength="15"
                             minlength="8"
-                            required
+                            required readonly
                     />
-                    <label for="dni" class="form__label">DNI</label>
+                    <label for="docIdentity" class="form__label">DNI</label>
                 </div>
                 <!--  Email -->
                 <div class="form__field">
@@ -204,10 +205,10 @@
                             type="email"
                             name="email"
                             id="email"
-                            value="${email}"
+                            value="${employeeS.getUser().getEmail()}"
                             class="form__input"
                             placeholder=" "
-                            required
+                            required readonly
                     />
                     <label for="email" class="form__label">Email</label>
                 </div>
@@ -218,7 +219,7 @@
                             type="password"
                             name="password"
                             id="password"
-                            value="${password}"
+                            value="${employeeS.getUser().getPassword()}"
                             class="form__input"
                             placeholder=" "
                             minlength="8"

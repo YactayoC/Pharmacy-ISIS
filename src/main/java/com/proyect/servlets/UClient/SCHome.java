@@ -35,7 +35,7 @@ public class SCHome extends HttpServlet {
         String action = request.getParameter("action");
         switch (action) {
             case "list":
-                products = pdao.list();
+                products = pdao.listLast();
                 HttpSession session = request.getSession();
                 session.setAttribute("products", products);
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);

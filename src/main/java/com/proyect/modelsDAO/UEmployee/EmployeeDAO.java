@@ -74,11 +74,12 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
                 stmt.setString(3, employee.getPhone());
                 stmt.setInt(4, employee.getRole().getIdRole());
                 stmt.setInt(5, employee.getIdEmployee());
+            } else {
+                stmt.setString(3, employee.getDocIdentity());
+                stmt.setString(4, employee.getPhone());
+                stmt.setInt(5, employee.getRole().getIdRole());
+                stmt.setInt(6, employee.getUser().getIdUser());
             }
-            stmt.setString(3, employee.getDocIdentity());
-            stmt.setString(4, employee.getPhone());
-            stmt.setInt(5, employee.getRole().getIdRole());
-            stmt.setInt(6, employee.getUser().getIdUser());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -105,6 +106,7 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
                      "INNER JOIN role AS r ON (e.idRole = r.idRole) WHERE e.idUser = " + idUser)) {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
+                    employee.setIdEmployee(rs.getInt("idEmployee"));
                     employee.setName(rs.getString("name"));
                     employee.setSurname(rs.getString("surname"));
                     employee.setDocIdentity(rs.getString("docIdentity"));
@@ -138,6 +140,23 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
             e.printStackTrace();
         }
         return employees;
+    }
+
+    public void saveSetting(Employee employee) {
+        String sql = null;
+        sql = "UPDATE employee SET name=?, surname = ?, phone = ? WHERE idEmployee = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, employee.getName());
+            stmt.setString(2, employee.getSurname());
+            stmt.setString(3, employee.getPhone());
+            stmt.setInt(4, employee.getIdEmployee());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private Employee createEmployee(ResultSet rs) throws SQLException {
