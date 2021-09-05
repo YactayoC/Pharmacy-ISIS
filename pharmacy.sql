@@ -141,7 +141,7 @@ DROP TABLE IF EXISTS `gettotal`;
 /*!50001 DROP VIEW IF EXISTS `gettotal`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `gettotal` AS SELECT 
+/*!50001 CREATE VIEW `gettotal` AS SELECT
  1 AS `total`*/;
 SET character_set_client = @saved_cs_client;
 
@@ -286,7 +286,7 @@ DROP TABLE IF EXISTS `productlist`;
 /*!50001 DROP VIEW IF EXISTS `productlist`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `productlist` AS SELECT 
+/*!50001 CREATE VIEW `productlist` AS SELECT
  1 AS `urlPhoto`,
  1 AS `nameP`,
  1 AS `stock`,
@@ -395,7 +395,7 @@ DROP TABLE IF EXISTS `salelist`;
 /*!50001 DROP VIEW IF EXISTS `salelist`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `salelist` AS SELECT 
+/*!50001 CREATE VIEW `salelist` AS SELECT
  1 AS `avatar`,
  1 AS `cantidad`,
  1 AS `name`,
@@ -418,6 +418,7 @@ CREATE TABLE `user` (
   `password` varchar(20) NOT NULL,
   `avatar` varchar(50) DEFAULT NULL,
   `flag` tinyint DEFAULT NULL,
+  idMongo VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
