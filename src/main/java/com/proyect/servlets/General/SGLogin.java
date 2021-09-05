@@ -23,6 +23,7 @@ public class SGLogin extends HttpServlet {
     UserDAO udao = new UserDAO();
     EmployeeDAO edao = new EmployeeDAO();
     Boolean validats = null;
+    Boolean errorLog = null;
     Integer idUser;
 
     @Override
@@ -30,8 +31,8 @@ public class SGLogin extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action.equals("exit")) {
-            validats = false;
             idUser = null;
+            validats = false;
             user.setIdUser(idUser);
             request.getSession().setAttribute("validats", validats);
             request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
@@ -41,9 +42,7 @@ public class SGLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String action = request.getParameter("action");
-
         if (action.equals("login")) {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
@@ -55,33 +54,28 @@ public class SGLogin extends HttpServlet {
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("validats", validats);
-
                 idUser = user.getIdUser();
-                client = cdao.getIdUser(idUser);
-                int idClient = client.getIdClient();
-                String username = client.getUsername();
-                request.getSession().setAttribute("idClientHome", idClient);
-                request.getSession().setAttribute("username", username);
-
                 int flag = user.getFlag();
                 if (flag == 1) {
+                    System.out.println("Entrando empleado");
                     employee = edao.getIdUser(idUser);
-                    //Puede hacer con el byId en un servlet de setting
                     String avatarE = user.getAvatar();
-                    String nameE = employee.getName();
                     String surnameE = employee.getSurname();
-                    String phoneE = employee.getPhone();
-                    String docIdentityE = employee.getDocIdentity();
-                    int role = employee.getRole().getIdRole();
-                    //request.getSession().setAttribute("nameE", nameE);
                     request.getSession().setAttribute("surnameE", surnameE);
                     request.getSession().setAttribute("avatarE", avatarE);
                     request.getRequestDispatcher("/views/admin/summary.jsp").forward(request, response);
                 } else {
+                    client = cdao.getIdUser(idUser);
+                    int idClient = client.getIdClient();
+                    String username = client.getUsername();
+                    request.getSession().setAttribute("idClientHome", idClient);
+                    request.getSession().setAttribute("username", username);
                     response.sendRedirect("SCHome?action=list");
                 }
             } else {
-                request.setAttribute("errorLogin", "Datos Incorrectos"); //jsp login
+                errorLog = true;
+                request.setAttribute("errorLog", errorLog);
+                request.setAttribute("errorLogin", "Datos incorrectos"); //jsp login
                 request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
             }
         }

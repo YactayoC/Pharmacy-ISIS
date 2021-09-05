@@ -22,6 +22,7 @@ public class SCRegister extends HttpServlet {
     District district = new District();
     UserDAO udao = new UserDAO();
     ClientDAO cdao = new ClientDAO();
+    Boolean error = null;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -66,7 +67,9 @@ public class SCRegister extends HttpServlet {
             }
 
             if (countTrue > 0) {
-                request.setAttribute("errorRegister", "El email ya ha sido usado");//jsp register
+                error = true;
+                request.setAttribute("errorReg", error);
+                request.setAttribute("errorRegister", "El email ingresado ya ha sido usado");//jsp register
                 request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
             } else if (countTrue == 0) {
                 Integer idUser = null;

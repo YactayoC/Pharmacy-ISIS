@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -64,7 +65,9 @@
                         value="Iniciar Sesión"
                         class="form__button form__field"
                         />
-                    
+                    <c:if test="${errorLog == true}">
+                    <p>${errorLogin}</p>
+                    </c:if>
                 </form>
                 <a href="${pageContext.request.contextPath}/views/user/register.jsp" class="form__login-link">
                     ¿Aun no tienes una cuenta?

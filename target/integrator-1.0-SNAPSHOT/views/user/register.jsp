@@ -118,7 +118,15 @@
                         required
                 />
                 <label for="email" class="form__label">Email</label>
-                <div >${errorRegister}</div>
+                <!-- For case the info is wrong -->
+                <c:if test="${errorReg == true}">
+                    <i class="isax isax-information form__icon-alert"></i>
+                    <div class="input__error form__field">
+                    <span class="input__error-message">
+                            ${errorRegister}
+                    </span>
+                    </div>
+                </c:if>
             </div>
             <!-- password -->
             <div class="form__field">

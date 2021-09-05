@@ -151,6 +151,8 @@
   background: transparent;
   border-radius: 50px;
   transition: 0.4s ease-in-out;
+  font-size: 1.5rem;
+  z-index: 10;
 }
 .form__icon-alert:hover {
   box-shadow: 0 8px 0.6rem -6px var(--color-alert);
@@ -167,7 +169,35 @@
   border: none;
   outline: none;
 }
+
+/* input error */
+.input__error {
+  position: absolute;
+  right: 0;
+  width: 0;
+  z-index: -1;
+  opacity: 0;
+  height: 100%;
+  background: rgba(192, 28, 40, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  backdrop-filter: blur(.1rem);
+  color: var(--color-alert);
+  transition: all 0.4s ease-in-out;
+}
+.input__error-message {
+  font-size: var(--small-text);
+  font-weight: 500;
+}
+.form__icon-alert:hover + .input__error {
+  opacity: 1;
+  width: 100%;
+  z-index: 1;
+}
+
 /* ========== login ========== */
+
 .form__field--login {
   grid-column: span 2;
 }

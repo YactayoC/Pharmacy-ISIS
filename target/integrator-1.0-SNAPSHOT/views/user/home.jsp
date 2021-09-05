@@ -103,7 +103,7 @@
                      alt="Doctora">
                 <img src="${pageContext.request.contextPath}/views/user/assets/img/dkt-doctor-man 1.png" alt="Doctor">
             </div>
-            <a href="${pageContext.request.contextPath}/views/user/store.jsp" class="hero__btn btn btn-secondary">Ver productos</a>
+            <a href="${pageContext.request.contextPath}/SCProducts?action=list" class="hero__btn btn btn-secondary">Ver productos</a>
         </div>
     </section>
 

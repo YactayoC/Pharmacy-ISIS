@@ -1,5 +1,6 @@
 package com.proyect.servlets.UClient;
 
+import com.proyect.modelsDAO.OProduct.CategoryDAO;
 import com.proyect.modelsDAO.OProduct.ProductDAO;
 import com.proyect.modelsDTO.OProduct.Category;
 import com.proyect.modelsDTO.OProduct.Product;
@@ -16,9 +17,10 @@ public class SCProducts extends HttpServlet {
 
     List<Product> products = new ArrayList<>(); // Listar productos del inicio (todos)
     List<Product> productsCategories = new ArrayList<>(); // Para listar productos segun categorias
-    List<Product> categories = new ArrayList<>(); //Para listar categorias
+    List<Category> categories = new ArrayList<>(); //Para listar categorias
     Product product = new Product();
     Category category = new Category();
+    CategoryDAO cdao = new CategoryDAO();
     ProductDAO pdao = new ProductDAO();
 
     @Override
@@ -34,7 +36,7 @@ public class SCProducts extends HttpServlet {
                 this.list(request, response);
                 break;
             case "search":
-                categories = pdao.list();
+                categories = cdao.list();
                 String text = request.getParameter("search");
                 products = pdao.search(text);
                 request.setAttribute("categories", categories);
@@ -67,7 +69,7 @@ public class SCProducts extends HttpServlet {
     private void list(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         products = pdao.list();
-        categories = pdao.list();
+        categories = cdao.list();
         request.setAttribute("categories", categories);
         request.setAttribute("products", products);
         request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);

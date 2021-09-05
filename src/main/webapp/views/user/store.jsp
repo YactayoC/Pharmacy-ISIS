@@ -74,7 +74,8 @@
                 <!-- ======== this view,when the user starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/views/user/profile.jsp" class="nav__link btn btn-white">
+                        <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
+                           class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
                                 ${username}
                         </a>
@@ -95,25 +96,24 @@
     <h2 class="subtitle">Nuestras categorías</h2>
     <div class="swiper-wrapper">
         <!-- init products -->
-        <c:forEach items="${categories}" var="products">
+        <c:forEach items="${categories}" var="categories">
             <div class="category__container swiper-slide">
                 <div class="category__data">
-                    <h3 class="category__title">${products.getCategory().getNameC()}</h3>
+                    <h3 class="category__title">${categories.getNameC()}</h3>
                     <p class="category__description">
-                        ${products.getCategory().getDescription()}
+                            ${categories.getDescription()}
                     </p>
                     <a href="#" class="category__link">
-                        <i class="isax isax-shopping-cart"></i>
-                            ${products.getStock()}
+                        <!--  <i class="isax isax-shopping-cart"></i>-->
                     </a>
                 </div>
                 <div class="category__picture">
                     <img
-                            src="${pageContext.request.contextPath}/views/admin/assets/img/${products.getCategory().getUrlCateg()}"
+                            src="${pageContext.request.contextPath}/views/admin/assets/img/${categories.getUrlCateg()}"
                             alt="categoría covid-19"
                             class="category__img"
                     />
-                    <a href="${pageContext.request.contextPath}/SCProducts?action=listProduct&idCategory=${products.getCategory().getIdCategory()}"
+                    <a href="${pageContext.request.contextPath}/SCProducts?action=listProduct&idCategory=${categories.getIdCategory()}"
                        class="category__btn btn btn-primary">
                         Ver productos <i class="isax isax-arrow-right"></i>
                     </a>
@@ -149,7 +149,8 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}" class="product__action">
+                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}"
+                               class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>
@@ -185,7 +186,8 @@
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}" class="product__action">
+                            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}"
+                               class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
                                 <i class="isax isax-gallery-favorite btn-icon"></i>
                             </a>
