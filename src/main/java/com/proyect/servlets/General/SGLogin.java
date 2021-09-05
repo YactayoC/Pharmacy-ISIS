@@ -22,8 +22,7 @@ public class SGLogin extends HttpServlet {
     ClientDAO cdao = new ClientDAO();
     UserDAO udao = new UserDAO();
     EmployeeDAO edao = new EmployeeDAO();
-    Boolean validats = null;
-    Boolean errorLog = null;
+    Boolean validats = true;
     Integer idUser;
 
     @Override
@@ -48,9 +47,9 @@ public class SGLogin extends HttpServlet {
             String password = request.getParameter("password");
             user.setEmail(email);
             user.setPassword(password);
-            int r = udao.validate(user);
-            if (r == 1) {
-                validats = true;
+
+            boolean userExist = udao.validate(user);
+            if (userExist) {
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("validats", validats);
@@ -76,9 +75,9 @@ public class SGLogin extends HttpServlet {
                     response.sendRedirect("SCHome?action=list");
                 }
             } else {
-                errorLog = true;
-                request.setAttribute("errorLog", errorLog);
-                request.setAttribute("errorLogin", "Datos incorrectos"); //jsp login
+                String errorMessage = "Datos incorrectos";
+                request.setAttribute("errorLog", true);
+                request.setAttribute("errorLogin", errorMessage); //jsp login
                 request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
             }
         }

@@ -90,31 +90,26 @@ public class UserDAO implements Repository<User>, Validate {
     }
 
     @Override
-    public int validate(User user) {
-        int r = 0;
+    public boolean validate(User user) {
+        boolean userExist = false;
         String sql = "SELECT * FROM user WHERE email=? AND password=? ";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPassword());
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                r = r + 1;
+            if (rs.next()) {
+                userExist = true;
                 user.setIdUser(rs.getInt("idUser"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setFlag(rs.getInt("flag"));
             }
-            if (r == 1) {
-                return 1;
-            } else {
-                return 0;
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return r;
+        return userExist;
     }
 
     private User createUser(ResultSet rs) throws SQLException {
