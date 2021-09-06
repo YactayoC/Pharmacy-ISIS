@@ -1,5 +1,5 @@
 /* =================== Schema client ===================*/
--- Tabla del: cliente
+-- Table: client
 CREATE TABLE IF NOT EXISTS client (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
