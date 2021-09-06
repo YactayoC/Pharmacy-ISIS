@@ -12,6 +12,8 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @WebServlet(name = "SCRegister", value = "/SCRegister")
 public class SCRegister extends HttpServlet {
@@ -22,7 +24,6 @@ public class SCRegister extends HttpServlet {
     District district = new District();
     UserDAO udao = new UserDAO();
     ClientDAO cdao = new ClientDAO();
-    Boolean error = null;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,7 +43,6 @@ public class SCRegister extends HttpServlet {
     public void saveAccount(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int countTrue = 0;
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String phone = request.getParameter("phone");
@@ -53,47 +53,35 @@ public class SCRegister extends HttpServlet {
         String password = request.getParameter("password");
 
         users = udao.list();
-        Object[] emails = users.toArray();
-        try {
-            for (int i = 0; i < users.size(); i++) {
-                Boolean em = null;
-                if (em = emails[i].toString().contains(email)) {
-                    em = true;
-                    countTrue++;
-                } else {
-                    em = false;
-                }
-            }
+        Optional<User> emailExists = users.stream().filter(u -> u.getEmail().equals(email)).findFirst();
 
-            if (countTrue > 0) {
-                error = true;
-                request.setAttribute("errorReg", error);
-                request.setAttribute("errorRegister", "El email ingresado ya ha sido usado");//jsp register
-                request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
-            } else if (countTrue == 0) {
-                Integer idUser = null;
-                user.setIdUser(idUser);
-                user.setEmail(email);
-                user.setPassword(password);
-                user.setAvatar("client.png");
-                user.setFlag(0);
-                udao.save(user);
+        if (emailExists.isPresent()) {
+            request.setAttribute("errorReg", true);
+            request.setAttribute("errorRegister", "El email ingresado ya ha sido usado");//jsp register
+            request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
+        } else {
+            Integer idUser = null;
+            user.setIdUser(idUser);
+             user.setEmail(email);
+            user.setPassword(password);
+            user.setAvatar("client.png");
+            user.setFlag(0);
+            udao.save(user);
 
-                idUser = udao.getLastIdUser();
-                user.setIdUser(idUser);
-                district.setIdDistrict(1);
+            idUser = udao.getLastIdUser();
+            user.setIdUser(idUser);
+            district.setIdDistrict(1);
 
-                client.setUsername(username);
-                client.setName(name);
-                client.setSurname(surname);
-                client.setPhone(phone);
-                client.setDocIdentity(docIdentity);
-                client.setUser(user);
-                client.setDistrict(district);
-                cdao.save(client);
-            }
-            response.sendRedirect("views/user/login.jsp");
-        } catch (Exception ignored) {
+            client.setUsername(username);
+            client.setName(name);
+            client.setSurname(surname);
+            client.setPhone(phone);
+            client.setDocIdentity(docIdentity);
+            client.setUser(user);
+            client.setDistrict(district);
+            cdao.save(client);
+
         }
+        response.sendRedirect("views/user/login.jsp");
     }
 }
