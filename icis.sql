@@ -1,5 +1,5 @@
-/* =================== Schema client =================== asdasdasdasdas*/
--- Table: cliente version 2
+/* =================== Schema client ===================*/
+-- Tabla del: cliente
 CREATE TABLE IF NOT EXISTS client (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
