@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css">
 
-  <!-- ========== styles for view user ========== -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css">
+  <!-- ========== styles for view speaker ========== -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/style.css">
   <!-- ========== styles only this page ========== -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/home.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/home.css">
   <title>Principal</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
             <i class="isax isax-shop nav__icon"></i>Productos</a>
         </li>
         <li class="nav__item">
-          <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+          <a href="${pageContext.request.contextPath}/views/speaker/shopp-cart.jsp" class="nav__link nav__bag">
             Mi bolsa
             <div class="nav__bag-content">
               <i class="isax isax-bag"></i>
@@ -55,20 +55,20 @@
             </button>
           </form>
         </li>
-        <!-- ======== first view of users buttons of login ======== -->
+        <!-- ======== first view of speakers buttons of login ======== -->
         <c:set var="validats" value="${validats}"/>
         <c:if test="${!validats}">
           <li class="nav__item">
-            <a href="${pageContext.request.contextPath}/views/user/register.jsp" class="nav__link btn btn-white">Registro</a>
+            <a href="${pageContext.request.contextPath}/views/speaker/register.jsp" class="nav__link btn btn-white">Registro</a>
           </li>
           <li class="nav__item">
-            <a href="${pageContext.request.contextPath}/views/user/login.jsp" class="nav__link btn btn-white-outline">Iniciar</a>
+            <a href="${pageContext.request.contextPath}/views/speaker/login.jsp" class="nav__link btn btn-white-outline">Iniciar</a>
           </li>
         </c:if>
-        <!-- ======== this view,when the user starts a session ========-->
+        <!-- ======== this view,when the speaker starts a session ========-->
         <c:if test="${!validats}">
           <%-- TODO: make dinamic the idUser --%>
-          <span id="user-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
+          <span id="speaker-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
               ${pageContext.request.contextPath}
           </span>
           <li class="nav__item">
@@ -104,11 +104,11 @@
     </div>
     <div class="hero__content">
       <div class="hero__img">
-        <img src="${pageContext.request.contextPath}/views/user/assets/img/mbl-hero-img-1.webp"
+        <img src="${pageContext.request.contextPath}/views/speaker/assets/img/mbl-hero-img-1.webp"
              alt="Mujer con mascarilla">
-        <img src="${pageContext.request.contextPath}/views/user/assets/img/dkt-doctor-woman 1.png"
+        <img src="${pageContext.request.contextPath}/views/speaker/assets/img/dkt-doctor-woman 1.png"
              alt="Doctora">
-        <img src="${pageContext.request.contextPath}/views/user/assets/img/dkt-doctor-man 1.png" alt="Doctor">
+        <img src="${pageContext.request.contextPath}/views/speaker/assets/img/dkt-doctor-man 1.png" alt="Doctor">
       </div>
       <a href="${pageContext.request.contextPath}/SCProducts?action=list" class="hero__btn btn btn-secondary">Ver
         productos</a>
@@ -147,19 +147,19 @@
     <div class="service__content">
       <div class="service__item">
         <img class="service__img service__delivery"
-             src="${pageContext.request.contextPath}/views/user/assets/img/mbl-service-1.webp"
+             src="${pageContext.request.contextPath}/views/speaker/assets/img/mbl-service-1.webp"
              alt="Servicio de delivery">
         <div class="service__name">Delivery</div>
       </div>
       <div class="service__item">
         <img class="service__img service__medicine"
-             src="${pageContext.request.contextPath}/views/user/assets/img/mbl-service-2.webp"
+             src="${pageContext.request.contextPath}/views/speaker/assets/img/mbl-service-2.webp"
              alt="Producto medicos">
         <div class="service__name">Medicina</div>
       </div>
       <div class="service__item">
         <img class="service__img service__chat"
-             src="${pageContext.request.contextPath}/views/user/assets/img/mbl-service-3.webp"
+             src="${pageContext.request.contextPath}/views/speaker/assets/img/mbl-service-3.webp"
              alt="Soporte al cliente">
         <div class="service__name">Chat 24/7</div>
       </div>
@@ -332,7 +332,7 @@
       <li class="chat__box chat__message--response message-relevance" data-relevance="TECHNICAL">
         <span class="chat__message">2: Técnica</span>
       </li>
-      <%--Response of user--%>
+      <%--Response of speaker--%>
       <%--        <li class="chat__box chat__message--request" id="message-request">
                 <span class="chat__message">Hello ;D</span>
               </li>--%>
@@ -348,7 +348,7 @@
 </section>
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
-<script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/views/speaker/js/animations.js"></script>
 <script src="${pageContext.request.contextPath}/js/chat.js" type="module"></script>
 </body>
 </html>

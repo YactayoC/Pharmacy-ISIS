@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css">
 
-    <!-- ========== styles for view user ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css">
+    <!-- ========== styles for view speaker ========== -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/style.css">
     <!-- ========== styles only this page ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/details.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/details.css">
     <title>Principal</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
                         <i class="isax isax-shop nav__icon"></i>Productos</a>
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/views/speaker/shopp-cart.jsp" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -50,19 +50,19 @@
                         <i class="isax isax-search-favorite search__icon"></i>
                     </div>
                 </li>
-                <!-- ======== first view of users buttons of login ======== -->
+                <!-- ======== first view of speakers buttons of login ======== -->
                 <c:set var="validats" value="${validats}"/>
                 <c:if test="${!validats}">
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/views/user/register.jsp"
+                        <a href="${pageContext.request.contextPath}/views/speaker/register.jsp"
                            class="nav__link btn btn-white">Registro</a>
                     </li>
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/views/user/login.jsp"
+                        <a href="${pageContext.request.contextPath}/views/speaker/login.jsp"
                            class="nav__link btn btn-white-outline">Iniciar</a>
                     </li>
                 </c:if>
-                <!-- ======== this view,when the user starts a session ======== -->
+                <!-- ======== this view,when the speaker starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}" class="nav__link btn btn-white">
@@ -150,8 +150,8 @@
 </section>
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
-<script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/views/speaker/js/animations.js"></script>
 <!-- ========== JS only for this file ========== -->
-<script src="${pageContext.request.contextPath}/views/user/js/details.js"></script>
+<script src="${pageContext.request.contextPath}/views/speaker/js/details.js"></script>
 </body>
 </html>

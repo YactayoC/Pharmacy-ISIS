@@ -62,7 +62,7 @@ CREATE TABLE `client` (
   KEY `FK01_idx` (`idDistrict`),
   KEY `FK02_idx` (`idUser`),
   CONSTRAINT `FK01` FOREIGN KEY (`idDistrict`) REFERENCES `district` (`idDistrict`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK02` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK02` FOREIGN KEY (`idUser`) REFERENCES `speaker` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -119,7 +119,7 @@ CREATE TABLE `employee` (
   KEY `FK06_idx` (`idRole`),
   KEY `FK07_idx` (`idUser`),
   CONSTRAINT `FK06` FOREIGN KEY (`idRole`) REFERENCES `role` (`idRole`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK07` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK07` FOREIGN KEY (`idUser`) REFERENCES `speaker` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -406,13 +406,13 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Table structure for table `user`
+-- Table structure for table `speaker`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `speaker`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `speaker` (
   `idUser` int NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -424,13 +424,13 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `speaker`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (0,'Client','Client',NULL,0),(1,'admin@isis.com','admin123','employee.png',1),(2,'frank@gmail.com','admin123','employee.png',1),(3,'kenneth@gmail.com','admin123','employee.png',1),(4,'leonardo@gmail.com','admin123','employee.png',1),(5,'yataco@gmail.com','admin123','employee.png',1),(6,'yactayo@gmail.com','admin123','employee.png',1),(7,'sebas@gmail.com','admin123','employee.png',1),(8,'joseph@gmail.com','joseph2021','client.png',0),(9,'jairo@gmail.com','jairo2021','client.png',0);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `speaker` WRITE;
+/*!40000 ALTER TABLE `speaker` DISABLE KEYS */;
+INSERT INTO `speaker` VALUES (0,'Client','Client',NULL,0),(1,'admin@isis.com','admin123','employee.png',1),(2,'frank@gmail.com','admin123','employee.png',1),(3,'kenneth@gmail.com','admin123','employee.png',1),(4,'leonardo@gmail.com','admin123','employee.png',1),(5,'yataco@gmail.com','admin123','employee.png',1),(6,'yactayo@gmail.com','admin123','employee.png',1),(7,'sebas@gmail.com','admin123','employee.png',1),(8,'joseph@gmail.com','joseph2021','client.png',0),(9,'jairo@gmail.com','jairo2021','client.png',0);
+/*!40000 ALTER TABLE `speaker` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -482,7 +482,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `salelist` AS select `u`.`avatar` AS `avatar`,concat(sum(`rp`.`quantity`),'Producto(s)') AS `cantidad`,concat(`c`.`name`,' ',`c`.`surname`) AS `name`,`r`.`dateP` AS `dateP`,concat(`e`.`name`,' ',`e`.`surname`) AS `nameE`,sum((`rp`.`quantity` * `p`.`price`)) AS `total`,`r`.`delSt` AS `delSt` from (((`client` `c` join `user` `u` on((`c`.`idUser` = `u`.`idUser`))) join `employee` `e` on((0 <> `e`.`idEmployee`))) join ((`receiptdetail` `rp` join `product` `p` on((`rp`.`idProduct` = `p`.`idProduct`))) join `receipt` `r` on((0 <> `r`.`idReceipt`)))) */;
+/*!50001 VIEW `salelist` AS select `u`.`avatar` AS `avatar`,concat(sum(`rp`.`quantity`),'Producto(s)') AS `cantidad`,concat(`c`.`name`,' ',`c`.`surname`) AS `name`,`r`.`dateP` AS `dateP`,concat(`e`.`name`,' ',`e`.`surname`) AS `nameE`,sum((`rp`.`quantity` * `p`.`price`)) AS `total`,`r`.`delSt` AS `delSt` from (((`client` `c` join `speaker` `u` on((`c`.`idUser` = `u`.`idUser`))) join `employee` `e` on((0 <> `e`.`idEmployee`))) join ((`receiptdetail` `rp` join `product` `p` on((`rp`.`idProduct` = `p`.`idProduct`))) join `receipt` `r` on((0 <> `r`.`idReceipt`)))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;

@@ -25,8 +25,8 @@
     <nav class="nav">
         <h1 class="nav__logo logo logo--gradient">Icis</h1>
         <div class="nav__profile">
-            <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin" class="nav__img nav__zipped-img" id="user-image">
-            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
+            <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin" class="nav__img nav__zipped-img" id="speaker-image">
+            <p class="nav__user nav__zipped-speaker" id="speaker-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -69,7 +69,7 @@
             <c:if test="${role == 1}">
                 <li class="nav__item">
                     <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
-                        <i class="isax isax-user-tag nav__icon"></i>
+                        <i class="isax isax-speaker-tag nav__icon"></i>
                         <span class="nav__link-text">
               Empleados
             </span>
@@ -124,7 +124,7 @@
                                 class="profile__input"
                                 accept="image/*"
                         />
-                        <i class="isax isax-user-octagon profile__icon"></i>
+                        <i class="isax isax-speaker-octagon profile__icon"></i>
                     </div>
                 </form>
                 <div class="profile__data">
@@ -137,7 +137,7 @@
             method="post">
                 <!-- name -->
                 <div class="form__field">
-                    <i class="isax isax-user form__icon"></i>
+                    <i class="isax isax-speaker form__icon"></i>
                     <input
                             type="text"
                             name="name"
@@ -154,7 +154,7 @@
                 </div>
                 <!-- last name -->
                 <div class="form__field">
-                    <i class="isax isax-user form__icon"></i>
+                    <i class="isax isax-speaker form__icon"></i>
                     <input
                             type="text"
                             name="surname"

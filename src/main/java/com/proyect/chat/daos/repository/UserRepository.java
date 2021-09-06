@@ -1,19 +1,19 @@
 package com.proyect.chat.daos.repository;
 
-import com.proyect.chat.model.User;
+import com.proyect.chat.model.Speaker;
 
 import java.util.List;
 
 public interface UserRepository {
 
   //create and update (id==null) ? CREATE : UPDATE;
-  boolean save(User user);
+  boolean save(Speaker speaker);
 
   //READ
-  List<User> list();
+  List<Speaker> list();
 
   //GET BY _ID
-  User list(String _id);
+  Speaker list(String _id);
 
   //there is no DELETE
 }

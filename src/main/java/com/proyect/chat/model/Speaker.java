@@ -4,7 +4,7 @@ import org.bson.types.ObjectId;
 
 import java.util.Objects;
 
-public class User {
+public class Speaker {
   private ObjectId id;
   private String name;
   private String username;
@@ -12,11 +12,11 @@ public class User {
   private String photo;
   private boolean isEmployee;
 
-  public User() {
+  public Speaker() {
     this.isEmployee = false;
   }
 
-  public User(String name, String username, String email, String photo) {
+  public Speaker(String name, String username, String email, String photo) {
     this();
     this.name = name;
     this.username = username;
@@ -24,7 +24,7 @@ public class User {
     this.photo = photo;
   }
 
-  public User(ObjectId id, String name, String username, String email, String photo, boolean isEmployee) {
+  public Speaker(ObjectId id, String name, String username, String email, String photo, boolean isEmployee) {
     this(name, username, email, photo);
     this.id = id;
     this.isEmployee = isEmployee;
@@ -34,7 +34,7 @@ public class User {
     return id;
   }
 
-  public User setId(ObjectId id) {
+  public Speaker setId(ObjectId id) {
     this.id = id;
     return this;
   }
@@ -43,7 +43,7 @@ public class User {
     return name;
   }
 
-  public User setName(String name) {
+  public Speaker setName(String name) {
     this.name = name;
     return this;
   }
@@ -52,7 +52,7 @@ public class User {
     return username;
   }
 
-  public User setUsername(String username) {
+  public Speaker setUsername(String username) {
     this.username = username;
     return this;
   }
@@ -61,7 +61,7 @@ public class User {
     return email;
   }
 
-  public User setEmail(String email) {
+  public Speaker setEmail(String email) {
     this.email = email;
     return this;
   }
@@ -70,7 +70,7 @@ public class User {
     return photo;
   }
 
-  public User setPhoto(String photo) {
+  public Speaker setPhoto(String photo) {
     this.photo = photo;
     return this;
   }
@@ -79,7 +79,7 @@ public class User {
     return isEmployee;
   }
 
-  public User setEmployee(boolean employee) {
+  public Speaker setEmployee(boolean employee) {
     isEmployee = employee;
     return this;
   }
@@ -88,8 +88,8 @@ public class User {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    User user = (User) o;
-    return Objects.equals(id, user.id);
+    Speaker speaker = (Speaker) o;
+    return Objects.equals(id, speaker.id);
   }
 
   @Override

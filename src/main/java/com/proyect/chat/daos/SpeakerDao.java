@@ -6,7 +6,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.result.UpdateResult;
 import com.proyect.chat.daos.repository.UserRepository;
-import com.proyect.chat.model.User;
+import com.proyect.chat.model.Speaker;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -17,23 +17,23 @@ import java.util.List;
 import static com.mongodb.client.model.Filters.*;
 import static com.proyect.connDB.Mongo.*;
 
-public class UserDao implements UserRepository {
+public class SpeakerDao implements UserRepository {
   private static final String COLLECTION = "user";
   private MongoCollection<Document> userCollection;
 
   @Override
-  public boolean save(User user) {
+  public boolean save(Speaker speaker) {
     boolean wasInserted;
     try(MongoClient mongoClient = getConnection()) {
       MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
       userCollection = pharmacyChat.getCollection(COLLECTION);
 
-      if (user.getId() == null) user.setId(new ObjectId());
+      if (speaker.getId() == null) speaker.setId(new ObjectId());
 
-      Bson filterByID = eq("_id", user.getId()); //filter for update
+      Bson filterByID = eq("_id", speaker.getId()); //filter for update
       UpdateOptions options = new UpdateOptions().upsert(true); //if _id doesn't exist create a new user
       UpdateResult result = userCollection
-             .updateOne(filterByID, generateUser(user), options);
+             .updateOne(filterByID, generateUser(speaker), options);
       //if the document exist return true
       wasInserted = result.wasAcknowledged();
     }
@@ -42,8 +42,8 @@ public class UserDao implements UserRepository {
   }
 
   @Override
-  public List<User> list() {
-    List<User> users = new ArrayList<>();
+  public List<Speaker> list() {
+    List<Speaker> speakers = new ArrayList<>();
     //create a connection with MongoDB
     try(MongoClient mongoClient = getConnection()) {
       MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
@@ -53,14 +53,14 @@ public class UserDao implements UserRepository {
       Bson filterByIsEmployee = eq("isEmployee",false);
       List<Document> result = userCollection.find(filterByIsEmployee).into(new ArrayList<>());
       //add users to list
-      result.forEach(u -> users.add(getUser(u)));
+      result.forEach(u -> speakers.add(getUser(u)));
     }
-    return users;
+    return speakers;
   }
 
   @Override
-  public User list(String id) {
-    User user = null;
+  public Speaker list(String id) {
+    Speaker speaker = null;
     try (MongoClient mongoClient = getConnection()) {
       MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
       userCollection = pharmacyChat.getCollection(COLLECTION);
@@ -68,13 +68,13 @@ public class UserDao implements UserRepository {
       //find by ID
       Bson filterByID = eq("_id", new ObjectId(id));
       Document result = userCollection.find(filterByID).first();
-      if (result != null) user = getUser(result);
+      if (result != null) speaker = getUser(result);
     }
-    return user;
+    return speaker;
   }
 
-  private User getUser(Document result) {
-    return new User(result.getObjectId("_id"),
+  private Speaker getUser(Document result) {
+    return new Speaker(result.getObjectId("_id"),
            result.getString("name"),
            result.getString("username"),
            result.getString("email"),
@@ -84,12 +84,12 @@ public class UserDao implements UserRepository {
   }
 
   //create default client
-  private Document generateUser(User user) {
-    return new Document("_id", user.getId())
-           .append("name", user.getName())
-           .append("username", user.getUsername())
-           .append("email", user.getEmail())
-           .append("photo", user.getPhoto())
+  private Document generateUser(Speaker speaker) {
+    return new Document("_id", speaker.getId())
+           .append("name", speaker.getName())
+           .append("username", speaker.getUsername())
+           .append("email", speaker.getEmail())
+           .append("photo", speaker.getPhoto())
            .append("isEmployee", false);
   }
 }

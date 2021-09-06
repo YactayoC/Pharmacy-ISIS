@@ -27,7 +27,7 @@
             <h1 class="logo logo--gradient">Icis</h1>
         </div>
         <div class="nav__profile">
-            <img src="assets/img/photo-user.webp" alt="user" class="nav__img">
+            <img src="assets/img/photo-speaker.webp" alt="speaker" class="nav__img">
         </div>
     </nav>
 </header>
@@ -47,7 +47,7 @@
                             class="profile__input hidden"
                             accept="image/*"
                     />
-                    <i class="isax isax-user-octagon profile__icon"></i>
+                    <i class="isax isax-speaker-octagon profile__icon"></i>
                 </div>
             </form>
             <div class="profile__data">
@@ -59,7 +59,7 @@
         <form action="" class="form__container grid">
             <!-- name -->
             <div class="form__field">
-                <i class="isax isax-user form__icon"></i>
+                <i class="isax isax-speaker form__icon"></i>
                 <input
                         type="text"
                         name="name"
@@ -75,7 +75,7 @@
             </div>
             <!-- last name -->
             <div class="form__field">
-                <i class="isax isax-user form__icon"></i>
+                <i class="isax isax-speaker form__icon"></i>
                 <input
                         type="text"
                         name="surname"

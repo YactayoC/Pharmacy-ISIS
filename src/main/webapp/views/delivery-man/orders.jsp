@@ -17,7 +17,7 @@
 <!-- ========== navbar ========== -->
 <header class="header">
     <nav class="nav">
-        <a href="../user/login.jsp" class="nav__logout">
+        <a href="../speaker/login.jsp" class="nav__logout">
             <i class="isax isax-logout nav__icon"></i>
             <span class="nav__text">logout</span>
         </a>
@@ -25,7 +25,7 @@
             <h1 class="logo logo--gradient">Icis</h1>
         </div>
         <a href="settings.jsp" class="nav__profile">
-            <img src="assets/img/photo-user.webp" alt="user" class="nav__img">
+            <img src="assets/img/photo-speaker.webp" alt="speaker" class="nav__img">
         </a>
     </nav>
 </header>

@@ -1,5 +1,7 @@
 package com.proyect.servlets.UClient;
 
+import com.proyect.chat.daos.SpeakerDao;
+import com.proyect.chat.model.Speaker;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.General.UserDAO;
 import com.proyect.modelsDTO.UClient.Client;
@@ -8,12 +10,12 @@ import com.proyect.modelsDTO.General.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @WebServlet(name = "SCRegister", value = "/SCRegister")
 public class SCRegister extends HttpServlet {
@@ -61,12 +63,26 @@ public class SCRegister extends HttpServlet {
             request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
         } else {
             String avatar = "client.png";
+
+            //Mongo User
+            ObjectId _id = new ObjectId();
+            Speaker speaker = new Speaker()
+                   .setId(_id)
+                   .setUsername(username)
+                   .setName(name)
+                   .setEmail(email)
+                   .setPhoto(avatar);
+
+            new SpeakerDao().save(speaker);
+
+            //Mysql User
             Integer idUser = null;
             user.setIdUser(idUser);
             user.setEmail(email);
             user.setPassword(password);
             user.setAvatar(avatar);
             user.setFlag(0);
+            user.setIdMongo(_id.toHexString());
             udao.save(user);
 
             idUser = udao.getLastIdUser();

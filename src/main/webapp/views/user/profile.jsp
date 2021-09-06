@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}styles/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css"/>
 
-    <!-- ========== styles for view user ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css"/>
+    <!-- ========== styles for view speaker ========== -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/style.css"/>
     <!-- ========== styles only this page ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/profile.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/profile.css"/>
     <title>Mi Perfil</title>
 </head>
 <body>
@@ -36,7 +36,7 @@
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/views/speaker/shopp-cart.jsp" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -59,7 +59,7 @@
                         <i class="isax isax-search-favorite search__icon"></i>
                     </div>
                 </li>
-                <!-- ======== first view of users buttons of login ======== -->
+                <!-- ======== first view of speakers buttons of login ======== -->
                 <c:set var="validats" value="${validats}"/>
                 <c:if test="${!validats}">
                     <li class="nav__item">
@@ -73,7 +73,7 @@
                         >
                     </li>
                 </c:if>
-                <!-- ======== this view,when the user starts a session ======== -->
+                <!-- ======== this view,when the speaker starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
@@ -107,7 +107,7 @@
                             class="profile__input"
                             accept="image/*"
                     />
-                    <i class="isax isax-user-octagon profile__icon"></i>
+                    <i class="isax isax-speaker-octagon profile__icon"></i>
                 </div>
             </form>
             <div class="profile__data">
@@ -120,7 +120,7 @@
               class="form__container grid" method="post">
             <!-- name -->
             <div class="form__field">
-                <i class="isax isax-user form__icon"></i>
+                <i class="isax isax-speaker form__icon"></i>
                 <input
                         type="text"
                         name="name"
@@ -137,7 +137,7 @@
             </div>
             <!-- last name -->
             <div class="form__field">
-                <i class="isax isax-user form__icon"></i>
+                <i class="isax isax-speaker form__icon"></i>
                 <input
                         type="text"
                         name="surname"
@@ -150,7 +150,7 @@
                 />
                 <label for="surname" class="form__label">Apellidos</label>
             </div>
-            <!-- user name -->
+            <!-- speaker name -->
             <div class="form__field">
                 <i class="isax isax-profile-2user form__icon"></i>
                 <input
@@ -304,7 +304,7 @@
 </section>
 
 <!-- ========== Import scripts for animations ========== -->
-<script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/views/speaker/js/animations.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
 </body>
 </html>
