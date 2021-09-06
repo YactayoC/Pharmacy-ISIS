@@ -1,4 +1,4 @@
-/* =================== Schema client =================== */
+/* =================== Schema client =================== asdasdasdasdas*/
 -- Table: client
 CREATE TABLE IF NOT EXISTS client (
   id INT PRIMARY KEY AUTO_INCREMENT,
