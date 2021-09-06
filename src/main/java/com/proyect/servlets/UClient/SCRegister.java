@@ -60,11 +60,12 @@ public class SCRegister extends HttpServlet {
             request.setAttribute("errorRegister", "El email ingresado ya ha sido usado");//jsp register
             request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
         } else {
+            String avatar = "client.png";
             Integer idUser = null;
             user.setIdUser(idUser);
-             user.setEmail(email);
+            user.setEmail(email);
             user.setPassword(password);
-            user.setAvatar("client.png");
+            user.setAvatar(avatar);
             user.setFlag(0);
             udao.save(user);
 
