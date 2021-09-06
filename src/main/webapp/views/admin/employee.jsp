@@ -27,8 +27,8 @@
         <h1 class="nav__logo logo logo--gradient">Icis</h1>
         <div class="nav__profile">
             <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin"
-                 class="nav__img nav__zipped-img" id="speaker-image">
-            <p class="nav__user nav__zipped-speaker" id="speaker-name">${surnameE}</p>
+                 class="nav__img nav__zipped-img" id="user-image">
+            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -70,7 +70,7 @@
             <!-- Employees -->
             <li class="nav__item nav__item--active">
                 <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
-                    <i class="isax isax-speaker-tag nav__icon"></i>
+                    <i class="isax isax-user-tag nav__icon"></i>
                     <span class="nav__link-text">
               Empleados
             </span>
@@ -202,7 +202,7 @@
                             <c:if test="${employees.getRole().getIdRole() == 2}">
                                 <li class="employee__item employee__role">
                                     <span class="employee__label-icon"> Vendedor </span>
-                                    <i class="isax isax-speaker-tag employee__icon"></i>
+                                    <i class="isax isax-user-tag employee__icon"></i>
                                 </li>
                             </c:if>
                             <!-- edit -->
@@ -240,7 +240,7 @@
                       class="form__container grid" method="post">
                     <!-- name-employee -->
                     <div class="form__field">
-                        <i class="isax isax-speaker form__icon"></i>
+                        <i class="isax isax-user form__icon"></i>
                         <input
                                 type="text"
                                 name="name-employee"
@@ -253,7 +253,7 @@
                     </div>
                     <!-- role -->
                     <div class="form__field">
-                        <i class="isax isax-speaker-edit form__icon"></i>
+                        <i class="isax isax-user-edit form__icon"></i>
                         <select
                                 name="role"
                                 id="role"
@@ -267,7 +267,7 @@
                     </div>
                     <!-- last name -->
                     <div class="form__field employee__last-name">
-                        <i class="isax isax-speaker form__icon"></i>
+                        <i class="isax isax-user form__icon"></i>
                         <input
                                 type="text"
                                 name="last-name"

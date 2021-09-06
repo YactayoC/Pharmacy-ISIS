@@ -33,9 +33,9 @@
               src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}"
               alt="Name of admin"
               class="nav__img nav__zipped-img"
-              id="speaker-image"
+              id="user-image"
       />
-      <p class="nav__user nav__zipped-speaker" id="speaker-name">${surnameE}</p>
+      <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
       <span id="id-admin" data-id="612c4334830bd85439865cb7" class="hidden">
         ${pageContext.request.contextPath}
       </span>
@@ -73,7 +73,7 @@
       <c:if test="${role == 1}">
         <li class="nav__item">
           <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
-            <i class="isax isax-speaker-tag nav__icon"></i>
+            <i class="isax isax-user-tag nav__icon"></i>
             <span class="nav__link-text"> Empleados </span>
           </a>
         </li>
@@ -137,13 +137,13 @@
           <span class="option option-filter" id="medic" data-filter="medic">Médica</span>
           <span class="option option-filter" id="tech" data-filter="tech">Técnica</span>
         </div>
-        <!-- list of speaker -->
+        <!-- list of user -->
         <ul class="client__list">
           <!-- init a list clients MEDIC -->
           <li class="client__item filter-item" data-userId="612d7ce259a0773d739c651b" data-tag="medic">
             <div class="client__data">
               <img
-                      src="assets/img/photo-speaker.webp"
+                      src="assets/img/photo-user.webp"
                       alt="client image"
                       class="client__img client__img-item"
               />
@@ -161,7 +161,7 @@
           <li class="client__item filter-item" data-userId="612d45f2564bd47e81ed15c9" data-tag="tech">
             <div class="client__data">
               <img
-                    src="../speaker/assets/img/speaker-profile.webp"
+                    src="../user/assets/img/user-profile.webp"
                     alt="client imagen"
                     class="client__img client__img-item"
               />
@@ -181,7 +181,7 @@
       <!-- whiter a message chat -->
       <div class="support__message container">
         <div class="support__message-overlay"></div>
-        <!-- status speaker -->
+        <!-- status user -->
         <div class="support__options options">
           <p class="option option--active" id="client">
             Anna Smith
@@ -193,9 +193,9 @@
           <ul class="chat__messages" id="chat-box">
             <%-- message response --%>
             <li class="chat__box chat__message--response" id="message-response">
-              <!-- speaker response img + time -->
+              <!-- user response img + time -->
               <div class="client__info client-profile-message">
-                <img src="assets/img/photo-speaker.webp" alt="" class="client__img client__img-chat">
+                <img src="assets/img/photo-user.webp" alt="" class="client__img client__img-chat">
                 <span class="client__time">12:00</span>
               </div>
               <!-- message -->
@@ -206,7 +206,7 @@
             <li class="chat__box chat__message--request" id="message-request">
               <!-- message -->
               <span class="chat__message">Hello ;D</span>
-              <!-- speaker response img + time -->
+              <!-- user response img + time -->
               <div class="client__info admin-profile-message">
                 <img src="assets/img/photo-admin.webp" alt="" class="client__img">
                 <span class="client__time">12:00</span>

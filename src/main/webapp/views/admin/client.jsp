@@ -26,8 +26,8 @@
         <h1 class="nav__logo logo logo--gradient">Icis</h1>
         <div class="nav__profile">
             <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin" class="nav__img nav__zipped-img"
-                 id="speaker-image">
-            <p class="nav__user nav__zipped-speaker" id="speaker-name">${surnameE}</p>
+                 id="user-image">
+            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -70,7 +70,7 @@
             <c:if test="${role == 1}">
                 <li class="nav__item">
                     <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
-                        <i class="isax isax-speaker-tag nav__icon"></i>
+                        <i class="isax isax-user-tag nav__icon"></i>
                         <span class="nav__link-text">
               Empleados
             </span>
@@ -157,7 +157,7 @@
                         <ul class="client__items grid">
                             <!-- Photo -->
                             <li class="client__item">
-                                <img src="${pageContext.request.contextPath}/views/speaker/assets/avatar/${client.getUser().getAvatar()}"
+                                <img src="${pageContext.request.contextPath}/views/user/assets/avatar/${client.getUser().getAvatar()}"
                                      alt="#" class="client__img">
                             </li>
                             <!-- name -->

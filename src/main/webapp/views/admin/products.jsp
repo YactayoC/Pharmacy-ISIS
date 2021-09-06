@@ -28,8 +28,8 @@
         <h1 class="nav__logo logo logo--gradient">Icis</h1>
         <div class="nav__profile">
             <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin"
-                 class="nav__img nav__zipped-img" id="speaker-image">
-            <p class="nav__user nav__zipped-speaker" id="speaker-name">${surnameE}</p>
+                 class="nav__img nav__zipped-img" id="user-image">
+            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -72,7 +72,7 @@
             <c:if test="${role == 1}">
                 <li class="nav__item">
                     <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
-                        <i class="isax isax-speaker-tag nav__icon"></i>
+                        <i class="isax isax-user-tag nav__icon"></i>
                         <span class="nav__link-text">
               Empleados
             </span>
@@ -219,7 +219,7 @@
                     <ul class="product__items grid filter-item" data-tag="sold-out">-->
                     <!-- image
                         <li class="product__item product__img">
-                            <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-speaker.webp" alt="#" class="client__img">
+                            <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp" alt="#" class="client__img">
                         </li>-->
                     <!-- name
                     <li class="product__item">
@@ -434,7 +434,7 @@
 <script>
     const btnRemove = document.querySelectorAll(".remove-entity"),
         modalbtn = document.querySelector("#btn-delete"),
-        modalImage = document.querySelector("#modalImage");
+        modalImage = document.querySelector("#modalImage"),
         modalName = document.querySelector("#modalName");
     btnRemove.forEach(i => {
         const idDelete = i.getAttribute("data-remove"),

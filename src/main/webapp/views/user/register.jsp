@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css"/>
 
-    <!-- ========== styles for view speaker ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/style.css"/>
+    <!-- ========== styles for view user ========== -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css"/>
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css"/>
     <title>Registrate en Icis</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/views/speaker/home.jsp" class="isax isax-logout btn-icon form__btn-back"></a>
+<a href="${pageContext.request.contextPath}/views/user/home.jsp" class="isax isax-logout btn-icon form__btn-back"></a>
 <!-- Content register -->
 <section class="section form">
     <div class="form__img">
-        <img src="${pageContext.request.contextPath}/views/speaker/assets/img/register-bg.webp" alt="Medic and Doctor"/>
+        <img src="${pageContext.request.contextPath}/views/user/assets/img/register-bg.webp" alt="Medic and Doctor"/>
         <div class="form__buttons">
-            <a href="${pageContext.request.contextPath}/views/speaker/login.jsp" class="form__btn-action">Login</a>
+            <a href="${pageContext.request.contextPath}/views/user/login.jsp" class="form__btn-action">Login</a>
             <a href="#" class="form__active form__btn-action">Register</a>
         </div>
     </div>
@@ -35,7 +35,7 @@
               method="post">
             <!-- name -->
             <div class="form__field">
-                <i class="isax isax-speaker form__icon"></i>
+                <i class="isax isax-user form__icon"></i>
                 <input
                         type="text"
                         name="name"
@@ -51,7 +51,7 @@
             </div>
             <!-- last name -->
             <div class="form__field">
-                <i class="isax isax-speaker form__icon"></i>
+                <i class="isax isax-user form__icon"></i>
                 <input
                         type="text"
                         name="surname"
@@ -63,7 +63,7 @@
                 />
                 <label for="surname" class="form__label">Apellidos</label>
             </div>
-            <!-- speaker name -->
+            <!-- user name -->
             <div class="form__field">
                 <i class="isax isax-profile-2user form__icon"></i>
                 <input
@@ -154,7 +154,7 @@
                     class="form__button form__field"
             />
         </form>
-        <a href="${pageContext.request.contextPath}/views/speaker/login.jsp" class="form__login-link">
+        <a href="${pageContext.request.contextPath}/views/user/login.jsp" class="form__login-link">
             ¿ya tienes una cuenta?
             <span class="form__link-span">Inicia aquí</span>
         </a>

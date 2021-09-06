@@ -349,6 +349,6 @@
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
-<script src="${pageContext.request.contextPath}/js/chats.js" type="module"></script>
+<script src="${pageContext.request.contextPath}/js/chat.js" type="module"></script>
 </body>
 </html>

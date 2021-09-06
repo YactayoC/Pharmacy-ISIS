@@ -32,9 +32,9 @@
                     src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}"
                     alt="Name of admin"
                     class="nav__img nav__zipped-img"
-                    id="speaker-image"
+                    id="user-image"
             />
-            <p class="nav__user nav__zipped-speaker" id="speaker-name">${surnameE}</p>
+            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -69,7 +69,7 @@
             <c:if test="${role == 1}">
                 <li class="nav__item">
                     <a href="${pageContext.request.contextPath}/SAEmployees?action=list" class="nav__link">
-                        <i class="isax isax-speaker-tag nav__icon"></i>
+                        <i class="isax isax-user-tag nav__icon"></i>
                         <span class="nav__link-text"> Empleados </span>
                     </a>
                 </li>
@@ -149,7 +149,7 @@
                 <!-- init a list clients -->
                 <li class="client__item">
                     <div class="client__data">
-                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-speaker.webp"
+                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp"
                              alt="client imagen" class="client__img">
                         <div class="client__info">
                             <p class="client__name">Anna 2020</p>
@@ -161,7 +161,7 @@
                 <!-- init a list clients -->
                 <li class="client__item">
                     <div class="client__data">
-                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-speaker.webp"
+                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp"
                              alt="client imagen" class="client__img">
                         <div class="client__info">
                             <p class="client__name">Anna 2020</p>
@@ -173,7 +173,7 @@
                 <!-- init a list clients -->
                 <li class="client__item">
                     <div class="client__data">
-                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-speaker.webp"
+                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp"
                              alt="client imagen" class="client__img">
                         <div class="client__info">
                             <p class="client__name">Anna 2020</p>

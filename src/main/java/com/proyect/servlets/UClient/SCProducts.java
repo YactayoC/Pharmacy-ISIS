@@ -27,35 +27,34 @@ public class SCProducts extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
+        int idCategory;
         switch (action) {
-            case "listProduct":
-                int idCategory = Integer.parseInt(request.getParameter("idCategory"));
+            case "listProduct" -> {
+                idCategory = Integer.parseInt(request.getParameter("idCategory"));
                 productsCategories = pdao.listCategory(idCategory);
                 request.setAttribute("idCategory", idCategory);
                 request.setAttribute("productsC", productsCategories);
                 this.list(request, response);
-                break;
-            case "search":
+            }
+            case "search" -> {
                 categories = cdao.list();
                 String text = request.getParameter("search");
                 products = pdao.search(text);
                 request.setAttribute("categories", categories);
                 request.setAttribute("products", products);
                 request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);
-                break;
-            case "detail":
+            }
+            case "detail" -> {
                 int idProduct = Integer.parseInt(request.getParameter("idProduct"));
                 product = pdao.byId(idProduct);
                 category = product.getCategory();
                 idCategory = category.getIdCategory();
                 productsCategories = pdao.listCategory(idCategory);
-                request.setAttribute("productsC",productsCategories);
+                request.setAttribute("productsC", productsCategories);
                 request.setAttribute("product", product);
                 request.getRequestDispatcher("/views/user/detail-product.jsp").forward(request, response);
-                break;
-            default:
-                this.list(request, response);
-                break;
+            }
+            default -> this.list(request, response);
         }
 
     }

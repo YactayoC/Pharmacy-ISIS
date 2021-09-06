@@ -8,10 +8,10 @@
         <link rel="stylesheet" href="../../styles/overall-styles.css">
         <link rel="stylesheet" href="../../styles/style-icon.css">
 
-        <!-- ========== styles for view speaker ========== -->
-        <link rel="stylesheet" href="views/speaker/styles/style.css">
+        <!-- ========== styles for view user ========== -->
+        <link rel="stylesheet" href="views/user/styles/style.css">
         <!-- ========== styles only this page ========== -->
-        <link rel="stylesheet" href="views/speaker/styles/receipt.css">
+        <link rel="stylesheet" href="views/user/styles/receipt.css">
         <title>Principal</title>
     </head>
     <body>

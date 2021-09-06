@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css"/>
 
-    <!-- ========== styles for view speaker ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/style.css"/>
+    <!-- ========== styles for view user ========== -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css"/>
     <!-- ========== styles only this page ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/shop-cart.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/shop-cart.css"/>
     <title>Bolsa de pago</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/speaker/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -60,21 +60,21 @@
                         </button>
                     </form>
                 </li>
-                <!-- ======== first view of speakers buttons of login ======== -->
+                <!-- ======== first view of users buttons of login ======== -->
                 <c:set var="validats" value="${validats}"/>
                 <c:if test="${!validats}">
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/views/speaker/register.jsp" class="nav__link btn btn-white"
+                        <a href="${pageContext.request.contextPath}/views/user/register.jsp" class="nav__link btn btn-white"
                         >Registro</a
                         >
                     </li>
                     <li class="nav__item">
-                        <a href="${pageContext.request.contextPath}/views/speaker/login.jsp" class="nav__link btn btn-white-outline"
+                        <a href="${pageContext.request.contextPath}/views/user/login.jsp" class="nav__link btn btn-white-outline"
                         >Iniciar</a
                         >
                     </li>
                 </c:if>
-                <!-- ======== this view,when the speaker starts a session ======== -->
+                <!-- ======== this view,when the user starts a session ======== -->
                 <c:if test="${validats}">
                     <li class="nav__item">
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}" class="nav__link btn btn-white">
@@ -178,7 +178,7 @@
             />
             <span class="pay__delivery-text">
                         En persona
-                        <i class="isax isax-speaker-square"></i>
+                        <i class="isax isax-user-square"></i>
                     </span>
         </div>
         <div class="pay__cards">
@@ -321,7 +321,7 @@
                 </div>
                 <!-- target name -->
                 <div class="form__field pay__card-name">
-                    <i class="isax isax-speaker form__icon"></i>
+                    <i class="isax isax-user form__icon"></i>
                     <input
                             type="text"
                             name="card-name"
@@ -342,7 +342,7 @@
             <!------------ init form address ------------>
             <h2 class="form__phrase">Detalle de delivery</h2>
             <form action="" class="form__container form__container-delivery grid">
-                <input type="hidden" name="id-speaker"/>
+                <input type="hidden" name="id-user"/>
                 <!-- Department -->
                 <div class="form__field">
                     <i class="isax isax-security-safe form__icon"></i>
@@ -456,8 +456,8 @@
     </form>
 </section>
 <!-- ========== Import scripts for animations ========== -->
-<script src="${pageContext.request.contextPath}/views/speaker/js/animations.js"></script>
-<script src="${pageContext.request.contextPath}/views/speaker/js/shop-cart.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/shop-cart.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
 </body>
 </html>

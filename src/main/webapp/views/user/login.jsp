@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css" />
 
-        <!-- ========== styles for view speaker ========== -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/views/speaker/styles/style.css" />
+        <!-- ========== styles for view user ========== -->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css" />
         <!-- ========== styles only this page ========== -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css"/>
         <title>Register Icis</title>
@@ -20,10 +20,10 @@
         <!-- Content register -->
         <section class="section form">
             <div class="form__img">
-                <img src="${pageContext.request.contextPath}/views/speaker/assets/img/register-bg.webp" alt="Medic and Doctor" />
+                <img src="${pageContext.request.contextPath}/views/user/assets/img/register-bg.webp" alt="Medic and Doctor" />
                 <div class="form__buttons">
                     <a href="#" class="form__active form__btn-action">Login</a>
-                    <a href="${pageContext.request.contextPath}/views/speaker/register.jsp" class="form__btn-action" >Register</a>
+                    <a href="${pageContext.request.contextPath}/views/user/register.jsp" class="form__btn-action" >Register</a>
                 </div>
             </div>
             <!-- form -->
@@ -69,7 +69,7 @@
                     <p>${errorLogin}</p>
                     </c:if>
                 </form>
-                <a href="${pageContext.request.contextPath}/views/speaker/register.jsp" class="form__login-link">
+                <a href="${pageContext.request.contextPath}/views/user/register.jsp" class="form__login-link">
                     ¿Aun no tienes una cuenta?
                     <span class="form__link-span">Inicia aquí</span>
                     <!-- error acc -->

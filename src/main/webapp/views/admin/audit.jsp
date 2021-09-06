@@ -31,9 +31,9 @@
                     src="assets/img/photo-admin.webp"
                     alt="Name of admin"
                     class="nav__img nav__zipped-img"
-                    id="speaker-image"
+                    id="user-image"
             />
-            <p class="nav__user nav__zipped-speaker" id="speaker-name">Jhon Doe</p>
+            <p class="nav__user nav__zipped-user" id="user-name">Jhon Doe</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -67,7 +67,7 @@
             <!-- Employees -->
             <li class="nav__item">
                 <a href="employee.jsp" class="nav__link">
-                    <i class="isax isax-speaker-tag nav__icon"></i>
+                    <i class="isax isax-user-tag nav__icon"></i>
                     <span class="nav__link-text"> Empleados </span>
                 </a>
             </li>
@@ -87,7 +87,7 @@
             </li>
             <!-- logout -->
             <li class="nav__item">
-                <a href="../speaker/login.jsp" class="nav__link">
+                <a href="../user/login.jsp" class="nav__link">
                     <i class="isax isax-logout nav__icon"></i>
                     <span class="nav__link-text"> Salir </span>
                 </a>
@@ -196,7 +196,7 @@
                         <li class="sale__item audit__info">
                             <span class="sale__label-icon">admin ...</span>
                             <div class="sale__text audit__img-profile">
-                                <img src="assets/img/photo-speaker.webp" alt="#" class="client__img">
+                                <img src="assets/img/photo-user.webp" alt="#" class="client__img">
                                 Anna Doe
                             </div>
                         </li>
@@ -255,7 +255,7 @@
                         <li class="sale__item audit__info">
                             <span class="sale__label-icon">admin ...</span>
                             <div class="sale__text audit__img-profile">
-                                <img src="assets/img/photo-speaker.webp" alt="#" class="client__img">
+                                <img src="assets/img/photo-user.webp" alt="#" class="client__img">
                                 Anna Doe
                             </div>
                         </li>
@@ -308,7 +308,7 @@
                         <li class="sale__item audit__info">
                             <span class="sale__label-icon">admin ...</span>
                             <div class="sale__text audit__img-profile">
-                                <img src="assets/img/photo-speaker.webp" alt="#" class="client__img">
+                                <img src="assets/img/photo-user.webp" alt="#" class="client__img">
                                 Anna Doe
                             </div>
                         </li>
