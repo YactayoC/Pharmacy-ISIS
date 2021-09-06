@@ -71,7 +71,7 @@ if (sendMessage) {
     ws.send(JSON.stringify(messageJSON));
 
     let messageProfile = drawChatMessage(message,"request",{profileAdmin, profileClient});
-    messageProfile.firstElementChild.lastElementChild.textContent = new Date().getHours().toString();
+    //messageProfile.firstElementChild.lastElementChild.textContent = new Date().getHours().toString();
     //messageProfile.firstElementChild.lastElementChild.textContent = "00:00"
     chatBox.appendChild(messageProfile);
 

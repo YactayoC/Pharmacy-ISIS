@@ -10,18 +10,29 @@
   gap: 0.5rem;
 }
 /* ========== messages ========== */
-/* .support__message {
+.support__message {
   position: relative;
-} */
+}
+.support__message-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-primary-0-5);
+  backdrop-filter: blur(.35rem);
+  transition: display 0.5s ease-in-out;
+  z-index: 10;
+}
 /* ========== chat ========== */
 .chat__body {
   margin-bottom: 2rem;
+  max-height: 450px;
+  overflow: hidden;
 }
 .chat__messages{
   width: 100%;
   height: 100%;
-  padding: 1rem;
-  margin: 0;
+  padding: 1rem 1rem 6.5rem 1rem;
   overflow-y: auto;
 }
 .chat__box {
@@ -49,6 +60,9 @@
   justify-content: space-between;
   padding: .5rem;
   gap: .5rem;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
 }
 .chat__writer, .chat__send {
   height: 40px;
@@ -60,6 +74,7 @@
   padding-left: .5rem;
   color: var(--color-primary);
   width: 100%;
+  backdrop-filter: blur(1px);
 }
 .chat__send {
   cursor: pointer;
@@ -79,7 +94,17 @@
 .client__time {
   align-self: center;
 }
-
+.client__img {
+  cursor: pointer;
+  transition: filter .4s ease-in-out,
+  transform .6s ease-in-out;
+}
+.client__img:hover {
+  filter: drop-shadow(0 0 75px rgba(0, 0, 0, 0.14))
+  drop-shadow(0 0 0 rgba(0, 0, 0, 0.083455))
+  drop-shadow(0 0 0 rgba(0, 0, 0, 0.056545));
+  transform: scale(1.025);
+}
 /* ========== Media queries ========== */
 /* tablets */
 @media screen and (min-width: 768px) {
@@ -104,7 +129,7 @@
     grid-column: span 2;
     position: relative;
   }
-  .chat__footer { 
+  .chat__footer {
     position: absolute;
     bottom: 0;
   }
