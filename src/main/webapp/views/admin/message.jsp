@@ -98,6 +98,7 @@
         </ul>
     </nav>
 </header>
+
 <main class="page__message">
     <h1 class="page__title">Messages</h1>
     <section class="container section support">
@@ -135,16 +136,16 @@
                 <!-- list of user -->
                 <ul class="client__list">
                     <!-- init a list clients MEDIC -->
-                    <li class="client__item filter-item" data-tag="medic">
+                    <li class="client__item filter-item" data-userId="612d7ce259a0773d739c651b" data-tag="medic">
                         <div class="client__data">
                             <img
-                                    src="assets/img/photo-user.webp"
-                                    alt="client imagen"
-                                    class="client__img"
+                                src="assets/img/photo-user.webp"
+                                alt="client image"
+                                class="client__img client__img-item"
                             />
                             <div class="client__info">
-                                <p class="client__name">Anna 2020</p>
-                                <span class="client__email">anna@gmail.com</span>
+                                <p class="client__name">Angeles</p>
+                                <span class="client__email">angeles@gmail.com</span>
                             </div>
                         </div>
                         <div class="client__time">
@@ -153,16 +154,16 @@
                         </div>
                     </li>
                     <!-- init a list clients TECH-->
-                    <li class="client__item filter-item" data-tag="tech">
+                    <li class="client__item filter-item" data-userId="612d45f2564bd47e81ed15c9"  data-tag="tech">
                         <div class="client__data">
                             <img
-                                    src="assets/img/photo-user.webp"
-                                    alt="client imagen"
-                                    class="client__img"
+                                src="../user/assets/img/user-profile.webp"
+                                alt="client imagen"
+                                class="client__img client__img-item"
                             />
                             <div class="client__info">
-                                <p class="client__name">Anna 2020</p>
-                                <span class="client__email">anna@gmail.com</span>
+                                <p class="client__name">Isabella</p>
+                                <span class="client__email">isa@gmail.com</span>
                             </div>
                         </div>
                         <div class="client__time">
@@ -175,30 +176,34 @@
 
             <!-- whiter a message chat -->
             <div class="support__message container">
+                <div class="support__message-overlay"></div>
                 <!-- status user -->
                 <div class="support__options options">
                     <p class="option option--active" id="client">
-                        Anna Smith <span class="tag-notify tag-notify--primary">8</span>
+                        Anna Smith
                     </p>
                     <span class="option" id="status">activo</span>
                 </div>
                 <!-- chat -->
                 <div class="chat__body">
                     <ul class="chat__messages" id="chat-box">
+                        <%-- message response --%>
                         <li class="chat__box chat__message--response" id="message-response">
                             <!-- user response img + time -->
-                            <div class="client__info">
-                                <img src="assets/img/photo-user.webp" alt="" class="client__img">
+                            <div class="client__info client-profile-message">
+                                <img src="assets/img/photo-user.webp" alt="" class="client__img client__img-chat">
                                 <span class="client__time">12:00</span>
                             </div>
                             <!-- message -->
                             <span class="chat__message">Hi...</span>
                         </li>
+
+                        <%-- message request --%>
                         <li class="chat__box chat__message--request" id="message-request">
                             <!-- message -->
                             <span class="chat__message">Hello ;D</span>
                             <!-- user response img + time -->
-                            <div class="client__info">
+                            <div class="client__info admin-profile-message">
                                 <img src="assets/img/photo-admin.webp" alt="" class="client__img">
                                 <span class="client__time">12:00</span>
                             </div>
@@ -208,7 +213,7 @@
                 <!-- send message -->
                 <form class="chat__footer" id="chat__form">
                     <input type="text" id="chat-writer" class="chat__writer" placeholder="Escribe aquí">
-                    <button class="chat__send btn-primary" id="send-message">
+                    <button class="chat__send btn-primary" id="send-message-admin">
                         <i class="isax isax-send-2"></i>Enviar
                     </button>
                 </form>
@@ -219,5 +224,6 @@
 <!-- ========== zipped unzipped nav ========== -->
 <script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/filter.js"></script>
+<script src="${pageContext.request.contextPath}/views/admin/js/message.js" type="module"></script>
 </body>
 </html>

@@ -84,7 +84,7 @@
   border: 2px solid var(--color-light);
 }
 .btn-primary {
- background: var(--color-primary); 
+  background: var(--color-primary);
 }
 .btn-secondary {
   background: var(--color-secondary);
@@ -129,7 +129,7 @@
     position: fixed;
     cursor: pointer;
     bottom: -100%;
-    left: 0; 
+    left: 0;
     width: 100%;
     transition: .4s;
     background: var(--color-primary);
@@ -187,11 +187,11 @@
   box-shadow: -2px 2px 8px rgba(17, 6, 4, 0.32);
   transition: .4s;
 }
-.nav__search { /* Searching */ 
+.nav__search { /* Searching */
   grid-column: span 3;
   max-width: 350px;
 }
-.nav__item:last-child { 
+.nav__item:last-child {
   grid-column: 3/4;
   transition: .4s;
 }
@@ -236,7 +236,7 @@
   height: 0;
   background: var(--color-light-0-7);
   box-shadow: 4px 8px 16px rgba(17, 6, 4, 0.16);
-  backdrop-filter: blur(16px); 
+  backdrop-filter: blur(16px);
   z-index: -1;
   opacity: 0;
   transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -312,8 +312,23 @@
   padding-left: .5rem;
   color: var(--color-primary)
 }
-/* ========== receipts ========== */
-
+.message-relevance {
+  font-weight: 500;
+  color: var(--color-white);
+  cursor: pointer;
+}
+.message-relevance .chat__message {
+  background: var(--color-primary-0-5);
+  border: none;
+  transition: box-shadow 0.5s ease-in-out;
+}
+.message-relevance .chat__message:hover {
+  box-shadow: var(--shadow-bottom-orange);
+}
+.chat__message-active .chat__message {
+  background: var(--main-gradient);
+  box-shadow: var(--shadow-bottom-orange);
+}
 /* ========== Media query ========== */
 /* --- normal phones --- */
 @media screen and (min-width:  425px) {
@@ -388,7 +403,7 @@
   .section,
   .container {padding: 0 6rem;}
   /* ---- buttons ---- */
-  .btn { 
+  .btn {
     padding: .5rem 1rem;
   }
   /* ---- navbar ---- */
@@ -398,7 +413,7 @@
   .nav__search {
     width: 300px;
     order: -1;
-  }  
+  }
   /* --- chat --- */
   .chat {
     width: 400px;

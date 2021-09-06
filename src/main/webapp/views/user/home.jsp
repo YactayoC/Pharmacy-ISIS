@@ -66,6 +66,10 @@
                 </c:if>
                 <!-- ======== this view,when the user starts a session ========-->
                 <c:if test="${validats}">
+                <%-- TODO: make dinamic the idUser --%>
+                    <span data-idUser="612d7ce259a0773d739c651b" id="user-data" class="hidden">
+                            ${pageContext.request.contextPath}
+                    </span>
                     <li class="nav__item">
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
                            class="nav__link btn btn-white"> <!--serlvet -->
@@ -298,28 +302,39 @@
     </div>
 </main>
 
-
 <!-- ========== Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
     <i class="isax isax-message btn-icon "></i>
 </div>
 <section class="chat" id="chat">
     <div class="chat__header">
-        <h2 class="chat__title">Enviar un mensaje ;D</h2>
+        <h2 class="chat__title">Enviar un mensaje</h2>
         <div class="chat__close" id="chat__close">
             <i class="isax isax-close-square btn-icon"></i>
         </div>
     </div>
+    <%--Chat body--%>
     <div class="chat__body">
         <ul class="chat__messages" id="chat-box">
+            <%--Response of administrador--%>
             <li class="chat__box chat__message--response" id="message-response">
-                <span class="chat__message">Hi...</span>
+                <span class="chat__message">Hola seleccione la relevancia de su mensage</span>
             </li>
-            <li class="chat__box chat__message--request" id="message-request">
-                <span class="chat__message">Hello ;D</span>
+            <%--Relevance 1 (MEDIC)--%>
+            <li class="chat__box chat__message--response message-relevance" data-relevance="MEDIC">
+                <span class="chat__message">1: Médica</span>
             </li>
+            <%--Relevance 2 (TECHNICAL)--%>
+            <li class="chat__box chat__message--response message-relevance" data-relevance="TECHNICAL">
+                <span class="chat__message">2: Técnica</span>
+            </li>
+            <%--Response of user--%>
+            <%-- <li class="chat__box chat__message--request" id="message-request">
+                  <span class="chat__message">Hello ;D</span>
+                </li> --%>
         </ul>
     </div>
+    <%--Chat buttons --%>
     <form class="chat__footer" id="chat__form">
         <input type="text" id="chat-writer" class="chat__writer" placeholder="Escribe aquí">
         <button class="chat__send btn btn-primary" id="send-message">
@@ -330,5 +345,6 @@
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/js/chats.js" type="module"></script>
 </body>
 </html>
