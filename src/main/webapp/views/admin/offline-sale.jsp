@@ -6,7 +6,7 @@
   <!-- ========== default styles and icons ========== -->
   <link rel="stylesheet" href="../../styles/normalize.css" />
   <link rel="stylesheet" href="../../styles/style-icon.css" />
-  <link rel="stylesheet" href="../../styles/overall-styles.css" />
+  <link rel="stylesheet" href="../../styles/overall-style.css" />
   <link rel="stylesheet" href="../../styles/swiper-bundle.min.css">
   <link rel="stylesheet" href="../../styles/form.css">
 

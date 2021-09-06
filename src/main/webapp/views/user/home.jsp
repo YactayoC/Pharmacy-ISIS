@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- ========== default styles and icons ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css">
 
@@ -65,9 +65,9 @@
                     </li>
                 </c:if>
                 <!-- ======== this view,when the user starts a session ========-->
-                <c:if test="${validats}">
+                <c:if test="${!validats}">
                 <%-- TODO: make dinamic the idUser --%>
-                    <span data-idUser="612d7ce259a0773d739c651b" id="user-data" class="hidden">
+                    <span id="user-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
                             ${pageContext.request.contextPath}
                     </span>
                     <li class="nav__item">
@@ -329,9 +329,9 @@
                 <span class="chat__message">2: Técnica</span>
             </li>
             <%--Response of user--%>
-            <%-- <li class="chat__box chat__message--request" id="message-request">
-                  <span class="chat__message">Hello ;D</span>
-                </li> --%>
+            <%--        <li class="chat__box chat__message--request" id="message-request">
+                      <span class="chat__message">Hello ;D</span>
+                    </li>--%>
         </ul>
     </div>
     <%--Chat buttons --%>
@@ -344,7 +344,7 @@
 </section>
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
-<script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
-<script src="${pageContext.request.contextPath}/js/chats.js" type="module"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/animation.js"></script>
+<script src="${pageContext.request.contextPath}/js/chat.js" type="module"></script>
 </body>
 </html>

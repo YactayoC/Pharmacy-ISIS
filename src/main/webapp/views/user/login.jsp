@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- ========== default styles and icons ========== -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-style.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css" />
 

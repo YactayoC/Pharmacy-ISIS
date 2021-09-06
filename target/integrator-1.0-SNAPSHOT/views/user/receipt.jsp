@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- ========== default styles and icons ========== -->
         <link rel="stylesheet" href="../../styles/normalize.css">
-        <link rel="stylesheet" href="../../styles/overall-styles.css">
+        <link rel="stylesheet" href="../../styles/overall-style.css">
         <link rel="stylesheet" href="../../styles/style-icon.css">
 
         <!-- ========== styles for view user ========== -->

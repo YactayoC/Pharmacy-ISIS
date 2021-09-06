@@ -7,12 +7,12 @@
     <!-- ========== default styles and icons ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-style.css"/>
 
     <!-- ========== styles for view admin ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/styles.css"/>
     <!-- ========== styles only this page ========== -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/message.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/messages.css"/>
     <title>Messages</title>
 </head>
 <body>

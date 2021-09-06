@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- ========== default styles and icons ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-style.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css"/>
     <!-- ========== styles for view user ========== -->
@@ -241,7 +241,7 @@
 </section>
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
-<script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/animation.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/details.js"></script>
 </body>
 </html>

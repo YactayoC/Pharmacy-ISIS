@@ -7,7 +7,7 @@
     <!-- ========== default styles and icons ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css">
 
     <!-- ========== styles for view admin ========== -->
