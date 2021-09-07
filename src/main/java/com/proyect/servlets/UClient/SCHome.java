@@ -5,8 +5,8 @@ import com.proyect.modelsDAO.OProduct.CategoryDAO;
 import com.proyect.modelsDAO.OProduct.ProductDAO;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UClient.DistrictDAO;
+import com.proyect.modelsDTO.General.SaveImage;
 import com.proyect.modelsDTO.General.User;
-import com.proyect.modelsDTO.General.saveImage;
 import com.proyect.modelsDTO.OProduct.Category;
 import com.proyect.modelsDTO.OProduct.Product;
 import com.proyect.modelsDTO.UClient.Client;
@@ -105,7 +105,7 @@ public class SCHome extends HttpServlet {
             case "editAvatar":
                 idClient = Integer.parseInt(request.getParameter("idClient"));
                 Part part = request.getPart("photo");
-                String urlPhoto = new saveImage().saveAvatarClient(part);
+                String urlPhoto = new SaveImage().saveImage(part, "client");
 
                 client.setIdClient(idClient);
                 user.setIdUser(client.getUser().getIdUser());

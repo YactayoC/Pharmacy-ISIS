@@ -44,7 +44,7 @@
               type="file"
               name="photo"
               id="photo"
-              data-idUser="1"
+              data-idUser="1" <%-- here id of user --%>
               data-path="${pageContext.request.contextPath}"
               class="profile__input hidden"
               accept="image/*"

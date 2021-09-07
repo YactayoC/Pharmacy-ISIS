@@ -90,7 +90,7 @@
             </li>
             <!-- Setting -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/setting.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
                     <i class="isax isax-setting-2 nav__icon"></i>
                     <span class="nav__link-text">
               Perfil
@@ -434,7 +434,7 @@
 <script>
     const btnRemove = document.querySelectorAll(".remove-entity"),
         modalbtn = document.querySelector("#btn-delete"),
-        modalImage = document.querySelector("#modalImage");
+        modalImage = document.querySelector("#modalImage"),
         modalName = document.querySelector("#modalName");
     btnRemove.forEach(i => {
         const idDelete = i.getAttribute("data-remove"),

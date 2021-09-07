@@ -15,7 +15,6 @@ import org.bson.types.ObjectId;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @WebServlet(name = "SCRegister", value = "/SCRegister")
 public class SCRegister extends HttpServlet {
@@ -55,9 +54,9 @@ public class SCRegister extends HttpServlet {
         String password = request.getParameter("password");
 
         users = udao.list();
-        Optional<User> emailExists = users.stream().filter(u -> u.getEmail().equals(email)).findFirst();
+        boolean emailExists = users.stream().anyMatch((u -> u.getEmail().equals(email)));
 
-        if (emailExists.isPresent()) {
+        if (emailExists) {
             request.setAttribute("errorReg", true);
             request.setAttribute("errorRegister", "El email ingresado ya ha sido usado");//jsp register
             request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);

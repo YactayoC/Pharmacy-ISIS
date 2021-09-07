@@ -35,7 +35,7 @@ public class ServletProfile extends HttpServlet {
 
     //Save in MYSQL
     user.setAvatar(pathProfile);
-    new UserDAO().save(user);
+    new UserDAO().saveAvatar(user);
 
     //Save in MONGO
     ObjectId idMongo = new ObjectId(user.getIdMongo());

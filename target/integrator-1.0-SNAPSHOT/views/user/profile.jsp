@@ -103,7 +103,8 @@
           <input
               type="file"
               name="photo"
-              data-idUser="1" <%-- idUser here of MYSQL --%>
+              data-idUser="1" <%-- here id of user --%>
+              data-path="${pageContext.request.contextPath}"
               id="photo"
               class="profile__input"
               accept="image/*"
