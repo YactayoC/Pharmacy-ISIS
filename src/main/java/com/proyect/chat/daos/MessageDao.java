@@ -7,7 +7,7 @@ import com.mongodb.client.MongoDatabase;
 import com.proyect.chat.daos.repository.MessageRepository;
 import com.proyect.chat.model.Message;
 import com.proyect.chat.model.Relevance;
-import com.proyect.chat.model.User;
+import com.proyect.chat.model.Speaker;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -26,7 +26,7 @@ public class MessageDao implements MessageRepository {
   private MongoCollection<Document> messageCollection;
 
   @Override
-  public List<Message> getConversation(User emitter, User receiver) {
+  public List<Message> getConversation(Speaker emitter, Speaker receiver) {
     List<Message> messages = new ArrayList<>();
     try (MongoClient mongoClient = getConnection()) {
       MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
@@ -61,7 +61,7 @@ public class MessageDao implements MessageRepository {
   }
 
   @Override
-  public void viewed(User emitter) {
+  public void viewed(Speaker emitter) {
     try (MongoClient mongoClient = getConnection()) {
       MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
       messageCollection = pharmacyChat.getCollection(COLLECTION);
@@ -76,12 +76,12 @@ public class MessageDao implements MessageRepository {
   private Message getMessage(Document result) {
     var createdAt = LocalDateTime.parse(result.getDate("createAt").toString()); //parse date to localDateTime
     var relevance = Relevance.valueOf(result.getString("relevance"));
-    var emitter = new User();
+    var emitter = new Speaker();
     emitter.setId(result.getObjectId("idEmitter"))
            .setUsername(result.getString("username"))
            .setPhoto(result.getString("photo"));
 
-    var receiver = new User();
+    var receiver = new Speaker();
     receiver.setId(result.getObjectId("idReceiver"));
 
     var message = new Message();

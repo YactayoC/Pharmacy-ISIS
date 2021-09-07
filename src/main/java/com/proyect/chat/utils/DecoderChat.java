@@ -2,7 +2,7 @@ package com.proyect.chat.utils;
 
 import com.proyect.chat.model.Message;
 import com.proyect.chat.model.Relevance;
-import com.proyect.chat.model.User;
+import com.proyect.chat.model.Speaker;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
@@ -22,8 +22,8 @@ public class DecoderChat implements Decoder.Text<Message>{
 
       JsonObject json = jsonReader.readObject();
 
-      User emitter = new User();
-      User receiver = new User();
+      Speaker emitter = new Speaker();
+      Speaker receiver = new Speaker();
 
       //transform a string to Relevance Enum
       String jsonRelevance = json.getString("relevance");

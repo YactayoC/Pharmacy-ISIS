@@ -118,11 +118,13 @@
                 <form class="profile__picture" enctype="multipart/form-data">
                     <div class="profile__overlay" id="profile-overlay">
                         <input
-                                type="file"
-                                name="photo"
-                                id="photo"
-                                class="profile__input"
-                                accept="image/*"
+                            type="file"
+                            name="photo"
+                            id="photo"
+                            data-idUser="1" <%-- here id of user --%>
+                            data-path="${pageContext.request.contextPath}"
+                            class="profile__input"
+                            accept="image/*"
                         />
                         <i class="isax isax-user-octagon profile__icon"></i>
                     </div>

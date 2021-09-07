@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 public class Message {
   private ObjectId id;
-  private User emitter;
-  private User receiver;
+  private Speaker emitter;
+  private Speaker receiver;
   private String content;
   private Relevance relevance;
   private boolean viewed;
@@ -17,7 +17,7 @@ public class Message {
     this.createdAt = LocalDateTime.now();
   }
 
-  public Message(User emitter, User receiver, String content, Relevance relevance) {
+  public Message(Speaker emitter, Speaker receiver, String content, Relevance relevance) {
     this();
     this.emitter = emitter;
     this.receiver = receiver;
@@ -35,20 +35,20 @@ public class Message {
     return this;
   }
 
-  public User getEmitter() {
+  public Speaker getEmitter() {
     return emitter;
   }
 
-  public Message setEmitter(User emitter) {
+  public Message setEmitter(Speaker emitter) {
     this.emitter = emitter;
     return this;
   }
 
-  public User getReceiver() {
+  public Speaker getReceiver() {
     return receiver;
   }
 
-  public Message setReceiver(User receiver) {
+  public Message setReceiver(Speaker receiver) {
     this.receiver = receiver;
     return this;
   }

@@ -53,11 +53,11 @@ public class UserDAO implements Repository<User>, Validate {
 
     @Override
     public void save(User user) {
-        String sql = null;
+        String sql;
         if (user.getIdUser() != null && user.getIdUser() > 0) {
             sql = "UPDATE user SET  password = ? WHERE idUser = ?";
         } else {
-            sql = "INSERT INTO user(email,password,avatar,flag) VALUES (?,?,?,?) ";
+            sql = "INSERT INTO user(email,password,avatar,flag, idMongo) VALUES (?,?,?,?,?) ";
         }
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -70,6 +70,7 @@ public class UserDAO implements Repository<User>, Validate {
                 stmt.setString(2, user.getPassword());
                 stmt.setString(3, user.getAvatar());
                 stmt.setInt(4, user.getFlag());
+                stmt.setString(5, user.getIdMongo());
             }
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -99,11 +100,7 @@ public class UserDAO implements Repository<User>, Validate {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 userExist = true;
-                user.setIdUser(rs.getInt("idUser"));
-                user.setEmail(rs.getString("email"));
-                user.setPassword(rs.getString("password"));
-                user.setAvatar(rs.getString("avatar"));
-                user.setFlag(rs.getInt("flag"));
+                createUser(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,7 +114,7 @@ public class UserDAO implements Repository<User>, Validate {
         u.setEmail(rs.getString("email"));
         u.setPassword(rs.getString("password"));
         u.setFlag(rs.getInt("flag"));
-
+        u.setIdMongo(rs.getString("idMongo"));
         return u;
     }
 
@@ -130,7 +127,8 @@ public class UserDAO implements Repository<User>, Validate {
                     idUser = rs.getInt("idUser");
                 }
             }
-        } catch (SQLException ignored) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return idUser;
     }

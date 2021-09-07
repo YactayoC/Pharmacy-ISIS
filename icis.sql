@@ -10,15 +10,15 @@ CREATE TABLE IF NOT EXISTS client (
   idDistrict INT NOT NULL,
   idUser INT NOT NULL,
   FOREIGN KEY (idDistrict) REFERENCES district(id),
-  FOREIGN KEY (idUser) REFERENCES user(id)
+  FOREIGN KEY (idUser) REFERENCES speaker(id)
 );
 -- Table: District
 CREATE TABLE IF NOT EXISTS district (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL UNIQUE
 );
--- Table: user
-CREATE TABLE IF NOT EXISTS user (
+-- Table: speaker
+CREATE TABLE IF NOT EXISTS speaker (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS employee (
   idRole INT NOT NULL,
   idUser INT NOT NULL,
   FOREIGN KEY (idRole) REFERENCES role(id),
-  FOREIGN KEY (idUser) REFERENCES user(id)
+  FOREIGN KEY (idUser) REFERENCES speaker(id)
 );
 
 /* =================== Schema Catalog =================== */

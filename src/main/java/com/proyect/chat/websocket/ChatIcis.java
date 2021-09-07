@@ -1,7 +1,7 @@
 package com.proyect.chat.websocket;
 
 import com.proyect.chat.daos.MessageDao;
-import com.proyect.chat.daos.UserDao;
+import com.proyect.chat.daos.SpeakerDao;
 import com.proyect.chat.model.Message;
 import com.proyect.chat.utils.DecoderChat;
 import com.proyect.chat.utils.EncoderChat;
@@ -21,8 +21,8 @@ public class ChatIcis {
   //private static final Set<ChatIcis> chatIcis = new CopyOnWriteArraySet<>();
   private static final Map<String, Session> users = new HashMap<>();
 
-  private static final UserDao userDao= new UserDao();
-  private static final MessageDao messageDao = new MessageDao();
+  private static final SpeakerDao SPEAKER_DAO = new SpeakerDao();
+  private static final MessageDao MESSAGE_DAO = new MessageDao();
   private String adminId = "612c4334830bd85439865cb7";
 
   private static final List<Message> messages = new ArrayList<>();
