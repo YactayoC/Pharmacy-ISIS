@@ -39,7 +39,7 @@
   --description: 14px;
   --small-text: 12px;
   --very-small: 6px;
-}  
+}
 #__lpform_name,#__lpform_password {display: none}
 * {
   box-sizing: border-box;
@@ -105,4 +105,7 @@ button,input {
 .hidden {
   display: none !important;
   transition: display .3s ease-in-out;
+}
+form {
+  margin: 0;
 }
