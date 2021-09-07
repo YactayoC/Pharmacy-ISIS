@@ -1,10 +1,13 @@
 package com.proyect.servlets.UClient;
 
 import com.proyect.modelsDAO.General.UserDAO;
+import com.proyect.modelsDAO.OProduct.CategoryDAO;
 import com.proyect.modelsDAO.OProduct.ProductDAO;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UClient.DistrictDAO;
 import com.proyect.modelsDTO.General.User;
+import com.proyect.modelsDTO.General.saveImage;
+import com.proyect.modelsDTO.OProduct.Category;
 import com.proyect.modelsDTO.OProduct.Product;
 import com.proyect.modelsDTO.UClient.Client;
 import com.proyect.modelsDTO.UClient.District;
@@ -20,7 +23,7 @@ import java.util.List;
 public class SCHome extends HttpServlet {
 
     List<Product> products = new ArrayList<>();
-    List<Product> categories = new ArrayList<>();
+    List<Category> categories = new ArrayList<>();
     List<District> districts = new ArrayList<>();
     Client client = new Client();
     User user = new User();
@@ -29,19 +32,15 @@ public class SCHome extends HttpServlet {
     ClientDAO cdao = new ClientDAO();
     UserDAO udao = new UserDAO();
     ProductDAO pdao = new ProductDAO();
+    CategoryDAO ctdao = new CategoryDAO();
+    Boolean actualizate = true;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
-            case "list":
-                products = pdao.listLast();
-                HttpSession session = request.getSession();
-                session.setAttribute("products", products);
-                request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
-                break;
             case "search":
-                categories = pdao.list();
+                categories = ctdao.list();
                 String text = request.getParameter("search");
                 products = pdao.search(text);
                 request.setAttribute("categories", categories);
@@ -57,42 +56,63 @@ public class SCHome extends HttpServlet {
                 request.setAttribute("client", client);
                 request.getRequestDispatcher("/views/user/profile.jsp").forward(request, response);
                 break;
+            default:
+                products = pdao.listLast();
+                HttpSession sessioon = request.getSession();
+                sessioon.setAttribute("products", products);
+                request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
+                break;
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("editProfile")) {
-            int idClient = Integer.parseInt(request.getParameter("idClient"));
-            String name = request.getParameter("name");
-            String surname = request.getParameter("surname");
-            String username = request.getParameter("username");
-            String phone = request.getParameter("phone");
-            String password = request.getParameter("password");
-            String address = request.getParameter("address");
-            int districtt = Integer.parseInt(request.getParameter("district"));
+        switch (action) {
+            case "editProfile":
+                int idClient = Integer.parseInt(request.getParameter("idClient"));
+                String name = request.getParameter("name");
+                String surname = request.getParameter("surname");
+                String username = request.getParameter("username");
+                String phone = request.getParameter("phone");
+                String password = request.getParameter("password");
+                String address = request.getParameter("address");
+                int districtt = Integer.parseInt(request.getParameter("district"));
 
-            client.setIdClient(idClient);
-            client.setUsername(username);
-            client.setName(name);
-            client.setSurname(surname);
-            client.setAddress(address);
-            client.setPhone(phone);
-            district.setIdDistrict(districtt);
-            client.setDistrict(district);
+                client.setIdClient(idClient);
+                client.setUsername(username);
+                client.setName(name);
+                client.setSurname(surname);
+                client.setAddress(address);
+                client.setPhone(phone);
+                district.setIdDistrict(districtt);
+                client.setDistrict(district);
 
-            user.setIdUser(client.getUser().getIdUser());
-            user.setPassword(password);
-            user.setAvatar("client.png");
+                user.setIdUser(client.getUser().getIdUser());
+                user.setPassword(password);
 
-            udao.save(user);
-            cdao.save(client);
-            HttpSession session = request.getSession();
-            session.setAttribute("usernameHome", username);
-            request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
+                udao.save(user);
+                cdao.save(client);
+
+                actualizate = true;
+                HttpSession session = request.getSession();
+                session.setAttribute("usernameHome", username);
+                session.setAttribute("actualizateHome",actualizate);
+
+                response.sendRedirect("SCHome?action=list");
+                break;
+            case "editAvatar":
+                idClient = Integer.parseInt(request.getParameter("idClient"));
+                Part part = request.getPart("photo");
+                String urlPhoto = new saveImage().saveAvatarClient(part);
+
+                client.setIdClient(idClient);
+                user.setIdUser(client.getUser().getIdUser());
+                user.setAvatar(urlPhoto);
+                udao.saveAvatar(user);
+                request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
+                break;
         }
     }
 

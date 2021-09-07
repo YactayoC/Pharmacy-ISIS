@@ -50,6 +50,7 @@ public class SGLogin extends HttpServlet {
 
             boolean userExist = udao.validate(user);
             if (userExist) {
+                validats = true;
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("validats", validats);

@@ -55,7 +55,7 @@ public class UserDAO implements Repository<User>, Validate {
     public void save(User user) {
         String sql = null;
         if (user.getIdUser() != null && user.getIdUser() > 0) {
-            sql = "UPDATE user SET  password = ?, avatar = ? WHERE idUser = ?";
+            sql = "UPDATE user SET  password = ? WHERE idUser = ?";
         } else {
             sql = "INSERT INTO user(email,password,avatar,flag) VALUES (?,?,?,?) ";
         }
@@ -64,8 +64,7 @@ public class UserDAO implements Repository<User>, Validate {
 
             if (user.getIdUser() != null && user.getIdUser() > 0) {
                 stmt.setString(1, user.getPassword());
-                stmt.setString(2, user.getAvatar());
-                stmt.setInt(3, user.getIdUser());
+                stmt.setInt(2, user.getIdUser());
             } else {
                 stmt.setString(1, user.getEmail());
                 stmt.setString(2, user.getPassword());
@@ -134,6 +133,19 @@ public class UserDAO implements Repository<User>, Validate {
         } catch (SQLException ignored) {
         }
         return idUser;
+    }
+
+    public void saveAvatar(User user) {
+        String sql = null;
+        sql = "UPDATE user SET avatar = ? WHERE idUser = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getAvatar());
+            stmt.setInt(2, user.getIdUser());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

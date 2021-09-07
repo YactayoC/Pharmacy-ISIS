@@ -66,7 +66,7 @@
           </li>
         </c:if>
         <!-- ======== this view,when the user starts a session ========-->
-        <c:if test="${!validats}">
+        <c:if test="${validats}">
           <%-- TODO: make dinamic the idUser --%>
           <span id="user-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
               ${pageContext.request.contextPath}

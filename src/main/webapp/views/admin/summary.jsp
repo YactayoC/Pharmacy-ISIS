@@ -82,7 +82,6 @@
                 </a>
             </li>
             <!-- Setting -->
-
             <li class="nav__item">
                 <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
                     <i class="isax isax-setting-2 nav__icon"></i>
