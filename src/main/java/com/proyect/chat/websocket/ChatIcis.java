@@ -11,17 +11,17 @@ import jakarta.websocket.server.ServerEndpoint;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 @ServerEndpoint(value = "/chatIcis/{idUser}",
        encoders = {EncoderChat.class},
        decoders = {DecoderChat.class})
 public class ChatIcis {
 
-  //private Session session;
-  //private static final Set<ChatIcis> chatIcis = new CopyOnWriteArraySet<>();
+  private Session session;
+  private static final Set<ChatIcis> chatIcis = new CopyOnWriteArraySet<>();
   private static final Map<String, Session> users = new HashMap<>();
 
-  private static final SpeakerDao SPEAKER_DAO = new SpeakerDao();
   private static final MessageDao MESSAGE_DAO = new MessageDao();
   private String adminId = "612c4334830bd85439865cb7";
 
@@ -30,8 +30,8 @@ public class ChatIcis {
   @OnOpen
   public void init(Session session,
                    @PathParam("idUser") String idUser) throws IOException {
-/*    this.session = session;
-    chatIcis.add(this);*/
+    this.session = session;
+    chatIcis.add(this);
     //add user to Map
     users.put(idUser, session);
     System.out.println(idUser);
@@ -56,13 +56,22 @@ public class ChatIcis {
 
   @OnClose
   public void logout() throws IOException{
-/*    messageDao.saveMessages(messages);
-    messages.clear();*/
+    chatIcis.remove(this);
     System.out.println("logout");
+    if (chatIcis.isEmpty()) {
+      saveMessages();
+    }
   }
 
   private void sendMessage(Session receiver, Message message) throws EncodeException, IOException {
     receiver.getBasicRemote().sendObject(message);
 
+  }
+
+  private void saveMessages() {
+    if (!messages.isEmpty()) {
+      MESSAGE_DAO.saveMessages(messages);
+    }
+    messages.clear();
   }
 }

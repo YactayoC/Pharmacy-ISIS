@@ -4,6 +4,7 @@ import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.InsertManyOptions;
 import com.proyect.chat.daos.repository.MessageRepository;
 import com.proyect.chat.model.Message;
 import com.proyect.chat.model.Relevance;
@@ -49,14 +50,14 @@ public class MessageDao implements MessageRepository {
 
       if (messages.size() == 1) {
         messageCollection.insertOne(generateMessage(messages.get(0)));
-        return;
+      } else {
+        List<Document> conversation = new ArrayList<>();
+        messages.forEach(message ->
+               conversation.add(generateMessage(message))
+        );
+        InsertManyOptions options = new InsertManyOptions().ordered(false);
+        messageCollection.insertMany(conversation, options);
       }
-
-      List<Document> conversation = new ArrayList<>();
-      messages.forEach(message ->
-             conversation.add(generateMessage(message))
-      );
-      messageCollection.insertMany(conversation);
     }
   }
 
@@ -101,7 +102,7 @@ public class MessageDao implements MessageRepository {
            .append("idEmitter", message.getEmitter().getId())
            .append("idReceiver", message.getReceiver().getId())
            .append("content", message.getContent())
-           .append("relevance", message.getRelevance())
+           .append("relevance", message.getRelevance().toString())
            .append("viewed", message.isViewed())
            .append("createAt", message.getCreatedAt());
   }

@@ -35,8 +35,7 @@ public class SCHome extends HttpServlet {
     Boolean actualizate = true;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
             case "search":
@@ -58,7 +57,8 @@ public class SCHome extends HttpServlet {
                 break;
             default:
                 products = pdao.listLast();
-                request.getSession().setAttribute("products", products);
+                HttpSession sessioon = request.getSession();
+                sessioon.setAttribute("products", products);
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
                 break;
         }
@@ -68,30 +68,31 @@ public class SCHome extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("editProfile")) {
-            int idClient = Integer.parseInt(request.getParameter("idClient"));
-            String name = request.getParameter("name");
-            String surname = request.getParameter("surname");
-            String username = request.getParameter("username");
-            String phone = request.getParameter("phone");
-            String password = request.getParameter("password");
-            String address = request.getParameter("address");
-            int districtt = Integer.parseInt(request.getParameter("district"));
+        switch (action) {
+            case "editProfile":
+                int idClient = Integer.parseInt(request.getParameter("idClient"));
+                String name = request.getParameter("name");
+                String surname = request.getParameter("surname");
+                String username = request.getParameter("username");
+                String phone = request.getParameter("phone");
+                String password = request.getParameter("password");
+                String address = request.getParameter("address");
+                int districtt = Integer.parseInt(request.getParameter("district"));
 
-            client.setIdClient(idClient);
-            client.setUsername(username);
-            client.setName(name);
-            client.setSurname(surname);
-            client.setAddress(address);
-            client.setPhone(phone);
-            district.setIdDistrict(districtt);
-            client.setDistrict(district);
+                client.setIdClient(idClient);
+                client.setUsername(username);
+                client.setName(name);
+                client.setSurname(surname);
+                client.setAddress(address);
+                client.setPhone(phone);
+                district.setIdDistrict(districtt);
+                client.setDistrict(district);
 
-            user.setIdUser(client.getUser().getIdUser());
-            user.setPassword(password);
+                user.setIdUser(client.getUser().getIdUser());
+                user.setPassword(password);
 
-            udao.save(user);
-            cdao.save(client);
+                udao.save(user);
+                cdao.save(client);
 
             actualizate = true;
             request.getSession().setAttribute("usernameHome", username);

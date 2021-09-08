@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Updates.*;
 import static com.proyect.connDB.Mongo.*;
 
 public class SpeakerDao implements UserRepository {
@@ -84,12 +85,17 @@ public class SpeakerDao implements UserRepository {
   }
 
   //create default client
-  private Document generateUser(Speaker speaker) {
-    return new Document("_id", speaker.getId())
-           .append("name", speaker.getName())
-           .append("username", speaker.getUsername())
-           .append("email", speaker.getEmail())
-           .append("photo", speaker.getPhoto())
-           .append("isEmployee", false);
+  private Bson generateUser(Speaker speaker) {
+
+    Bson updatePhoto = set("photo", speaker.getPhoto());
+    if (speaker.getUsername() == null || speaker.getEmail() == null) {
+      return combine(updatePhoto);
+    }
+
+    Bson updateName = set("name", speaker.getName());
+    Bson updateUsername = set("username", speaker.getUsername());
+    Bson updateEmail = set("emial", speaker.getEmail());
+
+    return combine(updateName, updateUsername, updateEmail, updatePhoto);
   }
 }

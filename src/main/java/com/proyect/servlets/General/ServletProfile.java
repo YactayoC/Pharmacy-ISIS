@@ -35,14 +35,14 @@ public class ServletProfile extends HttpServlet {
 
     //Save in MYSQL
     user.setAvatar(pathProfile);
-    new UserDAO().saveAvatar(user);
-/*
+    new UserDAO().save(user);
+
     //Save in MONGO
     ObjectId idMongo = new ObjectId(user.getIdMongo());
     Speaker speaker = new Speaker()
            .setId(idMongo)
            .setPhoto(pathProfile);
     new SpeakerDao().save(speaker);
-*/
+
   }
 }

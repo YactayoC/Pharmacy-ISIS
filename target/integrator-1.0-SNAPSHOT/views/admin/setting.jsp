@@ -31,7 +31,7 @@
         <ul class="nav__list grid">
             <!-- summary -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/summary.jsp" class="nav__link">
+                <a href="summary.jsp" class="nav__link">
                     <i class="isax isax-chart-square nav__icon"></i>
                     <span class="nav__link-text">
               Resumen
@@ -40,7 +40,7 @@
             </li>
             <!-- Messages -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/message.jsp" class="nav__link">
+                <a href="message.jsp" class="nav__link">
                     <i class="isax isax-message-favorite nav__icon"></i>
                     <span class="nav__link-text">
               Mensajes
@@ -49,7 +49,7 @@
             </li>
             <!-- Sales -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/sale.jsp" class="nav__link">
+                <a href="sale.jsp" class="nav__link">
                     <i class="isax isax-money-send nav__icon"></i>
                     <span class="nav__link-text">
               Ventas
@@ -87,7 +87,7 @@
             </li>
             <!-- Setting -->
             <li class="nav__item nav__item--active">
-                <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/setting.jsp" class="nav__link">
                     <i class="isax isax-setting-2 nav__icon"></i>
                     <span class="nav__link-text">
               Perfil
@@ -118,13 +118,11 @@
                 <form class="profile__picture" enctype="multipart/form-data">
                     <div class="profile__overlay" id="profile-overlay">
                         <input
-                            type="file"
-                            name="photo"
-                            id="photo"
-                            data-idUser="${employeeS.getUser().getIdUser()}" <%-- here id of user --%>
-                            data-path="${pageContext.request.contextPath}"
-                            class="profile__input"
-                            accept="image/*"
+                                type="file"
+                                name="photo"
+                                id="photo"
+                                class="profile__input"
+                                accept="image/*"
                         />
                         <i class="isax isax-user-octagon profile__icon"></i>
                     </div>
