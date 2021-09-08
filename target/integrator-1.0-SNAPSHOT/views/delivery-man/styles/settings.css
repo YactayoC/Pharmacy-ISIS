@@ -1,7 +1,0 @@
-:root {
-  --url-profile: url('../assets/img/photo-user.webp')
-}
-
-.profile__picture {
-  background: var(--url-profile) no-repeat center/cover;
-}

@@ -121,7 +121,7 @@
                             type="file"
                             name="photo"
                             id="photo"
-                            data-idUser="1" <%-- here id of user --%>
+                            data-idUser="${employeeS.getUser().getIdUser()}" <%-- here id of user --%>
                             data-path="${pageContext.request.contextPath}"
                             data-urlProfile="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}"
                             class="profile__input"
