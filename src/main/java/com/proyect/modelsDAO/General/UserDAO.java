@@ -100,7 +100,11 @@ public class UserDAO implements Repository<User>, Validate {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 userExist = true;
-                createUser(rs);
+                user.setIdUser(rs.getInt("idUser"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setAvatar(rs.getString("avatar"));
+                user.setFlag(rs.getInt("flag"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
