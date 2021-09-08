@@ -1,4 +1,4 @@
-/* =================== Schema client ===================*/
+/* =================== Schema client DB MONGO;:V ===================*/
 -- Table: client
 CREATE TABLE IF NOT EXISTS client (
   id INT PRIMARY KEY AUTO_INCREMENT,
