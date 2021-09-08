@@ -46,6 +46,7 @@
               id="photo"
               data-idUser="1" <%-- here id of user --%>
               data-path="${pageContext.request.contextPath}"
+              data-urlProfile="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" <%-- here is URL of profile --%>
               class="profile__input hidden"
               accept="image/*"
           />

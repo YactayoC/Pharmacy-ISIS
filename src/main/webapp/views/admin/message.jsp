@@ -30,10 +30,10 @@
     <h1 class="nav__logo logo logo--gradient">Icis</h1>
     <div class="nav__profile">
       <img
-              src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}"
-              alt="Name of admin"
-              class="nav__img nav__zipped-img"
-              id="user-image"
+        src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}"
+        alt="Name of admin"
+        class="nav__img nav__zipped-img"
+        id="user-image"
       />
       <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
       <span id="id-admin" data-id="612c4334830bd85439865cb7" class="hidden">
