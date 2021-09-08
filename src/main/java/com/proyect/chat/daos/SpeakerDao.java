@@ -29,7 +29,7 @@ public class SpeakerDao implements UserRepository {
       userCollection = pharmacyChat.getCollection(COLLECTION);
 
       if (speaker.getId() == null) speaker.setId(new ObjectId());
-
+      System.out.println(speaker.getId());
       Bson filterByID = eq("_id", speaker.getId()); //filter for update
       UpdateOptions options = new UpdateOptions().upsert(true); //if _id doesn't exist create a new user
       UpdateResult result = userCollection

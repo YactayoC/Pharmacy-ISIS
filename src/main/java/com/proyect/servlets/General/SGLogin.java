@@ -24,16 +24,14 @@ public class SGLogin extends HttpServlet {
     EmployeeDAO edao = new EmployeeDAO();
     Boolean validats = true;
     Integer idUser;
-
+    boolean actualizate;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action.equals("exit")) {
-            idUser = null;
-            validats = false;
-            user.setIdUser(idUser);
-            request.getSession().setAttribute("validats", validats);
+            request.getSession().setAttribute("actualizateHome", actualizate = false);
+            request.getSession().setAttribute("validats", validats = false);
             request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
         }
     }
@@ -47,13 +45,12 @@ public class SGLogin extends HttpServlet {
             String password = request.getParameter("password");
             user.setEmail(email);
             user.setPassword(password);
-
             boolean userExist = udao.validate(user);
             if (userExist) {
-                validats = true;
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("password", password);
-                request.getSession().setAttribute("validats", validats);
+                request.getSession().setAttribute("validats", validats = true);
+
                 idUser = user.getIdUser();
                 int flag = user.getFlag();
                 if (flag == 1) {
@@ -72,13 +69,13 @@ public class SGLogin extends HttpServlet {
                     int idClient = client.getIdClient();
                     String username = client.getUsername();
                     request.getSession().setAttribute("idClientHome", idClient);
-                    request.getSession().setAttribute("username", username);
+                    request.getSession().setAttribute("usernameLog", username);
                     response.sendRedirect("SCHome?action=list");
                 }
             } else {
                 String errorMessage = "Datos incorrectos";
                 request.setAttribute("errorLog", true);
-                request.setAttribute("errorLogin", errorMessage); //jsp login
+                request.setAttribute("errorLogin", errorMessage);
                 request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
             }
         }

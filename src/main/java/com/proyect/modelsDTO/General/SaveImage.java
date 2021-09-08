@@ -13,15 +13,15 @@ public class SaveImage {
 
     public String saveImage(Part part, String typeModel) {
 
-        String absolutePath = "C:\\Users\\LENOVO\\IdeaProjects\\icis-sebas\\src\\main\\webapp\\assets\\images";
+        String absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\assets\\image";
 
         switch (typeModel) {
             case "product" ->
-                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\integrator\\src\\main\\webapp\\views\\admin\\assets\\img";
+                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\views\\admin\\assets\\img";
             case "client" ->
-                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\integrator\\src\\main\\webapp\\views\\user\\assets\\avatar";
+                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\views\\user\\assets\\avatar";
             case "employee" ->
-                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\integrator\\src\\main\\webapp\\views\\admin\\assets\\avatar";
+                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\views\\admin\\assets\\avatar";
         }
 
         File fileUpload = new File(absolutePath);

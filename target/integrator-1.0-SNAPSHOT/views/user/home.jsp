@@ -66,7 +66,7 @@
           </li>
         </c:if>
         <!-- ======== this view,when the user starts a session ========-->
-        <c:if test="${!validats}">
+        <c:if test="${validats}">
           <%-- TODO: make dinamic the idUser --%>
           <span id="user-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
               ${pageContext.request.contextPath}
@@ -75,7 +75,12 @@
             <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
                class="nav__link btn btn-white"> <!--serlvet -->
               <i class="isax isax-profile-circle nav__profile-icon"></i>
-                ${username}
+              <c:if test="${!actualizateHome}"> <!--SGLogin -->
+                ${usernameLog}
+              </c:if>
+              <c:if test="${actualizateHome}"> <!--SCHome -->
+                ${usernameHome}
+              </c:if>
             </a>
           </li>
         </c:if>

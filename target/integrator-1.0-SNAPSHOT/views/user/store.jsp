@@ -77,7 +77,12 @@
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
                            class="nav__link btn btn-white">
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
-                                ${username}
+                            <c:if test="${actualizateHome == null}">
+                                ${usernameLog}
+                            </c:if>
+                            <c:if test="${actualizateHome}">
+                                ${usernameHome}
+                            </c:if>
                         </a>
                     </li>
                 </c:if>

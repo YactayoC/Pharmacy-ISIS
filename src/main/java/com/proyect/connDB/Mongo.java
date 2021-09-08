@@ -5,9 +5,8 @@ import com.mongodb.client.MongoClients;
 
 public class Mongo {
 
-    private final static String CONNECTION_STRING = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass" +
-            "&directConnection=true&ssl=false";
-    public final static String DATABASE = "idChat";
+    private final static String CONNECTION_STRING = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
+    public final static String DATABASE = "chatIcis";
     private static MongoClient instance;
 
     private Mongo(){}

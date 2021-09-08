@@ -6,7 +6,6 @@ import com.proyect.modelsDAO.OProduct.ProductDAO;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UClient.DistrictDAO;
 import com.proyect.modelsDTO.General.User;
-import com.proyect.modelsDTO.General.saveImage;
 import com.proyect.modelsDTO.OProduct.Category;
 import com.proyect.modelsDTO.OProduct.Product;
 import com.proyect.modelsDTO.UClient.Client;
@@ -36,7 +35,8 @@ public class SCHome extends HttpServlet {
     Boolean actualizate = true;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
             case "search":
@@ -58,8 +58,7 @@ public class SCHome extends HttpServlet {
                 break;
             default:
                 products = pdao.listLast();
-                HttpSession sessioon = request.getSession();
-                sessioon.setAttribute("products", products);
+                request.getSession().setAttribute("products", products);
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
                 break;
         }
@@ -69,50 +68,35 @@ public class SCHome extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        switch (action) {
-            case "editProfile":
-                int idClient = Integer.parseInt(request.getParameter("idClient"));
-                String name = request.getParameter("name");
-                String surname = request.getParameter("surname");
-                String username = request.getParameter("username");
-                String phone = request.getParameter("phone");
-                String password = request.getParameter("password");
-                String address = request.getParameter("address");
-                int districtt = Integer.parseInt(request.getParameter("district"));
+        if (action.equals("editProfile")) {
+            int idClient = Integer.parseInt(request.getParameter("idClient"));
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
+            String username = request.getParameter("username");
+            String phone = request.getParameter("phone");
+            String password = request.getParameter("password");
+            String address = request.getParameter("address");
+            int districtt = Integer.parseInt(request.getParameter("district"));
 
-                client.setIdClient(idClient);
-                client.setUsername(username);
-                client.setName(name);
-                client.setSurname(surname);
-                client.setAddress(address);
-                client.setPhone(phone);
-                district.setIdDistrict(districtt);
-                client.setDistrict(district);
+            client.setIdClient(idClient);
+            client.setUsername(username);
+            client.setName(name);
+            client.setSurname(surname);
+            client.setAddress(address);
+            client.setPhone(phone);
+            district.setIdDistrict(districtt);
+            client.setDistrict(district);
 
-                user.setIdUser(client.getUser().getIdUser());
-                user.setPassword(password);
+            user.setIdUser(client.getUser().getIdUser());
+            user.setPassword(password);
 
-                udao.save(user);
-                cdao.save(client);
+            udao.save(user);
+            cdao.save(client);
 
-                actualizate = true;
-                HttpSession session = request.getSession();
-                session.setAttribute("usernameHome", username);
-                session.setAttribute("actualizateHome",actualizate);
-
-                response.sendRedirect("SCHome?action=list");
-                break;
-            case "editAvatar":
-                idClient = Integer.parseInt(request.getParameter("idClient"));
-                Part part = request.getPart("photo");
-                String urlPhoto = new saveImage().saveAvatarClient(part);
-
-                client.setIdClient(idClient);
-                user.setIdUser(client.getUser().getIdUser());
-                user.setAvatar(urlPhoto);
-                udao.saveAvatar(user);
-                request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
-                break;
+            actualizate = true;
+            request.getSession().setAttribute("usernameHome", username);
+            request.getSession().setAttribute("actualizateHome", actualizate);
+            response.sendRedirect("SCHome?action=list");
         }
     }
 

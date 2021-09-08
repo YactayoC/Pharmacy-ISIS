@@ -64,25 +64,25 @@ public class SCRegister extends HttpServlet {
         } else {
             String avatar = "client.png";
 
-            //Mongo User
+            /* Mongo User
             ObjectId _id = new ObjectId();
             Speaker speaker = new Speaker()
-                   .setId(_id)
+                    .setId(_id)
                    .setUsername(username)
                    .setName(name)
                    .setEmail(email)
                    .setPhoto(avatar);
 
-            new SpeakerDao().save(speaker);
+            new SpeakerDao().save(speaker);*/
 
-            //Mysql User
+            // Mysql User
             Integer idUser = null;
             user.setIdUser(idUser);
             user.setEmail(email);
             user.setPassword(password);
             user.setAvatar(avatar);
             user.setFlag(0);
-            user.setIdMongo(_id.toHexString());
+            //user.setIdMongo(_id.toHexString());
             udao.save(user);
 
             idUser = udao.getLastIdUser();
