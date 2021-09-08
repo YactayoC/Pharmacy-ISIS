@@ -110,6 +110,7 @@
                             name="photo"
                             data-idUser="${client.getUser().getIdUser()}" <%-- here id of user --%>
                             data-path="${pageContext.request.contextPath}"
+                            data-urlProfile="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}"
                             id="photo"
                             class="profile__input"
                             accept="image/*"
