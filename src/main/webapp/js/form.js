@@ -1,5 +1,5 @@
 const formInput = document.querySelectorAll('.form__input');
-//form__field-valid
+
 formInput.forEach(i => {
   i.addEventListener('focus', () => {
     i.parentElement.classList.toggle('form__field-valid');
