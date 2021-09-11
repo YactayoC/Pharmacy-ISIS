@@ -5,7 +5,6 @@ import com.proyect.modelsDAO.OProduct.CategoryDAO;
 import com.proyect.modelsDAO.OProduct.ProductDAO;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UClient.DistrictDAO;
-import com.proyect.modelsDTO.General.SaveImage;
 import com.proyect.modelsDTO.General.User;
 import com.proyect.modelsDTO.OProduct.Category;
 import com.proyect.modelsDTO.OProduct.Product;
@@ -95,24 +94,10 @@ public class SCHome extends HttpServlet {
                 udao.save(user);
                 cdao.save(client);
 
-                actualizate = true;
-                HttpSession session = request.getSession();
-                session.setAttribute("usernameHome", username);
-                session.setAttribute("actualizateHome",actualizate);
-
-                response.sendRedirect("SCHome?action=list");
-                break;
-            case "editAvatar":
-                idClient = Integer.parseInt(request.getParameter("idClient"));
-                Part part = request.getPart("photo");
-                String urlPhoto = new SaveImage().saveImage(part, "client");
-
-                client.setIdClient(idClient);
-                user.setIdUser(client.getUser().getIdUser());
-                user.setAvatar(urlPhoto);
-                udao.saveAvatar(user);
-                request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
-                break;
+            actualizate = true;
+            request.getSession().setAttribute("usernameHome", username);
+            request.getSession().setAttribute("actualizateHome", actualizate);
+            response.sendRedirect("SCHome?action=list");
         }
     }
 
