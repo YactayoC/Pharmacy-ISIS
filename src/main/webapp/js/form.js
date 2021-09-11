@@ -14,7 +14,7 @@ const profileOverlay = document.querySelector('#profile-overlay'),
     urlProfileFromDB = photo.getAttribute("data-urlProfile"),
     urlProfile = document.documentElement.style;
 
-urlProfile.setProperty('--url-profile', urlProfileFromDB);
+urlProfile.setProperty('--url-profile', `url(${urlProfileFromDB})`);
 
 if (profileOverlay) {
   profileOverlay.addEventListener('click', () => {

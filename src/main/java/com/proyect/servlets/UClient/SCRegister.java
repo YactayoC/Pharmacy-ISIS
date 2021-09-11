@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @WebServlet(name = "SCRegister", value = "/SCRegister")
 public class SCRegister extends HttpServlet {
 
@@ -54,7 +55,7 @@ public class SCRegister extends HttpServlet {
         String password = request.getParameter("password");
 
         users = udao.list();
-        boolean emailExists = users.stream().anyMatch((u -> u.getEmail().equals(email)));
+        boolean emailExists = users.stream().parallel().anyMatch(u -> u.getEmail().equals(email));
 
         if (emailExists) {
             request.setAttribute("errorReg", true);
@@ -63,16 +64,16 @@ public class SCRegister extends HttpServlet {
         } else {
             String avatar = "client.png";
 
-            /* Mongo User
+            //Mongo User
             ObjectId _id = new ObjectId();
             Speaker speaker = new Speaker()
                     .setId(_id)
-                   .setUsername(username)
-                   .setName(name)
-                   .setEmail(email)
-                   .setPhoto(avatar);
+                    .setUsername(username)
+                    .setName(name)
+                    .setEmail(email)
+                    .setPhoto(avatar);
 
-            new SpeakerDao().save(speaker);*/
+            new SpeakerDao().save(speaker);
 
             // Mysql User
             Integer idUser = null;
@@ -81,7 +82,7 @@ public class SCRegister extends HttpServlet {
             user.setPassword(password);
             user.setAvatar(avatar);
             user.setFlag(0);
-            //user.setIdMongo(_id.toHexString());
+            user.setIdMongo(_id.toHexString());
             udao.save(user);
 
             idUser = udao.getLastIdUser();
@@ -100,4 +101,5 @@ public class SCRegister extends HttpServlet {
         }
         response.sendRedirect("views/user/login.jsp");
     }
+
 }
