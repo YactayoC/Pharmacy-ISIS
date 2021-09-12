@@ -4,16 +4,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ========== default styles and icons ========== -->
-  <link rel="stylesheet" href="../../styles/normalize.css" />
-  <link rel="stylesheet" href="../../styles/style-icon.css" />
-  <link rel="stylesheet" href="../../styles/overall-styles.css" />
-  <link rel="stylesheet" href="../../styles/swiper-bundle.min.css">
-  <link rel="stylesheet" href="../../styles/form.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/swiper-bundle.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css">
 
   <!-- ========== styles for view admin ========== -->
-  <link rel="stylesheet" href="views/admin/styles/style.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/styles.css" />
   <!-- ========== styles only this page ========== -->
-  <link rel="stylesheet" href="views/admin/styles/sale-offline.css" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/sale-offline.css" />
   <title>Venta offline</title>
 </head>
 <body>
@@ -463,8 +463,8 @@
 </main>
 
 <!-- ========== zipped unzipped nav ========== -->
-<script src="views/admin/js/nav.js"></script>
-<script src="../../js/swiper-bundle.js"></script>
-<script src="views/admin/js/offline-sale.js"></script>
+<script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
+<script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
+<script src="${pageContext.request.contextPath}/views/admin/js/offline-sale.js"></script>
 </body>
 </html>

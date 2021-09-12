@@ -135,7 +135,7 @@
                 <button class="option option-filter" data-filter="offline">offline
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
-                <a href="offline-sale.jsp" class="option sale__btn">
+                <a href="${pageContext.request.contextPath}/views/admin/offline-sale.jsp" class="option sale__btn">
                     <i class="isax isax-bag-happy sale__icon"></i> Compra presencial
                 </a>
             </div>
