@@ -34,7 +34,7 @@
         <ul class="nav__list grid">
             <!-- summary -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/summary.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SASummary?action=list" class="nav__link">
                     <i class="isax isax-chart-square nav__icon"></i>
                     <span class="nav__link-text">
               Resumen
@@ -130,7 +130,7 @@
                         class="search__input"
                         placeholder="Buscar producto"
                 />
-                <button type="submit" class="search__button" name="action" value="searchP">
+                <button type="submit" class="search__button" name="action" value="search">
                     Buscar
                     <i class="isax isax-search-favorite search__icon"></i>
                 </button>

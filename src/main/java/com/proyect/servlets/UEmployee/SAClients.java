@@ -20,7 +20,7 @@ public class SAClients extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("searchC")) {
+        if (action.equals("search")) {
             String text = request.getParameter("search-client");
             clients = cdao.search(text);
         } else {

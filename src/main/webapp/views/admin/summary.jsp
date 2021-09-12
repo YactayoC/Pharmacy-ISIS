@@ -39,7 +39,7 @@
         <ul class="nav__list grid">
             <!-- summary -->
             <li class="nav__item nav__item--active">
-                <a href="${pageContext.request.contextPath}/views/admin/summary.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SASummary?action=list" class="nav__link">
                     <i class="isax isax-chart-square nav__icon"></i>
                     <span class="nav__link-text"> Resumen </span>
                 </a>
@@ -83,7 +83,8 @@
             </li>
             <!-- Setting -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}"
+                   class="nav__link">
                     <i class="isax isax-setting-2 nav__icon"></i>
                     <span class="nav__link-text"> Perfil </span>
                 </a>
@@ -146,6 +147,20 @@
             </div>
             <ul class="client__list">
                 <!-- init a list clients -->
+                <c:forEach items="${clientsSummary}" var="clients">
+                    <li class="client__item">
+                        <div class="client__data">
+                            <img src="${pageContext.request.contextPath}/views/user/assets/avatar/${clients.getUser().getAvatar()}"
+                                 alt="client imagen" class="client__img">
+                            <div class="client__info">
+                                <p class="client__name">${clients.getUsername()}</p>
+                                <span class="client__email">${clients.getUser().getEmail()}</span>
+                            </div>
+                        </div>
+                        <span class="client__time">12:00pm</span>
+                    </li>
+                </c:forEach>
+                <!-- init a list clients
                 <li class="client__item">
                     <div class="client__data">
                         <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp"
@@ -156,8 +171,8 @@
                         </div>
                     </div>
                     <span class="client__time">12:00pm</span>
-                </li>
-                <!-- init a list clients -->
+                </li>-->
+                <!-- init a list clients
                 <li class="client__item">
                     <div class="client__data">
                         <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp"
@@ -168,19 +183,7 @@
                         </div>
                     </div>
                     <span class="client__time">12:00pm</span>
-                </li>
-                <!-- init a list clients -->
-                <li class="client__item">
-                    <div class="client__data">
-                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp"
-                             alt="client imagen" class="client__img">
-                        <div class="client__info">
-                            <p class="client__name">Anna 2020</p>
-                            <span class="client__email">anna@gmail.com</span>
-                        </div>
-                    </div>
-                    <span class="client__time">12:00pm</span>
-                </li>
+                </li>-->
             </ul>
         </section>
     </div>

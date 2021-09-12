@@ -49,7 +49,7 @@ public class SAProducts extends HttpServlet {
       case "byId":
         /// recoge
         break;
-      case "searchP":
+      case "search":
         String text = request.getParameter("search-product");
         products = pdao.search(text);
         request.setAttribute("products", products);

@@ -31,7 +31,7 @@
         <ul class="nav__list grid">
             <!-- summary -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/summary.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/SASummary?action=list" class="nav__link">
                     <i class="isax isax-chart-square nav__icon"></i>
                     <span class="nav__link-text">
               Resumen

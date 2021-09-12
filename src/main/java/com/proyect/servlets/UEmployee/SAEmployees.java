@@ -40,7 +40,7 @@ public class SAEmployees extends HttpServlet {
             case "byId":
                 // recoge
                 break;
-            case "searchE":
+            case "search":
                 String text = request.getParameter("search-employee");
                 employees = edao.search(text);
                 request.setAttribute("employees", employees);
@@ -98,8 +98,7 @@ public class SAEmployees extends HttpServlet {
     private void list(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         employees = edao.list();
-        HttpSession session = request.getSession();
-        session.setAttribute("employees", employees);
+        request.getSession().setAttribute("employees", employees);
         request.getRequestDispatcher("/views/admin/employee.jsp").forward(request, response);
     }
 }

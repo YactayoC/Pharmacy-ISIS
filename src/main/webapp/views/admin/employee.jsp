@@ -125,7 +125,7 @@
                         class="search__input"
                         placeholder="Buscar Empleado"
                 />
-                <button type="submit" class="search__button" name="action" value="searchE">
+                <button type="submit" class="search__button" name="action" value="search">
                     Buscar
                     <i class="isax isax-search-favorite search__icon"></i>
                 </button>

@@ -140,6 +140,24 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         return clients;
     }
 
+    public List<Client> listLast() {
+        List<Client> clients = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT c.*,d.*, u.* FROM client AS c "
+                     + "INNER JOIN user AS u ON (c.idUser = u.idUser) "
+                     + "INNER JOIN district AS d ON (c.idDistrict = d.idDistrict) ORDER BY c.idClient DESC LIMIT 5")) {
+            while (rs.next()) {
+                Client c = createClient(rs);
+                clients.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
+
     private Client createClient(ResultSet rs) throws SQLException {
         Client c = new Client();
         c.setIdClient(rs.getInt("idClient"));
