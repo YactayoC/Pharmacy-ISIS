@@ -202,7 +202,7 @@
                             </li>
                             <!-- edit -->
                             <li class="product__item product__edit edit-entity"
-                                data-edit="${products.getIdProduct()}"
+                                data-id="${products.getIdProduct()}"
                                 data-image="${products.getUrlPhoto()}"
                                 data-name="${products.getNameP()}"
                                 data-stock="${products.getStock()}"
@@ -446,6 +446,8 @@
 
 <%--This js is for show and hiddden the modals--%>
 <script src="${pageContext.request.contextPath}/views/admin/js/modal.js"></script>
+
+<script src="${pageContext.request.contextPath}/views/admin/js/dynamic-modal.js"></script>
 
 <%--this JS is for confirm modal--%>
 <script>

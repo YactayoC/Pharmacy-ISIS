@@ -206,7 +206,16 @@
                                 </li>
                             </c:if>
                             <!-- edit -->
-                            <li class="employee__item employee__details edit-entity">
+                            <li class="employee__item employee__details employee__edit edit-entity"
+                                data-id="${employees.getIdEmployee()}"
+                                data-name="${employees.getName()}"
+                                data-lastname="${employees.getSurname()}"
+                                data-dni="${employees.getDocIdentity()}"
+                                data-email="${employees.getEmail()}"
+                                data-password="${employees.getPassword()}"
+                                data-phone="${employees.getPhone()}"
+                                data-role="${employees.getRole().getIdRole()}"
+                            >
                                 <i class="isax isax-eye employee__icon"></i>
                             </li>
                             <!-- remove -->
@@ -236,18 +245,20 @@
         <div class="modal__body">
             <section class="product__form-content">
                 <!-- init form employee -->
-                <form action="${pageContext.request.contextPath}/SAEmployees?action=add"
-                      class="form__container grid" method="post">
+                <form action="${pageContext.request.contextPath}/SAEmployees?action="
+                      class="form__container grid" method="post" id="form">
+                    <%--id--%>
+                    <input type="hidden" id="id-employee" name="id-employee" class="hidden">
                     <!-- name-employee -->
                     <div class="form__field">
                         <i class="isax isax-user form__icon"></i>
                         <input
-                                type="text"
-                                name="name-employee"
-                                id="name-employee"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="text"
+                            name="name-employee"
+                            id="name-employee"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         >
                         <label for="name-employee" class="form__label">Nombre</label>
                     </div>
@@ -269,12 +280,12 @@
                     <div class="form__field employee__last-name">
                         <i class="isax isax-user form__icon"></i>
                         <input
-                                type="text"
-                                name="last-name"
-                                id="last-name"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="text"
+                            name="last-name"
+                            id="last-name"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         />
                         <label for="last-name" class="form__label">Apellido</label>
                     </div>
@@ -282,12 +293,12 @@
                     <div class="form__field">
                         <i class="isax isax-card-pos form__icon"></i>
                         <input
-                                type="text"
-                                name="dni"
-                                id="dni"
-                                class="form__input"
-                                required
-                                placeholder=" "
+                            type="text"
+                            name="dni"
+                            id="dni"
+                            class="form__input"
+                            required
+                            placeholder=" "
                         />
                         <label for="dni" class="form__label">DNI</label>
                     </div>
@@ -295,12 +306,12 @@
                     <div class="form__field product__email">
                         <i class="isax isax-sms-notification form__icon"></i>
                         <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="email"
+                            name="email"
+                            id="email"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         />
                         <label for="email" class="form__label">Email</label>
                     </div>
@@ -308,12 +319,12 @@
                     <div class="form__field ">
                         <i class="isax isax-shield form__icon"></i>
                         <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         />
                         <label for="password" class="form__label">Contraseña</label>
                     </div>
@@ -321,12 +332,12 @@
                     <div class="form__field">
                         <i class="isax isax-call form__icon"></i>
                         <input
-                                type="tel"
-                                name="phone"
-                                id="phone"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         />
                         <label for="phone" class="form__label">Teléfono</label>
                     </div>
@@ -372,7 +383,12 @@
 <script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/filter.js"></script>
+<%--script for show and hide modal--%>
 <script src="${pageContext.request.contextPath}/views/admin/js/modal.js"></script>
+
+<script src="${pageContext.request.contextPath}/views/admin/js/dynamic-modal.js"></script>
+
+<%--script for modal cancel--%>
 <script>
     const btnRemove = document.querySelectorAll(".remove-entity"),
         modalbtn = document.querySelector("#btn-delete"),
