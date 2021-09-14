@@ -136,18 +136,6 @@ INSERT INTO `employee` VALUES (1,'Admin','Admin','12345678','123456789',1,1),(2,
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `gettotal`
---
-
-DROP TABLE IF EXISTS `gettotal`;
-/*!50001 DROP VIEW IF EXISTS `gettotal`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `gettotal` AS SELECT
- 1 AS `total`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `laboratory`
 --
 
