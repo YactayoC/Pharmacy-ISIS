@@ -112,7 +112,6 @@
 </header>
 
 <!-- ========== Products list ========== -->
-
 <main class="page__products">
     <h1 class="page__title">Productos</h1>
     <section class="section container products">
@@ -124,11 +123,11 @@
             </div>
             <form class="product__search search">
                 <input
-                        type="search"
-                        name="search-product"
-                        id="search-product"
-                        class="search__input"
-                        placeholder="Buscar producto"
+                    type="search"
+                    name="search-product"
+                    id="search-product"
+                    class="search__input"
+                    placeholder="Buscar producto"
                 />
                 <button type="submit" class="search__button" name="action" value="search">
                     Buscar
@@ -148,7 +147,7 @@
                 <a href="audit.jsp" class="option product__btn">
                     <i class="isax isax-receipt-search product__icon"></i> Auditoria
                 </a>
-                <button href="#" class="option product__btn product__add" id="add-entity">
+                <button class="option product__btn product__add" id="add-entity">
                     <i class="isax isax-bag-tick product__icon"></i> agregar
                 </button>
             </div>
@@ -163,7 +162,7 @@
                         <li class="product__header-text">Stock</li>
                         <li class="product__header-text">Precio</li>
                         <li class="product__header-text product__category">Categoría</li>
-                        <li class="product__header-text  product__laboratory">Laboratorio</li>
+                        <li class="product__header-text product__laboratory">Laboratorio</li>
                         <li class="product__header-text product__presentation">Presentación</li>
                         <li class="product__header-text">Editar</li>
                         <li class="product__header-text">Remover</li>
@@ -185,7 +184,7 @@
                             <li class="product__item">
                                 <span class="product__text">${products.getStock()}</span>
                             </li>
-                            <!-- precio -->
+                            <!-- price -->
                             <li class="product__item">
                                 S/<span class="product__text">${products.getPrice()}</span>
                             </li>
@@ -202,7 +201,16 @@
                                 <p class="product__text">${products.getPresentation().getNamePr()}</p>
                             </li>
                             <!-- edit -->
-                            <li class="product__item product__edit edit-entity">
+                            <li class="product__item product__edit edit-entity"
+                                data-id="${products.getIdProduct()}"
+                                data-image="${products.getUrlPhoto()}"
+                                data-name="${products.getNameP()}"
+                                data-stock="${products.getStock()}"
+                                data-price="${products.getPrice()}"
+                                data-category="${products.getCategory().getIdCategory()}"
+                                data-laboratory="${products.getLaboratory().getIdLaboratory()}"
+                                data-presentation="${products.getPresentation().getIdPresentation()}"
+                            >
                                 <i class="isax isax-edit product__icon"></i>
                             </li>
                             <!-- remove -->
@@ -262,6 +270,7 @@
         </div>
     </section>
 </main>
+
 <!-- ========== Modal - form ========== -->
 <section class="modal sale__modal-detail hidden" id="modal-form">
     <div class="modal__content container">
@@ -272,32 +281,36 @@
         <div class="modal__body">
             <section class="product__form-content">
                 <!-- init form product -->
-                <form action="${pageContext.request.contextPath}/SAProducts?action=add" class="form__container grid"
+                <form action="${pageContext.request.contextPath}/SAProducts?action="
+                      class="form__container grid"
                       method="post"
-                      enctype="multipart/form-data">
+                      enctype="multipart/form-data"
+                      id="form"
+                >
+                  <input type="hidden" name="id-product" id="id-product" class="hidden">
                     <!-- name-prodcut -->
                     <div class="form__field">
                         <i class="isax isax-receipt form__icon"></i>
                         <input
-                                type="text"
-                                name="nameProduct"
-                                id="name-product"
-                                class="form__input"
-                                placeholder=" "
-                                required
-                        >
+                            type="text"
+                            name="nameProduct"
+                            id="name-product"
+                            class="form__input"
+                            placeholder=" "
+                            required
+                        />
                         <label for="name-product" class="form__label">Nombre</label>
                     </div>
                     <!-- stock -->
                     <div class="form__field product__stock">
                         <i class="isax isax-box-2 form__icon"></i>
                         <input
-                                type="number"
-                                name="stock"
-                                id="stock"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="number"
+                            name="stock"
+                            id="stock"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         />
                         <label for="stock" class="form__label">Stock</label>
                     </div>
@@ -305,12 +318,12 @@
                     <div class="form__field product__price">
                         <i class="isax isax-moneys form__icon"></i>
                         <input
-                                type="number"
-                                name="price"
-                                id="price"
-                                class="form__input"
-                                placeholder=" "
-                                required
+                            type="number"
+                            name="price"
+                            id="price"
+                            class="form__input"
+                            placeholder=" "
+                            required
                         />
                         <label for="price" class="form__label">Price</label>
                     </div>
@@ -318,11 +331,11 @@
                     <div class="form__field">
                         <i class="isax isax-tag form__icon"></i>
                         <select
-                                name="category"
-                                id="category"
-                                class="form__input form__select"
-                                required
-                                placeholder=""
+                            name="category"
+                            id="category"
+                            class="form__input form__select"
+                            required
+                            placeholder=""
                         >
                             <c:forEach var="categories" items="${categories}">
                                 <option value="${categories.getIdCategory()}">${categories.getNameC()}</option>
@@ -334,11 +347,11 @@
                     <div class="form__field">
                         <i class="isax isax-tag form__icon"></i>
                         <select
-                                name="laboratory"
-                                id="laboratory"
-                                class="form__input form__select"
-                                required
-                                placeholder=""
+                            name="laboratory"
+                            id="laboratory"
+                            class="form__input form__select"
+                            required
+                            placeholder=""
                         >
                             <c:forEach var="laboratories" items="${laboratories}">
                                 <option value="${laboratories.getIdLaboratory()}">${laboratories.getNameL()}</option>
@@ -350,11 +363,12 @@
                     <div class="form__field">
                         <i class="isax isax-tag form__icon"></i>
                         <select
-                                name="presentation"
-                                id="presentation"
-                                class="form__input form__select"
-                                required
-                                placeholder="">
+                            name="presentation"
+                            id="presentation"
+                            class="form__input form__select"
+                            required
+                            placeholder=""
+                        >
                             <c:forEach var="presentations" items="${presentations}">
                                 <option value="${presentations.getIdPresentation()}">${presentations.getNamePr()}</option>
                             </c:forEach>
@@ -365,13 +379,12 @@
                     <div class="btn-primary form__field">
                         <i class="isax isax-gallery-favorite form__icon"></i>
                         <input
-                                type="file"
-                                name="image"
-                                id="image"
-                                class="product__image-input hidden"
-                                placeholder=" "
-                                required
-
+                            type="file"
+                            name="image"
+                            id="image"
+                            class="product__image-input hidden"
+                            placeholder=" "
+                            required
                         />
                         <label for="image" class="form__label">Imagen</label>
                     </div>
@@ -430,7 +443,13 @@
 <script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/filter.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
+
+<%--This js is for show and hiddden the modals--%>
 <script src="${pageContext.request.contextPath}/views/admin/js/modal.js"></script>
+
+<script src="${pageContext.request.contextPath}/views/admin/js/dynamic-modal.js"></script>
+
+<%--this JS is for confirm modal--%>
 <script>
     const btnRemove = document.querySelectorAll(".remove-entity"),
         modalbtn = document.querySelector("#btn-delete"),
