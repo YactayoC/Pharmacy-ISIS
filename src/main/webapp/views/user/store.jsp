@@ -48,7 +48,7 @@
                     <form class="search">
                         <!-- <label class="search__label" for="search">Buscar</label> -->
                         <input
-                                type="text"
+                                type="search"
                                 name="search"
                                 id="search"
                                 class="search__input"

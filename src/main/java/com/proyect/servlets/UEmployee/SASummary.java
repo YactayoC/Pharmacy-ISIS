@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "SAClients", value = "/SAClients")
-public class SAClients extends HttpServlet {
+@WebServlet(name = "SASummary", value = "/SASummary")
+public class SASummary extends HttpServlet {
 
     List<Client> clients = new ArrayList<>();
     ClientDAO cdao = new ClientDAO();
@@ -20,14 +20,11 @@ public class SAClients extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("search")) {
-            String text = request.getParameter("search-client");
-            clients = cdao.search(text);
-        } else {
-            clients = cdao.list();
+        if(action.equals("list")){
+            clients = cdao.listLast();
+            request.getSession().setAttribute("clientsSummary", clients);
+            request.getRequestDispatcher("/views/admin/summary.jsp").forward(request, response);
         }
-        request.setAttribute("clients", clients);
-        request.getRequestDispatcher("/views/admin/client.jsp").forward(request, response);
     }
 
     @Override
@@ -35,5 +32,4 @@ public class SAClients extends HttpServlet {
             throws ServletException, IOException {
 
     }
-
 }

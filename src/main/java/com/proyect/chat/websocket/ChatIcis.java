@@ -1,7 +1,6 @@
 package com.proyect.chat.websocket;
 
 import com.proyect.chat.daos.MessageDao;
-import com.proyect.chat.daos.SpeakerDao;
 import com.proyect.chat.model.Message;
 import com.proyect.chat.utils.DecoderChat;
 import com.proyect.chat.utils.EncoderChat;
@@ -58,9 +57,7 @@ public class ChatIcis {
   public void logout() throws IOException{
     chatIcis.remove(this);
     System.out.println("logout");
-    if (chatIcis.isEmpty()) {
-      saveMessages();
-    }
+    saveMessages();
   }
 
   private void sendMessage(Session receiver, Message message) throws EncodeException, IOException {

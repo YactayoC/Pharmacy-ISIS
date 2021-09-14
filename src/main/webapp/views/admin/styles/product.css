@@ -101,6 +101,10 @@ input[type=number] {
     grid-template-columns: repeat(8, 1fr);
     gap: 1rem;
   }
+  .product__delivery{
+    overflow: auto;
+    max-height: 600px;
+  }
 }
 /* desktop */
 @media screen and (min-width: 1024px) {

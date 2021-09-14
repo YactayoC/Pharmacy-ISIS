@@ -112,14 +112,17 @@ public class UserDAO implements Repository<User>, Validate {
         return userExist;
     }
 
-    private User createUser(ResultSet rs) throws SQLException {
-        User u = new User();
-        u.setIdUser(rs.getInt("idUser"));
-        u.setEmail(rs.getString("email"));
-        u.setPassword(rs.getString("password"));
-        u.setFlag(rs.getInt("flag"));
-        u.setIdMongo(rs.getString("idMongo"));
-        return u;
+    public void saveAvatar(User user) {
+        String sql = null;
+        sql = "UPDATE user SET avatar = ? WHERE idUser = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getAvatar());
+            stmt.setInt(2, user.getIdUser());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getLastIdUser() {
@@ -137,17 +140,15 @@ public class UserDAO implements Repository<User>, Validate {
         return idUser;
     }
 
-    public void saveAvatar(User user) {
-        String sql = null;
-        sql = "UPDATE user SET avatar = ? WHERE idUser = ?";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, user.getAvatar());
-            stmt.setInt(2, user.getIdUser());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    private User createUser(ResultSet rs) throws SQLException {
+        User u = new User();
+        u.setIdUser(rs.getInt("idUser"));
+        u.setEmail(rs.getString("email"));
+        u.setPassword(rs.getString("password"));
+        u.setFlag(rs.getInt("flag"));
+        u.setAvatar(rs.getString("avatar"));
+        u.setIdMongo(rs.getString("idMongo"));
+        return u;
     }
 
 }

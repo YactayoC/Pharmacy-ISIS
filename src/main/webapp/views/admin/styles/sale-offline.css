@@ -148,6 +148,10 @@
   }
   .product__container {
     max-width: 250px;
+    max-height: 280px;
     width: 250px
+  }
+  .section{
+    max-height: 380px;
   }
 }

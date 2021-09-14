@@ -124,7 +124,7 @@
                         class="search__input"
                         placeholder="Buscar cliente"
                 />
-                <button type="submit" class="search__button" name="action" value="searchC">
+                <button type="submit" class="search__button" name="action" value="search">
                     Buscar
                     <i class="isax isax-search-favorite search__icon"></i>
                 </button>

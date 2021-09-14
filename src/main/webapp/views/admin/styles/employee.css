@@ -77,4 +77,8 @@
   .form__field {
     font-size: var(--normal-size);
   }
+  .employee__body{
+    overflow: auto;
+    max-height: 550px;
+  }
 }

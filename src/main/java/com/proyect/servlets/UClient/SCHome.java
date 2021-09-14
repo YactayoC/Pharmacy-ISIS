@@ -57,8 +57,7 @@ public class SCHome extends HttpServlet {
                 break;
             default:
                 products = pdao.listLast();
-                HttpSession sessioon = request.getSession();
-                sessioon.setAttribute("products", products);
+                request.getSession().setAttribute("productsHome", products);
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
                 break;
         }

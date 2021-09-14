@@ -54,4 +54,8 @@
   .tablet__hidden {
     font-size: var(--small-text);
   }
+  .client__delivery{
+    overflow: auto;
+    max-height: 550px;
+  }
 }
