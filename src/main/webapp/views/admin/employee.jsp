@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -211,8 +211,8 @@
                                 data-name="${employees.getName()}"
                                 data-lastname="${employees.getSurname()}"
                                 data-dni="${employees.getDocIdentity()}"
-                                data-email="${employees.getEmail()}"
-                                data-password="${employees.getPassword()}"
+                                data-email="${employees.getUser().getEmail()}"
+                                data-password="${employees.getUser().getPassword()}"
                                 data-phone="${employees.getPhone()}"
                                 data-role="${employees.getRole().getIdRole()}"
                             >
