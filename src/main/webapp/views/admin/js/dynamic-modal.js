@@ -22,6 +22,7 @@ if (dataProduct) {
       price = document.querySelector('#price'),
       category = document.querySelector('#category'),
       laboratory = document.querySelector('#laboratory'),
+      precaution = document.querySelector('#precaution'),
       presentation = document.querySelector('#presentation'),
       image = document.querySelector('#image'),
       idProduct = document.querySelector('#id-product');
@@ -34,6 +35,7 @@ if (dataProduct) {
       stock.value = i.getAttribute("data-stock")
       price.value = i.getAttribute("data-price")
       category.value = i.getAttribute("data-category")
+      precaution.value = i.get("data-precaution")
       laboratory.value = i.getAttribute("data-laboratory")
       presentation.value = i.getAttribute("data-presentation")
       image.value = i.getAttribute("data-image")
