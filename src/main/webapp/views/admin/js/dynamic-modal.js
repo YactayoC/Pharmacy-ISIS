@@ -3,11 +3,15 @@ const form = document.querySelector('#form'),
     initialAction = form.getAttribute("action");
 
 //change action of form
+
 const changeAction = (action) => form.setAttribute("action", initialAction + action)
 
 /*For add or create*/
 const addEntity = document.querySelector('#add-entity');
-addEntity.addEventListener('click', () => changeAction('add'))
+addEntity.addEventListener('click', () => {
+  document.querySelectorAll('.form__field input').forEach(i => i.value = '')
+  changeAction('add')
+})
 
 //========== Get data of product ==========//
 const dataProduct = document.querySelectorAll(".product__edit");
