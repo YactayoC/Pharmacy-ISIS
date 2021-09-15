@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="eb1cab3f-6e72-46c7-97d5-66334b659f19" />
+          <option name="name" value="pharmacy" />
+          <option name="parent" value="c7218e95-180d-418c-affe-4ebbae46a97c" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/pharmacy.sql" />
+              <option value="file://$PROJECT_DIR$/table_name.sql" />
+            </array>
+          </option>
+          <option name="scriptOptions">
+            <map>
+              <entry key="QualifyWithSchema" value="ALWAYS" />
+            </map>
+          </option>
+        </State>
+        <State>
+          <option name="id" value="c7218e95-180d-418c-affe-4ebbae46a97c" />
+          <option name="name" value="icis" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/icis.sql" />
+            </array>
+          </option>
+          <option name="scriptOptions">
+            <map>
+              <entry key="QualifyWithSchema" value="ALWAYS" />
+            </map>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
