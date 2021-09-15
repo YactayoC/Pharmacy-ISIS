@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `pharmacydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `pharmacydb`;
 -- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
 --
--- Host: localhost    Database: pharmacy2
+-- Host: localhost    Database: pharmacydb
 -- ------------------------------------------------------
 -- Server version	8.0.24
 
@@ -134,18 +136,6 @@ INSERT INTO `employee` VALUES (1,'Admin','Admin','12345678','123456789',1,1),(2,
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `gettotal`
---
-
-DROP TABLE IF EXISTS `gettotal`;
-/*!50001 DROP VIEW IF EXISTS `gettotal`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `gettotal` AS SELECT
- 1 AS `total`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `laboratory`
 --
 
@@ -218,6 +208,44 @@ INSERT INTO `metsale` VALUES (1,'Presencial'),(2,'Virtual');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `paudit`
+--
+
+DROP TABLE IF EXISTS `paudit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `paudit` (
+  `idPAudit` int NOT NULL AUTO_INCREMENT,
+  `registD` date NOT NULL,
+  `hour` time NOT NULL,
+  `newPhoto` varchar(45) DEFAULT NULL,
+  `oldPhoto` varchar(45) DEFAULT NULL,
+  `oldPname` varchar(45) DEFAULT NULL,
+  `newPname` varchar(45) DEFAULT NULL,
+  `oldPprice` decimal(5,3) DEFAULT NULL,
+  `newPprice` decimal(5,3) DEFAULT NULL,
+  `oldPcateg` varchar(45) DEFAULT NULL,
+  `newPcateg` varchar(45) DEFAULT NULL,
+  `oldPlab` varchar(45) DEFAULT NULL,
+  `newPlab` varchar(45) DEFAULT NULL,
+  `oldPpresent` varchar(45) DEFAULT NULL,
+  `newPpresent` varchar(45) DEFAULT NULL,
+  `action` varchar(10) DEFAULT NULL,
+  `employee` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idPAudit`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `paudit`
+--
+
+LOCK TABLES `paudit` WRITE;
+/*!40000 ALTER TABLE `paudit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `paudit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `presentation`
 --
 
@@ -277,24 +305,60 @@ LOCK TABLES `product` WRITE;
 INSERT INTO `product` VALUES (1,'Paracetamol',3.00,25,'Paracetamol.webp','Blister de paracetamol',1,1,3),(2,'Aspirina',80.00,10,'Aspirina.webp','40 tabletas de 81 mg',2,1,3),(3,'Bismutol',16.00,6,'Bismutol.webp','Frasco 150 ML',3,1,2),(4,'Abrilar',34.00,10,'Abrilar.webp','Frasco 200 ML',4,1,2),(5,'Provita',70.00,5,'Provita.webp','Frasco 20 ML',2,1,2),(6,'Mascarilla',8.00,50,'Mascarilla.webp','Mascarilla certificada',3,2,4),(7,'Oxímetro',60.00,20,'Oximetro.webp','Oxímetro de Pulso Fingertip LED  Caja 1 UN',2,2,4),(8,'Balon de oxigeno',600.00,10,'Balon_oxigeno.webp','Balon de oxigen con capacidad de 20m3',3,2,4),(9,'Alcohol ',20.00,10,'Alcohol.webp','Alcohol Medicinal 70% con Atomizador Frasco 500 ML',1,2,4),(10,'Jabon liquido',9.00,22,'Jabon_liquido.webp','Que es liquido y jabonoso y huele rico ',4,2,4),(11,'Pañal',25.00,60,'Panial.webp','Viene con alcohol',2,3,5),(12,'Papilla',15.00,23,'Papilla.webp','Sabor a durazno',3,3,4),(13,'Tinte para cabello',30.00,50,'Tinte-para-cabello.webp','Para mujer',1,3,4),(14,'Toallas higienicas',15.00,13,'Toallas-higienicas.webp','Ultrafinas',2,3,5),(15,'Toallitas húmedas',7.00,20,'Toallas-humedas.webp','Bolsa 60 UN',4,3,5),(16,'Emulsion de scott',30.00,10,'Emulsion-de-scott.webp','Sabor Cereza',2,4,2),(17,'Granola',10.00,10,'Granola.webp','formado por nueces copos de avena mezclados con miel y otros ingredientes naturales',2,4,4),(18,'Provita',80.00,15,'Provita10g20mL.webp','10g/20mL',3,4,1),(19,'Hidroferol',85.00,20,'Hidroferol.webp','0.266mg',4,4,5),(20,'Magnesio + Zinc Vivactiv',10.00,23,'Magnesio-Zinc Vivactiv.webp','Efervescente Sabor Naranja',2,4,3),(21,'Termometro',90.00,14,'Termometro.webp','Infrarojo Perfar - Unidad 1 UN',1,5,4),(22,'Estetoscopio',300.00,5,'Estetoscopio.webp','Littmann',2,5,4),(23,'Holter cardiaco',800.00,5,'holter-cardiaco.webp','inalambrico',3,5,4),(24,'Boquilla de respirador',10.00,20,'Boquilla-de-respirador.webp','Resistente',4,5,4);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Temporary view structure for view `productlist`
---
-
-DROP TABLE IF EXISTS `productlist`;
-/*!50001 DROP VIEW IF EXISTS `productlist`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `productlist` AS SELECT
- 1 AS `urlPhoto`,
- 1 AS `nameP`,
- 1 AS `stock`,
- 1 AS `price`,
- 1 AS `nameC`,
- 1 AS `nameL`,
- 1 AS `namePr`*/;
-SET character_set_client = @saved_cs_client;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `insertP` AFTER INSERT ON `product` FOR EACH ROW BEGIN
+      INSERT INTO paudit (registD,hour,newPhoto,newPname,newPprice,newPcateg,newPlab,newPpresent,action)
+      values (now(),current_time(),new.urlPhoto,new.nameP,new.price,new.idCategory,new.idLaboratory,new.idPresentation,'INSERT');  
+    END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `updateP` BEFORE UPDATE ON `product` FOR EACH ROW BEGIN
+      INSERT INTO paudit (registD,hour,newPhoto,oldPhoto,newPname,oldPname,newPprice,oldPprice,newPcateg,oldPcateg,newPlab,oldPlab,newPpresent,oldPpresent,action)
+      values (now(),current_time(),new.urlPhoto,old.urlPhoto,new.nameP,old.nameP,new.price,old.price,new.idCategory,old.idCategory,new.idLaboratory,old.idLaboratory,new.idPresentation,old.idPresentation,'UPDATE');  
+    END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `deleteP` AFTER DELETE ON `product` FOR EACH ROW BEGIN
+      INSERT INTO paudit (registD,hour,oldPhoto,oldPname,oldPprice,oldPcateg,oldPlab,oldPpresent,action)
+      values (now(),current_time(),old.urlPhoto,old.nameP,old.price,old.idCategory,old.idLaboratory,old.idPresentation,'DELETE');  
+    END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `receipt`
@@ -388,24 +452,6 @@ INSERT INTO `role` VALUES (1,'Admin'),(2,'Vendedor'),(3,'Repartidor');
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `salelist`
---
-
-DROP TABLE IF EXISTS `salelist`;
-/*!50001 DROP VIEW IF EXISTS `salelist`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `salelist` AS SELECT
- 1 AS `avatar`,
- 1 AS `cantidad`,
- 1 AS `name`,
- 1 AS `dateP`,
- 1 AS `nameE`,
- 1 AS `total`,
- 1 AS `delSt`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `user`
 --
 
@@ -418,7 +464,7 @@ CREATE TABLE `user` (
   `password` varchar(20) NOT NULL,
   `avatar` varchar(50) DEFAULT NULL,
   `flag` tinyint DEFAULT NULL,
-  idMongo VARCHAR(30) NOT NULL,
+  `idMongo` varchar(30) NOT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -434,58 +480,6 @@ INSERT INTO `user` VALUES (0,'Client','Client',NULL,0),(1,'admin@isis.com','admi
 UNLOCK TABLES;
 
 --
--- Final view structure for view `gettotal`
---
-
-/*!50001 DROP VIEW IF EXISTS `gettotal`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `gettotal` AS select sum((`rp`.`quantity` * `p`.`price`)) AS `total` from (`receiptdetail` `rp` join `product` `p` on((`rp`.`idProduct` = `p`.`idProduct`))) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `productlist`
---
-
-/*!50001 DROP VIEW IF EXISTS `productlist`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `productlist` AS select `p`.`urlPhoto` AS `urlPhoto`,`p`.`nameP` AS `nameP`,`p`.`stock` AS `stock`,`p`.`price` AS `price`,`c`.`nameC` AS `nameC`,`l`.`nameL` AS `nameL`,`pr`.`namePr` AS `namePr` from (((`product` `p` join `category` `c` on((`c`.`idCategory` = `p`.`idCategory`))) join `laboratory` `l` on((`l`.`idLaboratory` = `p`.`idLaboratory`))) join `presentation` `pr` on((`pr`.`idPresentation` = `p`.`idPresentation`))) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `salelist`
---
-
-/*!50001 DROP VIEW IF EXISTS `salelist`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `salelist` AS select `u`.`avatar` AS `avatar`,concat(sum(`rp`.`quantity`),'Producto(s)') AS `cantidad`,concat(`c`.`name`,' ',`c`.`surname`) AS `name`,`r`.`dateP` AS `dateP`,concat(`e`.`name`,' ',`e`.`surname`) AS `nameE`,sum((`rp`.`quantity` * `p`.`price`)) AS `total`,`r`.`delSt` AS `delSt` from (((`client` `c` join `user` `u` on((`c`.`idUser` = `u`.`idUser`))) join `employee` `e` on((0 <> `e`.`idEmployee`))) join ((`receiptdetail` `rp` join `product` `p` on((`rp`.`idProduct` = `p`.`idProduct`))) join `receipt` `r` on((0 <> `r`.`idReceipt`)))) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -496,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-05 13:31:23
+-- Dump completed on 2021-09-14 11:41:53
