@@ -69,18 +69,24 @@
                 </c:if>
                 <!-- ======== this view,when the user starts a session ========-->
                 <c:if test="${validats}">
-                    <%-- TODO: make dinamic the idUser --%>
-                    <span id="user-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
+
+                    <!-- Get id Mongo -->
+                    <c:set var="idMongo" value="${idMongo}"/>
+                    <span id="user-data" class="hidden" data-idUser="${idMongo}">
                             ${pageContext.request.contextPath}
                     </span>
                     <li class="nav__item">
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
                            class="nav__link btn btn-white"> <!--serlvet -->
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
-                            <c:if test="${!actualizateHome}"> <!--SGLogin -->
+
+                            <!--This username is from login -->
+                            <c:if test="${!actualizateHome}">
                                 ${usernameLog}
                             </c:if>
-                            <c:if test="${actualizateHome}"> <!--SCHome -->
+
+                            <!-- This tag is paintend when the user update their data-->
+                            <c:if test="${actualizateHome}">
                                 ${usernameHome}
                             </c:if>
                         </a>

@@ -112,11 +112,11 @@
             </div>
             <form class="employee__search search">
                 <input
-                        type="search"
-                        name="search-employee"
-                        id="search-employee"
-                        class="search__input"
-                        placeholder="Buscar Empleado"
+                    type="search"
+                    name="search-employee"
+                    id="search-employee"
+                    class="search__input"
+                    placeholder="Buscar Empleado"
                 />
                 <button type="submit" class="search__button" name="action" value="search">
                     Buscar

@@ -25,6 +25,12 @@ public class SGLogin extends HttpServlet {
     Boolean validats = true;
     Integer idUser;
     boolean actualizate;
+
+    /***
+     * <p>This method is responsible for closing the session of user</p>
+     * @param request <span>of login.jsp</span>
+     * @param response <span>of login.jsp</span>
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,6 +42,11 @@ public class SGLogin extends HttpServlet {
         }
     }
 
+    /***
+     * <p>This method get validate the login in our page</p>
+     * @param request <span>of login.jsp</span>
+     * @param response <span>of login.jsp</span>
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,14 +57,18 @@ public class SGLogin extends HttpServlet {
             user.setEmail(email);
             user.setPassword(password);
             boolean userExist = udao.validate(user);
+
             if (userExist) {
+
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("validats", validats = true);
 
                 idUser = user.getIdUser();
                 int flag = user.getFlag();
-                if (flag == 1) {
+
+                //validate if the account is an employee or client
+                if (flag == 1) { //for employees
                     employee = edao.getIdUser(idUser);
                     int idEmployee = employee.getIdEmployee();
                     int role = employee.getRole().getIdRole();
@@ -64,14 +79,18 @@ public class SGLogin extends HttpServlet {
                     request.getSession().setAttribute("surnameE", surnameE);
                     request.getSession().setAttribute("avatarE", avatarE);
                     response.sendRedirect("SASummary?action=list");
-                } else {
+                } else { // for user
                     client = cdao.getIdUser(idUser);
                     int idClient = client.getIdClient();
                     String username = client.getUsername();
+                    String idMongo = client.getUser().getIdMongo();
+
                     request.getSession().setAttribute("idClientHome", idClient);
                     request.getSession().setAttribute("usernameLog", username);
+                    request.getSession().setAttribute("idMongo", idMongo);
                     response.sendRedirect("SCHome?action=list");
                 }
+
             } else {
                 String errorMessage = "Datos incorrectos";
                 request.setAttribute("errorLog", true);

@@ -34,19 +34,28 @@ public class SCHome extends HttpServlet {
     CategoryDAO ctdao = new CategoryDAO();
     Boolean actualizate = true;
 
+
+    /***
+     * <p></p>  sebas da una explicación de esto
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
-            case "search":
+            //TODO: need refactor
+            case "search" -> {
                 categories = ctdao.list();
                 String text = request.getParameter("search");
                 products = pdao.search(text);
                 request.setAttribute("categories", categories);
                 request.setAttribute("products", products);
                 request.getRequestDispatcher("/views/user/store.jsp").forward(request, response);
-                break;
-            case "getProfile":
+            }
+            case "getProfile" -> {
                 int idClient = Integer.parseInt(request.getParameter("idClient"));
                 client = cdao.byId(idClient);
                 districts = ddao.list();
@@ -54,44 +63,50 @@ public class SCHome extends HttpServlet {
                 request.setAttribute("districts", districts);
                 request.setAttribute("client", client);
                 request.getRequestDispatcher("/views/user/profile.jsp").forward(request, response);
-                break;
-            default:
+            }
+            default -> {
                 products = pdao.listLast();
                 request.getSession().setAttribute("productsHome", products);
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
-                break;
+            }
         }
     }
 
+    /***
+     * <p>This update the username</p>  sebas da una explicación de esto
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        switch (action) {
-            case "editProfile":
-                int idClient = Integer.parseInt(request.getParameter("idClient"));
-                String name = request.getParameter("name");
-                String surname = request.getParameter("surname");
-                String username = request.getParameter("username");
-                String phone = request.getParameter("phone");
-                String password = request.getParameter("password");
-                String address = request.getParameter("address");
-                int districtt = Integer.parseInt(request.getParameter("district"));
+        if ("editProfile".equals(action)) {
+            int idClient = Integer.parseInt(request.getParameter("idClient"));
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
+            String username = request.getParameter("username");
+            String phone = request.getParameter("phone");
+            String password = request.getParameter("password");
+            String address = request.getParameter("address");
+            int districtt = Integer.parseInt(request.getParameter("district"));
 
-                client.setIdClient(idClient);
-                client.setUsername(username);
-                client.setName(name);
-                client.setSurname(surname);
-                client.setAddress(address);
-                client.setPhone(phone);
-                district.setIdDistrict(districtt);
-                client.setDistrict(district);
+            client.setIdClient(idClient);
+            client.setUsername(username);
+            client.setName(name);
+            client.setSurname(surname);
+            client.setAddress(address);
+            client.setPhone(phone);
+            district.setIdDistrict(districtt);
+            client.setDistrict(district);
 
-                user.setIdUser(client.getUser().getIdUser());
-                user.setPassword(password);
+            user.setIdUser(client.getUser().getIdUser());
+            user.setPassword(password);
 
-                udao.save(user);
-                cdao.save(client);
+            udao.save(user);
+            cdao.save(client);
 
             actualizate = true;
             request.getSession().setAttribute("usernameHome", username);
