@@ -59,7 +59,7 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
 
     @Override
     public void save(Employee employee) {
-        String sql = null;
+        String sql;
         if (employee.getIdEmployee() != null && employee.getIdEmployee() > 0) {
             sql = "UPDATE employee SET name=?, surname = ?, phone = ?, idRole = ? WHERE idEmployee = ?";
         } else {
@@ -99,14 +99,14 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
     }
 
     public Employee getIdUser(int idUser) {
-        Employee employee = new Employee();
+        Employee employee = null;
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM employee AS e " +
                      "INNER JOIN user AS u ON (e.idUser = u.idUser )" +
                      "INNER JOIN role AS r ON (e.idRole = r.idRole) WHERE e.idUser = " + idUser)) {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    employee.setIdEmployee(rs.getInt("idEmployee"));
+/*                    employee.setIdEmployee(rs.getInt("idEmployee"));
                     employee.setName(rs.getString("name"));
                     employee.setSurname(rs.getString("surname"));
                     employee.setDocIdentity(rs.getString("docIdentity"));
@@ -114,7 +114,8 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
                     Role role = new Role();
                     role.setIdRole(rs.getInt("idRole"));
                     role.setNameR(rs.getString("nameR"));
-                    employee.setRole(role);
+                    employee.setRole(role);*/
+                    employee = createEmployee(rs);
                 }
             }
         } catch (SQLException ignored) {
@@ -177,6 +178,7 @@ public class EmployeeDAO implements Repository<Employee>, Search<Employee> {
         user.setPassword(rs.getString("password"));
         user.setAvatar(rs.getString("avatar"));
         user.setFlag(rs.getInt("flag"));
+        user.setIdMongo(rs.getString("idMongo"));
 
         e.setRole(role);
         e.setUser(user);

@@ -36,7 +36,8 @@
         id="user-image"
       />
       <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
-      <span id="id-admin" data-id="612c4334830bd85439865cb7" class="hidden">
+
+      <span id="id-admin" data-id="${idMongo}" class="hidden">
         ${pageContext.request.contextPath}
       </span>
     </div>
@@ -140,6 +141,8 @@
         <!-- list of user -->
         <ul class="client__list">
           <!-- init a list clients MEDIC -->
+          <%--TODO: set the data of mongo DB here--%>
+          <%--TODO: posible change <li> to <a>  or use ajax--%>
           <li class="client__item filter-item" data-userId="612d7ce259a0773d739c651b" data-tag="medic">
             <div class="client__data">
               <img
@@ -191,6 +194,7 @@
         <!-- chat -->
         <div class="chat__body">
           <ul class="chat__messages" id="chat-box">
+            <%-- TODO: here posible foreach --%>
             <%-- message response --%>
             <li class="chat__box chat__message--response" id="message-response">
               <!-- user response img + time -->

@@ -72,13 +72,17 @@ public class SGLogin extends HttpServlet {
                     employee = edao.getIdUser(idUser);
                     int idEmployee = employee.getIdEmployee();
                     int role = employee.getRole().getIdRole();
-                    String avatarE = user.getAvatar();
-                    String surnameE = employee.getSurname();
+                    String avatar = user.getAvatar();
+                    String surname = employee.getSurname();
+                    String idMongo = user.getIdMongo();
+
                     request.getSession().setAttribute("idEmployee", idEmployee);
                     request.getSession().setAttribute("role", role);
-                    request.getSession().setAttribute("surnameE", surnameE);
-                    request.getSession().setAttribute("avatarE", avatarE);
+                    request.getSession().setAttribute("surnameE", surname);
+                    request.getSession().setAttribute("avatarE", avatar);
+                    request.getSession().setAttribute("idMongo", idMongo);
                     response.sendRedirect("SASummary?action=list");
+
                 } else { // for user
                     client = cdao.getIdUser(idUser);
                     int idClient = client.getIdClient();

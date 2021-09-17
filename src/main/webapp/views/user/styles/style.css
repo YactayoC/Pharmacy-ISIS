@@ -1,5 +1,5 @@
 :root{
-  --shadow-top: 0px -7px 31px rgba(0, 0, 0, 0.07), 0px -2.92443px 12.9511px rgba(0, 0, 0, 0.0488234), 0px -1.56354px 6.92426px rgba(0, 0, 0, 0.0407766);
+  --shadow-top: 0px -7px 31px rgba(0, 0, 0, 0.07), 0px -2.92443px 13px rgba(0, 0, 0, 0.0488234), 0px -1.56354px 7px rgba(0, 0, 0, 0.0407766);
   --shadow-bottom-orange: 0 1rem 2rem -.5rem var(--color-primary);
 }
 .no-scroll {overflow:hidden}
@@ -101,7 +101,7 @@
   left: 0;
   z-index: 10;
   background: var(--color-primary);
-  border-radius: 8px 8px 0px 0px;
+  border-radius: 8px 8px 0 0;
   box-shadow: var(--shadow-top);
 }
 .nav {
@@ -312,23 +312,8 @@
   padding-left: .5rem;
   color: var(--color-primary)
 }
-.message-relevance {
-  font-weight: 500;
-  color: var(--color-white);
-  cursor: pointer;
-}
-.message-relevance .chat__message {
-  background: var(--color-primary-0-5);
-  border: none;
-  transition: box-shadow 0.5s ease-in-out;
-}
-.message-relevance .chat__message:hover {
-  box-shadow: var(--shadow-bottom-orange);
-}
-.chat__message-active .chat__message {
-  background: var(--main-gradient);
-  box-shadow: var(--shadow-bottom-orange);
-}
+/* ========== receipts ========== */
+
 /* ========== Media query ========== */
 /* --- normal phones --- */
 @media screen and (min-width:  425px) {
@@ -344,7 +329,7 @@
   .header {
     top: 0;
     height: 60px;
-    box-shadow: 0px 8px 16px rgba(17, 6, 4, 0.08);
+    box-shadow: 0 8px 16px rgba(17, 6, 4, 0.08);
     border-radius: 0;
   }
   .nav__btn,
@@ -415,9 +400,12 @@
     order: -1;
   }
   /* --- chat --- */
-  .chat {
+  .chat__visible {
     width: 400px;
     height: 500px;
+  }
+  .chat {
+    top: auto;
   }
 }
 @media screen and (min-width: 1440px) {
