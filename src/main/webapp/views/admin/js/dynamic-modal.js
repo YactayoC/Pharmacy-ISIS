@@ -35,7 +35,7 @@ if (dataProduct) {
       stock.value = i.getAttribute("data-stock")
       price.value = i.getAttribute("data-price")
       category.value = i.getAttribute("data-category")
-      precaution.value = i.get("data-precaution")
+      precaution.value = i.getAttribute("data-precaution")
       laboratory.value = i.getAttribute("data-laboratory")
       presentation.value = i.getAttribute("data-presentation")
       image.value = i.getAttribute("data-image")

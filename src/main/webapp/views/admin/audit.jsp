@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- ========== default styles and icons ========== -->
     <link rel="stylesheet" href="../../styles/normalize.css" />
     <link rel="stylesheet" href="../../styles/style-icon.css" />
@@ -106,16 +110,19 @@
                 <span class="section__title-item"></span>
                 <h2 class="section__title-text">Lista</h2>
             </div>
-            <div class="sale__search search">
+            <form class="employee__search search">
                 <input
                         type="search"
-                        name="search-client"
-                        id="search-client"
+                        name="search-employee"
+                        id="search-employee"
                         class="search__input"
-                        placeholder="Buscar venta"
+                        placeholder="Buscar Empleado"
                 />
-                <i class="isax isax-search-favorite search__icon"></i>
-            </div>
+                <button type="submit" class="search__button" name="action" value="search">
+                    Buscar
+                    <i class="isax isax-search-favorite search__icon"></i>
+                </button>
+            </form>
         </div>
         <!-- table HEADER of receipts -->
         <div class="sale container">
@@ -141,9 +148,10 @@
             <div class="sale__body">
                 <!--------- table update --------->
                 <div class="sale__delivery filter-item " data-tag="update">
+
                     <!-- header of table -->
                     <ul class="sale__header grid audit__header">
-                        <li class="sale__header-text product__audit">Producto</li>
+                        <li class="sale__header-text">Imagen</li>
                         <li class="sale__header-text">Fecha</li>
                         <li class="sale__header-text">Hora</li>
                         <li class="sale__header-text">N Nombre</li>
@@ -153,10 +161,12 @@
                         <li class="sale__header-text">N Lab...</li>
                         <li class="sale__header-text">Autor</li>
                     </ul>
+
                     <!-- init first  -->
-                    <ul class="sale__items audit__items grid">
+                    <ul class="sale__items audit__items grid table__update">
                         <!-- Photo -->
-                        <li class="sale__item">
+                        <li class="sale__item audit__info">
+                            <img src="../user/assets/img/dkt-profile-user.webp" alt="old image" class="client__img audit__img-product sale__label-icon">
                             <img src="assets/img/bg-product.webp" alt="#" class="client__img audit__img-product">
                         </li>
                         <!-- date -->
@@ -169,27 +179,27 @@
                         </li>
                         <!-- Name - product -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old name</span>
+                            <span class="sale__label-icon">old name very large</span>
                             <p class="sale__text">name</p>
                         </li>
                         <!-- price -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old price</span>
+                            <span class="sale__label-icon">old price very large</span>
                             <p class="sale__text">$ <span class="sale__text">25.00</span></p>
                         </li>
                         <!-- category -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old cat</span>
+                            <span class="sale__label-icon">old cat very large</span>
                             <p class="sale__text">category</p>
                         </li>
                         <!-- presentation -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old pres</span>
+                            <span class="sale__label-icon">old pres very large</span>
                             <p class="sale__text">presentation</p>
                         </li>
                         <!-- laboratory -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old lab</span>
+                            <span class="sale__label-icon">old lab very large</span>
                             <p class="sale__text">laboratory</p>
                         </li>
                         <!-- author -->
