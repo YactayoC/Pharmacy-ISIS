@@ -75,7 +75,7 @@ public class MessageDao implements MessageRepository {
   }
 
   private Message getMessage(Document result) {
-    var createdAt = LocalDateTime.parse(result.getDate("createAt").toString()); //parse date to localDateTime
+    var createdAt = LocalDateTime.parse(result.getDate("createdAt").toString()); //parse date to localDateTime
     var relevance = Relevance.valueOf(result.getString("relevance"));
     var emitter = new Speaker();
     emitter.setId(result.getObjectId("idEmitter"))
@@ -104,7 +104,7 @@ public class MessageDao implements MessageRepository {
            .append("content", message.getContent())
            .append("relevance", message.getRelevance().toString())
            .append("viewed", message.isViewed())
-           .append("createAt", message.getCreatedAt());
+           .append("createdAt", message.getCreatedAt());
   }
 
   private List<Document> filterConversation(ObjectId emitter, ObjectId receiver) {

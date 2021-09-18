@@ -46,7 +46,7 @@
             </li>
             <!-- Messages -->
             <li class="nav__item">
-                <a href="${pageContext.request.contextPath}/views/admin/message.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/ServletChat" class="nav__link">
                     <i class="isax isax-message-favorite nav__icon"></i>
                     <span class="nav__link-text"> Mensajes </span>
                 </a>

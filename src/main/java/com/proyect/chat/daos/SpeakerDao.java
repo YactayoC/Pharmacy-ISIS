@@ -81,8 +81,8 @@ public class SpeakerDao implements UserRepository {
             userCollection = pharmacyChat.getCollection(COLLECTION);
 
             Bson filterByID = eq("_id", speaker.getId()); //filter for update
-            UpdateResult result = userCollection
-                    .updateOne(filterByID, changeAvatar(speaker));
+
+            userCollection.updateOne(filterByID, changeAvatar(speaker));
         }
     }
 
@@ -91,7 +91,6 @@ public class SpeakerDao implements UserRepository {
                 result.getString("name"),
                 result.getString("username"),
                 result.getString("email"),
-                result.getString("photo"),
                 result.getBoolean("isEmployee")
         );
     }
@@ -104,8 +103,9 @@ public class SpeakerDao implements UserRepository {
         Bson updateName = set("name", speaker.getName());
         Bson updateUsername = set("username", speaker.getUsername());
         Bson updateEmail = set("email", speaker.getEmail());
+        Bson isEmployee = set("isEmployee", speaker.isEmployee());
 
-        return combine(updateName, updateUsername, updateEmail, updatePhoto);
+        return combine(updateName, updateUsername, updateEmail, updatePhoto, isEmployee);
     }
 
     private Bson changeAvatar(Speaker speaker) {
