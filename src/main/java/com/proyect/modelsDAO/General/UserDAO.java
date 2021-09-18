@@ -127,27 +127,6 @@ public class UserDAO implements Repository<User>, Validate {
         }
     }
 
-    /***
-     * @return <p>A Map<String> with idMongo-Avatar </p>
-     */
-    public Map<String ,String> getAvatars() {
-        Map<String, String> avatars = new HashMap<>();
-        try (Connection conn = getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user")) {
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String idMongo = rs.getString("idMongo");
-                String avatar = rs.getString("avatar");
-
-                avatars.put(idMongo, avatar);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return avatars;
-    }
-
     public int getLastIdUser() {
         int idUser = 0;
         try (Connection conn = getConnection();

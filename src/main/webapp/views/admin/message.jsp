@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -146,9 +146,9 @@
           <li class="client__item filter-item" data-userId="612d7ce259a0773d739c651b" data-tag="medic">
             <div class="client__data">
               <img
-                      src="assets/img/photo-user.webp"
-                      alt="client image"
-                      class="client__img client__img-item"
+                  src="assets/img/photo-user.webp"
+                  alt="client image"
+                  class="client__img client__img-item"
               />
               <div class="client__info">
                 <p class="client__name">Angeles</p>
@@ -164,9 +164,9 @@
           <li class="client__item filter-item" data-userId="612d45f2564bd47e81ed15c9" data-tag="tech">
             <div class="client__data">
               <img
-                    src="../user/assets/img/user-profile.webp"
-                    alt="client imagen"
-                    class="client__img client__img-item"
+                  src="../user/assets/img/user-profile.webp"
+                  alt="client imagen"
+                  class="client__img client__img-item"
               />
               <div class="client__info">
                 <p class="client__name">Isabella</p>

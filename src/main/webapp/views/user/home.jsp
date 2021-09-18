@@ -320,8 +320,16 @@
     </div>
 </main>
 
+<!-- ========== message notification ========== -->
+<div class="notify">
+    <p class="notify__message">
+        Hey!! you have <span class="notify__info">5</span> messages
+    </p>
+</div>
+<%--TODO:valid that the user is loged for use the chat--%>
 <!-- ========== Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
+    <span class="chat__notify">1</span>
     <i class="isax isax-message btn-icon "></i>
 </div>
 <section class="chat" id="chat">

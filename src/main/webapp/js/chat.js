@@ -34,6 +34,9 @@ relevancy.forEach(r => {
   })
 })
 
+//block relevance when the user send a message
+const blockRelevancy = () => relevancy.forEach(r => r.classList.add('field-disabled'))
+
 //send message
 sendBtn.addEventListener("click", () => {
   let message = chatWriter.value;
@@ -47,6 +50,8 @@ sendBtn.addEventListener("click", () => {
   }
   console.log(messageJSON)
   ws.send(JSON.stringify(messageJSON));
+
+  blockRelevancy()
 
   chatBox.appendChild(drawChatMessage(message));
   chatWriter.value = '';

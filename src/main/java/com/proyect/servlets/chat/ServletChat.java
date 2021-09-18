@@ -3,7 +3,7 @@ package com.proyect.servlets.chat;
 import com.proyect.chat.daos.*;
 import com.proyect.chat.model.Message;
 import com.proyect.chat.model.Speaker;
-import com.proyect.modelsDAO.General.UserDAO;
+import com.proyect.chat.notify.ComplexNotification;
 import jakarta.json.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -19,11 +19,7 @@ import java.util.TreeMap;
 public class ServletChat extends HttpServlet {
 
   //objects for actions in mongoDB
-  private final SpeakerDao speakerDao = new SpeakerDao();
   private final MessageDao messageDao = new MessageDao();
-
-  //for get the avatar of users
-  private final UserDAO userDAO = new UserDAO();
 
   /***
    * <p>redirect to message.jsp and send the list of speakers </p>
@@ -32,7 +28,7 @@ public class ServletChat extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    request.getSession().setAttribute("speakers", setAvatars(speakerDao.list()));
+    request.getSession().setAttribute("speakers", new ComplexNotification().buildNotification());
     request.getRequestDispatcher("/views/admin/message.jsp").forward(request, response);
   }
 
@@ -59,20 +55,6 @@ public class ServletChat extends HttpServlet {
   }
 
   /***
-   * <p>Add avatar from Mysql to speaker</p>
-   * @param speakers <span>a speaker list without avatar</span>
-   * @return <span>A speaker list with changed avatar </span>
-   */
-  private List<Speaker> setAvatars(List<Speaker> speakers){
-
-    Map<String, String> avatars = userDAO.getAvatars();
-
-    speakers.forEach(speaker -> speaker.setPhoto(avatars.get(speaker.getId().toString())));
-
-    return speakers;
-  }
-
-  /***
    * This method converter a message list to JsonArray for send to client JS
    * @param messages Message List that comming from messageDao
    * @return a JsonArray ready to ship to client JS
@@ -85,6 +67,7 @@ public class ServletChat extends HttpServlet {
     JsonArrayBuilder jsonBuilder = factory.createArrayBuilder();
 
     messages.forEach(message -> jsonBuilder.add(factory.createObjectBuilder()
+           //TODO: simplify the JSON
            .add("idReceiver", message.getReceiver().getId().toHexString())
            .add("idEmitter", message.getEmitter().getId().toHexString())
            .add("emitterIsEmployee", message.getEmitter().isEmployee())

@@ -109,3 +109,7 @@ button,input {
 form {
   margin: 0;
 }
+.field-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

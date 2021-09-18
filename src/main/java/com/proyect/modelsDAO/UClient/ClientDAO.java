@@ -9,7 +9,9 @@ import com.proyect.interfaces.Search;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ClientDAO implements Repository<Client>, Search<Client> {
 
@@ -185,6 +187,17 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         c.setDistrict(d);
 
         return c;
+    }
+
+    /***
+     * @return <p>A Map<String, User> with idMongo-Avatar </p>
+     */
+    public Map<String ,Client> getMapUsers() {
+        Map<String, Client> clientMap = new HashMap<>();
+
+        this.list().forEach(client -> clientMap.put(client.getUser().getIdMongo(), client));
+
+        return clientMap;
     }
 
 }
