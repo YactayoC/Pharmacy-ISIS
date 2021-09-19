@@ -43,7 +43,7 @@ public class ServletChat extends HttpServlet {
 
     } else {
       //redirect to message.jsp and send the list of speakers
-      request.getSession().setAttribute("speakers", new ComplexNotification().buildNotification());
+      request.getSession().setAttribute("notify", new ComplexNotification().buildNotification());
       request.getRequestDispatcher("/views/admin/message.jsp").forward(request, response);
     }
   }

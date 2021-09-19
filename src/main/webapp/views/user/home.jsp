@@ -44,7 +44,7 @@
                 <!-- searching -->
                 <li class="nav__item nav__search">
                     <form class="search">
-                        <!-- <label class="search__label" for="search">Buscar</label> -->
+                        <label class="hidden" for="search"></label>
                         <input type="search"
                                name="search"
                                id="search"
@@ -326,7 +326,6 @@
         Hey!! you have <span class="notify__info">5</span> messages
     </p>
 </div>
-<%--TODO:valid that the user is loged for use the chat--%>
 <!-- ========== btn show Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
     <span class="chat__notify">1</span>
@@ -367,6 +366,7 @@
     </div>
     <%--Chat buttons --%>
     <form class="chat__footer" id="chat__form">
+        <label for="chat-writer" class="hidden"></label>
         <input type="text" id="chat-writer" class="chat__writer" placeholder="Escribe aquí">
         <button class="chat__send btn btn-primary" id="send-message">
             <i class="isax isax-send-2"></i>Enviar
@@ -377,5 +377,6 @@
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
 <script src="${pageContext.request.contextPath}/js/chat.js" type="module"></script>
+<script src="${pageContext.request.contextPath}/js/MessageService.js" type="module"></script>
 </body>
 </html>

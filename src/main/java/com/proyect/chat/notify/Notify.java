@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Notify {
-   private LocalTime TimeOfLastNotify;
+   private LocalTime timeOfLastNotify;
    private Integer unReadMessages;
    private Relevance relevance;
    private Speaker speaker;
@@ -18,11 +18,11 @@ public class Notify {
 
    public String getTimeOfLastNotify() {
       DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm:ss a");
-      return TimeOfLastNotify.format(format);
+      return timeOfLastNotify.format(format);
    }
 
    public Notify setTimeOfLastNotify(Date date) {
-      TimeOfLastNotify = LocalTime.parse(date.toString());
+      timeOfLastNotify = LocalTime.parse(date.toString());
       return this;
    }
 
