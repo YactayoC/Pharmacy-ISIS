@@ -34,7 +34,7 @@ public class NotifyDao implements NotifyRepository {
          //get all users excepted the employees
          AggregateIterable<Document> results = userCollection.aggregate(findNotifications());
          //add users to list
-         results.into(new ArrayList<>()).forEach(r -> notifies.add(makeNotify(r)));
+         results.forEach(r -> notifies.add(makeNotify(r)));
       }
       return notifies;
    }
@@ -66,7 +66,7 @@ public class NotifyDao implements NotifyRepository {
              .setSpeaker(speaker)
              .setRelevance(relevance)
              .setTimeOfLastNotify(result.getDate("createdAt"))
-             .setUnReadMessages(result.getInteger("unRead"));
+             .setUnReadMessages(result.getLong("unRead"));
    }
 
 

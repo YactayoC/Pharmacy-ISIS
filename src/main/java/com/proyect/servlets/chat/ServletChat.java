@@ -24,7 +24,7 @@ public class ServletChat extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    //TODO:get info from javaScript
+    HttpSession session = request.getSession();
     String idEmitter = request.getParameter("emitter");
     String idReceiver = request.getParameter("receiver");
 
@@ -43,7 +43,11 @@ public class ServletChat extends HttpServlet {
 
     } else {
       //redirect to message.jsp and send the list of speakers
-      request.getSession().setAttribute("notify", new ComplexNotification().buildNotification());
+      if (session.getAttribute("notifies") == null) {
+        session.setAttribute("notifies", new ComplexNotification().buildNotification());
+      }
+      request.setAttribute("notifies",session.getAttribute("notifies"));
+      //request.getSession().setAttribute("notifies", new ComplexNotification().buildNotification());
       request.getRequestDispatcher("/views/admin/message.jsp").forward(request, response);
     }
   }

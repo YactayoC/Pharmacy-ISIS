@@ -25,4 +25,4 @@ export default function drawChatMessage(message, type = 'request', needProfile) 
   return boxMessage;
 }
 
-export const idAdmin = '612c4334830bd85439865cb7';
+export const idAdmin = '6137c06a21ede37efd5c916b';

@@ -207,7 +207,7 @@
                                 data-name="${products.getNameP()}"
                                 data-stock="${products.getStock()}"
                                 data-price="${products.getPrice()}"
-                                data-precaution="${products.getPrecaution()}"
+                                data-precaution="${products.getDetail()}"
                                 data-category="${products.getCategory().getIdCategory()}"
                                 data-laboratory="${products.getLaboratory().getIdLaboratory()}"
                                 data-presentation="${products.getPresentation().getIdPresentation()}"

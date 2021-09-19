@@ -107,6 +107,7 @@ public class UserDAO implements Repository<User>, Validate {
                 user.setPassword(rs.getString("password"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setFlag(rs.getInt("flag"));
+                user.setIdMongo(rs.getString("idMongo"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

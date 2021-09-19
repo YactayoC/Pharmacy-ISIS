@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ========== default styles and icons ========== -->
-    <link rel="stylesheet" href="../../styles/normalize.css" />
-    <link rel="stylesheet" href="../../styles/style-icon.css" />
-    <link rel="stylesheet" href="../../styles/overall-styles.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css" />
 
     <!-- ========== styles for view admin ========== -->
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/styles.css" />
     <!-- ========== styles only this page ========== -->
-    <link rel="stylesheet" href="styles/sale.css" />
-    <link rel="stylesheet" href="styles/audit.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/sale.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/audit.css" />
     <title>Auditoria</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
         <h1 class="nav__logo logo logo--gradient">Icis</h1>
         <div class="nav__profile">
             <img
-                    src="assets/img/photo-admin.webp"
+                    src="${pageContext.request.contextPath}/views/admin/assets/img/photo-admin.webp"
                     alt="Name of admin"
                     class="nav__img nav__zipped-img"
                     id="user-image"
@@ -49,49 +49,49 @@
             </li>
             <!-- Messages -->
             <li class="nav__item">
-                <a href="message.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/message.jsp" class="nav__link">
                     <i class="isax isax-message-favorite nav__icon"></i>
                     <span class="nav__link-text"> Mensajes </span>
                 </a>
             </li>
             <!-- Sales -->
             <li class="nav__item">
-                <a href="sale.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/sale.jsp" class="nav__link">
                     <i class="isax isax-money-send nav__icon"></i>
                     <span class="nav__link-text"> Ventas </span>
                 </a>
             </li>
             <!-- Clients -->
             <li class="nav__item">
-                <a href="client.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/client.jsp" class="nav__link">
                     <i class="isax isax-people nav__icon"></i>
                     <span class="nav__link-text"> Clientes </span>
                 </a>
             </li>
             <!-- Employees -->
             <li class="nav__item">
-                <a href="employee.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/employee.jsp" class="nav__link">
                     <i class="isax isax-user-tag nav__icon"></i>
                     <span class="nav__link-text"> Empleados </span>
                 </a>
             </li>
             <!-- Products -->
             <li class="nav__item nav__item--active">
-                <a href="products.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/products.jsp" class="nav__link">
                     <i class="isax isax-element-4 nav__icon"></i>
                     <span class="nav__link-text"> Productos </span>
                 </a>
             </li>
             <!-- Setting -->
             <li class="nav__item">
-                <a href="setting.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/admin/setting.jsp" class="nav__link">
                     <i class="isax isax-setting-2 nav__icon"></i>
                     <span class="nav__link-text"> Perfil </span>
                 </a>
             </li>
             <!-- logout -->
             <li class="nav__item">
-                <a href="../user/login.jsp" class="nav__link">
+                <a href="${pageContext.request.contextPath}/views/user/login.jsp" class="nav__link">
                     <i class="isax isax-logout nav__icon"></i>
                     <span class="nav__link-text"> Salir </span>
                 </a>
@@ -331,7 +331,7 @@
 </main>
 
 <!-- ========== zipped unzipped nav ========== -->
-<script src="js/nav.js"></script>
-<script src="js/filter.js"></script>
+<script src="${pageContext.request.contextPath}/js/nav.js"></script>
+<script src="${pageContext.request.contextPath}/js/filter.js"></script>
 </body>
 </html>

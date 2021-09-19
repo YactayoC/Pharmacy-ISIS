@@ -3,13 +3,14 @@ package com.proyect.chat.notify;
 import com.proyect.chat.model.Relevance;
 import com.proyect.chat.model.Speaker;
 
+import java.text.DateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Notify {
-   private LocalTime timeOfLastNotify;
-   private Integer unReadMessages;
+   private Date timeOfLastNotify;
+   private Long unReadMessages;
    private Relevance relevance;
    private Speaker speaker;
 
@@ -17,20 +18,20 @@ public class Notify {
    }
 
    public String getTimeOfLastNotify() {
-      DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm:ss a");
-      return timeOfLastNotify.format(format);
+      DateFormat dateformat = DateFormat.getDateInstance(DateFormat.SHORT);
+      return dateformat.format(this.timeOfLastNotify);
    }
 
    public Notify setTimeOfLastNotify(Date date) {
-      timeOfLastNotify = LocalTime.parse(date.toString());
+      this.timeOfLastNotify = date;
       return this;
    }
 
-   public Integer getUnReadMessages() {
+   public Long getUnReadMessages() {
       return unReadMessages;
    }
 
-   public Notify setUnReadMessages(Integer unReadMessages) {
+   public Notify setUnReadMessages(Long unReadMessages) {
       this.unReadMessages = unReadMessages;
       return this;
    }

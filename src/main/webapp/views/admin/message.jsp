@@ -166,7 +166,7 @@
             <li class="client__item filter-item" data-userId="${notify.getSpeaker().getId().toString()}" data-tag="${notify.getRelevance()}">
               <div class="client__data">
                 <img
-                    src="${notify.getSpeaker().getPhoto()}"
+                    src="${pageContext.request.contextPath}/views/user/assets/avatar/${notify.getSpeaker().getPhoto()}"
                     alt="avatar de ${notify.getSpeaker().getName()}"
                     class="client__img client__img-item"
                 />
