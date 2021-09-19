@@ -1,4 +1,4 @@
-import drawChatMessage from "../js/drawChat.js";
+import drawChatMessage, {idAdmin} from "../js/drawChat.js";
 
 let ws;
 
@@ -43,7 +43,7 @@ sendBtn.addEventListener("click", () => {
   console.log("message" + message)
   const messageJSON = {
     idEmitter: idEmitter,
-    idReceiver: '612c4334830bd85439865cb7',
+    idReceiver: idAdmin,
     emitterIsEmployee: false,
     relevance: relevance ?? "TECHNICAL",
     content: message,

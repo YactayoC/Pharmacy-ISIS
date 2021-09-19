@@ -1,5 +1,6 @@
 package com.proyect.servlets.General;
 
+import com.proyect.chat.notify.SimpleNotification;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UEmployee.EmployeeDAO;
 import com.proyect.modelsDAO.General.UserDAO;
@@ -75,12 +76,14 @@ public class SGLogin extends HttpServlet {
                     String avatar = user.getAvatar();
                     String surname = employee.getSurname();
                     String idMongo = user.getIdMongo();
+                    String notification = new SimpleNotification(idMongo).buildNotification();
 
                     request.getSession().setAttribute("idEmployee", idEmployee);
                     request.getSession().setAttribute("role", role);
                     request.getSession().setAttribute("surnameE", surname);
                     request.getSession().setAttribute("avatarE", avatar);
                     request.getSession().setAttribute("idMongo", idMongo);
+                    request.getSession().setAttribute("notifications", notification);
                     response.sendRedirect("SASummary?action=list");
 
                 } else { // for user
@@ -88,10 +91,13 @@ public class SGLogin extends HttpServlet {
                     int idClient = client.getIdClient();
                     String username = client.getUsername();
                     String idMongo = client.getUser().getIdMongo();
+                    String notification = new SimpleNotification(idMongo).buildNotification();
 
                     request.getSession().setAttribute("idClientHome", idClient);
                     request.getSession().setAttribute("usernameLog", username);
                     request.getSession().setAttribute("idMongo", idMongo);
+                    request.getSession().setAttribute("notifications", notification);
+
                     response.sendRedirect("SCHome?action=list");
                 }
 

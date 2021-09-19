@@ -37,7 +37,7 @@
       />
       <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
 
-      <span id="id-admin" data-id="${idMongo}" class="hidden">
+      <span id="id-admin" data-id="${idMongo}" class="hidden absolute-path">
         ${pageContext.request.contextPath}
       </span>
     </div>

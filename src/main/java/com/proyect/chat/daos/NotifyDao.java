@@ -9,14 +9,13 @@ import com.proyect.chat.model.Relevance;
 import com.proyect.chat.model.Speaker;
 import com.proyect.chat.notify.Notify;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
-import static com.mongodb.client.model.Filters.eq;
 import static com.proyect.connDB.Mongo.DATABASE;
 import static com.proyect.connDB.Mongo.getConnection;
 
@@ -40,19 +39,17 @@ public class NotifyDao implements NotifyRepository {
       return notifies;
    }
 
-   //TODO:add pipeline for get the unRead messages
    @Override
    public Integer getNotificationOfUser(String id) {
-
+      Integer unReadMessages;
       try (MongoClient mongoClient = getConnection()) {
          MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
-         userCollection = pharmacyChat.getCollection(COLLECTION);
+         MongoCollection<Document> messageCollection = pharmacyChat.getCollection("message");
 
-         //find by ID
-         Bson filterByID = eq("_id", new ObjectId(id));
-         Document result = userCollection.find(filterByID).first();
+         AggregateIterable<Document> result = messageCollection.aggregate(findNotificationById(id));
+         unReadMessages = Objects.requireNonNull(result.first()).getInteger("unRead");
       }
-      return 1;
+      return unReadMessages;
    }
 
    //read
@@ -76,10 +73,9 @@ public class NotifyDao implements NotifyRepository {
    /***
     * This craft the Pipeline for get notify
     * This method get the number of unread messages (_id:ObjectId and unRead:Integer)
-    * @return aggreate query
+    * @return aggregate query
     */
    private List<Document> findNotifications() {
-      //TODO: Upgrate this pipeline
       return Arrays.asList(new Document("$match",
                     new Document("isEmployee", false)),
              new Document("$lookup",
@@ -95,6 +91,8 @@ public class NotifyDao implements NotifyRepository {
                            .append("preserveNullAndEmptyArrays", false)),
              new Document("$project",
                     new Document("_id", 1L)
+                           .append("relevance", "$messages.relevance")
+                           .append("createdAt", "$messages.createdAt")
                            .append("unRead",
                                   new Document("$cond", Arrays.asList("$messages.viewed",
                                          new Document("$sum", 0L),
@@ -102,6 +100,23 @@ public class NotifyDao implements NotifyRepository {
              new Document("$group",
                     new Document("_id", "$_id")
                            .append("unRead",
-                                  new Document("$sum", "$unRead"))));
+                                  new Document("$sum", "$unRead"))
+                           .append("relevance",
+                                  new Document("$first", "$relevance"))
+                           .append("createdAt",
+                                  new Document("$first", "$createdAt"))));
+   }
+
+   /***
+    * This creates a pipeline for get the unread messages of user
+    * @param idEmitter the id of user to find
+    * @return aggregate query
+    */
+   private List<Document> findNotificationById(String idEmitter) {
+      return Arrays.asList(new Document("$match",
+                    new Document("$and", Arrays.asList(new Document("idEmitter",
+                                  new ObjectId(idEmitter)),
+                           new Document("viewed", false)))),
+             new Document("$count", "unRead"));
    }
 }

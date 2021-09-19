@@ -17,7 +17,7 @@ public class ComplexNotification implements Notifiable<List<Notify>> {
    @Override
    public List<Notify> buildNotification() {
       List<Notify> notifies = new NotifyDao().getNotifications();
-      notifies.stream().parallel().forEach(n -> completeUser(n.getSpeaker()));
+      notifies.forEach(n -> completeUser(n.getSpeaker()));
       return notifies;
    }
 

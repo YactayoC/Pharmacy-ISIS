@@ -72,7 +72,7 @@
 
                     <!-- Get id Mongo -->
                     <c:set var="idMongo" value="${idMongo}"/>
-                    <span id="user-data" class="hidden" data-idUser="${idMongo}">
+                    <span id="user-data" class="hidden absolute-path" data-idUser="${idMongo}">
                             ${pageContext.request.contextPath}
                     </span>
                     <li class="nav__item">
@@ -327,12 +327,17 @@
     </p>
 </div>
 <%--TODO:valid that the user is loged for use the chat--%>
-<!-- ========== Chat ========== -->
+<!-- ========== btn show Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
     <span class="chat__notify">1</span>
     <i class="isax isax-message btn-icon "></i>
 </div>
+<!-- ========== Chat ========== -->
 <section class="chat" id="chat">
+    <div class="chat__blocked">
+        <i class="isax isax-user-octagon5 chat__blocked-icon"></i>
+        <p class="chat__blocked-message">Necesita acceder a su cuenta para usar el chat</p>
+    </div>
     <div class="chat__header">
         <h2 class="chat__title">Enviar un mensaje</h2>
         <div class="chat__close" id="chat__close">
