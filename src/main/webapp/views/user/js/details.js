@@ -23,12 +23,12 @@ if (detailUp && detailDown && currentQuantity && currentPrice) {
     if (quantity > 1) {
       quantity -= 1;
       currentQuantity.textContent = quantity;
-      currentPrice.textContent = price * quantity;
+      currentPrice.textContent = (price * quantity).toString();
     }
   });
   detailUp.addEventListener("click", () => {
     quantity += 1.0;
     currentQuantity.textContent = quantity;
-    currentPrice.textContent = price * quantity;
+    currentPrice.textContent = (price * quantity).toString();
   });
 }

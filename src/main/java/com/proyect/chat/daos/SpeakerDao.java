@@ -74,42 +74,34 @@ public class SpeakerDao implements UserRepository {
         return speaker;
     }
 
-    @Override
-    public void saveAvatar(Speaker speaker) {
-        try (MongoClient mongoClient = getConnection()) {
-            MongoDatabase pharmacyChat = mongoClient.getDatabase(DATABASE);
-            userCollection = pharmacyChat.getCollection(COLLECTION);
-
-            Bson filterByID = eq("_id", speaker.getId()); //filter for update
-            UpdateResult result = userCollection
-                    .updateOne(filterByID, changeAvatar(speaker));
-        }
-    }
-
+    /***
+     * This method create a user with result of MongoDB
+     * @param result result query of MongoDB
+     * @return Speaker
+     */
     private Speaker getUser(Document result) {
         return new Speaker(result.getObjectId("_id"),
                 result.getString("name"),
                 result.getString("username"),
                 result.getString("email"),
-                result.getString("photo"),
                 result.getBoolean("isEmployee")
         );
     }
 
-    //create default client
+    /***
+     * This method prepare a speaker for save in mongoDB
+     * @param speaker object speaker
+     * @return return a Bson ready for save in MongoDB
+     */
     private Bson generateUser(Speaker speaker) {
-
         Bson updatePhoto = set("photo", speaker.getPhoto());
 
         Bson updateName = set("name", speaker.getName());
         Bson updateUsername = set("username", speaker.getUsername());
         Bson updateEmail = set("email", speaker.getEmail());
+        Bson isEmployee = set("isEmployee", speaker.isEmployee());
 
-        return combine(updateName, updateUsername, updateEmail, updatePhoto);
+        return combine(updateName, updateUsername, updateEmail, updatePhoto, isEmployee);
     }
 
-    private Bson changeAvatar(Speaker speaker) {
-        Bson updatePhoto = set("photo", speaker.getPhoto());
-        return combine(updatePhoto);
-    }
 }

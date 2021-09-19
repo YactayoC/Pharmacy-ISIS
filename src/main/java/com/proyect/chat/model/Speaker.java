@@ -16,16 +16,15 @@ public class Speaker {
     this.isEmployee = false;
   }
 
-  public Speaker(String name, String username, String email, String photo) {
+  public Speaker(String name, String username, String email) {
     this();
     this.name = name;
     this.username = username;
     this.email = email;
-    this.photo = photo;
   }
 
-  public Speaker(ObjectId id, String name, String username, String email, String photo, boolean isEmployee) {
-    this(name, username, email, photo);
+  public Speaker(ObjectId id, String name, String username, String email, boolean isEmployee) {
+    this(name, username, email);
     this.id = id;
     this.isEmployee = isEmployee;
   }

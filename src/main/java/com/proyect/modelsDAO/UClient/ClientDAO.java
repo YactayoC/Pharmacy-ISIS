@@ -9,7 +9,9 @@ import com.proyect.interfaces.Search;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ClientDAO implements Repository<Client>, Search<Client> {
 
@@ -60,12 +62,13 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
 
     @Override
     public void save(Client client) {
-        String sql = null;
+        String sql;
         if (client.getIdClient() != null && client.getIdClient() > 0) {
             sql = "UPDATE client SET username = ?, name=?, surname = ?, address = ?, phone = ?, idDistrict = ? WHERE idClient = ?";
         } else {
             sql = "INSERT INTO client(username, name, surname, docIdentity, address, phone, idUser, idDistrict) VALUES (?,?,?,?,?,?,?,?) ";
         }
+
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, client.getUsername());
@@ -96,9 +99,9 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
     }
 
     public Client getIdUser(int idUser) {
-        Client client = new Client();
-        District district = new District();
-        User user = new User();
+        Client client = null;
+        //District district = new District();
+        //User user = new User();
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM client AS c " +
                      "INNER JOIN user AS u ON (c.idUser = u.idUser ) " +
@@ -106,13 +109,14 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
                      "WHERE c.idUser = " + idUser)) {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    client.setIdClient(rs.getInt("idClient"));
+/*                    client.setIdClient(rs.getInt("idClient"));
                     client.setUsername(rs.getString("username"));
                     client.setName(rs.getString("name"));
                     client.setSurname(rs.getString("surname"));
                     client.setDocIdentity(rs.getString("docIdentity"));
                     client.setPhone(rs.getString("phone"));
-                    client.setAddress(rs.getString("address"));
+                    client.setAddress(rs.getString("address"));*/
+                    client = createClient(rs);
                 }
             }
         } catch (SQLException ignored) {
@@ -173,6 +177,7 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         u.setAvatar(rs.getString("avatar"));
         u.setEmail(rs.getString("email"));
         u.setPassword(rs.getString("password"));
+        u.setIdMongo(rs.getString("idMongo"));
 
         District d = new District();
         d.setIdDistrict(rs.getInt("idDistrict"));
@@ -182,6 +187,17 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         c.setDistrict(d);
 
         return c;
+    }
+
+    /***
+     * @return <p>A Map<String, User> with idMongo-Avatar </p>
+     */
+    public Map<String ,Client> getMapUsers() {
+        Map<String, Client> clientMap = new HashMap<>();
+
+        this.list().forEach(client -> clientMap.put(client.getUser().getIdMongo(), client));
+
+        return clientMap;
     }
 
 }

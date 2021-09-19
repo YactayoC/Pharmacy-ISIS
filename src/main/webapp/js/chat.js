@@ -1,4 +1,4 @@
-import drawChatMessage from "../js/drawChat.js";
+import drawChatMessage, {idAdmin} from "../js/drawChat.js";
 
 let ws;
 
@@ -34,19 +34,24 @@ relevancy.forEach(r => {
   })
 })
 
+//block relevance when the user send a message
+const blockRelevancy = () => relevancy.forEach(r => r.classList.add('field-disabled'))
+
 //send message
 sendBtn.addEventListener("click", () => {
   let message = chatWriter.value;
   console.log("message" + message)
   const messageJSON = {
     idEmitter: idEmitter,
-    idReceiver: '612c4334830bd85439865cb7',
+    idReceiver: idAdmin,
     emitterIsEmployee: false,
     relevance: relevance ?? "TECHNICAL",
     content: message,
   }
   console.log(messageJSON)
   ws.send(JSON.stringify(messageJSON));
+
+  blockRelevancy()
 
   chatBox.appendChild(drawChatMessage(message));
   chatWriter.value = '';

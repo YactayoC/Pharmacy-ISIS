@@ -16,5 +16,4 @@ public interface UserRepository {
   Speaker list(String _id);
 
   //there is no DELETE
-  void saveAvatar(Speaker speaker);
 }

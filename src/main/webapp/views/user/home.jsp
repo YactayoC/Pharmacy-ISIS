@@ -44,7 +44,7 @@
                 <!-- searching -->
                 <li class="nav__item nav__search">
                     <form class="search">
-                        <!-- <label class="search__label" for="search">Buscar</label> -->
+                        <label class="hidden" for="search"></label>
                         <input type="search"
                                name="search"
                                id="search"
@@ -69,18 +69,24 @@
                 </c:if>
                 <!-- ======== this view,when the user starts a session ========-->
                 <c:if test="${validats}">
-                    <%-- TODO: make dinamic the idUser --%>
-                    <span id="user-data" class="hidden" data-idUser="612d7ce259a0773d739c651b">
+
+                    <!-- Get id Mongo -->
+                    <c:set var="idMongo" value="${idMongo}"/>
+                    <span id="user-data" class="hidden absolute-path" data-idUser="${idMongo}">
                             ${pageContext.request.contextPath}
                     </span>
                     <li class="nav__item">
                         <a href="${pageContext.request.contextPath}/SCHome?action=getProfile&idClient=${idClientHome}"
                            class="nav__link btn btn-white"> <!--serlvet -->
                             <i class="isax isax-profile-circle nav__profile-icon"></i>
-                            <c:if test="${!actualizateHome}"> <!--SGLogin -->
+
+                            <!--This username is from login -->
+                            <c:if test="${!actualizateHome}">
                                 ${usernameLog}
                             </c:if>
-                            <c:if test="${actualizateHome}"> <!--SCHome -->
+
+                            <!-- This tag is paintend when the user update their data-->
+                            <c:if test="${actualizateHome}">
                                 ${usernameHome}
                             </c:if>
                         </a>
@@ -314,11 +320,23 @@
     </div>
 </main>
 
-<!-- ========== Chat ========== -->
+<!-- ========== message notification ========== -->
+<div class="notify">
+    <p class="notify__message">
+        Hey!! you have <span class="notify__info">5</span> messages
+    </p>
+</div>
+<!-- ========== btn show Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
+    <span class="chat__notify">1</span>
     <i class="isax isax-message btn-icon "></i>
 </div>
+<!-- ========== Chat ========== -->
 <section class="chat" id="chat">
+    <div class="chat__blocked">
+        <i class="isax isax-user-octagon5 chat__blocked-icon"></i>
+        <p class="chat__blocked-message">Necesita acceder a su cuenta para usar el chat</p>
+    </div>
     <div class="chat__header">
         <h2 class="chat__title">Enviar un mensaje</h2>
         <div class="chat__close" id="chat__close">
@@ -348,6 +366,7 @@
     </div>
     <%--Chat buttons --%>
     <form class="chat__footer" id="chat__form">
+        <label for="chat-writer" class="hidden"></label>
         <input type="text" id="chat-writer" class="chat__writer" placeholder="Escribe aquí">
         <button class="chat__send btn btn-primary" id="send-message">
             <i class="isax isax-send-2"></i>Enviar
@@ -358,5 +377,6 @@
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
 <script src="${pageContext.request.contextPath}/js/chat.js" type="module"></script>
+<script src="${pageContext.request.contextPath}/js/MessageService.js" type="module"></script>
 </body>
 </html>

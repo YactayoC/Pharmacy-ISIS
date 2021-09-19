@@ -46,6 +46,7 @@
                 <li class="nav__item nav__search">
                     <div class="search">
                         <!-- <label class="search__label" for="search">Buscar</label> -->
+                        <label for="search" class="hidden"></label>
                         <input type="text" name="search" id="search" class="search__input" placeholder="Buscar">
                         <i class="isax isax-search-favorite search__icon"></i>
                     </div>
@@ -106,24 +107,27 @@
                     </span>
         </div>
         <a href="" class="detail__btn btn btn-primary">Agregar a la bolsa</a>
-        <div class="detail__products swiper-container carousel">
-            <div class="swiper-wrapper">
-                <!-- Related products -->
-                <c:forEach items="${productsC}" var="pc">
-                    <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${pc.getIdProduct()}" class="detail__product swiper-slide">
-                        <img src="${pageContext.request.contextPath}/views/admin/assets/img/${pc.getUrlPhoto()}"
-                             alt="Categoria" class="detail__product-img">
-                        <div class="detail__product-data">
-                            <span class="detail__product-name">${pc.getNameP()}</span>
-                            <span class="detail__product-price">$${pc.getPrice()}</span>
-                        </div>
-                    </a>
-                </c:forEach>
-            </div>
-            <!-- navigation of swiper  -->
-        </div>
+
     </div>
 </section>
+
+<!-- ========== similar category ========== -->
+<div class="detail__products swiper-container carousel">
+    <div class="swiper-wrapper">
+        <!-- Related products -->
+        <c:forEach items="${productsC}" var="pc">
+            <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${pc.getIdProduct()}" class="detail__product swiper-slide">
+                <img src="${pageContext.request.contextPath}/views/admin/assets/img/${pc.getUrlPhoto()}"
+                     alt="Categoria" class="detail__product-img">
+                <div class="detail__product-data">
+                    <span class="detail__product-name">${pc.getNameP()}</span>
+                    <span class="detail__product-price">$${pc.getPrice()}</span>
+                </div>
+            </a>
+        </c:forEach>
+    </div>
+    <!-- navigation of swiper  -->
+</div>
 
 <!-- ========== Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
@@ -147,6 +151,7 @@
         </ul>
     </div>
     <form class="chat__footer" id="chat__form">
+        <label for="chat-writer" class="hidden"></label>
         <input type="text" id="chat-writer" class="chat__writer" placeholder="Escribe aquí">
         <button class="chat__send btn btn-primary" id="send-message">
             <i class="isax isax-send-2"></i>Enviar

@@ -53,7 +53,7 @@ btnDown.forEach( i => {
     
     const price = Number(currentQuantity.dataset.price);
     if (quantity > 1) {
-      currentQuantity.textContent = quantity - 1;
+      currentQuantity.textContent = (quantity - 1).toString();
       calculateSubtotal(i, quantity - 1, price);
       updateTotal();
     } 
@@ -67,7 +67,7 @@ btnUp.forEach( j => {
     const quantity = Number(currentQuantity.textContent);
     const price = Number(currentQuantity.dataset.price);
     if (quantity < maxStock) {      
-      currentQuantity.textContent = quantity + 1;
+      currentQuantity.textContent = (quantity + 1).toString();
       calculateSubtotal(j, quantity + 1, price);
       updateTotal();
     }
@@ -77,7 +77,7 @@ btnUp.forEach( j => {
 
 const calculateSubtotal = (element, quantity, price = 1) => {
   const subtotal = element.parentElement.nextElementSibling.firstElementChild;
-  subtotal.textContent = price * quantity;
+  subtotal.textContent = (price * quantity).toString();
 }
 
 const updateTotal = () => {

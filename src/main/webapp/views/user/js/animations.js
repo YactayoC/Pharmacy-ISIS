@@ -42,13 +42,18 @@ const chatShow = document.querySelector("#chat__show"),
 
 
 if (chatShow && chatClose) {
+  const userData = document.querySelector('#user-data'),
+    chatBlocked = document.querySelector('.chat__blocked');
+
   chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
   });
 
   chatShow.addEventListener("click", () => {
-    chat.classList.toggle("chat__visible");
-    document.body.classList.toggle("no-scroll");
+    if (userData) chatBlocked.classList.add('hidden')
+    chat.classList.add("chat__visible");
+    document.body.classList.add("no-scroll");
+
   });
   chatClose.addEventListener("click", () => {
     chat.classList.remove("chat__visible");

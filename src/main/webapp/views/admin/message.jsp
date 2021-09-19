@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -36,7 +36,8 @@
         id="user-image"
       />
       <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
-      <span id="id-admin" data-id="612c4334830bd85439865cb7" class="hidden">
+
+      <span id="id-admin" data-id="${idMongo}" class="hidden absolute-path">
         ${pageContext.request.contextPath}
       </span>
     </div>
@@ -113,6 +114,7 @@
         <h2 class="section__title-text">Ayuda a clientes</h2>
       </div>
       <form class="support__search search">
+        <label for="search-client" class="hidden"></label>
         <input
                 type="search"
                 name="search-client"
@@ -134,18 +136,19 @@
           <p class="option option-filter option--active" id="all" data-filter="all">
             Todo <span class="tag-notify tag-notify--primary">8</span>
           </p>
-          <span class="option option-filter" id="medic" data-filter="medic">Médica</span>
-          <span class="option option-filter" id="tech" data-filter="tech">Técnica</span>
+          <span class="option option-filter" id="medic" data-filter="MEDIC">Médica</span>
+          <span class="option option-filter" id="tech" data-filter="TECHNICAL">Técnica</span>
         </div>
         <!-- list of user -->
         <ul class="client__list">
           <!-- init a list clients MEDIC -->
+          <%--
           <li class="client__item filter-item" data-userId="612d7ce259a0773d739c651b" data-tag="medic">
             <div class="client__data">
               <img
-                      src="assets/img/photo-user.webp"
-                      alt="client image"
-                      class="client__img client__img-item"
+                  src="assets/img/photo-user.webp"
+                  alt="client image"
+                  class="client__img client__img-item"
               />
               <div class="client__info">
                 <p class="client__name">Angeles</p>
@@ -157,24 +160,27 @@
               <span class="tag-notify tag-notify--primary">5</span>
             </div>
           </li>
-          <!-- init a list clients TECH-->
-          <li class="client__item filter-item" data-userId="612d45f2564bd47e81ed15c9" data-tag="tech">
-            <div class="client__data">
-              <img
-                    src="../user/assets/img/user-profile.webp"
-                    alt="client imagen"
+          --%>
+          <!-- init a list clients-->
+          <c:forEach var="notify" items="${notifies}">
+            <li class="client__item filter-item" data-userId="${notify.getSpeaker().getId().toString()}" data-tag="${notify.getRelevance()}">
+              <div class="client__data">
+                <img
+                    src="${notify.getSpeaker().getPhoto()}"
+                    alt="avatar de ${notify.getSpeaker().getName()}"
                     class="client__img client__img-item"
-              />
-              <div class="client__info">
-                <p class="client__name">Isabella</p>
-                <span class="client__email">isa@gmail.com</span>
+                />
+                <div class="client__info">
+                  <p class="client__name">${notify.getSpeaker().getName()}</p>
+                  <span class="client__email">${notify.getSpeaker().getEmail()}</span>
+                </div>
               </div>
-            </div>
-            <div class="client__time">
-              12:00pm
-              <span class="tag-notify tag-notify--green">8</span>
-            </div>
-          </li>
+              <div class="client__time">
+                ${notify.getTimeOfLastNotify()}
+                <span class="tag-notify tag-notify--green">${notify.getUnReadMessages()}</span>
+              </div>
+            </li>
+          </c:forEach>
         </ul>
       </div>
 
@@ -216,6 +222,7 @@
         </div>
         <!-- send message -->
         <form class="chat__footer" id="chat__form">
+          <label for="chat-writer" class="hidden"></label>
           <input type="text" id="chat-writer" class="chat__writer" placeholder="Escribe aquí">
           <button class="chat__send btn-primary" id="send-message-admin">
             <i class="isax isax-send-2"></i>Enviar
@@ -229,5 +236,6 @@
 <script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/filter.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/message.js" type="module"></script>
+<script src="${pageContext.request.contextPath}/js/MessageService.js" type="module"></script>
 </body>
 </html>
