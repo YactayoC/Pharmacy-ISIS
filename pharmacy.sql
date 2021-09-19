@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
 --
--- Host: localhost    Database: pharmacy2
+-- Host: localhost    Database: pharmacy
 -- ------------------------------------------------------
 -- Server version	8.0.24
 
@@ -37,7 +37,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Farmacia','farmacy.jpg','Productos farmaceuticos'),(2,'Covid','covid.jpg','Productos para el Covid-19'),(3,'Mamá y bebé','baby.jpg','Productos para mamá y bebé'),(4,'Nutrición','nutrition.jpg','Productos de nutrición'),(5,'Dispositivos','device.jpg','Dispositivos médicos para el cuidado de la salud');
+INSERT INTO `category` VALUES (1,'Farmacia','farmacy.jpg','Productos farmaceuticos'),(2,'Covid','covid.jpg','Productos para el Covid-19'),(3,'Mamá y bebé','baby.jpg','Productos para mamá y bebé'),(4,'Nutrición','nutrition.jpg','Productos de nutrición'),(5,'Dispositivos','device.jpg','Dispositivos médicos');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +53,7 @@ CREATE TABLE `client` (
   `username` varchar(45) NOT NULL,
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL,
-  `docIdentity` varchar(15) DEFAULT NULL,
+  `docIdentity` varchar(15) NOT NULL,
   `address` varchar(50) DEFAULT NULL,
   `phone` varchar(15) NOT NULL,
   `idUser` int NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `client` (
   KEY `FK02_idx` (`idUser`),
   CONSTRAINT `FK01` FOREIGN KEY (`idDistrict`) REFERENCES `district` (`idDistrict`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK02` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `client` (
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES (1,'JosephE','Joseph Luis','Espino Delgado','12345678','','987654321',8,3),(2,'JairoP','Jairo','Perez','23145676',NULL,'988775672',9,1);
+INSERT INTO `client` VALUES (1,'SergioR','Sergio','Ramos','12345678',NULL,'987654321',8,1);
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `employee` (
   KEY `FK07_idx` (`idUser`),
   CONSTRAINT `FK06` FOREIGN KEY (`idRole`) REFERENCES `role` (`idRole`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK07` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ DROP TABLE IF EXISTS `gettotal`;
 /*!50001 DROP VIEW IF EXISTS `gettotal`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `gettotal` AS SELECT
+/*!50001 CREATE VIEW `gettotal` AS SELECT 
  1 AS `total`*/;
 SET character_set_client = @saved_cs_client;
 
@@ -225,10 +225,10 @@ DROP TABLE IF EXISTS `presentation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `presentation` (
-  `idPresentation` int NOT NULL,
+  `idPresentation` int NOT NULL AUTO_INCREMENT,
   `namePr` varchar(30) NOT NULL,
   PRIMARY KEY (`idPresentation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +274,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Paracetamol',3.00,25,'Paracetamol.webp','Blister de paracetamol',1,1,3),(2,'Aspirina',80.00,10,'Aspirina.webp','40 tabletas de 81 mg',2,1,3),(3,'Bismutol',16.00,6,'Bismutol.webp','Frasco 150 ML',3,1,2),(4,'Abrilar',34.00,10,'Abrilar.webp','Frasco 200 ML',4,1,2),(5,'Provita',70.00,5,'Provita.webp','Frasco 20 ML',2,1,2),(6,'Mascarilla',8.00,50,'Mascarilla.webp','Mascarilla certificada',3,2,4),(7,'Oxímetro',60.00,20,'Oximetro.webp','Oxímetro de Pulso Fingertip LED  Caja 1 UN',2,2,4),(8,'Balon de oxigeno',600.00,10,'Balon_oxigeno.webp','Balon de oxigen con capacidad de 20m3',3,2,4),(9,'Alcohol ',20.00,10,'Alcohol.webp','Alcohol Medicinal 70% con Atomizador Frasco 500 ML',1,2,4),(10,'Jabon liquido',9.00,22,'Jabon_liquido.webp','Que es liquido y jabonoso y huele rico ',4,2,4),(11,'Pañal',25.00,60,'Panial.webp','Viene con alcohol',2,3,5),(12,'Papilla',15.00,23,'Papilla.webp','Sabor a durazno',3,3,4),(13,'Tinte para cabello',30.00,50,'Tinte-para-cabello.webp','Para mujer',1,3,4),(14,'Toallas higienicas',15.00,13,'Toallas-higienicas.webp','Ultrafinas',2,3,5),(15,'Toallitas húmedas',7.00,20,'Toallas-humedas.webp','Bolsa 60 UN',4,3,5),(16,'Emulsion de scott',30.00,10,'Emulsion-de-scott.webp','Sabor Cereza',2,4,2),(17,'Granola',10.00,10,'Granola.webp','formado por nueces copos de avena mezclados con miel y otros ingredientes naturales',2,4,4),(18,'Provita',80.00,15,'Provita10g20mL.webp','10g/20mL',3,4,1),(19,'Hidroferol',85.00,20,'Hidroferol.webp','0.266mg',4,4,5),(20,'Magnesio + Zinc Vivactiv',10.00,23,'Magnesio-Zinc Vivactiv.webp','Efervescente Sabor Naranja',2,4,3),(21,'Termometro',90.00,14,'Termometro.webp','Infrarojo Perfar - Unidad 1 UN',1,5,4),(22,'Estetoscopio',300.00,5,'Estetoscopio.webp','Littmann',2,5,4),(23,'Holter cardiaco',800.00,5,'holter-cardiaco.webp','inalambrico',3,5,4),(24,'Boquilla de respirador',10.00,20,'Boquilla-de-respirador.webp','Resistente',4,5,4);
+INSERT INTO `product` VALUES (1,'Paracetamol',3.00,25,'Paracetamol.webp','Blister de paracetamol',1,1,3),(2,'Aspirina',80.00,10,'Aspirina.webp','40 tabletas de 81 mg',2,1,3),(3,'Bismutol',16.00,6,'Bismutol.webp','Frasco 150 ML',3,1,2),(4,'Abrilar',34.00,10,'Abrilar.webp','Frasco 200 ML',4,1,2),(5,'Provita',70.00,5,'Provita.webp','Frasco 20 ML',2,1,2),(6,'Mascarilla',8.00,50,'Mascarilla.webp','Mascarilla certificada',3,2,4),(7,'Oxímetro',60.00,20,'Oximetro.webp','Oxímetro de Pulso Fingertip LED  Caja 1 UN',2,2,4),(8,'Balon de oxigeno',600.00,10,'Balon_oxigeno.webp','Balon de oxigen con capacidad de 20m3',3,2,4),(9,'Alcohol ',20.00,10,'Alcohol.webp','Alcohol Medicinal 70% con Atomizador Frasco 500 ML',1,2,4),(10,'Jabon liquido',9.00,22,'Jabon_liquido.webp','Que es liquido y jabonoso y huele rico ',4,2,4),(11,'Pañal',25.00,60,'Panial.webp','Viene con alcohol',2,3,5),(12,'Papilla',15.00,23,'Papilla.webp','Sabor a durazno',3,3,4),(13,'Tinte para cabello',30.00,50,'Tinte-para-cabello.webp','Para mujer',1,3,4),(14,'Toallas higienicas',15.00,13,'Toallas-higienicas.webp','Ultrafinas',2,3,5),(15,'Toallitas húmedas',7.00,20,'Toallas-humedas.webp','Bolsa 60 UN',4,3,5),(16,'Emulsion de scott',30.00,10,'Emulsion-de-scott.webp','Sabor Cereza',2,4,2),(17,'Granola',10.00,10,'Granola.webp','formado por nueces copos de avena mezclados con miel y otros ingredientes naturales',2,4,4),(18,'Provita',80.00,15,'Provita10g20mL.webp','10g/20mL',3,4,1),(19,'Hidroferol',85.00,20,'Hidroferol.webp','0.266mg',4,4,5),(20,'Magnesio + Zinc Vivactiv',10.00,23,'Magnesio-Zinc Vivactiv.webp','Efervescente Sabor Naranja',2,4,3),(21,'Termometro',90.00,14,'Termometro.webp','Infrarojo Perfar - Unidad 1 UN',1,5,4),(22,'Estetoscopio',300.00,5,'Estetoscopio.webp','Littmann',2,5,4),(23,'holter cardiaco',800.00,5,'holter-cardiaco.webp','inalambrico',3,5,4),(24,'Boquilla de respirador',10.00,20,'Boquilla-de-respirador.webp','Resistente',4,5,4);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +286,7 @@ DROP TABLE IF EXISTS `productlist`;
 /*!50001 DROP VIEW IF EXISTS `productlist`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `productlist` AS SELECT
+/*!50001 CREATE VIEW `productlist` AS SELECT 
  1 AS `urlPhoto`,
  1 AS `nameP`,
  1 AS `stock`,
@@ -395,7 +395,7 @@ DROP TABLE IF EXISTS `salelist`;
 /*!50001 DROP VIEW IF EXISTS `salelist`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `salelist` AS SELECT
+/*!50001 CREATE VIEW `salelist` AS SELECT 
  1 AS `avatar`,
  1 AS `cantidad`,
  1 AS `name`,
@@ -416,11 +416,11 @@ CREATE TABLE `user` (
   `idUser` int NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `avatar` varchar(50) DEFAULT NULL,
-  `flag` tinyint DEFAULT NULL,
-  idMongo VARCHAR(30) NOT NULL,
+  `avatar` varchar(50) NOT NULL,
+  `flag` tinyint NOT NULL,
+  `idMongo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -429,7 +429,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (0,'Client','Client',NULL,0),(1,'admin@isis.com','admin123','employee.png',1),(2,'frank@gmail.com','admin123','employee.png',1),(3,'kenneth@gmail.com','admin123','employee.png',1),(4,'leonardo@gmail.com','admin123','employee.png',1),(5,'yataco@gmail.com','admin123','employee.png',1),(6,'yactayo@gmail.com','admin123','employee.png',1),(7,'sebas@gmail.com','admin123','employee.png',1),(8,'joseph@gmail.com','joseph2021','client.png',0),(9,'jairo@gmail.com','jairo2021','client.png',0);
+INSERT INTO `user` VALUES (0,'Client','Client','',0,''),(1,'admin@isis.com','admin123','employee.png',1,'6137c06a21ede37efd5c916b'),(2,'frank@gmail.com','admin123','employee.png',1,''),(3,'kenneth@gmail.com','admin123','employee.png',1,''),(4,'leonardo@gmail.com','admin123','employee.png',1,''),(5,'yataco@gmail.com','admin123','employee.png',1,''),(6,'yactayo@gmail.com','admin123','employee.png',1,''),(7,'sebas@gmail.com','admin123','employee.png',1,''),(8,'sergio@gmail.com','sergio2021','client.png',0,'6141320d56912b59f0608fff');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,4 +496,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-05 13:31:23
+-- Dump completed on 2021-09-14 20:05:35

@@ -43,7 +43,7 @@ Pendiente...
 ---
 ## Autores ✒️
 
-* **Sebastián Yactayo** - *aporte* - [username](link a github)
+* **Sebastián Yactayo** - *aporte* - [YactayoC](https://github.com/YactayoC)
 * **Sebastián Chaquila** - *aporte* - [username](link a github)
 * **Marco Yataco** - *aporte* - [username](link a github)
 * **Kennet de la Cruz** - *aporte* - [username](link a github)
