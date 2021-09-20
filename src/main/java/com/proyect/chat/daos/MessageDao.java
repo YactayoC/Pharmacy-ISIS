@@ -7,7 +7,6 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.InsertManyOptions;
 import com.proyect.chat.daos.repository.MessageRepository;
 import com.proyect.chat.model.Message;
-import com.proyect.chat.model.Relevance;
 import com.proyect.chat.model.Speaker;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -37,7 +36,7 @@ public class MessageDao implements MessageRepository {
              .aggregate(filterConversation(emitter.getId(), receiver.getId()));
 
       conversation.into(new ArrayList<>())
-             .forEach(m -> messages.add(getMessage(m)));
+             .forEach(m -> messages.add(getConversationMessage(m)));
     }
     return messages;
   }
@@ -74,29 +73,6 @@ public class MessageDao implements MessageRepository {
     }
   }
 
-  private Message getMessage(Document result) {
-    var createdAt = LocalDateTime.parse(result.getDate("createdAt").toString()); //parse date to localDateTime
-    var relevance = Relevance.valueOf(result.getString("relevance"));
-    var emitter = new Speaker();
-    emitter.setId(result.getObjectId("idEmitter"))
-           .setUsername(result.getString("username"))
-           .setPhoto(result.getString("photo"));
-
-    var receiver = new Speaker();
-    receiver.setId(result.getObjectId("idReceiver"));
-
-    var message = new Message();
-    message.setId(result.getObjectId("_id"))
-           .setEmitter(emitter)
-           .setReceiver(receiver)
-           .setContent(result.getString("content"))
-           .setRelevance(relevance).
-           setViewed(result.getBoolean("viewed"))
-           .setCreatedAt(createdAt);
-
-    return message;
-  }
-
   private Document generateMessage(Message message) {
     return new Document("_id", new ObjectId())
            .append("idEmitter", message.getEmitter().getId())
@@ -107,6 +83,24 @@ public class MessageDao implements MessageRepository {
            .append("createdAt", message.getCreatedAt());
   }
 
+  private Message getConversationMessage(Document result) {
+      //var createdAt = LocalDateTime.parse(result.getDate("time").toString()); //parse date to localDateTime
+      var emitter = new Speaker();
+      emitter.setName(result.getString("emitterName"))
+             .setUsername(result.getString("username"))
+             .setEmployee(result.getBoolean("emitterIsEmployee"))
+             .setPhoto(result.getString("photo"));
+
+      var message = new Message();
+      message.setId(result.getObjectId("_id"))
+             .setEmitter(emitter)
+             .setContent(result.getString("message"))
+      /*.setCreatedAt(createdAt)*/;
+
+      return message;
+  }
+
+  //TODO: optimize this pipeliene
   private List<Document> filterConversation(ObjectId emitter, ObjectId receiver) {
     Document in = new Document("$in", Arrays.asList(emitter, receiver));
         /*$match: {
