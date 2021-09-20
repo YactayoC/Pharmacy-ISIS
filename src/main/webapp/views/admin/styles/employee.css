@@ -82,3 +82,8 @@
     max-height: 550px;
   }
 }
+
+.employee__delivery{
+  max-height: 500px;
+  overflow: auto;
+}

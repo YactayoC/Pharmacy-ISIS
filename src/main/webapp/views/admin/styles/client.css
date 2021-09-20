@@ -59,3 +59,8 @@
     max-height: 550px;
   }
 }
+
+.client__delivery{
+  max-height: 500px;
+  overflow: auto;
+}

@@ -118,3 +118,8 @@ input[type=number] {
     width: 70vw;
   }
 }
+
+.product__delivery{
+  max-height: 500px;
+  overflow: auto;
+}
