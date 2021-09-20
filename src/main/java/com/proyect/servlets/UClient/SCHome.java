@@ -32,7 +32,7 @@ public class SCHome extends HttpServlet {
     UserDAO udao = new UserDAO();
     ProductDAO pdao = new ProductDAO();
     CategoryDAO ctdao = new CategoryDAO();
-    Boolean actualizate = true;
+
 
 
     /***
@@ -108,9 +108,8 @@ public class SCHome extends HttpServlet {
             udao.save(user);
             cdao.save(client);
 
-            actualizate = true;
             request.getSession().setAttribute("usernameHome", username);
-            request.getSession().setAttribute("actualizateHome", actualizate);
+            request.getSession().setAttribute("actualizateHome", true);
             response.sendRedirect("SCHome?action=list");
         }
     }

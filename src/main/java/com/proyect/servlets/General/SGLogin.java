@@ -23,16 +23,15 @@ public class SGLogin extends HttpServlet {
     ClientDAO cdao = new ClientDAO();
     UserDAO udao = new UserDAO();
     EmployeeDAO edao = new EmployeeDAO();
-    Boolean validats = true;
+
     Integer idUser;
-    boolean actualizate;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action.equals("exit")) {
-            request.getSession().setAttribute("actualizateHome", actualizate = false);
-            request.getSession().setAttribute("validats", validats = false);
+            request.getSession().setAttribute("actualizateHome", false);
+            request.getSession().setAttribute("validats", false);
             request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
         }
     }
@@ -50,38 +49,29 @@ public class SGLogin extends HttpServlet {
             if (userExist) {
                 request.getSession().setAttribute("email", email);
                 request.getSession().setAttribute("password", password);
-                request.getSession().setAttribute("validats", validats = true);
+                request.getSession().setAttribute("validats", true);
 
                 idUser = user.getIdUser();
                 int flag = user.getFlag();
                 if (flag == 1) {
                     employee = edao.getIdUser(idUser);
-                    int idEmployee = employee.getIdEmployee();
-                    int role = employee.getRole().getIdRole();
-                    String avatar = user.getAvatar();
-                    String surname = employee.getSurname();
-                    String idMongo = user.getIdMongo();
-                    //String notification = new SimpleNotification(idMongo).buildNotification();
 
-                    request.getSession().setAttribute("idEmployee", idEmployee);
-                    request.getSession().setAttribute("role", role);
-                    request.getSession().setAttribute("surnameE", surname);
-                    request.getSession().setAttribute("avatarE", avatar);
-                    request.getSession().setAttribute("idMongo", idMongo);
+                    //String notification = new SimpleNotification(idMongo).buildNotification();
+                    request.getSession().setAttribute("idEmployee", employee.getIdEmployee());
+                    request.getSession().setAttribute("role", employee.getRole().getIdRole());
+                    request.getSession().setAttribute("surnameE", employee.getSurname());
+                    request.getSession().setAttribute("avatarE", user.getAvatar());
+                    request.getSession().setAttribute("idMongo", user.getIdMongo());
                     //request.getSession().setAttribute("notifications", notification);
                     response.sendRedirect("SASummary?action=list");
                 } else {
                     client = cdao.getIdUser(idUser);
-                    int idClient = client.getIdClient();
-                    String username = client.getUsername();
-                    String idMongo = client.getUser().getIdMongo();
+
                     //String notification = new SimpleNotification(idMongo).buildNotification();
-
-                    request.getSession().setAttribute("idClientHome", idClient);
-                    request.getSession().setAttribute("usernameLog", username);
-                    request.getSession().setAttribute("idMongo", idMongo);
+                    request.getSession().setAttribute("idClientHome", client.getIdClient());
+                    request.getSession().setAttribute("usernameLog", client.getUsername());
+                    request.getSession().setAttribute("idMongo", client.getUser().getIdMongo());
                     //request.getSession().setAttribute("notifications", notification);
-
                     response.sendRedirect("SCHome?action=list");
                 }
             } else {
