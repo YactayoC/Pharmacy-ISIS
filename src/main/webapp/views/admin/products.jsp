@@ -145,7 +145,7 @@
                 <button class="option option-filter" data-filter="0">Agotados
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
-                <a href="audit.jsp" class="option product__btn">
+                <a href="${pageContext.request.contextPath}/SAAudit?action=list0" class="option product__btn">
                     <i class="isax isax-receipt-search product__icon"></i> Auditoria
                 </a>
                 <button href="#" class="option product__btn product__add" id="add-entity">

@@ -24,7 +24,7 @@ public class AuditDAO implements Repository<Audit> {
 
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("")) {
+             ResultSet rs = stmt.executeQuery("select * from audiinsert")) {
             while (rs.next()) {
                 Audit a = createAudit(rs);
                 audit.add(a);
