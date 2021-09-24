@@ -13,8 +13,6 @@ import java.io.IOException;
 @WebServlet(name = "ServletProfile", value = "/ServletProfile")
 public class ServletProfile extends HttpServlet {
 
-  private HttpSession session = null;
-
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
@@ -36,14 +34,8 @@ public class ServletProfile extends HttpServlet {
     user.setAvatar(pathProfile);
     new UserDAO().saveAvatar(user);
 
-    //Save in MONGO
-    /*ObjectId idMongo = new ObjectId(user.getIdMongo());
-    Speaker speaker = new Speaker()
-           .setId(idMongo)
-           .setPhoto(pathProfile);
-    new SpeakerDao().saveAvatar(speaker);*/
 
-    session = request.getSession();
+    HttpSession session = request.getSession();
     session.setAttribute("avatarE",user.getAvatar());
   }
 }

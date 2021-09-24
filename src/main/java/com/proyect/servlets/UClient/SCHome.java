@@ -37,16 +37,11 @@ public class SCHome extends HttpServlet {
 
     /***
      * <p></p>  sebas da una explicación de esto
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
-            //TODO: need refactor
             case "search" -> {
                 categories = ctdao.list();
                 String text = request.getParameter("search");
@@ -74,10 +69,6 @@ public class SCHome extends HttpServlet {
 
     /***
      * <p>This update the username</p>  sebas da una explicación de esto
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

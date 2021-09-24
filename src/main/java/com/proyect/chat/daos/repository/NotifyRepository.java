@@ -1,6 +1,6 @@
 package com.proyect.chat.daos.repository;
 
-import com.proyect.chat.notify.Notify;
+import com.proyect.chat.model.notify.Notify;
 
 import java.util.List;
 

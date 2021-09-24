@@ -321,11 +321,11 @@
 </main>
 
 <!-- ========== message notification ========== -->
-<div class="notify">
+<%--<div class="notify">
     <p class="notify__message">
         Hey!! you have <span class="notify__info">5</span> messages
     </p>
-</div>
+</div>--%>
 <!-- ========== btn show Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
     <span class="chat__notify">1</span>
