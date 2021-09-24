@@ -1,8 +1,10 @@
 package com.proyect.chat.utils;
 
-import com.proyect.chat.model.Message;
+import com.proyect.chat.model.message.Message;
 import com.proyect.chat.model.Relevance;
-import com.proyect.chat.model.Speaker;
+import com.proyect.chat.model.message.MessageBuilder;
+import com.proyect.chat.model.speaker.Speaker;
+import com.proyect.chat.model.speaker.SpeakerBuilder;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
@@ -12,40 +14,35 @@ import org.bson.types.ObjectId;
 
 import java.io.StringReader;
 
-public class DecoderChat implements Decoder.Text<Message>{
+public class DecoderChat implements Decoder.Text<Message> {
 
-  @Override
-  public Message decode(String jsonMessage) throws DecodeException {
-    Message message = new Message();
-    System.out.println(jsonMessage);
-    try (JsonReader jsonReader = Json.createReader(new StringReader(jsonMessage))) {
+   @Override
+   public Message decode(String jsonMessage) throws DecodeException {
+      Message message;
+      System.out.println(jsonMessage);
+      try (JsonReader jsonReader = Json.createReader(new StringReader(jsonMessage))) {
 
-      JsonObject json = jsonReader.readObject();
+         JsonObject json = jsonReader.readObject();
 
-      Speaker emitter = new Speaker();
-      Speaker receiver = new Speaker();
+         Speaker emitter = new SpeakerBuilder(new ObjectId(json.getString("idEmitter")))
+                .isEmployee(json.getBoolean("emitterIsEmployee"))
+                .build();
+         Speaker receiver = new SpeakerBuilder(new ObjectId(json.getString("idReceiver"))).build();
 
-      //transform a string to Relevance Enum
-      String jsonRelevance = json.getString("relevance");
-      Relevance relevance = Relevance.valueOf(jsonRelevance);
+         Relevance relevance = Relevance.valueOf(json.getString("relevance"));
+         String content = json.getString("content");
 
-      //Add attributes(id - isEmployee) to emitter and receiver
-      emitter.setId(new ObjectId(json.getString("idEmitter")))
-             .setEmployee(json.getBoolean("emitterIsEmployee"));
+         message = new MessageBuilder(emitter, receiver, content)
+                .relevance(relevance)
+                .viewed(false)
+                .build();
 
-      receiver.setId(new ObjectId(json.getString("idReceiver")));
+      }
+      return message;
+   }
 
-      //set  attributes of chat :D
-      message.setContent(json.getString("content"))
-             .setReceiver(receiver)
-             .setEmitter(emitter)
-             .setRelevance(relevance);
-    }
-    return message;
-  }
-
-  @Override //verify that string is a valid JSON
-  public boolean willDecode(String jsonMessage) {
-    return jsonMessage != null;
-  }
+   @Override //verify that string is a valid JSON
+   public boolean willDecode(String jsonMessage) {
+      return jsonMessage != null;
+   }
 }

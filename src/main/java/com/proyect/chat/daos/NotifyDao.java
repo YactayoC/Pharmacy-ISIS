@@ -6,7 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.proyect.chat.daos.repository.NotifyRepository;
 import com.proyect.chat.model.Relevance;
-import com.proyect.chat.model.Speaker;
+import com.proyect.chat.model.speaker.Speaker;
 import com.proyect.chat.notify.Notify;
 import org.bson.Document;
 import org.bson.types.ObjectId;

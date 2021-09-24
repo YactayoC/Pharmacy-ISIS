@@ -1,14 +1,11 @@
 package com.proyect.servlets.General;
 
-import com.proyect.chat.daos.SpeakerDao;
-import com.proyect.chat.model.Speaker;
 import com.proyect.modelsDAO.General.UserDAO;
 import com.proyect.modelsDTO.General.SaveImage;
 import com.proyect.modelsDTO.General.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.bson.types.ObjectId;
 
 import java.io.IOException;
 

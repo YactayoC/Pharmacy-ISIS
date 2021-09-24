@@ -1,8 +1,8 @@
 package com.proyect.servlets.chat;
 
 import com.proyect.chat.daos.*;
-import com.proyect.chat.model.Message;
-import com.proyect.chat.model.Speaker;
+import com.proyect.chat.model.message.Message;
+import com.proyect.chat.model.speaker.Speaker;
 import com.proyect.chat.notify.ComplexNotification;
 import jakarta.json.*;
 import jakarta.servlet.*;

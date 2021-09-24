@@ -1,6 +1,6 @@
 package com.proyect.chat.utils;
 
-import com.proyect.chat.model.Message;
+import com.proyect.chat.model.message.Message;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.websocket.Encoder;

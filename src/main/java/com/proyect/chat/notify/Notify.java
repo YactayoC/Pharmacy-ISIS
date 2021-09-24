@@ -1,37 +1,23 @@
 package com.proyect.chat.notify;
 
 import com.proyect.chat.model.Relevance;
-import com.proyect.chat.model.Speaker;
+import com.proyect.chat.model.speaker.Speaker;
 
-import java.text.DateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 public class Notify {
-   private Date timeOfLastNotify;
-   private Long unReadMessages;
+
+   private Integer unReadMessages;
    private Relevance relevance;
-   private Speaker speaker;
+   private LocalDateTime date;
+   private Speaker emitter;
 
-   public Notify() {
-   }
-
-   public String getTimeOfLastNotify() {
-      DateFormat dateformat = DateFormat.getDateInstance(DateFormat.SHORT);
-      return dateformat.format(this.timeOfLastNotify);
-   }
-
-   public Notify setTimeOfLastNotify(Date date) {
-      this.timeOfLastNotify = date;
-      return this;
-   }
-
-   public Long getUnReadMessages() {
+   public Integer getUnReadMessages() {
       return unReadMessages;
    }
 
-   public Notify setUnReadMessages(Long unReadMessages) {
+   public Notify setUnReadMessages(Integer unReadMessages) {
       this.unReadMessages = unReadMessages;
       return this;
    }
@@ -45,12 +31,12 @@ public class Notify {
       return this;
    }
 
-   public Speaker getSpeaker() {
-      return speaker;
+   public LocalDateTime getDate() {
+      return date;
    }
 
-   public Notify setSpeaker(Speaker speaker) {
-      this.speaker = speaker;
+   public Notify setDate(LocalDateTime date) {
+      this.date = date;
       return this;
    }
 }

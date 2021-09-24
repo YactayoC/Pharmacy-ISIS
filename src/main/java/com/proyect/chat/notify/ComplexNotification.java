@@ -1,7 +1,7 @@
 package com.proyect.chat.notify;
 
 import com.proyect.chat.daos.NotifyDao;
-import com.proyect.chat.model.Speaker;
+import com.proyect.chat.model.speaker.Speaker;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDTO.UClient.Client;
 
