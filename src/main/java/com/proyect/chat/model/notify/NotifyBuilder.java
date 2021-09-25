@@ -7,12 +7,12 @@ import com.proyect.chat.model.speaker.Speaker;
 import java.time.LocalDateTime;
 
 public class NotifyBuilder {
-   protected Integer unReadMessages;
+   protected Long unReadMessages;
    protected Relevance relevance;
    protected LocalDateTime date;
    protected Speaker emitter;
 
-   public NotifyBuilder(Integer unReadMessages, Speaker emitter) {
+   public NotifyBuilder(Long unReadMessages, Speaker emitter) {
       this.unReadMessages = unReadMessages;
       this.emitter = emitter;
    }

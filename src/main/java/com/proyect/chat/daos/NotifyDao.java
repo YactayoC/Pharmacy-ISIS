@@ -60,11 +60,12 @@ public class NotifyDao implements NotifyRepository {
    }
 
    private Notify makeNotify(Document result) {
+      String simpleDate = (result.getString("date") != null)? result.getString("date"):"2021-09-22T05:00";
       Speaker emitter = new SpeakerBuilder(result.getObjectId("_id")).build();
       Relevance relevance = Relevance.valueOf(result.getString("relevance"));
-      LocalDateTime date = LocalDateTime.parse(result.getString("date"));
-
-      return new NotifyBuilder(result.getInteger("unread"), emitter)
+      LocalDateTime date = LocalDateTime.parse(simpleDate);
+      //2021-09-22T05:00
+      return new NotifyBuilder(result.getLong("unread"), emitter)
              .relevance(relevance)
              .date(date)
              .build();

@@ -6,7 +6,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
 public class Mongo {
-    public final static String DATABASE = "icisChat";
+    public final static String DATABASE = "chatIcis";
     public final static String URL_CONNECTION = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
     protected final ConnectionString CONNECTION_STRING = new ConnectionString(URL_CONNECTION);
     private MongoClient client;

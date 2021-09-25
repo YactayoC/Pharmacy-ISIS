@@ -163,20 +163,20 @@
           --%>
           <!-- init a list clients-->
           <c:forEach var="notify" items="${notifies}">
-            <li class="client__item filter-item" data-userId="${notify.getSpeaker().getId().toString()}" data-tag="${notify.getRelevance()}">
+            <li class="client__item filter-item" data-userId="${notify.getEmitter().getId().toString()}" data-tag="${notify.getRelevance()}">
               <div class="client__data">
                 <img
-                    src="${pageContext.request.contextPath}/views/user/assets/avatar/${notify.getSpeaker().getPhoto()}"
-                    alt="avatar de ${notify.getSpeaker().getName()}"
+                    src="${pageContext.request.contextPath}/views/user/assets/avatar/${notify.getEmitter().getPhoto()}"
+                    alt="avatar de ${notify.getEmitter().getName()}"
                     class="client__img client__img-item"
                 />
                 <div class="client__info">
-                  <p class="client__name">${notify.getSpeaker().getName()}</p>
-                  <span class="client__email">${notify.getSpeaker().getEmail()}</span>
+                  <p class="client__name">${notify.getEmitter().getName()}</p>
+                  <span class="client__email">${notify.getEmitter().getEmail()}</span>
                 </div>
               </div>
               <div class="client__time">
-                ${notify.getTimeOfLastNotify()}
+                ${notify.getDate()}
                 <span class="tag-notify tag-notify--green">${notify.getUnReadMessages()}</span>
               </div>
             </li>

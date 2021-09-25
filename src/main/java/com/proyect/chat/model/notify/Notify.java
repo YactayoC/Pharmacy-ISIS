@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 
 public class Notify {
-   protected Integer unReadMessages;
+   protected Long unReadMessages;
    protected Relevance relevance;
    protected LocalDateTime date;
    protected Speaker emitter;
@@ -19,7 +19,7 @@ public class Notify {
       this.emitter = builder.emitter;
    }
 
-   public Integer getUnReadMessages() {
+   public Long getUnReadMessages() {
       return unReadMessages;
    }
 

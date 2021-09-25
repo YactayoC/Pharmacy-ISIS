@@ -64,7 +64,7 @@ public class SCRegister extends HttpServlet {
             request.getRequestDispatcher("/views/user/register.jsp").forward(request, response);
         } else {
             String avatar = "client.png";
-
+            //TODO: Posible concurrencia
             //Mongo User
             ObjectId _id = new ObjectId();
             SpeakerBuilder speakerBuilder = new SpeakerBuilder(_id);
