@@ -1,9 +1,10 @@
 package com.proyect.servlets.chat;
 
 import com.proyect.chat.daos.*;
-import com.proyect.chat.model.Message;
-import com.proyect.chat.model.Speaker;
-import com.proyect.chat.notify.ComplexNotification;
+import com.proyect.chat.model.message.Message;
+import com.proyect.chat.model.speaker.Speaker;
+import com.proyect.chat.model.speaker.SpeakerBuilder;
+import com.proyect.chat.utils.custom.notify.ComplexNotification;
 import jakarta.json.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -30,8 +31,8 @@ public class ServletChat extends HttpServlet {
 
     if (idEmitter != null && idReceiver != null) {
       //Method for send information of speaker to client
-      Speaker emitter = new Speaker().setId(new ObjectId(idEmitter));
-      Speaker receiver = new Speaker().setId(new ObjectId(idReceiver));
+      Speaker emitter = new SpeakerBuilder(new ObjectId(idEmitter)).build();
+      Speaker receiver = new SpeakerBuilder(new ObjectId(idReceiver)).build() ;
 
       List<Message> conversation = messageDao.getConversation(emitter, receiver);
 
@@ -44,7 +45,7 @@ public class ServletChat extends HttpServlet {
     } else {
       //redirect to message.jsp and send the list of speakers
       if (session.getAttribute("notifies") == null) {
-        session.setAttribute("notifies", new ComplexNotification().buildNotification());
+        session.setAttribute("notifies", new ComplexNotification().build());
       }
       request.setAttribute("notifies",session.getAttribute("notifies"));
       //request.getSession().setAttribute("notifies", new ComplexNotification().buildNotification());

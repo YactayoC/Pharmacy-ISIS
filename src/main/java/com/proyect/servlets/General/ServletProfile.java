@@ -1,22 +1,17 @@
 package com.proyect.servlets.General;
 
-import com.proyect.chat.daos.SpeakerDao;
-import com.proyect.chat.model.Speaker;
 import com.proyect.modelsDAO.General.UserDAO;
 import com.proyect.modelsDTO.General.SaveImage;
 import com.proyect.modelsDTO.General.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
 @MultipartConfig
 @WebServlet(name = "ServletProfile", value = "/ServletProfile")
 public class ServletProfile extends HttpServlet {
-
-  private HttpSession session = null;
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,14 +34,8 @@ public class ServletProfile extends HttpServlet {
     user.setAvatar(pathProfile);
     new UserDAO().saveAvatar(user);
 
-    //Save in MONGO
-    /*ObjectId idMongo = new ObjectId(user.getIdMongo());
-    Speaker speaker = new Speaker()
-           .setId(idMongo)
-           .setPhoto(pathProfile);
-    new SpeakerDao().saveAvatar(speaker);*/
 
-    session = request.getSession();
+    HttpSession session = request.getSession();
     session.setAttribute("avatarE",user.getAvatar());
   }
 }

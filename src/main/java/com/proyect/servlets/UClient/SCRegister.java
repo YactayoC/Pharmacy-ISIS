@@ -1,7 +1,8 @@
 package com.proyect.servlets.UClient;
 
 import com.proyect.chat.daos.SpeakerDao;
-import com.proyect.chat.model.Speaker;
+import com.proyect.chat.model.speaker.Speaker;
+import com.proyect.chat.model.speaker.SpeakerBuilder;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.General.UserDAO;
 import com.proyect.modelsDTO.UClient.Client;
@@ -66,12 +67,12 @@ public class SCRegister extends HttpServlet {
 
             //Mongo User
             ObjectId _id = new ObjectId();
-            Speaker speaker = new Speaker()
-                    .setId(_id)
-                    .setUsername(username)
-                    .setName(name)
-                    .setEmail(email)
-                    .setPhoto(avatar);
+            SpeakerBuilder speakerBuilder = new SpeakerBuilder(_id);
+            Speaker speaker = speakerBuilder.name(name)
+                   .username(username)
+                   .email(email)
+                   .photo(avatar)
+                   .isEmployee(false).build();
 
             new SpeakerDao().save(speaker);
 

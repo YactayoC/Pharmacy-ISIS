@@ -1,6 +1,5 @@
 package com.proyect.servlets.General;
 
-import com.proyect.chat.notify.SimpleNotification;
 import com.proyect.modelsDAO.UClient.ClientDAO;
 import com.proyect.modelsDAO.UEmployee.EmployeeDAO;
 import com.proyect.modelsDAO.General.UserDAO;
@@ -66,8 +65,7 @@ public class SGLogin extends HttpServlet {
                     response.sendRedirect("SASummary?action=list");
                 } else {
                     client = cdao.getIdUser(idUser);
-
-                    //String notification = new SimpleNotification(idMongo).buildNotification();
+                    //String notification = new SimpleNotification(idMongo).build();
                     request.getSession().setAttribute("idClientHome", client.getIdClient());
                     request.getSession().setAttribute("usernameLog", client.getUsername());
                     request.getSession().setAttribute("idMongo", client.getUser().getIdMongo());

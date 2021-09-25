@@ -1,4 +1,4 @@
-package com.proyect.chat.notify;
+package com.proyect.chat.utils.custom.notify;
 
 import com.proyect.chat.daos.NotifyDao;
 
@@ -11,7 +11,7 @@ public class SimpleNotification implements Notifiable<String> {
    }
 
    @Override
-   public String buildNotification() {
+   public String build() {
       return unReadMessages.toString();
    }
 }

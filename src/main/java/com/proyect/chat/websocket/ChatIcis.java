@@ -1,7 +1,7 @@
 package com.proyect.chat.websocket;
 
 import com.proyect.chat.daos.MessageDao;
-import com.proyect.chat.model.Message;
+import com.proyect.chat.model.message.Message;
 import com.proyect.chat.utils.DecoderChat;
 import com.proyect.chat.utils.EncoderChat;
 import jakarta.websocket.*;
