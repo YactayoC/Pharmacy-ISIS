@@ -64,7 +64,7 @@ public class SCHome extends HttpServlet {
                 request.getSession().setAttribute("productsHome", products);
                 System.out.println("Servlet path = " + request.getServletPath());
                 System.out.println("Servlet url = " + request.getRequestURL());
-                System.out.println("Servlet uri = " + request.getRequestURI());
+                System.out.println("Servlet uri, en schome = " + request.getRequestURI());
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
             }
         }

@@ -35,8 +35,8 @@ public class SaveImage {
                 pathFile += file.getName();
                 Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignore) {
+            ;
         }
         return pathFile;
     }

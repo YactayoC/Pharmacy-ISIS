@@ -30,7 +30,7 @@ if (dataProduct) {
 //Event for each button
   dataProduct.forEach(i => {
     i.addEventListener('click', () => {
-      changeAction('edit')
+      changeAction('edit&idProduct=' + i.getAttribute("data-id"))
       name.value = i.getAttribute("data-name")
       stock.value = i.getAttribute("data-stock")
       price.value = i.getAttribute("data-price")
