@@ -137,10 +137,10 @@
                 <button class="option option-filter option--active" data-filter="all">Todo
                     <span class="tag-notify tag-notify--primary">8</span>
                 </button>
-                <button class="option option-filter" data-filter="buyer">Vendedor
+                <button class="option option-filter" data-filter="Vendedor">Vendedor
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
-                <button class="option option-filter" data-filter="delivery-man">Repartidor
+                <button class="option option-filter" data-filter="Repartidor">Repartidor
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
                 <button class="option employee__btn" id="add-entity">
@@ -166,7 +166,7 @@
 
                     <!-- row table delivery  -->
                     <c:forEach var="employees" items="${employees}">
-                        <ul class="employee__items grid filter-item" data-tag="delivery-man">
+                        <ul class="employee__items grid filter-item" data-tag="${employees.getRole().getNameR()}">
                             <!-- Photo -->
                             <li class="employee__item">
                                 <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${employees.getUser().getAvatar()}"

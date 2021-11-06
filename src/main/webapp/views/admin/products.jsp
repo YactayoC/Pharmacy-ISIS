@@ -385,7 +385,7 @@
                             id="image"
                             class="product__image-input hidden"
                             placeholder=" "
-                            required
+
                         />
                         <label for="image" class="form__label">Imagen</label>
                     </div>

@@ -62,6 +62,9 @@ public class SCHome extends HttpServlet {
             default -> {
                 products = pdao.listLast();
                 request.getSession().setAttribute("productsHome", products);
+                System.out.println("Servlet path = " + request.getServletPath());
+                System.out.println("Servlet url = " + request.getRequestURL());
+                System.out.println("Servlet uri = " + request.getRequestURI());
                 request.getRequestDispatcher("/views/user/home.jsp").forward(request, response);
             }
         }

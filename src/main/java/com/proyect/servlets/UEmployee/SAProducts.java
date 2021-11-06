@@ -105,8 +105,8 @@ public class SAProducts extends HttpServlet {
         this.list(request, response);
         break;
 
-      case "edit":
-        // edita
+      case "edit": //TODO: Completar codigo del editar productos
+        this.list(request, response);
         break;
 
       default:

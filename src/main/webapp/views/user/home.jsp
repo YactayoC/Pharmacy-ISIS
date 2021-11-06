@@ -328,7 +328,6 @@
 </div>--%>
 <!-- ========== btn show Chat ========== -->
 <div class="btn__show-chat" id="chat__show">
-    <span class="chat__notify">1</span>
     <i class="isax isax-message btn-icon "></i>
 </div>
 <!-- ========== Chat ========== -->
