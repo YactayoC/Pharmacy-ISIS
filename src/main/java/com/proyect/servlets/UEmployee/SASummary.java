@@ -22,6 +22,8 @@ public class SASummary extends HttpServlet {
         String action = request.getParameter("action");
         if(action.equals("list")){
             clients = cdao.listLast();
+            int clientsAll = cdao.list().size();
+            request.getSession().setAttribute("clientsAll", clientsAll);
             request.getSession().setAttribute("clientsSummary", clients);
             request.getRequestDispatcher("/views/admin/summary.jsp").forward(request, response);
         }

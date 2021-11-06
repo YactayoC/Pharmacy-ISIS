@@ -23,7 +23,6 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
     @Override
     public List<Client> list() {
         List<Client> clients = new ArrayList<>();
-
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT c.*,d.*, u.* FROM client AS c "

@@ -111,7 +111,7 @@
                 <i class="isax isax-profile-2user card__icon"></i>
             </div>
             <p class="card__title">N° Clientes</p>
-            <h2 class="card__quantity">12</h2>
+            <h2 class="card__quantity">${clientsAll}</h2>
         </div>
         <div class="card__content card__income">
             <div class="card__picture">

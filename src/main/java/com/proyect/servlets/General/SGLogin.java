@@ -54,7 +54,6 @@ public class SGLogin extends HttpServlet {
                 int flag = user.getFlag();
                 if (flag == 1) {
                     employee = edao.getIdUser(idUser);
-
                     //String notification = new SimpleNotification(idMongo).buildNotification();
                     request.getSession().setAttribute("idEmployee", employee.getIdEmployee());
                     request.getSession().setAttribute("role", employee.getRole().getIdRole());
