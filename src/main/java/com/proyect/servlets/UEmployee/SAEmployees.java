@@ -2,6 +2,7 @@ package com.proyect.servlets.UEmployee;
 
 import com.proyect.modelsDAO.UEmployee.EmployeeDAO;
 import com.proyect.modelsDAO.General.UserDAO;
+import com.proyect.modelsDTO.General.SaveImage;
 import com.proyect.modelsDTO.UEemployee.Employee;
 import com.proyect.modelsDTO.UEemployee.Role;
 import com.proyect.modelsDTO.General.User;
@@ -87,12 +88,29 @@ public class SAEmployees extends HttpServlet {
                 this.list(request, response);
                 break;
             case "edit":
-                // edita
-                break;
-            default:
-                this.list(request, response);
-                break;
-        }
+
+                idEmployee = Integer.parseInt(request.getParameter("id-employee"));
+                String name = request.getParameter("name-employee");
+                String surname = request.getParameter("last-name");
+                String phone1 = request.getParameter("phone");
+                int roleE = Integer.parseInt(request.getParameter("role"));
+                employee.setIdEmployee(idEmployee);
+                employee.setName(name);
+                employee.setSurname(surname);
+                employee.setPhone(phone1);
+
+        role.setIdRole(roleE);
+
+        employee.setRole(role);
+
+        edao.save(employee);
+
+        this.list(request, response);
+        break;
+        default:
+        this.list(request, response);
+        break;
+    }
     }
 
     private void list(HttpServletRequest request, HttpServletResponse response)

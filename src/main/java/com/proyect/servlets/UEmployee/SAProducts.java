@@ -46,9 +46,6 @@ public class SAProducts extends HttpServlet {
                 pdao.delete(idProduct);
                 this.list(request, response);
                 break;
-            case "byId":
-                /// recoge
-                break;
             case "search":
                 String text = request.getParameter("search-product");
                 products = pdao.search(text);
