@@ -12,12 +12,12 @@ public class Audit {
     private String newPname;
     private double oldPprice;
     private double newPprice;
-    private String oldPcateg;
-    private String newPcateg;
-    private String oldPlab;
-    private String newPlab;
-    private String oldPpresent;
-    private String newPpresent;
+    private Category oldPcateg;
+    private Category newPcateg;
+    private Laboratory oldPlab;
+    private Laboratory newPlab;
+    private Presentation oldPpresent;
+    private Presentation newPpresent;
     private Action action;
     private String avatarE;
     private String employee;
@@ -61,29 +61,29 @@ public class Audit {
 
     public void setNewPprice(double newPprice) {this.newPprice = newPprice;}
 
-    public String getOldPcateg() {return oldPcateg;}
+    public Category getOldPcateg() {return oldPcateg;}
 
-    public void setOldPcateg(String oldPcateg) {this.oldPcateg = oldPcateg;}
+    public void setOldPcateg(Category oldPcateg) {this.oldPcateg = oldPcateg;}
 
-    public String getNewPcateg() {return newPcateg;}
+    public Category getNewPcateg() {return newPcateg;}
 
-    public void setNewPcateg(String newPcateg) {this.newPcateg = newPcateg;}
+    public void setNewPcateg(Category newPcateg) {this.newPcateg = newPcateg;}
 
-    public String getOldPlab() {return oldPlab;}
+    public Laboratory getOldPlab() {return oldPlab;}
 
-    public void setOldPlab(String oldPlab) {this.oldPlab = oldPlab;}
+    public void setOldPlab(Laboratory oldPlab) {this.oldPlab = oldPlab;}
 
-    public String getNewPlab() {return newPlab;}
+    public Laboratory getNewPlab() {return newPlab;}
 
-    public void setNewPlab(String newPlab) {this.newPlab = newPlab;}
+    public void setNewPlab(Laboratory newPlab) {this.newPlab = newPlab;}
 
-    public String getOldPpresent() {return oldPpresent;}
+    public Presentation getOldPpresent() {return oldPpresent;}
 
-    public void setOldPpresent(String oldPpresent) {this.oldPpresent = oldPpresent;}
+    public void setOldPpresent(Presentation oldPpresent) {this.oldPpresent = oldPpresent;}
 
-    public String getNewPpresent() {return newPpresent;}
+    public Presentation getNewPpresent() {return newPpresent;}
 
-    public void setNewPpresent(String newPpresent) {this.newPpresent = newPpresent;}
+    public void setNewPpresent(Presentation newPpresent) {this.newPpresent = newPpresent;}
 
     public Action getAction() {return action;}
 

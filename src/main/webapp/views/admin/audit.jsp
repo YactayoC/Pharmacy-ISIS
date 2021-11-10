@@ -189,18 +189,18 @@
                             </li>
                             <!-- category -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">${audit.getOldPcateg()}</span>
-                                <p class="sale__text">${audit.getNewPcateg()}</p>
+                                <span class="sale__label-icon">${audit.getOldPcateg().getNameC()}</span>
+                                <p class="sale__text">${audit.getNewPcateg().getNameC()}</p>
                             </li>
                             <!-- presentation -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">${audit.getOldPpresent()}</span>
-                                <p class="sale__text">${audit.getNewPpresent()}</p>
+                                <span class="sale__label-icon">${audit.getOldPpresent().getNamePr()}</span>
+                                <p class="sale__text">${audit.getNewPpresent().getNamePr()}</p>
                             </li>
                             <!-- laboratory -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">${audit.getOldPlab()}</span>
-                                <p class="sale__text">${audit.getNewPlab()}</p>
+                                <span class="sale__label-icon">${audit.getOldPlab().getNameL()}</span>
+                                <p class="sale__text">${audit.getNewPlab().getNameL()}</p>
                             </li>
                             <!-- author -->
                             <li class="sale__item audit__info">
@@ -254,15 +254,15 @@
                         </li>
                         <!-- category -->
                         <li class="sale__item">
-                            <p class="sale__text">${audit.getNewPcateg()}</p>
+                            <p class="sale__text">${audit.getNewPcateg().getNameC()}</p>
                         </li>
                         <!-- presentation -->
                         <li class="sale__item">
-                            <p class="sale__text">${audit.getNewPpresent()}</p>
+                            <p class="sale__text">${audit.getNewPpresent().getNamePr()}</p>
                         </li>
                         <!-- laboratory -->
                         <li class="sale__item">
-                            <p class="sale__text">${audit.getNewPlab()}</p>
+                            <p class="sale__text">${audit.getNewPlab().getNameL()}</p>
                         </li>
                         <!-- author -->
                         <li class="sale__item audit__info">
@@ -286,7 +286,7 @@
                         <li class="sale__header-text">Hora</li>
                         <li class="sale__header-text">Categoría</li>
                         <li class="sale__header-text">Presentación</li>
-                        <li class="sale__header-text">Laboratório</li>
+                        <li class="sale__header-text">Laboratorio</li>
                         <li class="sale__header-text">Autor</li>
                     </ul>
                     <!-- init first  -->
@@ -311,15 +311,15 @@
                         </li>
                         <!-- category -->
                         <li class="sale__item">
-                            <p class="sale__text">${audit.getOldPcateg()}</p>
+                            <p class="sale__text">${audit.getOldPcateg().getNameC()}</p>
                         </li>
                         <!-- presentation -->
                         <li class="sale__item">
-                            <p class="sale__text">${audit.getOldPpresent()}</p>
+                            <p class="sale__text">${audit.getOldPpresent().getNamePr()}</p>
                         </li>
                         <!-- laboratory -->
                         <li class="sale__item">
-                            <p class="sale__text">${audit.getOldPlab()}</p>
+                            <p class="sale__text">${audit.getOldPlab().getNameL()}</p>
                         </li>
                         <!-- author -->
                         <li class="sale__item audit__info">
