@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,13 +32,9 @@
     <nav class="nav">
         <h1 class="nav__logo logo logo--gradient">Icis</h1>
         <div class="nav__profile">
-            <img
-                    src="${pageContext.request.contextPath}/views/admin/assets/img/photo-admin.webp"
-                    alt="Name of admin"
-                    class="nav__img nav__zipped-img"
-                    id="user-image"
-            />
-            <p class="nav__user nav__zipped-user" id="user-name">Jhon Doe</p>
+            <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="Name of admin"
+                 class="nav__img nav__zipped-img" id="user-image">
+            <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
         </div>
         <ul class="nav__list grid">
             <!-- summary -->
@@ -112,11 +109,11 @@
             </div>
             <form class="employee__search search">
                 <input
-                    type="search"
-                    name="search-employee"
-                    id="search-employee"
-                    class="search__input"
-                    placeholder="Buscar Empleado"
+                        type="search"
+                        name="search-employee"
+                        id="search-employee"
+                        class="search__input"
+                        placeholder="Buscar Empleado"
                 />
                 <button type="submit" class="search__button" name="action" value="search">
                     Buscar
@@ -132,14 +129,14 @@
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
                 <!-- create -->
-                <button class="option option-filter" data-filter="create">Creado
+                <button class="option option-filter" data-filter="insert">Creado
                     <span class="tag-notify tag-notify--primary">8</span>
                 </button>
                 <!-- delete -->
                 <button class="option option-filter" data-filter="delete">Eliminado
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
-                <a href="products.jsp" class="option sale__btn">
+                <a href="${pageContext.request.contextPath}/SAProducts?action=list" class="option sale__btn">
                     <i class="isax isax-logout"></i> volver atras
                 </a>
             </div>
@@ -147,6 +144,7 @@
             <!-- table BODY of clients -->
             <div class="sale__body">
                 <!--------- table update --------->
+
                 <div class="sale__delivery filter-item " data-tag="update">
 
                     <!-- header of table -->
@@ -163,59 +161,61 @@
                     </ul>
 
                     <!-- init first  -->
-                    <ul class="sale__items audit__items grid table__update">
-                        <!-- Photo -->
-                        <li class="sale__item audit__info">
-                            <img src="../user/assets/img/dkt-profile-user.webp" alt="old image" class="client__img audit__img-product sale__label-icon">
-                            <img src="assets/img/bg-product.webp" alt="#" class="client__img audit__img-product">
-                        </li>
-                        <!-- date -->
-                        <li class="sale__item">
-                            <p class="sale__text">2020/20/08</p>
-                        </li>
-                        <!-- time -->
-                        <li class="sale__item">
-                            <span class="sale__text">18:32</span>
-                        </li>
-                        <!-- Name - product -->
-                        <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old name very large</span>
-                            <p class="sale__text">name</p>
-                        </li>
-                        <!-- price -->
-                        <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old price very large</span>
-                            <p class="sale__text">$ <span class="sale__text">25.00</span></p>
-                        </li>
-                        <!-- category -->
-                        <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old cat very large</span>
-                            <p class="sale__text">category</p>
-                        </li>
-                        <!-- presentation -->
-                        <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old pres very large</span>
-                            <p class="sale__text">presentation</p>
-                        </li>
-                        <!-- laboratory -->
-                        <li class="sale__item audit__info">
-                            <span class="sale__label-icon">old lab very large</span>
-                            <p class="sale__text">laboratory</p>
-                        </li>
-                        <!-- author -->
-                        <li class="sale__item audit__info">
-                            <span class="sale__label-icon">admin ...</span>
-                            <div class="sale__text audit__img-profile">
-                                <img src="assets/img/photo-user.webp" alt="#" class="client__img">
-                                Anna Doe
-                            </div>
-                        </li>
+                    <c:forEach items="${audit}" var="audit">
+                        <c:if test="${audit.getAction().getIdAction() == 1}">
+                        <ul class="sale__items audit__items grid table__update">
+                            <!-- Photo -->
+                            <li class="sale__item audit__info">
+                                <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getOldPhoto()}" alt="old image" class="client__img audit__img-product sale__label-icon">
+                                <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getNewPhoto()}" alt="#" class="client__img audit__img-product">
+                            </li>
+                            <!-- date -->
+                            <li class="sale__item">
+                                <p class="sale__text">${audit.getRegistD()}</p>
+                            </li>
+                            <!-- time -->
+                            <li class="sale__item">
+                                <span class="sale__text">${audit.getHour()}</span>
+                            </li>
+                            <!-- Name - product -->
+                            <li class="sale__item audit__info">
+                                <span class="sale__label-icon">${audit.getOldPname()}</span>
+                                <p class="sale__text">${audit.getNewPname()}</p>
+                            </li>
+                            <!-- price -->
+                            <li class="sale__item audit__info">
+                                <span class="sale__label-icon">${audit.getOldPprice()}</span>
+                                <p class="sale__text">S/. <span class="sale__text">${audit.getNewPprice()}</span></p>
+                            </li>
+                            <!-- category -->
+                            <li class="sale__item audit__info">
+                                <p class="sale__text">${audit.getNewPcateg().getNameC()}</p>
+                            </li>
+                            <!-- presentation -->
+                            <li class="sale__item audit__info">
+                                <p class="sale__text">${audit.getNewPpresent().getNamePr()}</p>
+                            </li>
+                            <!-- laboratory -->
+                            <li class="sale__item audit__info">
 
-                    </ul>
+                                <p class="sale__text">${audit.getNewPlab().getNameL()}</p>
+                            </li>
+                            <!-- author -->
+                            <li class="sale__item audit__info">
+                                <span class="sale__label-icon">Trabajador</span>
+                                <div class="sale__text audit__img-profile">
+                                    <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
+                                        Trabajador
+
+                                </div>
+                            </li>
+                        </ul>
+                        </c:if>
+                    </c:forEach>
                 </div>
 
                 <!--------- table create --------->
-                <div class="sale__pick-up filter-item hidden" data-tag="create">
+                <div class="sale__pick-up filter-item hidden"  data-tag="insert"> <!-- SE PONE DATA-TAG -->
                     <!-- header of table -->
                     <ul class="sale__header audit__header-create grid">
                         <li class="sale__header-text sale__total-text">Producto</li>
@@ -228,48 +228,52 @@
                         <li class="sale__header-text">Autor</li>
                     </ul>
                     <!-- init first  -->
+                    <c:forEach items="${audit}" var="audit">
+                        <c:if test="${audit.getAction().getIdAction() == 2}">
                     <ul class="sale__items audit__items-create grid">
                         <!-- Photo -->
                         <li class="sale__item">
-                            <img src="assets/img/bg-product.webp" alt="#" class="client__img audit__img-product">
+                            <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getNewPhoto()}" alt="#" class="client__img audit__img-product">
                         </li>
                         <!-- name product -->
                         <li class="sale__item">
-                            <p class="sale__text">Name</p>
+                            <p class="sale__text">${audit.getNewPname()}</p>
                         </li>
                         <!-- date -->
                         <li class="sale__item">
-                            <p class="sale__text">2020/20/08</p>
+                            <p class="sale__text">${audit.getRegistD()}</p>
                         </li>
                         <!-- time -->
                         <li class="sale__item">
-                            <span class="sale__text">18:32</span>
+                            <span class="sale__text">${audit.getHour()}</span>
                         </li>
                         <!-- price -->
                         <li class="sale__item">
-                            $<span class="sale__text">5.00</span>
+                            S/.<span class="sale__text">${audit.getNewPprice()}</span>
                         </li>
                         <!-- category -->
                         <li class="sale__item">
-                            <p class="sale__text">category</p>
+                            <p class="sale__text">${audit.getNewPcateg().getNameC()}</p>
                         </li>
                         <!-- presentation -->
                         <li class="sale__item">
-                            <p class="sale__text">presentation</p>
+                            <p class="sale__text">${audit.getNewPpresent().getNamePr()}</p>
                         </li>
                         <!-- laboratory -->
                         <li class="sale__item">
-                            <p class="sale__text">laboratory</p>
+                            <p class="sale__text">${audit.getNewPlab().getNameL()}</p>
                         </li>
                         <!-- author -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">admin ...</span>
+                            <span class="sale__label-icon">Trabajador</span>
                             <div class="sale__text audit__img-profile">
-                                <img src="assets/img/photo-user.webp" alt="#" class="client__img">
-                                Anna Doe
+                                <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
+                                Trabajador
                             </div>
                         </li>
                     </ul>
+                        </c:if>
+                    </c:forEach>
                 </div>
 
                 <!--------- table delete --------->
@@ -281,48 +285,52 @@
                         <li class="sale__header-text">Hora</li>
                         <li class="sale__header-text">Categoría</li>
                         <li class="sale__header-text">Presentación</li>
-                        <li class="sale__header-text">Laboratório</li>
+                        <li class="sale__header-text">Laboratorio</li>
                         <li class="sale__header-text">Autor</li>
                     </ul>
                     <!-- init first  -->
+                    <c:forEach items="${audit}" var="audit">
+                        <c:if test="${audit.getAction().getIdAction() == 3}">
                     <ul class="sale__items grid">
                         <!-- Photo -->
                         <li class="sale__item">
-                            <img src="assets/img/bg-product.webp" alt="#" class="client__img audit__img-product">
+                            <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getOldPhoto()}" alt="#" class="client__img audit__img-product">
                         </li>
                         <!-- name product -->
                         <li class="sale__item">
-                            <p class="sale__text">Name</p>
+                            <p class="sale__text">${audit.getOldPname()}</p>
                         </li>
                         <!-- date -->
                         <li class="sale__item">
-                            <p class="sale__text">2020/20/08</p>
+                            <p class="sale__text">${audit.getRegistD()}</p>
                         </li>
                         <!-- time -->
                         <li class="sale__item">
-                            <span class="sale__text">18:32</span>
+                            <span class="sale__text">${audit.getHour()}</span>
                         </li>
                         <!-- category -->
                         <li class="sale__item">
-                            <p class="sale__text">category</p>
+                            <p class="sale__text">${audit.getOldPcateg().getNameC()}</p>
                         </li>
                         <!-- presentation -->
                         <li class="sale__item">
-                            <p class="sale__text">presentation</p>
+                            <p class="sale__text">${audit.getOldPpresent().getNamePr()}</p>
                         </li>
                         <!-- laboratory -->
                         <li class="sale__item">
-                            <p class="sale__text">laboratory</p>
+                            <p class="sale__text">${audit.getOldPlab().getNameL()}</p>
                         </li>
                         <!-- author -->
                         <li class="sale__item audit__info">
-                            <span class="sale__label-icon">admin ...</span>
+                            <span class="sale__label-icon">Trabajador</span>
                             <div class="sale__text audit__img-profile">
-                                <img src="assets/img/photo-user.webp" alt="#" class="client__img">
-                                Anna Doe
+                                <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
+                                Trabajador
                             </div>
                         </li>
                     </ul>
+                        </c:if>
+                    </c:forEach>
                 </div>
             </div>
 
@@ -331,7 +339,8 @@
 </main>
 
 <!-- ========== zipped unzipped nav ========== -->
-<script src="${pageContext.request.contextPath}/js/nav.js"></script>
-<script src="${pageContext.request.contextPath}/js/filter.js"></script>
+<script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
+<script src="${pageContext.request.contextPath}/views/admin/js/filter.js"></script>
+
 </body>
 </html>

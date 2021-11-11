@@ -23,7 +23,7 @@ public class CategoryDAO implements Repository<Category> {
 
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM category")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM category where idCategory !=0")) {
             while (rs.next()) {
                 Category c = createCategory(rs);
                 categories.add(c);

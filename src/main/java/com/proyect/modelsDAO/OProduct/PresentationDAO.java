@@ -23,7 +23,7 @@ public class PresentationDAO implements Repository<Presentation> {
 
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM presentation")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM presentation WHERE idPresentation !=0")) {
             while (rs.next()) {
                 Presentation pr = createPresentation(rs);
                 presentations.add(pr);

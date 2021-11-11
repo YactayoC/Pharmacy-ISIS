@@ -153,5 +153,7 @@ public class SAProducts extends HttpServlet {
         session.setAttribute("laboratories", laboratories);
         session.setAttribute("presentations", presentations);
         request.getRequestDispatcher("/views/admin/products.jsp").forward(request, response);
+        //CONTADOR
+
     }
 }
