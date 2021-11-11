@@ -23,7 +23,7 @@ public class LaboratoryDAO implements Repository<Laboratory> {
 
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM laboratory")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM laboratory where idLaboratory !=0")) {
             while (rs.next()) {
                 Laboratory l = createLaboratory(rs);
                 laboratories.add(l);
