@@ -91,7 +91,7 @@ public class AuditDAO implements Repository<Audit> {
         Action action=new Action();
         action.setIdAction(rs.getInt("idAction"));
         action.setAction(rs.getString("actionN"));
-
+//
         a.setAction(action);
         return a;
     }

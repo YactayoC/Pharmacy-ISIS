@@ -206,6 +206,7 @@
                                 <div class="sale__text audit__img-profile">
                                     <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
                                         Trabajador
+
                                 </div>
                             </li>
                         </ul>
