@@ -125,15 +125,15 @@
         <div class="sale container">
             <div class="sale__options options">
                 <!-- update -->
-                <button class="option option-filter option--active" data-filter="1">Actualizado
+                <button class="option option-filter option--active" data-filter="update">Actualizado
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
                 <!-- create -->
-                <button class="option option-filter" data-filter="2">Creado
+                <button class="option option-filter" data-filter="insert">Creado
                     <span class="tag-notify tag-notify--primary">8</span>
                 </button>
                 <!-- delete -->
-                <button class="option option-filter" data-filter="3">Eliminado
+                <button class="option option-filter" data-filter="delete">Eliminado
                     <span class="tag-notify tag-notify--primary">7</span>
                 </button>
                 <a href="${pageContext.request.contextPath}/SAProducts?action=list" class="option sale__btn">
@@ -145,7 +145,7 @@
             <div class="sale__body">
                 <!--------- table update --------->
 
-                <div class="sale__delivery filter-item " data-tag="1">
+                <div class="sale__delivery filter-item " data-tag="update">
 
                     <!-- header of table -->
                     <ul class="sale__header grid audit__header">
@@ -189,17 +189,14 @@
                             </li>
                             <!-- category -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">${audit.getOldPcateg().getNameC()}</span>
                                 <p class="sale__text">${audit.getNewPcateg().getNameC()}</p>
                             </li>
                             <!-- presentation -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">${audit.getOldPpresent().getNamePr()}</span>
                                 <p class="sale__text">${audit.getNewPpresent().getNamePr()}</p>
                             </li>
                             <!-- laboratory -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">${audit.getOldPlab().getNameL()}</span>
                                 <p class="sale__text">${audit.getNewPlab().getNameL()}</p>
                             </li>
                             <!-- author -->
@@ -207,7 +204,7 @@
                                 <span class="sale__label-icon">Trabajador</span> <!-- $ {role} -->
                                 <div class="sale__text audit__img-profile">
                                     <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
-                                        PENDIENTE  <!-- $ {surnameE} -->
+                                    Trabajador
                                 </div>
                             </li>
                         </ul>
@@ -216,8 +213,7 @@
                 </div>
 
                 <!--------- table create --------->
-                <div class="sale__pick-up filter-item hidden"  data-tag="2"> <!-- SE PONE DATA-TAG -->
-                    <!-- header of table -->
+                <div class="sale__pick-up filter-item hidden"  data-tag="insert">
                     <ul class="sale__header audit__header-create grid">
                         <li class="sale__header-text sale__total-text">Producto</li>
                         <li class="sale__header-text">Fecha</li>
@@ -269,7 +265,7 @@
                             <span class="sale__label-icon">Trabajador</span>
                             <div class="sale__text audit__img-profile">
                                 <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
-                                PENDIENTE
+                                Trabajador
                             </div>
                         </li>
                     </ul>
@@ -278,7 +274,7 @@
                 </div>
 
                 <!--------- table delete --------->
-                <div class="sale__offline filter-item hidden" data-tag="3">
+                <div class="sale__offline filter-item hidden" data-tag="delete">
                     <!-- header of table -->
                     <ul class="sale__header grid">
                         <li class="sale__header-text sale__total-text">Producto</li>
@@ -326,7 +322,7 @@
                             <span class="sale__label-icon">Trabajador</span>
                             <div class="sale__text audit__img-profile">
                                 <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
-                                PENDIENTE
+                                Trabajador
                             </div>
                         </li>
                     </ul>
