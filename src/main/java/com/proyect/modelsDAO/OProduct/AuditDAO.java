@@ -65,14 +65,6 @@ public class AuditDAO implements Repository<Audit> {
         a.setOldPprice(rs.getDouble("oldPprice"));
         a.setNewPprice(rs.getDouble("newPprice"));
 
-        Category cat1 =new Category();
-        cat1.setIdCategory(rs.getInt("idCategory"));
-        cat1.setNameC(rs.getString("nameC"));
-        cat1.setUrlCateg(rs.getString("urlCateg"));
-        cat1.setDescription(rs.getString("description"));
-
-        a.setOldPcateg(cat1);
-
         Category cat2 =new Category();
         cat2.setIdCategory(rs.getInt("idCategory"));
         cat2.setNameC(rs.getString("nameC"));
@@ -81,23 +73,11 @@ public class AuditDAO implements Repository<Audit> {
 
         a.setNewPcateg(cat2);
 
-        Laboratory lab1=new Laboratory();
-        lab1.setIdLaboratory(rs.getInt("idLaboratory"));
-        lab1.setNameL(rs.getString("nameL"));
-
-        a.setOldPlab(lab1);
-
         Laboratory lab2=new Laboratory();
         lab2.setIdLaboratory(rs.getInt("idLaboratory"));
         lab2.setNameL(rs.getString("nameL"));
 
         a.setNewPlab(lab2);
-
-        Presentation pre1=new Presentation();
-        pre1.setIdPresentation(rs.getInt("idPresentation"));
-        pre1.setNamePr(rs.getString("namePr"));
-
-        a.setOldPpresent(pre1);
 
         Presentation pre2=new Presentation();
         pre2.setIdPresentation(rs.getInt("idPresentation"));
