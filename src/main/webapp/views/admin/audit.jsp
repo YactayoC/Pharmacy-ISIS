@@ -197,14 +197,15 @@
                             </li>
                             <!-- laboratory -->
                             <li class="sale__item audit__info">
+
                                 <p class="sale__text">${audit.getNewPlab().getNameL()}</p>
                             </li>
                             <!-- author -->
                             <li class="sale__item audit__info">
-                                <span class="sale__label-icon">Trabajador</span> <!-- $ {role} -->
+                                <span class="sale__label-icon">Trabajador</span>
                                 <div class="sale__text audit__img-profile">
                                     <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
-                                    Trabajador
+                                        Trabajador
                                 </div>
                             </li>
                         </ul>
@@ -213,7 +214,8 @@
                 </div>
 
                 <!--------- table create --------->
-                <div class="sale__pick-up filter-item hidden"  data-tag="insert">
+                <div class="sale__pick-up filter-item hidden"  data-tag="insert"> <!-- SE PONE DATA-TAG -->
+                    <!-- header of table -->
                     <ul class="sale__header audit__header-create grid">
                         <li class="sale__header-text sale__total-text">Producto</li>
                         <li class="sale__header-text">Fecha</li>
