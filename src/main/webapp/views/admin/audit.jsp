@@ -193,7 +193,6 @@
                             </li>
                             <!-- presentation -->
                             <li class="sale__item audit__info">
-
                                 <p class="sale__text">${audit.getNewPpresent().getNamePr()}</p>
                             </li>
                             <!-- laboratory -->
@@ -268,7 +267,7 @@
                             <span class="sale__label-icon">Trabajador</span>
                             <div class="sale__text audit__img-profile">
                                 <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
-                                PENDIENTE
+                                Trabajador
                             </div>
                         </li>
                     </ul>
@@ -325,7 +324,7 @@
                             <span class="sale__label-icon">Trabajador</span>
                             <div class="sale__text audit__img-profile">
                                 <img src="${pageContext.request.contextPath}/views/admin/assets/img/${audit.getAvatarE()}" alt="#" class="client__img">
-                                PENDIENTE
+                                Trabajador
                             </div>
                         </li>
                     </ul>
