@@ -27,8 +27,12 @@ public class SASetting extends HttpServlet {
             employee = edao.byId(idEmployee);
             request.setAttribute("employeeS", employee);
             request.getRequestDispatcher("/views/admin/setting.jsp").forward(request, response);
+        }if(action.equals("getSetting2")){
+            int idEmployee = Integer.parseInt(request.getParameter("idEmployee"));
+            employee = edao.byId(idEmployee);
+            request.setAttribute("employeeS", employee);
+            request.getRequestDispatcher("/views/delivery-man/settings.jsp").forward(request, response);
         }
-
     }
 
     @Override

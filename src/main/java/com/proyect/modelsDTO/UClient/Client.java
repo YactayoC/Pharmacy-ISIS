@@ -1,5 +1,6 @@
 package com.proyect.modelsDTO.UClient;
 
+import com.proyect.modelsDTO.BCar.Receipt;
 import com.proyect.modelsDTO.General.User;
 
 public class Client {
@@ -12,6 +13,7 @@ public class Client {
     private String phone;
     private User user;
     private District district;
+    private Receipt Receipt;
 
     public Client() {
     }
@@ -88,6 +90,10 @@ public class Client {
         this.district = district;
     }
 
+    public Receipt getReceipt() {return Receipt;}
+
+    public void setReceipt(Receipt receipt) {Receipt = receipt;}
+
     @Override
     public String toString() {
         return "Client{" +
@@ -100,6 +106,7 @@ public class Client {
                 ", phone='" + phone + '\'' +
                 ", user=" + user +
                 ", district=" + district +
+                ", Receipt=" + Receipt +
                 '}';
     }
 }
