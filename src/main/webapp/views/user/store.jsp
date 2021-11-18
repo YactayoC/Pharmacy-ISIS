@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/style.css"/>
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/store.css"/>
+    <link const totalProducts = document.querySelectorAll('product__card')>
     <title>Tienda</title>
 </head>
 <body>
@@ -34,7 +35,7 @@
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/SCard?action=listCart" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -137,6 +138,7 @@
         <!-- init card -->
         <c:if test="${idCategory != null}">
             <c:forEach var="p" items="${productsC}">
+                <span class="hidden">${p.getIdProduct()}</span>
                 <div class="product__card">
                     <div class="product__stock">${p.getStock()} Units</div>
                     <div class="product__box">
@@ -146,11 +148,11 @@
                                 class="product__img"
                         />
                         <div class="product__actions">
-                            <a href="#" class="product__action">
+                            <a class="product__action add-to-cart" >
                                 <span class="product__action-text">A la bolsa</span>
                                 <i class="isax isax-bag btn-icon"></i>
                             </a>
-                            <a href="shopp-cart.jsp" class="product__action">
+                            <a href="shopp-cart.jsp">
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
                             </a>
@@ -174,7 +176,10 @@
         <!-- init card -->
         <c:if test="${idCategory == null}">
             <c:forEach var="p" items="${products}">
+
                 <div class="product__card">
+
+                    <span class="hidden">${p.getIdProduct()}</span>
                     <div class="product__stock">${p.getStock()} Units</div>
                     <div class="product__box">
                         <img
@@ -183,10 +188,11 @@
                                 class="product__img"
                         />
                         <div class="product__actions">
-                            <a href="#" class="product__action">
+
+                            <button class="product__action add-to-cart">
                                 <span class="product__action-text">A la bolsa</span>
                                 <i class="isax isax-bag btn-icon"></i>
-                            </a>
+                            </button>
                             <a href="shopp-cart.jsp" class="product__action">
                                 <span class="product__action-text">Comprar</span>
                                 <i class="isax isax-wallet btn-icon"></i>
@@ -248,5 +254,7 @@
 <script src="${pageContext.request.contextPath}/js/swiper-bundle.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
 <script src="${pageContext.request.contextPath}/views/user/js/details.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/send-datas.js"></script>
 </body>
 </html>

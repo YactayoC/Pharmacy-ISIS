@@ -162,7 +162,20 @@ public class ProductDAO implements Repository<Product>, Search<Product> {
         }
         return products;
     }
-
+/*
+    public int updateStock(int idProduct, int stock) {
+        int rows = 0;
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement("UPDATE product SET stock=? where idProduct=?")) {
+            stmt.setInt(1, idProduct);
+            stmt.setDouble(2, stock);
+            rows = stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rows;
+    }
+*/
     private Product createProduct(ResultSet rs) throws SQLException {
         Product p = new Product();
         p.setIdProduct(rs.getInt("idProduct"));

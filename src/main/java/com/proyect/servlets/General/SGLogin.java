@@ -22,7 +22,6 @@ public class SGLogin extends HttpServlet {
     ClientDAO cdao = new ClientDAO();
     UserDAO udao = new UserDAO();
     EmployeeDAO edao = new EmployeeDAO();
-
     Integer idUser;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
