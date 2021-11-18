@@ -3,23 +3,23 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- ========== default styles and icons ========== -->
-  <link rel="stylesheet" href="../../styles/normalize.css">
-  <link rel="stylesheet" href="../../styles/style-icon.css">
-  <link rel="stylesheet" href="../../styles/overall-styles.css">
-  <link rel="stylesheet" href="../../styles/form.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/normalize.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style-icon.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css">
 
-  <link rel="stylesheet" href="../admin/styles/setting.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/setting.css">
   <!-- ========== styles for view delivery-man ========== -->
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/delivery-man/styles/styles.css">
   <!-- ========== styles only this page ========== -->
-  <link rel="stylesheet" href="styles/settings.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/views/delivery-man/styles/settings.css">
   <title>Perfil</title>
 </head>
 <body>
 <!-- ========== navbar ========== -->
 <header class="container">
   <nav class="nav">
-    <a href="orders.jsp" class="nav__logout">
+    <a href="${pageContext.request.contextPath}/SAClients?action=listReceV" class="nav__logout">
       <i class="isax isax-logout nav__icon"></i>
       <span class="nav__text">Atras</span>
     </a>
@@ -27,7 +27,7 @@
       <h1 class="logo logo--gradient">Icis</h1>
     </div>
     <div class="nav__profile">
-      <img src="assets/img/photo-user.webp" alt="user" class="nav__img">
+      <img src="${pageContext.request.contextPath}/views/delivery-man/assets/img/photo-user.webp" alt="user" class="nav__img">
     </div>
   </nav>
 </header>
@@ -41,25 +41,26 @@
       <form class="profile__picture" enctype="multipart/form-data">
         <div class="profile__overlay" id="profile-overlay">
           <input
-              type="file"
-              name="photo"
-              id="photo"
-              data-idUser="1" <%-- here id of user --%>
-              data-path="${pageContext.request.contextPath}"
-              data-urlProfile="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" <%-- here is URL of profile --%>
-              class="profile__input hidden"
-              accept="image/*"
+                  type="file"
+                  name="photo"
+                  id="photo"
+                  data-idUser="1" <%-- here id of user --%>
+                  data-path="${pageContext.request.contextPath}"
+                  data-urlProfile="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" <%-- here is URL of profile --%>
+                  class="profile__input hidden"
+                  accept="image/*"
           />
           <i class="isax isax-user-octagon profile__icon"></i>
         </div>
       </form>
       <div class="profile__data">
-        <div class="profile__name">Anna Smith</div>
-        <div class="profile__username">delivery@gmail.com</div>
+        <div class="profile__name">${surnameE}</div>
+        <div class="profile__username">${email}</div>
       </div>
     </div>
     <!-- here init form :d -->
-    <form action="" class="form__container grid">
+    <form action="${pageContext.request.contextPath}/SASetting?action=editSetting&idEmployee=${employeeS.getIdEmployee()}" class="form__container grid"
+          method="post">
       <!-- name -->
       <div class="form__field">
         <i class="isax isax-user form__icon"></i>
@@ -67,6 +68,7 @@
                 type="text"
                 name="name"
                 id="name"
+                value="${employeeS.getName()}"
                 class="form__input"
                 placeholder=" "
                 maxlength="45"
@@ -83,6 +85,7 @@
                 type="text"
                 name="surname"
                 id="surname"
+                value="${employeeS.getSurname()}"
                 class="form__input"
                 placeholder=" "
                 maxlength="45"
@@ -97,6 +100,7 @@
                 type="tel"
                 name="phone"
                 id="phone"
+                value="${employeeS.getPhone()}"
                 class="form__input"
                 placeholder=" "
                 maxlength="20"
@@ -111,6 +115,7 @@
                 type="text"
                 name="dni"
                 id="dni"
+                value="${employeeS.getDocIdentity()}"
                 class="form__input"
                 placeholder=" "
                 maxlength="15"
@@ -126,6 +131,7 @@
                 type="email"
                 name="email"
                 id="email"
+                value="${employeeS.getUser().getEmail()}"
                 class="form__input"
                 placeholder=" "
                 required
@@ -139,6 +145,7 @@
                 type="password"
                 name="password"
                 id="password"
+                value="${employeeS.getUser().getPassword()}"
                 class="form__input"
                 placeholder=" "
                 minlength="8"
@@ -157,6 +164,6 @@
   </div>
 </section>
 <!-- ========== scripts ========== -->
-<script src="../../js/form.js"></script>
+<script src="${pageContext.request.contextPath}/js/form.js"></script>
 </body>
 </html>

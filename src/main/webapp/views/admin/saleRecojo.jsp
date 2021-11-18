@@ -82,12 +82,12 @@
                 </a>
             </li>
             <!-- Setting -->
-                <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
-                        <i class="isax isax-setting-2 nav__icon"></i>
-                        <span class="nav__link-text"> Perfil </span>
-                    </a>
-                </li>
+            <li class="nav__item">
+                <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
+                    <i class="isax isax-setting-2 nav__icon"></i>
+                    <span class="nav__link-text"> Perfil </span>
+                </a>
+            </li>
             <!-- logout -->
             <li class="nav__item">
                 <a href="${pageContext.request.contextPath}/SGLogin?action=exit" class="nav__link">
@@ -126,10 +126,10 @@
         <!-- table HEADER of receipts -->
         <div class="sale container">
             <div class="sale__options options">
-                <a href="${pageContext.request.contextPath}/views/admin/sale.jsp" class="option option-filter option--active">Delivery
+                <a href="${pageContext.request.contextPath}/views/admin/sale.jsp" class="option option-filter">Delivery
                     <span class="tag-notify tag-notify--primary">8</span>
                 </a>
-                <a href="${pageContext.request.contextPath}/views/admin/saleRecojo.jsp" class="option option-filter">Recogo
+                <a href="${pageContext.request.contextPath}/views/admin/saleRecojo.jsp" class="option option-filter option-active">Recogo
                     <span class="tag-notify tag-notify--primary">7</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/SAOffline?action=listRece" class="option option-filter">offline
@@ -139,15 +139,13 @@
                     <i class="isax isax-bag-happy sale__icon"></i> Compra presencial
                 </a>
             </div>
-
-            <!--------- table delivery --------->
+            <!--------- table pick up --------->
             <div class="">
                 <!-- header of table -->
                 <ul class="sale__header grid">
                     <li class="sale__header-text sale__total-text">Total productos</li>
                     <li class="sale__header-text">Cliente</li>
                     <li class="sale__header-text">Fecha</li>
-                    <li class="sale__header-text">Repartidor</li>
                     <li class="sale__header-text">total</li>
                     <li class="sale__header-text">Estado</li>
                     <li class="sale__header-text">detalle</li>
@@ -160,19 +158,15 @@
                     </li>
                     <!-- total products -->
                     <li class="sale__item">
-                        <span class="sale__text">14</span> Producto
+                        <span class="sale__text">14</span> Productos
                     </li>
                     <!-- client -->
                     <li class="sale__item">
-                        <p class="sale__text">Anna Smith</p>
+                        <p class="sale__text">Recojo</p>
                     </li>
                     <!-- date -->
                     <li class="sale__item">
                         <p class="sale__text">2020/20/08</p>
-                    </li>
-                    <!-- delivery man -->
-                    <li class="sale__item">
-                        <p class="sale__text">Jhon doe</p>
                     </li>
                     <!-- total -->
                     <li class="sale__item">
@@ -182,7 +176,7 @@
                     <li class="sale__item sale__status">
                         <span class="sale__label-icon">Pendiente</span>
                         <i class="isax isax-convert-3d-cube sale__icon"></i>
-                        <!-- <span class="sale__label-icon">entregado</span>
+                        <!-- <span class="sale__label-icon">recogido</span>
                         <i class="isax isax-box-tick sale__icon"></i> -->
                     </li>
                     <!-- view details-->

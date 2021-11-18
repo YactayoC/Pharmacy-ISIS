@@ -20,7 +20,12 @@ public class SAClients extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("search")) {
+        if (action.equals("listReceV")) {
+            //List Receipt Virtual
+            clients = cdao.listReiptV();
+            request.setAttribute("clients",clients);
+            request.getRequestDispatcher("/views/delivery-man/orders.jsp").forward(request, response);
+        }if (action.equals("search")) {
             String text = request.getParameter("search-client");
             clients = cdao.search(text);
         } else {

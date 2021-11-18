@@ -139,8 +139,9 @@
                         <p class="product__name">${products.getNameP()}</p>
                         <p>$<span class="product__price">${products.getPrice()}</span></p>
                     </div>
-                    <div class="offline__btn">
-                        <a href="#" class="btn offline__btn-sale btn-gradient">Comprar</a>
+                    <!--Btn Comprar-->
+                    <div id="botonC" class="offline__btn">
+                        <a  href="SAOffline?action=addProduct&idProduct=${products.getIdProduct()}&url=${products.getUrlPhoto()}" class="btn offline__btn-sale btn-gradient">Comprar</a>
                     </div>
                 </div>
             </c:forEach>
@@ -153,268 +154,67 @@
     <section class="section container offline-cart">
         <div class="cart__table">
             <ul class="cart__header grid">
-                <li class="cart__header-text">Producto</li>
+                <li class="cart__header-text">Productos</li>
                 <li class="cart__header-text">Precio</li>
                 <li class="cart__header-text">Cantidad</li>
                 <li class="cart__header-text">Subtotal</li>
                 <li class="cart__header-text">Eliminar</li>
             </ul>
+
             <div class="cart__products">
                 <!-- row of a product -->
-                <ul class="cart__product grid">
-                    <!-- photo -->
-                    <li class="cart__product-item">
-                        <img
-                                src="assets/img/bg-product.webp"
-                                alt="img"
-                                class="cart__img"
-                        />
-                    </li>
-                    <!-- name -->
-                    <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
-                        <div class="cart__description"></div>
-                    </li>
-                    <!-- unit price -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
-                    </li>
-                    <!-- quantity -->
-                    <li class="cart__product-item cart__quantity">
-                <span class="cart__quantity-btn cart__up-btn">
-                  <i class="isax isax-arrow-circle-up"></i>
-                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
-                  <i class="isax isax-arrow-circle-down"></i>
-                </span>
-                    </li>
-                    <!-- subtotal -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
-                    </li>
-                    <!-- remove -->
-                    <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn cart__icon"></a>
-                    </li>
-                </ul>
-                <!-- row of a product -->
-                <ul class="cart__product grid">
-                    <!-- photo -->
-                    <li class="cart__product-item">
-                        <img
-                                src="assets/img/bg-product.webp"
-                                alt="img"
-                                class="cart__img"
-                        />
-                    </li>
-                    <!-- name -->
-                    <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
-                        <div class="cart__description"></div>
-                    </li>
-                    <!-- unit price -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
-                    </li>
-                    <!-- quantity -->
-                    <li class="cart__product-item cart__quantity">
-                <span class="cart__quantity-btn cart__up-btn">
-                  <i class="isax isax-arrow-circle-up"></i>
-                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
-                  <i class="isax isax-arrow-circle-down"></i>
-                </span>
-                    </li>
-                    <!-- subtotal -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
-                    </li>
-                    <!-- remove -->
-                    <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn cart__icon"></a>
-                    </li>
-                </ul>
-                <!-- row of a product -->
-                <ul class="cart__product grid">
-                    <!-- photo -->
-                    <li class="cart__product-item">
-                        <img
-                                src="assets/img/bg-product.webp"
-                                alt="img"
-                                class="cart__img"
-                        />
-                    </li>
-                    <!-- name -->
-                    <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
-                        <div class="cart__description"></div>
-                    </li>
-                    <!-- unit price -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
-                    </li>
-                    <!-- quantity -->
-                    <li class="cart__product-item cart__quantity">
-                <span class="cart__quantity-btn cart__up-btn">
-                  <i class="isax isax-arrow-circle-up"></i>
-                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
-                  <i class="isax isax-arrow-circle-down"></i>
-                </span>
-                    </li>
-                    <!-- subtotal -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
-                    </li>
-                    <!-- remove -->
-                    <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn cart__icon"></a>
-                    </li>
-                </ul>
-                <!-- row of a product -->
-                <ul class="cart__product grid">
-                    <!-- photo -->
-                    <li class="cart__product-item">
-                        <img
-                                src="assets/img/bg-product.webp"
-                                alt="img"
-                                class="cart__img"
-                        />
-                    </li>
-                    <!-- name -->
-                    <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
-                        <div class="cart__description"></div>
-                    </li>
-                    <!-- unit price -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
-                    </li>
-                    <!-- quantity -->
-                    <li class="cart__product-item cart__quantity">
-                <span class="cart__quantity-btn cart__up-btn">
-                  <i class="isax isax-arrow-circle-up"></i>
-                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
-                  <i class="isax isax-arrow-circle-down"></i>
-                </span>
-                    </li>
-                    <!-- subtotal -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
-                    </li>
-                    <!-- remove -->
-                    <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn cart__icon"></a>
-                    </li>
-                </ul>
-                <!-- row of a product -->
-                <ul class="cart__product grid">
-                    <!-- photo -->
-                    <li class="cart__product-item">
-                        <img
-                                src="assets/img/bg-product.webp"
-                                alt="img"
-                                class="cart__img"
-                        />
-                    </li>
-                    <!-- name -->
-                    <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
-                        <div class="cart__description"></div>
-                    </li>
-                    <!-- unit price -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
-                    </li>
-                    <!-- quantity -->
-                    <li class="cart__product-item cart__quantity">
-                <span class="cart__quantity-btn cart__up-btn">
-                  <i class="isax isax-arrow-circle-up"></i>
-                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
-                  <i class="isax isax-arrow-circle-down"></i>
-                </span>
-                    </li>
-                    <!-- subtotal -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
-                    </li>
-                    <!-- remove -->
-                    <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn cart__icon"></a>
-                    </li>
-                </ul>
-                <!-- row of a product -->
-                <ul class="cart__product grid">
-                    <!-- photo -->
-                    <li class="cart__product-item">
-                        <img
-                                src="assets/img/bg-product.webp"
-                                alt="img"
-                                class="cart__img"
-                        />
-                    </li>
-                    <!-- name -->
-                    <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
-                        <div class="cart__description"></div>
-                    </li>
-                    <!-- unit price -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
-                    </li>
-                    <!-- quantity -->
-                    <li class="cart__product-item cart__quantity">
-                <span class="cart__quantity-btn cart__up-btn">
-                  <i class="isax isax-arrow-circle-up"></i>
-                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
-                  <i class="isax isax-arrow-circle-down"></i>
-                </span>
-                    </li>
-                    <!-- subtotal -->
-                    <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
-                    </li>
-                    <!-- remove -->
-                    <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn cart__icon"></a>
-                    </li>
-                </ul>
+                <c:forEach var="car" items="${car}">
+                    <ul class="cart__product grid">
+                        <!-- photo -->
+                        <li class="cart__product-item">
+                            <img
+                                    src="${pageContext.request.contextPath}/views/admin/assets/img/${car.getUrlPhotos()}"
+                                    alt="img"
+                                    class="cart__img"
+                            />
+                        </li>
+                        <!-- name -->
+                        <li class="cart__product-item">
+                            <p class="cart__name"></p>
+                            <div class="cart__description">${car.getNamePP()}</div>
+                        </li>
+                        <!-- unit price -->
+                        <li class="cart__product-item">
+                            $<span class="cart__price">${car.getPrices()}</span>
+                        </li>
+                        <!-- quantity -->
+                        <li class="cart__product-item cart__quantity">
+                            <span class="cart__quantity-btn cart__up-btn">
+                                <a class="isax isax-arrow-circle-up" style="color:orange"></a>
+                            </span>
+                            <label name="Cant"  class="cart__quantity current-quantity form-control" >${car.getCant()}</label>
+                            <span class="cart__quantity-btn cart__down-btn">
+                                <a class="isax isax-arrow-circle-down"style="color:orange"></a>
+                            </span>
+                        </li>
+                        <!-- subtotal -->
+                        <li class="cart__product-item">
+                            $<span class="cart__price cart__subtotal">${car.getSubTotal()}</span>
+                        </li>
+                        <!-- remove -->
+                        <li class="cart__product-item">
+                            <input type="hidden" value="${car.getIdProducts()}" idProducto="idProduto">
+                            <a href="SAOffline?action=DeleteP&idProduct=${car.getIdProducts()}" id="DeleteP" class=" isax isax-close-circle btn cart__icon"></a>
+                        </li>
+                    </ul>
+                </c:forEach>
             </div>
         </div>
+
 
         <!-- ========== form sale ========== -->
         <div class="cart__form container">
             <div class="card__form-header cart__total">
-                total <span class="" id="total">25</span>
+                total <span class="" id="total">$${finalPayment}</span>
             </div>
-            <form action="" class="form__container grid">
-                <div class="form__field">
-                    <input
-                            type="text"
-                            name="name"
-                            id="name" class="form__input"
-                            placeholder=" "
-                    />
-                    <label for="name" class="form__label">Nombre</label>
-                </div>
-                <!-- <div class="form__field">
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"class="form__input"
-                  />
-                  <label for="name" class="form__label">Nombre</label>
-                </div> -->
-                <input type="submit" value="Pagar ahora" class="form__field btn btn-gradient">
+            <form class="form__container grid">
+                <!-- Button Pagar ahora -->
+                <button name="action" value="Pay" type="submit" class="form__field btn btn-gradient">Pagar ahora</button>
             </form>
         </div>
     </section>

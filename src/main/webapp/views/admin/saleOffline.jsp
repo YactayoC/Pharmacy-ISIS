@@ -82,12 +82,12 @@
                 </a>
             </li>
             <!-- Setting -->
-                <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
-                        <i class="isax isax-setting-2 nav__icon"></i>
-                        <span class="nav__link-text"> Perfil </span>
-                    </a>
-                </li>
+            <li class="nav__item">
+                <a href="${pageContext.request.contextPath}/SASetting?action=getSetting&idEmployee=${idEmployee}" class="nav__link">
+                    <i class="isax isax-setting-2 nav__icon"></i>
+                    <span class="nav__link-text"> Perfil </span>
+                </a>
+            </li>
             <!-- logout -->
             <li class="nav__item">
                 <a href="${pageContext.request.contextPath}/SGLogin?action=exit" class="nav__link">
@@ -126,125 +126,72 @@
         <!-- table HEADER of receipts -->
         <div class="sale container">
             <div class="sale__options options">
-                <a href="${pageContext.request.contextPath}/views/admin/sale.jsp" class="option option-filter option--active">Delivery
+                <a href="${pageContext.request.contextPath}/views/admin/sale.jsp" class="option option-filter">Delivery
                     <span class="tag-notify tag-notify--primary">8</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/views/admin/saleRecojo.jsp" class="option option-filter">Recogo
                     <span class="tag-notify tag-notify--primary">7</span>
                 </a>
-                <a href="${pageContext.request.contextPath}/SAOffline?action=listRece" class="option option-filter">offline
+                <a href="${pageContext.request.contextPath}/SAOffline?action=listRece" class="option option-filter option-active">offline
                     <span class="tag-notify tag-notify--primary">7</span>
                 </a>
                 <a href="${pageContext.request.contextPath}/SAOffline?action=recietp" class="option sale__btn">
                     <i class="isax isax-bag-happy sale__icon"></i> Compra presencial
                 </a>
             </div>
-
-            <!--------- table delivery --------->
+            <!--------- table offline --------->
             <div class="">
                 <!-- header of table -->
                 <ul class="sale__header grid">
                     <li class="sale__header-text sale__total-text">Total productos</li>
                     <li class="sale__header-text">Cliente</li>
                     <li class="sale__header-text">Fecha</li>
-                    <li class="sale__header-text">Repartidor</li>
                     <li class="sale__header-text">total</li>
                     <li class="sale__header-text">Estado</li>
                     <li class="sale__header-text">detalle</li>
                 </ul>
                 <!-- init first  -->
-                <ul class="sale__items grid">
-                    <!-- Photo -->
-                    <li class="sale__item">
-                        <img src="assets/img/photo-user.webp" alt="#" class="client__img">
-                    </li>
-                    <!-- total products -->
-                    <li class="sale__item">
-                        <span class="sale__text">14</span> Producto
-                    </li>
-                    <!-- client -->
-                    <li class="sale__item">
-                        <p class="sale__text">Anna Smith</p>
-                    </li>
-                    <!-- date -->
-                    <li class="sale__item">
-                        <p class="sale__text">2020/20/08</p>
-                    </li>
-                    <!-- delivery man -->
-                    <li class="sale__item">
-                        <p class="sale__text">Jhon doe</p>
-                    </li>
-                    <!-- total -->
-                    <li class="sale__item">
-                        $<span class="sale__text">250.00</span>
-                    </li>
-                    <!-- state -->
-                    <li class="sale__item sale__status">
-                        <span class="sale__label-icon">Pendiente</span>
-                        <i class="isax isax-convert-3d-cube sale__icon"></i>
-                        <!-- <span class="sale__label-icon">entregado</span>
-                        <i class="isax isax-box-tick sale__icon"></i> -->
-                    </li>
-                    <!-- view details-->
-                    <li class="sale__item sale__details">
-                        <i class="isax isax-eye sale__icon"></i>
-                    </li>
-                </ul>
+                <c:forEach var="receR" items="${receR}">
+                    <ul class="sale__items grid">
+                        <!-- Photo -->
+                        <li class="sale__item">
+                            <img src="${pageContext.request.contextPath}/views/admin/assets/img/photo-user.webp" alt="#" class="client__img">
+                        </li>
+                        <!-- total products -->
+                        <li class="sale__item">
+                            <span class="sale__text">${receR.getReceiptDetail().getQuantity()}</span> Productos
+                        </li>
+                        <!-- client -->
+                        <li class="sale__item">
+                            <p class="sale__text">${receR.getEmployee().getName()}</p>
+                        </li>
+                        <!-- date -->
+                        <li class="sale__item">
+                            <p class="sale__text">${receR.getDateP()}</p>
+                        </li>
+                        <!-- total -->
+                        <li class="sale__item">
+                            $<span class="sale__text">${receR.getReceiptDetail().getPrice()}</span>
+                        </li>
+                        <!-- state -->
+                        <li class="sale__item sale__status">
+                            <span class="sale__label-icon">Pagado</span>
+                            <i class="isax isax-coin sale__icon"></i>
+                        </li>
+                        <!-- view details-->
+                        <li class="sale__item sale__details">
+                            <a style="color: #C01C28" href="${pageContext.request.contextPath}/SAOffline?action=listDetailRece&idReceit=${receR.getIdReceipt()}"><i class="isax isax-eye sale__icon"></i></a>
+                        </li>
+                    </ul>
+                </c:forEach>
             </div>
         </div>
     </section>
 </main>
-
-<!-- ========== Modal detail ========== -->
-<section class="modal sale__modal-detail hidden">
-    <div class="modal__content container">
-        <div class="modal__header">
-            <h2 class="modal__title">Detalle de venta</h2>
-            <span class="modal__close"><i class="isax isax-close-circle"></i></span>
-        </div>
-        <div class="modal__body">
-            <!-- header of table -->
-            <ul class="modal__table grid">
-                <li class="sale__header-text sale__total-text">producto</li>
-                <li class="sale__header-text">Código</li>
-                <li class="sale__header-text">Precio</li>
-                <li class="sale__header-text">Cantidad</li>
-                <li class="sale__header-text">Subtotal</li>
-            </ul>
-            <!-- init first  -->
-            <ul class="modal__table modal__table-item grid">
-                <!-- image -->
-                <li class="sale__item">
-                    <img src="assets/img/photo-user.webp" alt="#" class="modal__img">
-                </li>
-                <!-- product -->
-                <li class="sale__item">
-                    <p class="sale__text">Aspirina</p>
-                </li>
-                <!-- code -->
-                <li class="sale__item">
-                    <p class="sale__text">001</p>
-                </li>
-                <!-- price -->
-                <li class="sale__item">
-                    S/<span class="sale__text">5.00</span>
-                </li>
-                <!-- quantity -->
-                <li class="sale__item">
-                    <span class="sale__text">2</span>
-                </li>
-                <!-- subtotal -->
-                <li class="sale__item">
-                    S/<span class="sale__text">10.00</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
 <!-- ========== zipped unzipped nav ========== -->
 <script src="${pageContext.request.contextPath}/views/admin/js/nav.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/filter.js"></script>
 <script src="${pageContext.request.contextPath}/views/admin/js/sale-modal.js"></script>
 </body>
 </html>
+
