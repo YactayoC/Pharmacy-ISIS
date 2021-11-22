@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.edge{
+    padding: 50px;
+    width: 750px;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 220px;
+    background: white;
+    position: absolute;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.Logo{
+    margin-top: -60px;
+    width: 340px;
+    height: 170px;
+}
+.div1{
+    width: 370px;
+    height: 170px;
+    margin: 10px;
+    padding: 50px;
+    background: white;
+}
+.div2{
+    width: 200px;
+    height: 125px;
+    float: right;
+    margin-top: 30px;
+    background: white;
+}
+.div3{
+    float: left;
+    width: 90px;
+    height: 35px;
+    background: rgba(255,255,255,.2);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.div3-1{
+    position: absolute;
+    text-align: center;
+    left: 125px;
+    top: 230px;
+    width: 120px;
+    height: 35px;
+    margin-top: 0px;
+    background: rgba(255,255,255,.2);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.div3-2{
+    margin-right: 10px;
+    float: left;
+    width: 60px;
+    height: 20px;
+    background: rgba(255,255,255,.2);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.div3-3{
+    float: left;
+    width: 350px;
+    height: 35px;
+    margin-left: 15px;
+    background: rgba(255,255,255,.2);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.div3-4{
+    position: absolute;
+    text-align: center;
+    left: 135px;
+    top: 240px;
+    width: 350px;
+    height: 15px;
+    margin-left: 15px;
+    background: rgba(255,255,255,.2);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.div4{
+    margin-top: 50px;
+    width: 650px;
+    height: auto;
+    background: white;
+}
+.div5{
+    width: 300px;
+    height: 100px;
+    background: white;
+    margin-top: 10px;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+.div6{
+    float: right;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 22px;
+    background: white;
+}
+.div7{
+    float: right;
+    width: 155px;
+    height: 40px;
+    margin-top: 11px;
+    background: orange;
+}
+.button{
+    position: fixed;
+    text-transform: capitalize;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    width: 155px;
+    height: 55px;
+    position: fixed;
+    left: 1250px;
+    top: 305px;
+    background: orange;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.fondo{
+    opacity: 10%;
+    position: fixed;
+    float: left;
+    margin-top: 0px;
+    width: 250vh;
+    height: 100vh;
+    top: 0px;
+    background: #FAFAFA;
+}
+.fondo2{
+    width: 225vh;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    background: white;
+}
+.table1{
+    width: 100%;
+}
+.table2{
+    width: 100%;
+    height: 50%;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+    text-transform: capitalize
+}
+@media print {
+    body *:not(#Impri):not(#Impri *){
+        visibility: inherit;
+    }
+    #Impri{
+        position: absolute;
+        left: -210px;
+        top: 30px;
+        margin-top: -60px;
+    }
+}

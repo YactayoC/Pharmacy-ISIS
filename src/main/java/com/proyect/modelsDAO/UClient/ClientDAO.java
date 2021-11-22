@@ -1,6 +1,7 @@
 package com.proyect.modelsDAO.UClient;
 
 import com.proyect.connDB.ConnectionDB;
+import com.proyect.modelsDTO.BCar.Receipt;
 import com.proyect.modelsDTO.UClient.Client;
 import com.proyect.modelsDTO.UClient.District;
 import com.proyect.modelsDTO.General.User;
@@ -30,6 +31,23 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
                      + "INNER JOIN district AS d ON (c.idDistrict = d.idDistrict)")) {
             while (rs.next()) {
                 Client c = createClient(rs);
+                clients.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
+    public List<Client> listReiptV() {
+        List<Client> clients = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM client AS c  "
+                     + "INNER JOIN receipt As r ON (r.idClient = c.idClient)"
+                     + "INNER JOIN district As d ON (c.idDistrict = d.idDistrict)")) {
+            while (rs.next()) {
+                Client c = createReceiptV(rs);
                 clients.add(c);
             }
         } catch (SQLException e) {
@@ -185,6 +203,30 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         c.setUser(u);
         c.setDistrict(d);
 
+        return c;
+    }
+    private Client createReceiptV(ResultSet rs) throws SQLException {
+        Client c = new Client();
+        c.setIdClient(rs.getInt("idClient"));
+        c.setUsername(rs.getString("username"));
+        c.setName(rs.getString("name"));
+        c.setSurname(rs.getString("surname"));
+        c.setDocIdentity(rs.getString("docIdentity"));
+        c.setAddress(rs.getString("address"));
+        c.setPhone(rs.getString("phone"));
+
+        Receipt r = new Receipt();
+        r.setIdReceipt(rs.getInt("idReceipt"));
+        r.setSerialN(rs.getString("serialN"));
+        r.setDateP(rs.getString("dateP"));
+        r.setPaySt(rs.getString("delSt"));
+
+        District d = new District();
+        d.setIdDistrict(rs.getInt("idDistrict"));
+        d.setNameD(rs.getString("nameD"));
+
+        c.setReceipt(r);
+        c.setDistrict(d);
         return c;
     }
 
