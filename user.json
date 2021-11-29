@@ -1,0 +1,127 @@
+[{
+  "_id": {
+    "$oid": "6137c06a21ede37efd5c916b"
+  },
+  "name": "Admin",
+  "email": "admin@isis.com",
+  "photo": "gato4.jpg",
+  "isEmployee": true
+},{
+  "_id": {
+    "$oid": "61391c459de0921e6b4372e1"
+  },
+  "name": "teclado12",
+  "photo": "client.png",
+  "username": "teclado121212",
+  "email": "teclado12@gmail.com"
+},{
+  "_id": {
+    "$oid": "613927b3952e705cf38f7e49"
+  },
+  "emial": "aroncito@gmail.com",
+  "name": "aroncito",
+  "photo": "client.png",
+  "username": "aroncito222"
+},{
+  "_id": {
+    "$oid": "61392debbbe28576467a4d9a"
+  },
+  "emial": "prob1@gmail.com",
+  "name": "prob1",
+  "photo": "client.png",
+  "username": "probando1"
+},{
+  "_id": {
+    "$oid": "613bb8f8b33aa41b254916f8"
+  },
+  "emial": "saveacoount@gmail.com",
+  "name": "Account",
+  "photo": "client.png",
+  "username": "account"
+},{
+  "_id": {
+    "$oid": "613cce84b48786342f93027d"
+  },
+  "email": "yactayito@gmail.com",
+  "name": "yactayiyo",
+  "photo": "gato4.jpg",
+  "username": "asdad1wd1wd1"
+},{
+  "_id": {
+    "$oid": "613e300e2e63f91be9a5f04c"
+  },
+  "email": "listandoclientes@gmail.com",
+  "name": "asdasdsad",
+  "photo": "client.png",
+  "username": "listandoclientes"
+},{
+  "_id": {
+    "$oid": "6141320d56912b59f0608fff"
+  },
+  "email": "sergio@gmail.com",
+  "name": "Sergio",
+  "photo": "client.png",
+  "username": "SergioR"
+},{
+  "_id": {
+    "$oid": "6141465347f6e41c0a208df4"
+  },
+  "email": "clienteeee@gmail.com",
+  "name": "clienteeee",
+  "photo": "client.png",
+  "username": "clienteeee"
+},{
+  "_id": {
+    "$oid": "6147a791449dbf10e945714f"
+  },
+  "email": "yactayito@gmail.com",
+  "isEmployee": false,
+  "name": "Sebitas",
+  "photo": "client.png",
+  "username": "yactayito"
+},{
+  "_id": {
+    "$oid": "614f6249c8989516d3883725"
+  },
+  "email": "marcom@gmail.com",
+  "isEmployee": false,
+  "name": "marco",
+  "photo": "client.png",
+  "username": "marcom"
+},{
+  "_id": {
+    "$oid": "616088c9b40e17744bb64c99"
+  },
+  "email": "miguelh@gmail.com",
+  "isEmployee": false,
+  "name": "Miguel",
+  "photo": "client.png",
+  "username": "miguel12"
+},{
+  "_id": {
+    "$oid": "61608923c68dcb6f737f56c7"
+  },
+  "email": "robles@gmail.com",
+  "isEmployee": false,
+  "name": "Robles",
+  "photo": "client.png",
+  "username": "roble12"
+},{
+  "_id": {
+    "$oid": "61869ec2d3e2b54c3d45f337"
+  },
+  "email": "gaseg@gmail.com",
+  "isEmployee": false,
+  "name": "Gabriel",
+  "photo": "client.png",
+  "username": "GSEG"
+},{
+  "_id": {
+    "$oid": "618d82aad8dc8e6c2b7c36d7"
+  },
+  "email": "yactayosebastian@gmail.com",
+  "isEmployee": false,
+  "name": "Sebastian",
+  "photo": "client.png",
+  "username": "Yactayo"
+}]
