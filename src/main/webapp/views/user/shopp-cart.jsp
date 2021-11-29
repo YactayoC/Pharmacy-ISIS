@@ -35,12 +35,13 @@
                     >
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/SCard?action=listCart" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
-                            <!-- Items of shopping cart -->
-                            <span class="nav__bag-item">1</span>
+                            <!-- Items of shopping cart
+
+                            <span class="nav__bag-item">[numero]</span> -->
                         </div>
                     </a>
                 </li>
@@ -106,7 +107,8 @@
                 <i class="isax isax-bag-tick-2"></i>
                 Mi bolsa
             </h2>
-            <h3 class="cart__total">total $<span id="total">25.00</span></h3>
+            <c:set var="total" value="${total}"/>
+            <h3 class="cart__total">total $<span id="total">${total}</span></h3>
         </div>
         <div class="cart__content cart__shadow">
             <ul class="cart__header grid">
@@ -118,43 +120,48 @@
             </ul>
             <div class="cart__products">
                 <!-- row of a product -->
+            <c:forEach var="itemCard" items="${cardInfo}">
                 <ul class="cart__product grid">
                     <!-- photo -->
                     <li class="cart__product-item">
                         <img
-                                src="assets/img/cup-pills.webp"
+                                src="${pageContext.request.contextPath}/views/admin/assets/img/${itemCard.getProduct().getUrlPhoto()}"
                                 alt="img"
                                 class="cart__img"
                         />
                     </li>
                     <!-- name -->
                     <li class="cart__product-item">
-                        <p class="cart__name">Name</p>
+                        <p class="cart__name">${itemCard.getProduct().getNameP()}</p>
                         <div class="cart__description"></div>
                     </li>
                     <!-- unit price -->
                     <li class="cart__product-item">
-                        $<span class="cart__price">25.00</span>
+                        S/.<span class="cart__price">${itemCard.getProduct().getPrice()}</span>
                     </li>
                     <!-- quantity -->
                     <li class="cart__product-item cart__quantity">
-                                <span class="cart__quantity-btn cart__up-btn">
+                               <!-- <span class="cart__quantity-btn cart__up-btn">
                                     <i class="isax isax-arrow-circle-up"></i>
-                                </span>
-                        <span class="cart__quantity current-quantity" data-price='25' data-stock="5">1</span>
-                        <span class="cart__quantity-btn cart__down-btn">
+                                </span> -->
+                        <span class="cart__quantity current-quantity" data-price='25' data-stock="${itemCard.getProduct().getStock()}">
+                                ${itemCard.getQuantity()}
+                        </span>
+                       <!-- <span class="cart__quantity-btn cart__down-btn">
                                     <i class="isax isax-arrow-circle-down"></i>
-                                </span>
+                                </span> -->
                     </li>
                     <!-- subtotal -->
                     <li class="cart__product-item">
-                        $<span class="cart__price cart__subtotal">25.00</span>
+                        $<span class="cart__price cart__subtotal">${itemCard.getSubtotal()}</span>
                     </li>
                     <!-- remove -->
                     <li class="cart__product-item">
-                        <a href="#" class="isax isax-close-circle btn-icon"></a>
+                        <a  onclick="deleteP(${itemCard.getProduct().getIdProduct()})" class="isax isax-close-circle btn-icon"></a>
+                        <!-- href="${pageContext.request.contextPath}/SCard?action=delete&id=${itemCard.getProduct().getIdProduct()}" -->
                     </li>
                 </ul>
+            </c:forEach>
             </div>
             <!-- This is view only in mobile -->
             <a href="#" class="btn btn-primary cart__btn-mbl" id="show-form">
@@ -187,8 +194,9 @@
                     </span>
         </div>
         <div class="pay__cards">
+            <span class="hidden absolutePath">${pageContext.request.contextPath}</span>
             <img
-                    src="assets/img/target-visa.webp"
+                    src="${pageContext.request.contextPath}/views/user/assets/img/target-visa.webp"
                     alt="tarjeta visa"
                     class="pay__card-img"
                     id="card-img"
@@ -462,7 +470,10 @@
 </section>
 <!-- ========== Import scripts for animations ========== -->
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
-<script src="${pageContext.request.contextPath}/views/user/js/shop-cart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/form.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/send-datas.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/shop-cart.js"></script>
 </body>
 </html>

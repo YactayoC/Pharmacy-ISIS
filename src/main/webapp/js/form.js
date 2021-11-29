@@ -1,5 +1,5 @@
 const formInput = document.querySelectorAll('.form__input');
-
+//Adorno
 formInput.forEach(i => {
   i.addEventListener('focus', () => {
     i.parentElement.classList.toggle('form__field-valid');
@@ -9,6 +9,7 @@ formInput.forEach(i => {
   });
 });
 
+//Change perfil photo
 const profileOverlay = document.querySelector('#profile-overlay'),
     photo = document.querySelector('#photo'),
     urlProfileFromDB = photo.getAttribute("data-urlProfile"),

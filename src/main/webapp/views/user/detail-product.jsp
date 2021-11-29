@@ -33,7 +33,7 @@
                         <i class="isax isax-shop nav__icon"></i>Productos</a>
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/SCard?action=listCart" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
@@ -106,8 +106,7 @@
                         <i class="isax isax-arrow-circle-down"></i>
                     </span>
         </div>
-        <a href="" class="detail__btn btn btn-primary">Agregar a la bolsa</a>
-
+        <a onclick="btnAdd(${product.getIdProduct()})" class="detail__btn btn btn-primary">Agregar a la bolsa</a>
     </div>
 </section>
 
@@ -163,5 +162,7 @@
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
 <!-- ========== JS only for this file ========== -->
 <script src="${pageContext.request.contextPath}/views/user/js/details.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/send-datas.js"></script>
 </body>
 </html>

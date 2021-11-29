@@ -8,7 +8,7 @@
       <jdbc-url>mongodb://localhost:27017/chatIcis</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="pharmacydb@localhost" uuid="e5c271fc-de9b-45cd-b4bc-6cc6439f4abd">
+    <data-source source="LOCAL" name="pharmacydb@localhost" uuid="5a0f59fc-0ad5-46ea-8b66-9f81e1356260">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

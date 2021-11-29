@@ -1,3 +1,4 @@
+
 /* ========== Show form of pay ========== */
 const btnShowForm = document.querySelector('#show-form'),
   formPay = document.querySelector('#pay-view'),
@@ -13,11 +14,12 @@ btnCloseForm.addEventListener('click', () => {
 /* ========== Change img of card ========== */
 const iconCards = document.querySelectorAll('.pay__card-icon'),
   cardImg = document.querySelector('#card-img'),
-  svgCards = document.querySelectorAll('.pay__card-icon svg path');
+  svgCards = document.querySelectorAll('.pay__card-icon svg path'),
+  absolutePath = document.querySelector('.absolutePath').textContent;
 
 iconCards.forEach( i => {
   i.addEventListener('click', () => {
-    cardImg.src = `assets/img/target-${i.dataset.card}.webp`;
+    cardImg.src = `${absolutePath}/views/user/assets/img/target-${i.dataset.card}.webp`;
     svgCards.forEach( j => {
       j.classList.remove('pay__icon--active');
     });

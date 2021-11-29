@@ -1,7 +1,6 @@
 package com.proyect.servlets.UEmployee;
 
 import com.proyect.modelsDAO.OProduct.AuditDAO;
-import com.proyect.modelsDTO.OProduct.Action;
 import com.proyect.modelsDTO.OProduct.Audit;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,7 +14,6 @@ import java.util.List;
 public class SAAudit extends HttpServlet{
     List<Audit> audit=new ArrayList<>();
     AuditDAO adao=new AuditDAO();
-    Action action=new Action();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action= request.getParameter("action");
