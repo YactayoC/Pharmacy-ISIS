@@ -354,7 +354,7 @@
         <div class="form__content form__delivery">
             <!------------ init form address ------------>
             <h2 class="form__phrase">Detalle de delivery</h2>
-            <form action="" class="form__container form__container-delivery grid">
+            <form action="${pageContext.request.contextPath}/SCard?action=listCart" class="form__container form__container-delivery grid">
                 <input type="hidden" name="id-user"/>
                 <!-- Department -->
                 <div class="form__field">

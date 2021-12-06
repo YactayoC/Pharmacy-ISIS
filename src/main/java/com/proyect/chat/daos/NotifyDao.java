@@ -27,7 +27,7 @@ import static com.mongodb.client.model.Projections.*;
 import static com.proyect.connDB.Mongo.DATABASE;
 
 public class NotifyDao implements NotifyRepository {
-   private static final String COLLECTION = "user";
+   private static final String COLLECTION = "User";
 
    @Override
    public List<Notify> getNotifications() {

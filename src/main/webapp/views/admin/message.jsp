@@ -37,7 +37,7 @@
       />
       <p class="nav__user nav__zipped-user" id="user-name">${surnameE}</p>
 
-      <span id="id-admin" data-id="${idMongo}" class="hidden absolute-path">
+      <span id="id-admin" data-id="6137c06a21ede37efd5c916b" class="hidden absolute-path">
         ${pageContext.request.contextPath}
       </span>
     </div>
@@ -142,25 +142,25 @@
         <!-- list of user -->
         <ul class="client__list">
           <!-- init a list clients MEDIC -->
-          <%--
-          <li class="client__item filter-item" data-userId="612d7ce259a0773d739c651b" data-tag="medic">
-            <div class="client__data">
-              <img
-                  src="assets/img/photo-user.webp"
-                  alt="client image"
-                  class="client__img client__img-item"
-              />
-              <div class="client__info">
-                <p class="client__name">Angeles</p>
-                <span class="client__email">angeles@gmail.com</span>
-              </div>
-            </div>
-            <div class="client__time">
-              12:00pm
-              <span class="tag-notify tag-notify--primary">5</span>
-            </div>
-          </li>
-          --%>
+
+<%--          <li class="client__item filter-item" data-userId="6147a791449dbf10e945714f" data-tag="medic">--%>
+<%--            <div class="client__data">--%>
+<%--              <img--%>
+<%--                  src="${pageContext.request.contextPath}/views/user/assets/avatar/${notify.getEmitter().getPhoto()}"--%>
+<%--                  alt="client image"--%>
+<%--                  class="client__img client__img-item"--%>
+<%--              />--%>
+<%--              <div class="client__info">--%>
+<%--                <p class="client__name">Angeles</p>--%>
+<%--                <span class="client__email">angeles@gmail.com</span>--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--            <div class="client__time">--%>
+<%--              12:00pm--%>
+<%--              <span class="tag-notify tag-notify--primary">5</span>--%>
+<%--            </div>--%>
+<%--          </li>--%>
+
           <!-- init a list clients-->
           <c:forEach var="notify" items="${notifies}">
             <li class="client__item filter-item" data-userId="${notify.getEmitter().getId().toString()}" data-tag="${notify.getRelevance()}">
@@ -201,8 +201,10 @@
             <li class="chat__box chat__message--response" id="message-response">
               <!-- user response img + time -->
               <div class="client__info client-profile-message">
-                <img src="assets/img/photo-user.webp" alt="" class="client__img client__img-chat">
-                <span class="client__time">12:00</span>
+                <c:forEach var="notify" items="${notifies}">
+                <img src="${pageContext.request.contextPath}/views/user/assets/avatar/${notify.getEmitter().getPhoto()}" alt="" class="client__img client__img-chat">
+<%--                <span class="client__time">${notify.getDate()}</span>--%>
+                </c:forEach>
               </div>
               <!-- message -->
               <span class="chat__message">Hi...</span>
@@ -211,11 +213,11 @@
             <%-- message request --%>
             <li class="chat__box chat__message--request" id="message-request">
               <!-- message -->
-              <span class="chat__message">Hello ;D</span>
+              <span class="chat__message">Hi...</span>
               <!-- user response img + time -->
               <div class="client__info admin-profile-message">
-                <img src="assets/img/photo-admin.webp" alt="" class="client__img">
-                <span class="client__time">12:00</span>
+                <img src="${pageContext.request.contextPath}/views/admin/assets/avatar/${avatarE}" alt="" class="client__img">
+<%--                <span class="client__time">${notify.getDate()}</span>--%>
               </div>
             </li>
           </ul>

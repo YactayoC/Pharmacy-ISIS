@@ -17,11 +17,11 @@ public class SaveImage {
 
         switch (typeModel) {
             case "product" ->
-                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\views\\admin\\assets\\img";
+                   absolutePath = "C:\\Users\\sebas\\IdeaProjects\\pharmacy\\src\\main\\webapp\\views\\admin\\assets\\img";
             case "client" ->
-                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\views\\user\\assets\\avatar";
+                   absolutePath = "C:\\Users\\sebas\\IdeaProjects\\pharmacy\\src\\main\\webapp\\views\\user\\assets\\avatar";
             case "employee" ->
-                   absolutePath = "C:\\Users\\sebas\\Documents\\IntelliProjects\\icis\\src\\main\\webapp\\views\\admin\\assets\\avatar";
+                   absolutePath = "C:\\Users\\sebas\\IdeaProjects\\pharmacy\\src\\main\\webapp\\views\\admin\\assets\\avatar";
         }
 
         File fileUpload = new File(absolutePath);

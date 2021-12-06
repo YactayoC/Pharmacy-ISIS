@@ -28,7 +28,6 @@ public class ServletChat extends HttpServlet {
     HttpSession session = request.getSession();
     String idEmitter = request.getParameter("emitter");
     String idReceiver = request.getParameter("receiver");
-
     if (idEmitter != null && idReceiver != null) {
       //Method for send information of speaker to client
       Speaker emitter = new SpeakerBuilder(new ObjectId(idEmitter)).build();

@@ -59,7 +59,8 @@ public class SASetting extends HttpServlet {
 
             udao.save(user);
             edao.saveSetting(employee);
-            request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
+            response.sendRedirect("SASummary?action=list");
+            //request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
         }
     }
 }

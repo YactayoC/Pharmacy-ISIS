@@ -235,9 +235,7 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
      */
     public Map<String ,Client> getMapUsers() {
         Map<String, Client> clientMap = new HashMap<>();
-
         this.list().forEach(client -> clientMap.put(client.getUser().getIdMongo(), client));
-
         return clientMap;
     }
 
