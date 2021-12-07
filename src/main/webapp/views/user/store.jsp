@@ -39,8 +39,6 @@
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
-                            <!-- Items of shopping cart -->
-                            <span class="nav__bag-item">1</span>
                         </div>
                     </a>
                 </li>
@@ -152,10 +150,6 @@
                                 <span class="product__action-text">A la bolsa</span>
                                 <i class="isax isax-bag btn-icon"></i>
                             </a>
-                            <a href="shopp-cart.jsp">
-                                <span class="product__action-text">Comprar</span>
-                                <i class="isax isax-wallet btn-icon"></i>
-                            </a>
                             <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}"
                                class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
@@ -193,10 +187,6 @@
                                 <span class="product__action-text">A la bolsa</span>
                                 <i class="isax isax-bag btn-icon"></i>
                             </button>
-                            <a href="shopp-cart.jsp" class="product__action">
-                                <span class="product__action-text">Comprar</span>
-                                <i class="isax isax-wallet btn-icon"></i>
-                            </a>
                             <a href="${pageContext.request.contextPath}/SCProducts?action=detail&idProduct=${p.getIdProduct()}"
                                class="product__action">
                                 <span class="product__action-text">Ver detalle</span>
