@@ -40,8 +40,6 @@
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
-                            <!-- Items of shopping cart -->
-                            <span class="nav__bag-item">1</span>
                         </div>
                     </a>
                 </li>

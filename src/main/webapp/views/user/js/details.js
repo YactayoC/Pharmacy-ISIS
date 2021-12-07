@@ -5,7 +5,7 @@ products.forEach( p => {
     // here you can get the attributes of the product
     //how src, 
     // the name, price, description, etc you get of target 
-    window.location.href = 'views/user/detail-product.jsp';
+    window.location.href = '#';
   });
 });
 

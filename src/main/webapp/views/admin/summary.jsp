@@ -118,14 +118,14 @@
                 <i class="isax isax-coin card__icon"></i>
             </div>
             <p class="card__title">Ingresos</p>
-            <h2 class="card__quantity">$<span id="total-income">1200</span></h2>
+            <h2 class="card__quantity">S/.<span id="total-income">${incomes}</span></h2>
         </div>
         <div class="card__content card__sales">
             <div class="card__picture">
                 <i class="isax isax-card-send card__icon"></i>
             </div>
             <p class="card__title">N° Ventas</p>
-            <h2 class="card__quantity">12</h2>
+            <h2 class="card__quantity">${sales}</h2>
         </div>
 
         <!-- ========== Sales of week  ========== -->

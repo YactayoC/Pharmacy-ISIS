@@ -32,12 +32,12 @@
                         <i class="isax isax-shop nav__icon"></i>Productos</a>
                 </li>
                 <li class="nav__item">
-                    <a href="${pageContext.request.contextPath}/views/user/shopp-cart.jsp" class="nav__link nav__bag">
+                    <a href="${pageContext.request.contextPath}/SCard?action=listCart" class="nav__link nav__bag">
                         Mi bolsa
                         <div class="nav__bag-content">
                             <i class="isax isax-bag"></i>
-                            <!-- Items of shopping cart -->
-                            <span class="nav__bag-item">1</span>
+                            <!-- Items of shopping cart
+                            <span class="nav__bag-item">1</span>-->
                         </div>
                     </a>
                 </li>
@@ -140,7 +140,7 @@
                         <p class="offer__description">${products.getDetail()}</p>
                         <span class="offer__quantity">${products.getStock()} unidades</span>
                         <span class="offer__price">$${products.getPrice()}</span>
-                        <a href="#" class="offer__btn btn btn-primary">Agregar a carro<i
+                        <a onclick="btnAdd(${products.getIdProduct()})" class="offer__btn btn btn-primary">Agregar a carro<i
                                 class="isax isax-arrow-right offer__icon"></i></a>
                     </div>
                     <!-- image -->
@@ -377,5 +377,8 @@
 <script src="${pageContext.request.contextPath}/views/user/js/animations.js"></script>
 <script src="${pageContext.request.contextPath}/js/chat.js" type="module"></script>
 <script src="${pageContext.request.contextPath}/js/MessageService.js" type="module"></script>
+<!-- ========== JS only for this file ========== -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="${pageContext.request.contextPath}/views/user/js/send-datas.js"></script>
 </body>
 </html>
