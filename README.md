@@ -47,7 +47,7 @@ Pendiente...
 * **Sebastián Chaquila** - *aporte* - [username](link a github)
 * **Marco Yataco** - *aporte* - [username](link a github)
 * **Kennet de la Cruz** - *aporte* - [username](link a github)
-* **Frank Cabanillas** - *aporte* - [username](link a github)
+* **Frank Cabanillas** - *aporte* - [CodeSCH](https://github.com/CodeSCH)
 * **Cruces Leonardo** - *aporte* - [It's Me Leandro](https://github.com/ItsMeLeonardo)
 
 ---
