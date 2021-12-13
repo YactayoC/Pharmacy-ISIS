@@ -95,10 +95,10 @@
         <section class="save__receipt">
             <h3 class="save__message">¡COMPRA EXITOSA!</h3>
             <div class="save__buttons">
-                <a href="${pageContext.request.contextPath}/views/user/home.jsp" class="btn btn-gradient">
+                <a href="${pageContext.request.contextPath}/views/user/home.jsp" class="btn btn-gradient" onclick="imprimir()">
                     <i class="isax isax-home"></i>Volver
                 </a>
-                <a onclick="pReceipt()" id="imprimir" class="btn btn-primary save__button">
+                <a class="btn btn-primary save__button" onclick="imprimir()">
                     <i class="isax isax-arrow-down"></i>Guardar
                 </a>
             </div>
@@ -113,7 +113,7 @@
                 modalSave.classList.remove('is__visible');
             });
         </script>
-        <script src="${pageContext.request.contextPath}/views/user/js/receipt.js"></script>
+        <script>function imprimir() {window.print(); } </script>
     <!-- POSIBLEMEnTE ELIMINAR -->
     </body>
 </html>
