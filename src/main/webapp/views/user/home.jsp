@@ -14,6 +14,7 @@
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/home.css">
     <title>Principal</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->

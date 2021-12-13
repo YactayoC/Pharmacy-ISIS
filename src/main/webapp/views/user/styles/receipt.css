@@ -85,6 +85,7 @@ body {
   border-radius: 50%;
   background: var(--color-light);
 }
+/*
 .receipt__summary::before {
   box-shadow: inset -20px 0px 1.5rem rgb(17 6 4 / 10%);
   left: -2.6rem;
@@ -93,6 +94,8 @@ body {
   box-shadow:inset 20px 0px 1.5rem rgb(17 6 4 / 10%);
   right: -2rem;
 }
+*/
+
 /* ========== Footer ========== */
 .receipt__footer{
   display: flex;

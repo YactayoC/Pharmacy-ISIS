@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/styles.css"/>
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/sale-offline.css"/>
-    <title>Venta offline</title>
+    <title>Venta presencial</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->

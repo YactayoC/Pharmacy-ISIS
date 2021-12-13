@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/store.css"/>
     <link const totalProducts = document.querySelectorAll('product__card')>
     <title>Tienda</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->

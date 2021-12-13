@@ -162,7 +162,7 @@ public class ProductDAO implements Repository<Product>, Search<Product> {
         }
         return products;
     }
-/*
+
     public int updateStock(int idProduct, int stock) {
         int rows = 0;
         try (Connection conn = getConnection();
@@ -175,7 +175,7 @@ public class ProductDAO implements Repository<Product>, Search<Product> {
         }
         return rows;
     }
-*/
+
     private Product createProduct(ResultSet rs) throws SQLException {
         Product p = new Product();
         p.setIdProduct(rs.getInt("idProduct"));

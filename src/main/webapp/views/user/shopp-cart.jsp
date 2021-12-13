@@ -15,6 +15,7 @@
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/styles/shop-cart.css"/>
     <title>Bolsa de pago</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->
@@ -351,7 +352,7 @@
         <div class="form__content form__delivery">
             <!------------ init form address ------------>
             <h2 class="form__phrase">Detalle de delivery</h2>
-            <form action="${pageContext.request.contextPath}/SCard?action=listCart" class="form__container form__container-delivery grid">
+            <form action="${pageContext.request.contextPath}/SPay" class="form__container form__container-delivery grid" method="post">
                 <input type="hidden" name="id-user"/>
                 <!-- Department -->
                 <div class="form__field">
@@ -407,25 +408,25 @@
                     <i class="isax isax-location form__icon"></i>
                     <select
                             name="district"
-                            id="district"
+                            id="districts"
                             class="form__input form__select"
                             placeholder=" "
                             required
                     >
-                        <option value="default">Selecciona una opción</option>
-                        <option value="sjm">San juan de Miraflores</option>
-                        <option value="vs">Villa el Salvador</option>
-                        <option value="chr">Chorrillos</option>
-                        <option value="vma">Villa Maria</option>
-                        <option value="lrn">Lurín</option>
+                        <option value="0">Selecciona una opción</option> <!-- default -->
+                        <option value="1">San juan de Miraflores</option> <!-- sjm -->
+                        <option value="2">Villa el Salvador</option> <!-- vs -->
+                        <option value="3">Chorrillos</option> <!-- chr -->
+                        <option value="4">Villa Maria</option> <!-- vma -->
+                        <option value="5">Lurín</option> <!-- lrn -->
                     </select>
-                    <label for="district" class="form__label">Distríto</label>
+                    <label for="districts" class="form__label">Distríto</label>
                 </div>
                 <!-- buy now btn -->
                 <input
                         type="submit"
                         value="Comprar ahora"
-                        class="form__button form__field"
+                        class="form__button form__field btn-pay"
                 />
             </form>
         </div>

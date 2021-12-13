@@ -10,6 +10,7 @@ public class Client {
     private String surname;
     private String docIdentity;
     private String address;
+    private int idDistrict;
     private String phone;
     private User user;
     private District district;
@@ -18,9 +19,19 @@ public class Client {
     public Client() {
     }
 
-    public Integer getIdClient() {
-        return idClient;
+    public Client(Integer idClient, String address, int idDistrict) {
+        this.idClient = idClient;
+        this.address = address;
+        this.idDistrict = idDistrict;
     }
+
+    public int getIdDistrict() {return idDistrict;}
+
+    public void setIdDistrict(int idDistrict) {this.idDistrict = idDistrict;}
+
+    public Client(int idClient) {this.idClient = idClient;}
+
+    public Integer getIdClient() {return idClient;}
 
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;

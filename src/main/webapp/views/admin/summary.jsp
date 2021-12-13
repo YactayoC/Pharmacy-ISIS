@@ -14,6 +14,7 @@
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/summary.css"/>
     <title>Summary</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->
@@ -134,8 +135,47 @@
                 <span class="section__title-item"></span>
                 <h2 class="section__title-text">venta semanal</h2>
             </div>
+            <!-- table BODY of clients -->
             <div class="sales__chart">
-                <canvas height="580" width="340"></canvas>
+                <canvas height="580" width="340">
+                <!--------- table all resumen --------->
+                <div class="sales__chart">
+                    <!-- header of table -->
+                    <ul class="sales__chart">
+                        <li class="sales__chart">SerialN</li>
+                        <li class="sales__chart">Date</li>
+                        <li class="sales__chart">Quantity</li>
+                        <li class="sales__chart">Total</li>
+                    </ul>
+
+                    <!-- table init first  -->
+                    <c:forEach items="${products}" var="products">
+                        <ul class="product__items grid filter-item" data-tag="${products.getStock()}">
+                            <!-- image -->
+                            <li class="product__item product__img">
+                                <img src="${pageContext.request.contextPath}/views/admin/assets/img/${products.getUrlPhoto()}"
+                                     alt="#" class="client__img">
+                            </li>
+                            <!-- name  -->
+                            <li class="product__item">
+                                <p class="product__text">${products.getNameP()}</p>
+                            </li>
+                            <!-- stock -->
+                            <li class="product__item">
+                                <span class="product__text">${products.getStock()}</span>
+                            </li>
+                            <!-- price -->
+                            <li class="product__item">
+                                S/<span class="product__text">${products.getPrice()}</span>
+                            </li>
+                            <!-- Category -->
+                            <li class="product__item product__category">
+                                <p class="product__text">${products.getCategory().getNameC()}</p>
+                            </li>
+                        </ul>
+                    </c:forEach>
+                </div>
+                </canvas>
             </div>
         </section>
 

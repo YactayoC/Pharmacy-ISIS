@@ -14,6 +14,7 @@
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/form.css"/>
     <title>Registrate en Icis</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <a href="${pageContext.request.contextPath}/views/user/home.jsp" class="isax isax-logout btn-icon form__btn-back"></a>

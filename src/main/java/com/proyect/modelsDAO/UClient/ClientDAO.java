@@ -178,6 +178,21 @@ public class ClientDAO implements Repository<Client>, Search<Client> {
         }
         return clients;
     }
+    public int updateAddress(Client client) {
+        int rows = 0;
+        String sql;
+        sql = "UPDATE client SET address=?, idDistrict = ? WHERE idClient=?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, client.getAddress());
+            stmt.setInt(2, client.getIdDistrict());
+            stmt.setInt(3, client.getIdClient());
+            rows = stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rows;
+    }
 
     private Client createClient(ResultSet rs) throws SQLException {
         Client c = new Client();
