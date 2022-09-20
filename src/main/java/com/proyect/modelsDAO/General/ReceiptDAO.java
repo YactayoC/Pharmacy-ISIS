@@ -1,6 +1,7 @@
 package com.proyect.modelsDAO.General;
 
 import com.proyect.connDB.ConnectionDB;
+import com.proyect.interfaces.Repository;
 import com.proyect.modelsDTO.BCar.Receipt;
 import com.proyect.modelsDTO.BCar.ReceiptDetail;
 import com.proyect.modelsDTO.OProduct.Product;
@@ -10,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptDAO {
+public class ReceiptDAO{
     private Connection getConnection() throws SQLException {
         return ConnectionDB.getConnection();
     }
@@ -77,36 +78,50 @@ public class ReceiptDAO {
         }
         return receiptid;
     }
+    //GUARDAR EN OFFLINE
     public void save(Receipt receipt){
         String sql= null;
-        sql ="INSERT INTO receipt(serialN, dateP, delSt, idEmployee, idmetPay, idmetSale)VALUES (?,?,?,?,?,?)";
+        sql ="INSERT INTO receipt(serialN, dateP, delSt, idEmployee, idmetPay, idmetSale)VALUES (?,curdate(),0,0,1,2)";
         try(Connection conn = getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, receipt.getSerialN());
-            stmt.setString(2, receipt.getDateP());
-            stmt.setString(3, receipt.getPaySt());
-            stmt.setInt(4, receipt.getEmployee().getIdEmployee());
-            stmt.setInt(5, receipt.getMetPay().getIdMetPay());
-            stmt.setInt(6, receipt.getMetSale().getIdMetSale());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void  saveRD(ReceiptDetail receipt){
+
+    public void savev(Receipt receipt){
         String sql= null;
-        sql ="INSERT INTO receiptdetail(price, quantity, idProduct, idReceipt)VALUES (?,?,?,?)";
+        sql ="INSERT INTO receipt(serialN, dateP, delSt, idClient ,idEmployee, idmetPay, idmetSale) VALUES (?,curdate(),0,?,0,1,2)";
         try(Connection conn = getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setDouble(1, receipt.getPrice());
-            stmt.setInt(2, receipt.getQuantity());
-            stmt.setInt(3, receipt.getProduct().getIdProduct());
-            stmt.setInt(4, receipt.getReceipt().getIdReceipt());
+            stmt.setString(1, receipt.getSerialN());
+            stmt.setInt(2, receipt.getClient().getIdClient());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    public Receipt getDate(int id){
+        Receipt r = new Receipt();
+        String sql = null;
+        sql = "SELECT dateP, idReceipt FROM receipt WHERE idClient = "+id+" "+
+                "ORDER BY idReceipt DESC limit 1";
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                r.setDateP(String.valueOf(rs.getDate(1)));
+                r.setIdReceipt(rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+
+
     private ReceiptDetail createReceipt(ResultSet rs) throws SQLException {
         Receipt r = new Receipt();
         r.setIdReceipt(rs.getInt("idReceipt"));

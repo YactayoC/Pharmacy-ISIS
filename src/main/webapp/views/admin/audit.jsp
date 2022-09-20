@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/sale.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/audit.css" />
     <title>Auditoria</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->

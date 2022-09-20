@@ -13,6 +13,7 @@ public class Product {
 
     public Product() {
     }
+    public Product(int idProduct) {this.idProduct = idProduct;}
 
     public Integer getIdProduct() {
         return idProduct;

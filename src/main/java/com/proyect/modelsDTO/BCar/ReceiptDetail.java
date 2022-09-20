@@ -51,4 +51,15 @@ public class ReceiptDetail {
     public void setReceipt(Receipt receipt) {
         this.receipt = receipt;
     }
+
+    @Override
+    public String toString() {
+        return "DetailReceipt{" +
+                "idDetailReceipt=" + receiptDetail +
+                ", receipt=" + receipt +
+                ", price=" + price +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

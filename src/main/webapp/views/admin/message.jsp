@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/styles.css"/>
   <!-- ========== styles only this page ========== -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/message.css"/>
-  <title>Messages</title>
+  <title>Mensajes</title>
+  <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <!-- ========== navbar ========== -->

@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/overall-styles.css"/>
     <!-- ========== styles only this page ========== -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/styles/receitpP.css"/>
-
-    <title>Venta offline</title>
+    <title>Recibo</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/fonts/icsis_logo.webp">
 </head>
 <body>
 <a class="fondo" href="${pageContext.request.contextPath}/SAOffline?action=SafeReceipt">

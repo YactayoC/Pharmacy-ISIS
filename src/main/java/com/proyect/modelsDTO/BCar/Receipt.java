@@ -4,13 +4,14 @@ import com.proyect.modelsDTO.UClient.Client;
 import com.proyect.modelsDTO.UClient.District;
 import com.proyect.modelsDTO.UEemployee.Employee;
 
-import java.util.Date;
-
 public class Receipt {
     private int idReceipt;
+    private int idClient;
+    private int idEmployee;
     private String serialN;
     private String dateP;
     private String paySt;
+    private double total;
     private Client client;
     private Employee employee;
     private District District;
@@ -18,6 +19,10 @@ public class Receipt {
     private MetSale metSale;
     private ReceiptDetail ReceiptDetail;
     public Receipt() {
+    }
+
+    public Receipt(int idClient) {
+        this.idClient = idClient;
     }
 
     public int getIdReceipt() {return idReceipt;}
@@ -59,5 +64,19 @@ public class Receipt {
     public com.proyect.modelsDTO.BCar.ReceiptDetail getReceiptDetail() {return ReceiptDetail;}
 
     public void setReceiptDetail(com.proyect.modelsDTO.BCar.ReceiptDetail receiptDetail) {ReceiptDetail = receiptDetail;}
+
+    public int getIdClient() {return idClient;}
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
+    public double getTotal() {return total;}
+
+    public void setTotal(double total) {this.total = total;}
+
+    public int getIdEmployee() {return idEmployee;}
+
+    public void setIdEmployee(int idEmployee) {this.idEmployee = idEmployee;}
 }
 

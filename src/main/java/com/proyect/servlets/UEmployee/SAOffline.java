@@ -2,6 +2,7 @@ package com.proyect.servlets.UEmployee;
 
 import com.proyect.modelsDAO.General.ReceiptDAO;
 import com.proyect.modelsDAO.OProduct.ProductDAO;
+import com.proyect.modelsDAO.OProduct.ReceiptDetailDAO;
 import com.proyect.modelsDTO.BCar.*;
 import com.proyect.modelsDTO.OProduct.Product;
 import com.proyect.modelsDTO.UEemployee.Employee;
@@ -29,6 +30,7 @@ public class SAOffline extends HttpServlet {
     Employee employee = new Employee();
     Receipt receipt = new Receipt();
     ReceiptDAO sdao = new ReceiptDAO();
+    ReceiptDetailDAO rddao= new ReceiptDetailDAO();
     String SerialNum;
     int item;
     int Cant = 1;
@@ -180,15 +182,15 @@ public class SAOffline extends HttpServlet {
             }
             case "SafeReceipt" ->{
                 //SafeReceipt
-                int idMetS = 1;
-                int idMetP =1;
-                int idEmplo = 0;
-                employee.setIdEmployee(idEmplo);
-                metpay.setIdMetPay(idMetP);
-                metsale.setIdMetSale(idMetS);
+                //int idMetS = 1;
+                //int idMetP =1;
+                //int idEmplo = 0;
+                //employee.setIdEmployee(idEmplo);
+                //metpay.setIdMetPay(idMetP);
+                //metsale.setIdMetSale(idMetS);
                 receipt.setSerialN(SerialNum);
-                receipt.setDateP("2021-11-10");
-                receipt.setPaySt("0");
+                //receipt.setDateP("2021-11-10");
+                //receipt.setPaySt("0");
                 receipt.setEmployee(employee);
                 receipt.setMetPay(metpay);
                 receipt.setMetSale(metsale);
@@ -203,7 +205,7 @@ public class SAOffline extends HttpServlet {
                     receiptD.setQuantity(listCar.get(i).getCant());
                     receiptD.setProduct(product);
                     receiptD.setReceipt(receipt);
-                    sdao.saveRD(receiptD);
+                    rddao.saveRD(receiptD);
                 }
                 request.getRequestDispatcher("SAOffline?action=DeleteAll").forward(request, response);
             }

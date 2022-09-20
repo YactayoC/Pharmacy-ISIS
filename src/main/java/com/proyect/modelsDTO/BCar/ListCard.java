@@ -29,7 +29,7 @@ public class ListCard {
             this.items.add(itemCard);
         }
     }
-/*
+
     public void getstockTotal() {
         for (int i = 0; i < items.size(); i++) {
             Product pr = new Product();
@@ -48,7 +48,7 @@ public class ListCard {
             }
         }
     }
-*/
+
     public double getTotal() {
         return items.stream().mapToDouble(ItemCard::getSubtotal).sum();
     }
